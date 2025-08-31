@@ -216,7 +216,7 @@ export const ContactSection = () => {
               <Button 
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground glow-primary text-lg py-3"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow text-lg py-3"
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center">

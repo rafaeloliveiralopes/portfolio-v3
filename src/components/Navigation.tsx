@@ -52,7 +52,7 @@ export const Navigation = () => {
           <div className="hidden md:block">
             <Button 
               onClick={() => scrollToSection("contato")}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground glow-primary"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
             >
               Vamos conversar
             </Button>

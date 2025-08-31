@@ -205,7 +205,7 @@ export const TestimonialsSection = () => {
           </p>
           <Button 
             size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground glow-primary"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
           >
             Começar Meu Projeto
           </Button>

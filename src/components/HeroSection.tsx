@@ -71,7 +71,7 @@ export const HeroSection = () => {
           <Button 
             size="lg"
             onClick={() => scrollToSection("projetos")}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground glow-primary text-lg px-8 py-3"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow text-lg px-8 py-3"
           >
             Ver Portfolio
           </Button>

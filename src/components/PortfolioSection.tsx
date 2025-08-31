@@ -242,7 +242,7 @@ export const PortfolioSection = () => {
         <div className="text-center mt-12">
           <Button 
             size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground glow-primary"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
           >
             Ver Todos os Projetos
           </Button>
