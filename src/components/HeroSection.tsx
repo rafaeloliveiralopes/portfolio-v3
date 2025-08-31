@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const HeroSection = () => {
+  const { t } = useTranslation();
   const [displayText, setDisplayText] = useState("");
-  const fullText = "Construo experiências digitais que unem design e código.";
+  const fullText = t('hero.subtitle');
 
   useEffect(() => {
     let currentIndex = 0;
@@ -18,7 +20,7 @@ export const HeroSection = () => {
     }, 50);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [fullText]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -45,12 +47,19 @@ export const HeroSection = () => {
           </div>
         </div>
 
+        {/* Greeting */}
+        <p className="text-lg md:text-xl text-muted-foreground mb-4 animate-float-up">
+          {t('hero.greeting')} 👋
+        </p>
+
         {/* Main Heading */}
         <div className="mb-6 animate-float-up" style={{ animationDelay: "0.2s" }}>
           <h1 className="text-5xl md:text-7xl font-bold mb-4">
-            <span className="text-foreground">O que eu </span>
-            <span className="text-gradient-primary">faço</span>
+            <span className="text-gradient-primary">{t('hero.name')}</span>
           </h1>
+          <h2 className="text-2xl md:text-3xl font-semibold text-secondary">
+            {t('hero.title')}
+          </h2>
         </div>
 
         {/* Typing Effect Subtitle */}
@@ -59,10 +68,6 @@ export const HeroSection = () => {
             <span className="inline-block border-r-2 border-primary animate-pulse">
               {displayText}
             </span>
-          </p>
-          <p className="text-lg text-muted-foreground mt-4 max-w-3xl mx-auto">
-            Soluções digitais para donos de negócios: linguagem simples, 
-            entrega rápida e foco em resultado.
           </p>
         </div>
 
@@ -73,7 +78,7 @@ export const HeroSection = () => {
             onClick={() => scrollToSection("projetos")}
             className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow text-lg px-8 py-3"
           >
-            Ver Portfolio
+            {t('hero.cta1')}
           </Button>
           <Button 
             size="lg"
@@ -81,7 +86,7 @@ export const HeroSection = () => {
             onClick={() => scrollToSection("contato")}
             className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground text-lg px-8 py-3"
           >
-            Entrar em Contato
+            {t('hero.cta2')}
           </Button>
         </div>
 
@@ -110,7 +115,7 @@ export const HeroSection = () => {
             className="text-muted-foreground hover:text-primary transition-colors group"
           >
             <ArrowDown className="w-6 h-6 mx-auto animate-bounce group-hover:text-primary" />
-            <span className="block text-sm mt-2">Rolar para baixo</span>
+            <span className="block text-sm mt-2">{t('nav.about')}</span>
           </button>
         </div>
       </div>
