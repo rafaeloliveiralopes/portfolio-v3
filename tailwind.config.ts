@@ -84,11 +84,69 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'mesh-float': {
+					'0%, 100%': {
+						transform: 'translate(0, 0) rotate(0deg)'
+					},
+					'25%': {
+						transform: 'translate(-20px, -10px) rotate(1deg)'
+					},
+					'50%': {
+						transform: 'translate(15px, -15px) rotate(-1deg)'
+					},
+					'75%': {
+						transform: 'translate(-10px, 10px) rotate(0.5deg)'
+					}
+				},
+				'pulse-glow': {
+					'0%, 100%': {
+						opacity: '0.3',
+						transform: 'translate(-50%, -50%) scale(1)'
+					},
+					'50%': {
+						opacity: '0.6',
+						transform: 'translate(-50%, -50%) scale(1.1)'
+					}
+				},
+				'gradient-shift': {
+					'0%': {
+						'background-position': '0% 50%'
+					},
+					'50%': {
+						'background-position': '100% 50%'
+					},
+					'100%': {
+						'background-position': '0% 50%'
+					}
+				},
+				'float-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(30px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'typing': {
+					'from': {
+						width: '0'
+					},
+					'to': {
+						width: '100%'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'mesh-float': 'mesh-float 20s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+				'gradient-shift': 'gradient-shift 6s ease infinite',
+				'float-up': 'float-up 0.6s ease-out',
+				'typing': 'typing 3.5s steps(40, end)'
 			}
 		}
 	},
