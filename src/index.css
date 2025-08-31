@@ -170,7 +170,7 @@
 
   /* Service Cards */
   .service-card {
-     @apply bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-glow hover:border-primary/30 group cursor-pointer;
+    @apply bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-glow hover:border-primary/30 cursor-pointer;
     background: linear-gradient(145deg, hsl(var(--card)), hsl(224 19% 14%));
   }
 
