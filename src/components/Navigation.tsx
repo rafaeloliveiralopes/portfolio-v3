@@ -56,9 +56,9 @@ export const Navigation = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl font-bold">
+          <div className="text-1xl font-bold">
             <span className="text-foreground">Rafael</span>
-            <span className="text-gradient-primary">.Lopes</span>
+            <span className="text-gradient-primary">Lopes</span>
             <span className="text-secondary">.dev</span>
           </div>
 
