@@ -42,14 +42,38 @@
 
     /* Design Tokens */
     --radius: 0.75rem;
-    
+
     /* Custom Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
-    --gradient-background: linear-gradient(135deg, hsl(222 19% 8%), hsl(224 19% 12%));
-    --gradient-mesh: radial-gradient(circle at 20% 20%, hsl(262 83% 58% / 0.1) 0%, transparent 50%),
-                     radial-gradient(circle at 80% 80%, hsl(180 78% 55% / 0.1) 0%, transparent 50%),
-                     radial-gradient(circle at 40% 60%, hsl(262 83% 58% / 0.05) 0%, transparent 50%);
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--primary-glow))
+    );
+    --gradient-secondary: linear-gradient(
+      135deg,
+      hsl(var(--secondary)),
+      hsl(var(--secondary-glow))
+    );
+    --gradient-background: linear-gradient(
+      135deg,
+      hsl(222 19% 8%),
+      hsl(224 19% 12%)
+    );
+    --gradient-mesh: radial-gradient(
+        circle at 20% 20%,
+        hsl(262 83% 58% / 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        hsl(180 78% 55% / 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 60%,
+        hsl(262 83% 58% / 0.05) 0%,
+        transparent 50%
+      );
 
     /* Shadows & Glows */
     --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
@@ -106,7 +130,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 262 83% 58%;
-    
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -157,11 +181,27 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
 
     /* Light theme gradients */
-    --gradient-background: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 40% 98%));
-    --gradient-mesh: radial-gradient(circle at 20% 20%, hsl(262 83% 58% / 0.08) 0%, transparent 50%),
-                     radial-gradient(circle at 80% 80%, hsl(180 78% 55% / 0.08) 0%, transparent 50%),
-                     radial-gradient(circle at 40% 60%, hsl(262 83% 58% / 0.04) 0%, transparent 50%);
-    
+    --gradient-background: linear-gradient(
+      135deg,
+      hsl(0 0% 100%),
+      hsl(210 40% 98%)
+    );
+    --gradient-mesh: radial-gradient(
+        circle at 20% 20%,
+        hsl(262 83% 58% / 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        hsl(180 78% 55% / 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 60%,
+        hsl(262 83% 58% / 0.04) 0%,
+        transparent 50%
+      );
+
     /* Light theme shadows */
     --shadow-glow: 0 0 40px hsl(var(--primary) / 0.2);
     --shadow-secondary-glow: 0 0 30px hsl(var(--secondary) / 0.2);
@@ -190,9 +230,9 @@
     background: var(--gradient-background);
     position: relative;
   }
-  
+
   .bg-mesh::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -200,23 +240,26 @@
     bottom: 0;
     background: var(--gradient-mesh);
     opacity: 0.8;
-    animation: mesh-float 20s ease-in-out infinite;
   }
 
   /* Hero Glow Effect */
   .hero-glow {
     position: relative;
   }
-  
+
   .hero-glow::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 150%;
     height: 150%;
-    background: radial-gradient(circle, hsl(var(--primary) / 0.1) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      hsl(var(--primary) / 0.1) 0%,
+      transparent 70%
+    );
     animation: pulse-glow 4s ease-in-out infinite;
     pointer-events: none;
   }
@@ -237,7 +280,7 @@
   }
 
   .timeline-item::before {
-    content: '';
+    content: "";
     @apply absolute left-0 top-0 w-4 h-4 rounded-full bg-primary transform -translate-x-1/2;
     box-shadow: 0 0 20px hsl(var(--primary) / 0.5);
   }
@@ -253,7 +296,7 @@
   }
 
   .hover-underline::after {
-    content: '';
+    content: "";
     @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left;
   }
 
@@ -287,7 +330,8 @@
 
 /* Keyframe Animations */
 @keyframes mesh-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) rotate(0deg);
   }
   25% {
@@ -302,7 +346,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: translate(-50%, -50%) scale(1);
   }
