@@ -3,24 +3,43 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+const phrases = [
+  'Crio experiências digitais que unem pessoas e tecnologia para gerar resultados reais no seu negócio.',
+  'Crio produtos digitais que impulsionam negócios.',
+  'Soluções digitais sob medida para o seu negócio.'
+];
+
 export const HeroSection = () => {
   const { t } = useTranslation();
   const [displayText, setDisplayText] = useState("");
-  const fullText = t('hero.subtitle');
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    let currentIndex = 0;
-    const timer = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setDisplayText(fullText.slice(0, currentIndex));
-        currentIndex++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 50);
+    const currentPhrase = phrases[currentPhraseIndex];
+    let timeout: NodeJS.Timeout;
 
-    return () => clearInterval(timer);
-  }, [fullText]);
+    if (!isDeleting && displayText === currentPhrase) {
+      // Pausa após terminar de escrever
+      timeout = setTimeout(() => setIsDeleting(true), 2000);
+    } else if (isDeleting && displayText === "") {
+      // Muda para a próxima frase
+      setIsDeleting(false);
+      setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
+    } else {
+      // Escreve ou apaga caracteres
+      const speed = isDeleting ? 30 : 50;
+      timeout = setTimeout(() => {
+        setDisplayText((prev) =>
+          isDeleting
+            ? currentPhrase.slice(0, prev.length - 1)
+            : currentPhrase.slice(0, prev.length + 1)
+        );
+      }, speed);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentPhraseIndex]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -49,7 +68,7 @@ export const HeroSection = () => {
 
         {/* Typing Effect Subtitle */}
         <div className="mb-8 animate-float-up" style={{ animationDelay: "0.4s" }}>
-          <p className="text-xl md:text-2xl text-muted-foreground h-8 overflow-hidden">
+          <p className="text-xl md:text-2xl text-muted-foreground min-h-[3rem] flex items-center justify-center">
             <span className="inline-block border-r-2 border-primary animate-pulse">
               {displayText}
             </span>
