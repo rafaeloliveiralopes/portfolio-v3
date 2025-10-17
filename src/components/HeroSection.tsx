@@ -31,23 +31,8 @@ export const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden hero-glow">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse-glow"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "2s" }}></div>
-      </div>
-
-      <div className="container mx-auto px-6 text-center relative z-10">
-        {/* Profile Avatar */}
-        <div className="mb-8 animate-float-up">
-          <div className="w-32 h-32 mx-auto rounded-full bg-gradient-primary p-1">
-            <div className="w-full h-full rounded-full bg-card flex items-center justify-center text-4xl font-bold text-gradient-primary">
-              RL
-            </div>
-          </div>
-        </div>
-
-        {/* Greeting */}
+        <div className="container mx-auto px-6 text-center relative z-10">
+               {/* Greeting */}
         <p className="text-lg md:text-xl text-muted-foreground mb-4 animate-float-up">
           {t('hero.greeting')} 👋
         </p>
