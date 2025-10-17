@@ -4,9 +4,9 @@ import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const phrases = [
-  'Crio experiências digitais que unem pessoas e tecnologia para gerar resultados reais no seu negócio.',
-  'Crio produtos digitais que impulsionam negócios.',
-  'Soluções digitais sob medida para o seu negócio.'
+  "Soluções digitais sob medida para o seu negócio.",
+  "Crio experiências digitais que unem pessoas e tecnologia para gerar valor ao seu negócio.",
+  "Crio produtos digitais que dão visibilidade ao seu negócio.",
 ];
 
 export const HeroSection = () => {
@@ -20,14 +20,14 @@ export const HeroSection = () => {
     let timeout: NodeJS.Timeout;
 
     if (!isDeleting && displayText === currentPhrase) {
-      // Pausa após terminar de escrever
-      timeout = setTimeout(() => setIsDeleting(true), 2000);
+      // Pause after finishing typing
+      timeout = setTimeout(() => setIsDeleting(true), 2500);
     } else if (isDeleting && displayText === "") {
-      // Muda para a próxima frase
+      // Change to the next phrase
       setIsDeleting(false);
       setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
     } else {
-      // Escreve ou apaga caracteres
+      // Write or delete characters
       const speed = isDeleting ? 30 : 50;
       timeout = setTimeout(() => {
         setDisplayText((prev) =>
@@ -49,25 +49,31 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden hero-glow">
-        <div className="container mx-auto px-6 text-center relative z-10">
-               {/* Greeting */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="container mx-auto px-6 text-center relative z-10">
+        {/* Greeting */}
         <p className="text-lg md:text-xl text-muted-foreground mb-4 animate-float-up">
-          {t('hero.greeting')} 👋
+          {t("hero.greeting")} 👋
         </p>
 
         {/* Main Heading */}
-        <div className="mb-6 animate-float-up" style={{ animationDelay: "0.2s" }}>
+        <div
+          className="mb-6 animate-float-up"
+          style={{ animationDelay: "0.2s" }}
+        >
           <h1 className="text-5xl md:text-7xl font-bold mb-4">
-            <span className="text-gradient-primary">{t('hero.name')}</span>
+            <span className="text-gradient-primary">{t("hero.name")}</span>
           </h1>
           <h2 className="text-2xl md:text-3xl font-semibold text-secondary">
-            {t('hero.title')}
+            {t("hero.title")}
           </h2>
         </div>
 
         {/* Typing Effect Subtitle */}
-        <div className="mb-8 animate-float-up" style={{ animationDelay: "0.4s" }}>
+        <div
+          className="mb-8 animate-float-up"
+          style={{ animationDelay: "0.6s" }}
+        >
           <p className="text-xl md:text-2xl text-muted-foreground min-h-[3rem] flex items-center justify-center">
             <span className="inline-block border-r-2 border-primary animate-pulse">
               {displayText}
@@ -76,30 +82,36 @@ export const HeroSection = () => {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-float-up" style={{ animationDelay: "0.6s" }}>
-          <Button 
+        <div
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-float-up"
+          style={{ animationDelay: "0.6s" }}
+        >
+          <Button
             size="lg"
             onClick={() => scrollToSection("projetos")}
             className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow text-lg px-8 py-3"
           >
-            {t('hero.cta1')}
+            {t("hero.cta1")}
           </Button>
-          <Button 
+          <Button
             size="lg"
             variant="outline"
             onClick={() => scrollToSection("contato")}
             className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground text-lg px-8 py-3"
           >
-            {t('hero.cta2')}
+            {t("hero.cta2")}
           </Button>
         </div>
 
         {/* Social Links */}
-        <div className="flex justify-center space-x-6 mb-12 animate-float-up" style={{ animationDelay: "0.8s" }}>
+        <div
+          className="flex justify-center space-x-6 mb-12 animate-float-up"
+          style={{ animationDelay: "0.8s" }}
+        >
           {[
             { Icon: Github, href: "#", label: "GitHub" },
             { Icon: Linkedin, href: "#", label: "LinkedIn" },
-            { Icon: Mail, href: "#", label: "Email" }
+            { Icon: Mail, href: "#", label: "Email" },
           ].map(({ Icon, href, label }) => (
             <a
               key={label}
@@ -119,7 +131,7 @@ export const HeroSection = () => {
             className="text-muted-foreground hover:text-primary transition-colors group"
           >
             <ArrowDown className="w-6 h-6 mx-auto animate-bounce group-hover:text-primary" />
-            <span className="block text-sm mt-2">{t('nav.about')}</span>
+            <span className="block text-sm mt-2">{t("nav.about")}</span>
           </button>
         </div>
       </div>
