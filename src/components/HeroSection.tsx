@@ -4,9 +4,9 @@ import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const phrases = [
-  "Crio experiências digitais que unem pessoas e tecnologia para gerar resultados reais no seu negócio.",
-  "Crio produtos digitais que impulsionam negócios.",
   "Soluções digitais sob medida para o seu negócio.",
+  "Crio experiências digitais que unem pessoas e tecnologia para gerar valor ao seu negócio.",
+  "Crio produtos digitais que dão visibilidade ao seu negócio.",
 ];
 
 export const HeroSection = () => {
@@ -20,8 +20,8 @@ export const HeroSection = () => {
     let timeout: NodeJS.Timeout;
 
     if (!isDeleting && displayText === currentPhrase) {
-      // Pause after finishing writing
-      timeout = setTimeout(() => setIsDeleting(true), 2000);
+      // Pause after finishing typing
+      timeout = setTimeout(() => setIsDeleting(true), 2500);
     } else if (isDeleting && displayText === "") {
       // Change to the next phrase
       setIsDeleting(false);
@@ -49,7 +49,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden hero-glow">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="container mx-auto px-6 text-center relative z-10">
         {/* Greeting */}
         <p className="text-lg md:text-xl text-muted-foreground mb-4 animate-float-up">
@@ -72,7 +72,7 @@ export const HeroSection = () => {
         {/* Typing Effect Subtitle */}
         <div
           className="mb-8 animate-float-up"
-          style={{ animationDelay: "0.4s" }}
+          style={{ animationDelay: "0.6s" }}
         >
           <p className="text-xl md:text-2xl text-muted-foreground min-h-[3rem] flex items-center justify-center">
             <span className="inline-block border-r-2 border-primary animate-pulse">

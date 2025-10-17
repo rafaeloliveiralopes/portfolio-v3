@@ -225,45 +225,6 @@
 }
 
 @layer components {
-  /* Animated Background Mesh */
-  .bg-mesh {
-    background: var(--gradient-background);
-    position: relative;
-  }
-
-  .bg-mesh::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--gradient-mesh);
-    opacity: 0.8;
-  }
-
-  /* Hero Glow Effect */
-  .hero-glow {
-    position: relative;
-  }
-
-  .hero-glow::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150%;
-    height: 150%;
-    background: radial-gradient(
-      circle,
-      hsl(var(--primary) / 0.1) 0%,
-      transparent 70%
-    );
-    animation: pulse-glow 4s ease-in-out infinite;
-    pointer-events: none;
-  }
-
   /* Service Cards */
   .service-card {
     @apply bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-glow hover:border-primary/30 cursor-pointer;
