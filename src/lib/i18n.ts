@@ -129,7 +129,7 @@ const resources = {
         greeting: 'Olá, eu sou',
         name: 'Rafael Lopes',
         title: 'Desenvolvedor Full-Stack',
-        subtitle: 'Crio experiências digitais que combinam design e código para gerar resultados reais para pequenos e médios negócios.',
+        subtitle: 'Crio experiências digitais que unem pessoas e tecnologia para gerar resultados reais no seu negócio.',
         cta1: 'Ver Portfólio',
         cta2: 'Entrar em Contato'
       },
