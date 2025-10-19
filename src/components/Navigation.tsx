@@ -135,66 +135,70 @@ export const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-border">
-            <div className="flex flex-col space-y-4">
+          <div className="fixed inset-0 h-screen w-screen z-50 bg-background/95 md:hidden flex flex-col px-6 py-8">
+            <div className="flex items-center justify-between mb-8">
+              <div className="text-1xl font-bold">
+                <span className="text-foreground">rafael</span>
+                <span className="text-gradient-primary">lopes</span>
+                <span className="text-secondary">.dev</span>
+              </div>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-foreground"
+                aria-label="Close menu"
+              >
+                <X size={26} />
+              </button>
+            </div>
+            <div className="flex flex-col space-y-4 mb-8">
               {navItems.map((item) => (
                 <button
                   key={item.key}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-foreground hover:text-primary transition-colors text-left"
+                  className="text-foreground text-lg font-medium hover:text-primary transition-colors text-left"
                 >
                   {t(`nav.${item.key}`)}
                 </button>
               ))}
-
-              {/* Mobile Controls */}
-              <div className="flex items-center justify-between pt-4 border-t border-border">
-                <div className="flex items-center space-x-2">
-                  {/* Mobile Language Selector */}
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="sm">
-                        <Globe className="h-4 w-4 mr-2" />
-                        {languages.find((l) => l.code === i18n.language)?.flag}
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start">
-                      {languages.map((lang) => (
-                        <DropdownMenuItem
-                          key={lang.code}
-                          onClick={() => changeLanguage(lang.code)}
-                          className={
-                            i18n.language === lang.code ? "bg-accent" : ""
-                          }
-                        >
-                          <span className="mr-2">{lang.flag}</span>
-                          {lang.name}
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-
-                  {/* Mobile Theme Toggle */}
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() =>
-                      setTheme(theme === "light" ? "dark" : "light")
-                    }
-                  >
-                    <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                    <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            </div>
+            <div className="flex items-center space-x-4 mb-8">
+              {/* Mobile Language Selector */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm">
+                    <Globe className="h-4 w-4 mr-2" />
+                    {languages.find((l) => l.code === i18n.language)?.flag}
                   </Button>
-                </div>
-              </div>
-
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start">
+                  {languages.map((lang) => (
+                    <DropdownMenuItem
+                      key={lang.code}
+                      onClick={() => changeLanguage(lang.code)}
+                      className={i18n.language === lang.code ? "bg-accent" : ""}
+                    >
+                      <span className="mr-2">{lang.flag}</span>
+                      {lang.name}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {/* Mobile Theme Toggle */}
               <Button
-                onClick={() => scrollToSection("contato")}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground mt-4"
+                variant="ghost"
+                size="sm"
+                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
               >
-                {t("nav.cta")}
+                <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               </Button>
             </div>
+            <Button
+              onClick={() => scrollToSection("contato")}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-4"
+            >
+              {t("nav.cta")}
+            </Button>
           </div>
         )}
       </div>
