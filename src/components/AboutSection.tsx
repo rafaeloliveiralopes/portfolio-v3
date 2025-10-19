@@ -149,7 +149,7 @@ export const AboutSection = () => {
             </div>
 
             {/* Decorative Timeline Line */}
-            <div className="absolute left-10 top-12 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-primary/30"></div>
+            <div className="absolute left-0 top-12 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-primary/30"></div>
           </div>
         </div>
       </div>
