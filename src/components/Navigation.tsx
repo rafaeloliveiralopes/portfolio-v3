@@ -37,22 +37,27 @@ export const Navigation = () => {
   };
 
   const languages = [
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'pt', name: 'Português', flag: '🇧🇷' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: "en", name: "English", flag: "🇺🇸" },
+    { code: "pt", name: "Português", flag: "🇧🇷" },
+    { code: "es", name: "Español", flag: "🇪🇸" },
   ];
 
   const navItems = [
-    { key: 'about', id: 'sobre' },
-    { key: 'services', id: 'servicos' },
-    { key: 'projects', id: 'projetos' },
-    { key: 'contact', id: 'contato' },
+    { key: "about", id: "sobre" },
+    { key: "services", id: "servicos" },
+    { key: "projects", id: "projetos" },
+    { key: "contact", id: "contato" },
+    { key: "blog", id: "blog" },
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? "bg-background/80 backdrop-blur-md shadow-elegant" : "bg-transparent"
-    }`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/80 backdrop-blur-md shadow-elegant"
+          : "bg-transparent"
+      }`}
+    >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -87,10 +92,10 @@ export const Navigation = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 {languages.map((lang) => (
-                  <DropdownMenuItem 
+                  <DropdownMenuItem
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className={i18n.language === lang.code ? 'bg-accent' : ''}
+                    className={i18n.language === lang.code ? "bg-accent" : ""}
                   >
                     <span className="mr-2">{lang.flag}</span>
                     {lang.name}
@@ -111,11 +116,11 @@ export const Navigation = () => {
             </Button>
 
             {/* CTA Button */}
-            <Button 
+            <Button
               onClick={() => scrollToSection("contato")}
               className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
             >
-              {t('nav.cta')}
+              {t("nav.cta")}
             </Button>
           </div>
 
@@ -141,7 +146,7 @@ export const Navigation = () => {
                   {t(`nav.${item.key}`)}
                 </button>
               ))}
-              
+
               {/* Mobile Controls */}
               <div className="flex items-center justify-between pt-4 border-t border-border">
                 <div className="flex items-center space-x-2">
@@ -150,15 +155,17 @@ export const Navigation = () => {
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" size="sm">
                         <Globe className="h-4 w-4 mr-2" />
-                        {languages.find(l => l.code === i18n.language)?.flag}
+                        {languages.find((l) => l.code === i18n.language)?.flag}
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="start">
                       {languages.map((lang) => (
-                        <DropdownMenuItem 
+                        <DropdownMenuItem
                           key={lang.code}
                           onClick={() => changeLanguage(lang.code)}
-                          className={i18n.language === lang.code ? 'bg-accent' : ''}
+                          className={
+                            i18n.language === lang.code ? "bg-accent" : ""
+                          }
                         >
                           <span className="mr-2">{lang.flag}</span>
                           {lang.name}
@@ -171,7 +178,9 @@ export const Navigation = () => {
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                    onClick={() =>
+                      setTheme(theme === "light" ? "dark" : "light")
+                    }
                   >
                     <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                     <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -179,11 +188,11 @@ export const Navigation = () => {
                 </div>
               </div>
 
-              <Button 
+              <Button
                 onClick={() => scrollToSection("contato")}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground mt-4"
               >
-                {t('nav.cta')}
+                {t("nav.cta")}
               </Button>
             </div>
           </div>
