@@ -62,7 +62,7 @@ const resources = {
         skills: {
           development: {
             title: "Development",
-            items: ["React", "Next.js", "TypeScript", "Node.js", "Python"],
+            items: ["React", "Java", "TypeScript", "Node.js", "Python"],
           },
           design: {
             title: "Design & UX",
@@ -78,7 +78,7 @@ const resources = {
           },
           focus: {
             title: "Result Focused",
-            items: ["Performance", "SEO", "Conversion", "Measurable ROI"],
+            items: ["Performance", "SEO", "Conversion", "Security"],
           },
         },
       },
@@ -211,7 +211,7 @@ const resources = {
           },
           focus: {
             title: "Foco em Resultado",
-            items: ["Performance", "SEO", "Conversão", "ROI Mensurável"],
+            items: ["Performance", "SEO", "Conversão", "Segurança"],
           },
         },
       },
@@ -349,7 +349,7 @@ const resources = {
           },
           focus: {
             title: "Enfoque en Resultados",
-            items: ["Rendimiento", "SEO", "Conversión", "ROI Medible"],
+            items: ["Rendimiento", "SEO", "Conversión", "Seguridad"],
           },
         },
       },
