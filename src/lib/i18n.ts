@@ -27,9 +27,9 @@ const resources = {
       about: {
         title: "About Rafael Lopes",
         subtitle:
-          "Developer passionate about transforming ideas into digital solutions that generate real results for small and medium businesses.",
+          "Developer passionate about transforming ideas into digital solutions.",
         story1:
-          "For over **5 years** I have been helping entrepreneurs digitize their businesses with custom solutions. My approach combines **cutting-edge technology** with **simple language**, ensuring you understand every step of the process.",
+          "For over **3 years** I have been helping entrepreneurs digitize their businesses with custom solutions. My approach combines **cutting-edge technology** with **simple language**, ensuring you understand every step of the process.",
         story2:
           "I specialize in creating digital experiences that not only impress visually, but **convert visitors into customers**. Each project is strategically designed to maximize your ROI.",
         story3:
@@ -160,11 +160,11 @@ const resources = {
       about: {
         title: "Sobre Rafael Lopes",
         subtitle:
-          "Desenvolvedor apaixonado por transformar ideias em soluções digitais que geram resultados reais para pequenos e médios negócios.",
+          "Desenvolvedor apaixonado por transformar ideias em soluções digitais.",
         story1:
-          "Há mais de **5 anos** ajudo empreendedores a digitalizarem seus negócios com soluções sob medida. Minha abordagem combina **tecnologia de ponta** com **linguagem simples**, garantindo que você entenda cada etapa do processo.",
+          "Há mais de **3 anos** ajudo empreendedores a digitalizarem seus negócios com soluções sob medida. Minha abordagem combina **tecnologia de ponta** com **linguagem simples**, garantindo que você entenda cada etapa do processo.",
         story2:
-          "Especializo-me em criar experiências digitais que não apenas impressionam visualmente, mas **convertem visitantes em clientes**. Cada projeto é pensado estrategicamente para maximizar seu ROI.",
+          "Especializo-me em criar experiências digitais que não apenas impressionam visualmente, mas **convertem visitantes em clientes**. Todo projeto nasce de uma estratégia clara: transformar investimento em resultado real.",
         story3:
           "Quando não estou codificando, você me encontra explorando novas tecnologias, estudando tendências de mercado ou ajudando outros desenvolvedores na comunidade.",
         timeline: {
@@ -293,7 +293,7 @@ const resources = {
       about: {
         title: "Acerca de Rafael Lopes",
         subtitle:
-          "Desarrollador apasionado por transformar ideas en soluciones digitales que generan resultados reales para pequeñas y medianas empresas.",
+          "Desarrollador apasionado por transformar ideas en soluciones digitales.",
         story1:
           "Durante más de **5 años** he ayudado a emprendedores a digitalizar sus negocios con soluciones a medida. Mi enfoque combina **tecnología de vanguardia** con **lenguaje simple**, asegurando que entiendas cada paso del proceso.",
         story2:
