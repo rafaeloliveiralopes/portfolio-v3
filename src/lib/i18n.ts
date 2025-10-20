@@ -23,6 +23,11 @@ const resources = {
           "I create digital experiences that combine design and code to generate real results for small and medium businesses.",
         cta1: "View Portfolio",
         cta2: "Get in Touch",
+        typingPhrases: [
+          "Custom digital solutions for your business.",
+          "I create digital experiences that unite people and technology to generate value for your business.",
+          "I create digital products that give visibility to your business.",
+        ],
       },
       about: {
         title: "About Rafael Lopes",
@@ -156,6 +161,11 @@ const resources = {
           "Crio experiências digitais que unem pessoas e tecnologia para gerar resultados reais no seu negócio.",
         cta1: "Ver Portfólio",
         cta2: "Entrar em Contato",
+        typingPhrases: [
+          "Soluções digitais sob medida para o seu negócio.",
+          "Crio experiências digitais que unem pessoas e tecnologia para gerar valor ao seu negócio.",
+          "Crio produtos digitais que dão visibilidade ao seu negócio.",
+        ],
       },
       about: {
         title: "Sobre Rafael Lopes",
@@ -289,6 +299,11 @@ const resources = {
           "Creo experiencias digitales que combinan diseño y código para generar resultados reales para pequeñas y medianas empresas.",
         cta1: "Ver Portafolio",
         cta2: "Contactar",
+        typingPhrases: [
+          "Soluciones digitales personalizadas para tu negocio.",
+          "Creo experiencias digitales que unen personas y tecnología para generar valor a tu negocio.",
+          "Creo productos digitales que dan visibilidad a tu negocio.",
+        ],
       },
       about: {
         title: "Acerca de Rafael Lopes",

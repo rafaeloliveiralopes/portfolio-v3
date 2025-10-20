@@ -3,14 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-const phrases = [
-  "Soluções digitais sob medida para o seu negócio.",
-  "Crio experiências digitais que unem pessoas e tecnologia para gerar valor ao seu negócio.",
-  "Crio produtos digitais que dão visibilidade ao seu negócio.",
-];
-
 export const HeroSection = () => {
   const { t } = useTranslation();
+  const phrases = t("hero.typingPhrases", { returnObjects: true }) as string[];
   const [displayText, setDisplayText] = useState("");
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -39,7 +34,7 @@ export const HeroSection = () => {
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentPhraseIndex]);
+  }, [displayText, isDeleting, currentPhraseIndex, phrases]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
