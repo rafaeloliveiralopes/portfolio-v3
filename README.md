@@ -186,7 +186,7 @@ This project is private and all rights are reserved by Rafael Lopes.
 **Rafael Lopes**
 - Full-Stack Developer
 - Specializing in React, TypeScript, and modern web technologies
-- 5+ years of experience helping entrepreneurs digitize their businesses
+- 3+ years of experience helping entrepreneurs digitize their businesses
 
 ## 🙏 Acknowledgments
 

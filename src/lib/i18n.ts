@@ -27,11 +27,11 @@ const resources = {
       about: {
         title: "About Rafael Lopes",
         subtitle:
-          "Developer passionate about transforming ideas into digital solutions that generate real results for small and medium businesses.",
+          "Developer passionate about transforming ideas into digital solutions.",
         story1:
-          "For over **5 years** I have been helping entrepreneurs digitize their businesses with custom solutions. My approach combines **cutting-edge technology** with **simple language**, ensuring you understand every step of the process.",
+          "For over **3 years** I have been helping entrepreneurs digitize their businesses with custom solutions. My approach combines **cutting-edge technology** with **simple language**, ensuring you understand every step of the process.",
         story2:
-          "I specialize in creating digital experiences that not only impress visually, but **convert visitors into customers**. Each project is strategically designed to maximize your ROI.",
+          "I specialize in creating digital experiences that not only make a visual impact but **turn visitors into clients**. Every project starts with a clear strategy: transforming investment into real results.",
         story3:
           "When I'm not coding, you can find me exploring new technologies, studying market trends, or helping other developers in the community.",
         timeline: {
@@ -62,7 +62,7 @@ const resources = {
         skills: {
           development: {
             title: "Development",
-            items: ["React", "Next.js", "TypeScript", "Node.js", "Python"],
+            items: ["React", "Java", "TypeScript", "Node.js", "Python"],
           },
           design: {
             title: "Design & UX",
@@ -78,7 +78,7 @@ const resources = {
           },
           focus: {
             title: "Result Focused",
-            items: ["Performance", "SEO", "Conversion", "Measurable ROI"],
+            items: ["Performance", "SEO", "Conversion", "Security"],
           },
         },
       },
@@ -160,11 +160,11 @@ const resources = {
       about: {
         title: "Sobre Rafael Lopes",
         subtitle:
-          "Desenvolvedor apaixonado por transformar ideias em soluções digitais que geram resultados reais para pequenos e médios negócios.",
+          "Desenvolvedor apaixonado por transformar ideias em soluções digitais.",
         story1:
-          "Há mais de **5 anos** ajudo empreendedores a digitalizarem seus negócios com soluções sob medida. Minha abordagem combina **tecnologia de ponta** com **linguagem simples**, garantindo que você entenda cada etapa do processo.",
+          "Há mais de **3 anos** ajudo empreendedores a digitalizarem seus negócios com soluções sob medida. Minha abordagem combina **tecnologia de ponta** com **linguagem simples**, garantindo que você entenda cada etapa do processo.",
         story2:
-          "Especializo-me em criar experiências digitais que não apenas impressionam visualmente, mas **convertem visitantes em clientes**. Cada projeto é pensado estrategicamente para maximizar seu ROI.",
+          "Especializo-me em criar experiências digitais que não apenas impressionam visualmente, mas **convertem visitantes em clientes**. Todo projeto nasce de uma estratégia clara: transformar investimento em resultado real.",
         story3:
           "Quando não estou codificando, você me encontra explorando novas tecnologias, estudando tendências de mercado ou ajudando outros desenvolvedores na comunidade.",
         timeline: {
@@ -211,7 +211,7 @@ const resources = {
           },
           focus: {
             title: "Foco em Resultado",
-            items: ["Performance", "SEO", "Conversão", "ROI Mensurável"],
+            items: ["Performance", "SEO", "Conversão", "Segurança"],
           },
         },
       },
@@ -293,11 +293,11 @@ const resources = {
       about: {
         title: "Acerca de Rafael Lopes",
         subtitle:
-          "Desarrollador apasionado por transformar ideas en soluciones digitales que generan resultados reales para pequeñas y medianas empresas.",
+          "Desarrollador apasionado por transformar ideas en soluciones digitales.",
         story1:
           "Durante más de **5 años** he ayudado a emprendedores a digitalizar sus negocios con soluciones a medida. Mi enfoque combina **tecnología de vanguardia** con **lenguaje simple**, asegurando que entiendas cada paso del proceso.",
         story2:
-          "Me especializo en crear experiencias digitales que no solo impresionan visualmente, sino que **convierten visitantes en clientes**. Cada proyecto está estratégicamente diseñado para maximizar tu ROI.",
+          "Me especializo en crear experiencias digitales que no solo impresionan visualmente, sino que **convierten visitantes en clientes**. Cada proyecto nace de una estrategia clara: transformar la inversión en resultados reales.",
         story3:
           "Cuando no estoy programando, me puedes encontrar explorando nuevas tecnologías, estudiando tendencias del mercado o ayudando a otros desarrolladores en la comunidad.",
         timeline: {
@@ -349,7 +349,7 @@ const resources = {
           },
           focus: {
             title: "Enfoque en Resultados",
-            items: ["Rendimiento", "SEO", "Conversión", "ROI Medible"],
+            items: ["Rendimiento", "SEO", "Conversión", "Seguridad"],
           },
         },
       },
