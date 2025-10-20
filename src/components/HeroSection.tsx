@@ -75,7 +75,7 @@ export const HeroSection = () => {
           style={{ animationDelay: "0.6s" }}
         >
           <p className="text-xl md:text-2xl text-muted-foreground min-h-[3rem] flex items-center justify-center">
-            <span className="inline-block border-r-2 border-primary animate-pulse">
+            <span className="inline-block border-r-2 border-primary">
               {displayText}
             </span>
           </p>
