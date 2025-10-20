@@ -31,7 +31,7 @@ const resources = {
         story1:
           "For over **3 years** I have been helping entrepreneurs digitize their businesses with custom solutions. My approach combines **cutting-edge technology** with **simple language**, ensuring you understand every step of the process.",
         story2:
-          "I specialize in creating digital experiences that not only impress visually, but **convert visitors into customers**. Each project is strategically designed to maximize your ROI.",
+          "I specialize in creating digital experiences that not only make a visual impact but **turn visitors into clients**. Every project starts with a clear strategy: transforming investment into real results.",
         story3:
           "When I'm not coding, you can find me exploring new technologies, studying market trends, or helping other developers in the community.",
         timeline: {
@@ -297,7 +297,7 @@ const resources = {
         story1:
           "Durante más de **5 años** he ayudado a emprendedores a digitalizar sus negocios con soluciones a medida. Mi enfoque combina **tecnología de vanguardia** con **lenguaje simple**, asegurando que entiendas cada paso del proceso.",
         story2:
-          "Me especializo en crear experiencias digitales que no solo impresionan visualmente, sino que **convierten visitantes en clientes**. Cada proyecto está estratégicamente diseñado para maximizar tu ROI.",
+          "Me especializo en crear experiencias digitales que no solo impresionan visualmente, sino que **convierten visitantes en clientes**. Cada proyecto nace de una estrategia clara: transformar la inversión en resultados reales.",
         story3:
           "Cuando no estoy programando, me puedes encontrar explorando nuevas tecnologías, estudiando tendencias del mercado o ayudando a otros desarrolladores en la comunidad.",
         timeline: {
