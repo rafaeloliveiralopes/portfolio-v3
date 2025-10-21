@@ -4,45 +4,45 @@ import { Button } from "@/components/ui/button";
 const socialLinks = [
   {
     icon: Github,
-    href: "https://github.com/rafaellopes",
-    label: "GitHub"
+    href: "https://github.com/rafaeloliveiralopes",
+    label: "GitHub",
   },
   {
     icon: Linkedin,
-    href: "https://linkedin.com/in/rafaellopes",
-    label: "LinkedIn"
+    href: "https://www.linkedin.com/in/rafael-lopes-desenvolvedor-fullstack/",
+    label: "LinkedIn",
   },
   {
     icon: Mail,
     href: "mailto:contato@rafaellopes.dev",
-    label: "Email"
-  }
+    label: "Email",
+  },
 ];
 
 const quickLinks = [
   { name: "Sobre", href: "#sobre" },
   { name: "Serviços", href: "#serviços" },
   { name: "Projetos", href: "#projetos" },
-  { name: "Contato", href: "#contato" }
+  { name: "Contato", href: "#contato" },
 ];
 
 const services = [
   { name: "Sites & Sistemas", href: "#serviços" },
   { name: "Performance & SEO", href: "#serviços" },
   { name: "IA & Automações", href: "#serviços" },
-  { name: "Consultoria Tech", href: "#serviços" }
+  { name: "Consultoria Tech", href: "#serviços" },
 ];
 
 export const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId.replace('#', ''));
+    const element = document.getElementById(sectionId.replace("#", ""));
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -69,9 +69,9 @@ export const Footer = () => {
                   <span className="text-secondary">.dev</span>
                 </div>
                 <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
-                  Desenvolvedor especializado em criar soluções digitais que 
-                  transformam negócios e geram resultados reais para pequenas 
-                  e médias empresas.
+                  Desenvolvedor especializado em criar soluções digitais que
+                  transformam negócios e geram resultados reais para pequenas e
+                  médias empresas.
                 </p>
               </div>
 
@@ -102,19 +102,38 @@ export const Footer = () => {
                 <p className="text-muted-foreground mb-4">
                   Vamos conversar sobre como posso ajudar seu negócio.
                 </p>
-                <Button 
-                  onClick={() => scrollToSection("contato")}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                >
-                  Falar Comigo
-                  <ExternalLink className="w-4 h-4 ml-2" />
-                </Button>
+                <div className="flex flex-wrap gap-3">
+                  <Button
+                    onClick={() => scrollToSection("contato")}
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                  >
+                    Preencher Formulário
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </Button>
+
+                  <Button
+                    asChild
+                    className="bg-secondary hover:bg-green-500 text-secondary-foreground"
+                  >
+                    <a
+                      href="https://wa.me/5562992136842?text=Ol%C3%A1%20Rafael%2C%20vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Falar no WhatsApp"
+                    >
+                      Falar no WhatsApp
+                      <ExternalLink className="w-4 h-4 ml-2" />
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h4 className="font-bold text-lg mb-6 text-foreground">Navegação</h4>
+              <h4 className="font-bold text-lg mb-6 text-foreground">
+                Navegação
+              </h4>
               <ul className="space-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
@@ -131,7 +150,9 @@ export const Footer = () => {
 
             {/* Services */}
             <div>
-              <h4 className="font-bold text-lg mb-6 text-foreground">Serviços</h4>
+              <h4 className="font-bold text-lg mb-6 text-foreground">
+                Serviços
+              </h4>
               <ul className="space-y-3">
                 {services.map((service) => (
                   <li key={service.name}>
@@ -147,22 +168,24 @@ export const Footer = () => {
 
               {/* Contact Info */}
               <div className="mt-8">
-                <h5 className="font-semibold mb-3 text-foreground">Contato Direto</h5>
+                <h5 className="font-semibold mb-3 text-foreground">
+                  Contato Direto
+                </h5>
                 <div className="space-y-2 text-sm">
-                  <a 
+                  <a
                     href="mailto:contato@rafaellopes.dev"
                     className="block text-muted-foreground hover:text-primary transition-colors"
                   >
                     contato@rafaellopes.dev
                   </a>
-                  <a 
-                    href="https://wa.me/5511999999999"
+                  <a
+                    href="https://wa.me/5562992136842"
                     className="block text-muted-foreground hover:text-primary transition-colors"
                   >
-                    +55 (11) 99999-9999
+                    +55 (62) 99213-6842
                   </a>
                   <span className="block text-muted-foreground">
-                    São Paulo, Brasil
+                    Uruaçu-Goiás, Brasil
                   </span>
                 </div>
               </div>
@@ -174,14 +197,15 @@ export const Footer = () => {
         <div className="py-6 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-muted-foreground mb-4 md:mb-0">
-              © {new Date().getFullYear()} Rafael Lopes. Todos os direitos reservados.
+              © {new Date().getFullYear()} Rafael Lopes. Todos os direitos
+              reservados.
             </div>
 
             <div className="flex items-center space-x-6">
               <div className="text-sm text-muted-foreground">
                 Feito com ❤️ e muito ☕
               </div>
-              
+
               <button
                 onClick={scrollToTop}
                 className="p-2 bg-background border border-border rounded-lg hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
