@@ -21,7 +21,7 @@ const resources = {
         title: "Full-Stack Developer",
         subtitle:
           "I create digital experiences that combine design and code to generate real results for small and medium businesses.",
-        cta1: "View Portfolio",
+        cta1: "View Services",
         cta2: "Get in Touch",
         typingPhrases: [
           "Custom digital solutions for your business.",
@@ -410,7 +410,7 @@ const resources = {
         title: "Desenvolvedor Full-Stack",
         subtitle:
           "Crio experiências digitais que unem pessoas e tecnologia para gerar resultados reais no seu negócio.",
-        cta1: "Ver Portfólio",
+        cta1: "Ver Serviços",
         cta2: "Entrar em Contato",
         typingPhrases: [
           "Soluções digitais sob medida para o seu negócio.",
@@ -799,7 +799,7 @@ const resources = {
         title: "Desarrollador Full-Stack",
         subtitle:
           "Creo experiencias digitales que combinan diseño y código para generar resultados reales para pequeñas y medianas empresas.",
-        cta1: "Ver Portafolio",
+        cta1: "Ver Servicios",
         cta2: "Contactar",
         typingPhrases: [
           "Soluciones digitales personalizadas para tu negocio.",

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Mail } from "lucide-react";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 import { useTranslation } from "react-i18next";
 
 export const HeroSection = () => {
@@ -12,7 +13,7 @@ export const HeroSection = () => {
 
   useEffect(() => {
     const currentPhrase = phrases[currentPhraseIndex];
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
 
     if (!isDeleting && displayText === currentPhrase) {
       // Pause after finishing typing
@@ -38,24 +39,19 @@ export const HeroSection = () => {
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="container mx-auto px-6 text-center relative z-10">
         {/* Greeting */}
-        <p className="text-lg md:text-xl text-muted-foreground mb-4 animate-float-up">
+        <p className="text-lg md:text-xl mb-4 animate-float-up">
           {t("hero.greeting")} 👋
         </p>
 
         {/* Main Heading */}
-        <div
-          className="mb-6 animate-float-up"
-          style={{ animationDelay: "0.2s" }}
-        >
+        <div className="mb-6 animate-float-up" style={{ animationDelay: "0.2s" }}>
           <h1 className="text-5xl md:text-7xl font-bold mb-4">
             <span className="text-gradient-primary">{t("hero.name")}</span>
           </h1>
@@ -65,11 +61,8 @@ export const HeroSection = () => {
         </div>
 
         {/* Typing Effect Subtitle */}
-        <div
-          className="mb-8 animate-float-up"
-          style={{ animationDelay: "0.6s" }}
-        >
-          <p className="text-xl md:text-2xl text-muted-foreground min-h-[3rem] flex items-center justify-center">
+        <div className="mb-8 animate-float-up" style={{ animationDelay: "0.6s" }}>
+          <p className="text-xl md:text-2xl text-zinc-300 min-h-[3rem] flex items-center justify-center">
             <span className="inline-block border-r-2 border-primary">
               {displayText}
             </span>
@@ -83,7 +76,7 @@ export const HeroSection = () => {
         >
           <Button
             size="lg"
-            onClick={() => scrollToSection("projetos")}
+            onClick={() => scrollToSection("serviços")}
             className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow text-lg px-8 py-3"
           >
             {t("hero.cta1")}
@@ -104,13 +97,25 @@ export const HeroSection = () => {
           style={{ animationDelay: "0.8s" }}
         >
           {[
-            { Icon: Github, href: "#", label: "GitHub" },
-            { Icon: Linkedin, href: "#", label: "LinkedIn" },
-            { Icon: Mail, href: "#", label: "Email" },
-          ].map(({ Icon, href, label }) => (
+            {
+              Icon: SiGithub,
+              href: "https://github.com/rafaeloliveiralopes",
+              label: "GitHub",
+              external: true,
+            },
+            {
+              Icon: SiLinkedin,
+              href:
+                "https://www.linkedin.com/in/rafael-lopes-desenvolvedor-fullstack",
+              label: "LinkedIn",
+              external: true,
+            },
+            { Icon: Mail, href: "mailto:seuemail@exemplo.com", label: "Email" },
+          ].map(({ Icon, href, label, external }) => (
             <a
               key={label}
               href={href}
+              {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="p-3 rounded-full bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
               aria-label={label}
             >
