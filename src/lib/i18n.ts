@@ -354,9 +354,42 @@ const resources = {
         },
       },
       footer: {
-        rights: "All rights reserved.",
-        madeWith: "Made with",
-        and: "and",
+        brand: {
+          description:
+            "Developer specialized in creating digital solutions that transform businesses and generate real results for small and medium enterprises.",
+        },
+        cta: {
+          title: "Ready to start your project?",
+          subtitle: "Let's talk about how I can help your business.",
+          fillForm: "Fill Form",
+          whatsapp: "Talk on WhatsApp",
+        },
+        navigation: {
+          title: "Navigation",
+          about: "About",
+          services: "Services",
+          projects: "Projects",
+          contact: "Contact",
+        },
+        services: {
+          title: "Services",
+          webSystems: "Websites & Systems",
+          performance: "Performance & SEO",
+          aiAutomation: "AI & Automations",
+          consulting: "Tech Consulting",
+        },
+        contact: {
+          title: "Direct Contact",
+          location: "Uruaçu-Goiás, Brazil",
+        },
+        bottom: {
+          rights: "All rights reserved.",
+          madeWith: "Made with",
+          love: "❤️",
+          and: "and lots of",
+          coffee: "☕",
+          backToTop: "Back to top",
+        },
       },
     },
   },
@@ -710,9 +743,42 @@ const resources = {
         },
       },
       footer: {
-        rights: "Todos os direitos reservados.",
-        madeWith: "Feito com",
-        and: "e",
+        brand: {
+          description:
+            "Desenvolvedor especializado em criar soluções digitais que transformam negócios e geram resultados reais para pequenas e médias empresas.",
+        },
+        cta: {
+          title: "Pronto para começar seu projeto?",
+          subtitle: "Vamos conversar sobre como posso ajudar seu negócio.",
+          fillForm: "Preencher Formulário",
+          whatsapp: "Falar no WhatsApp",
+        },
+        navigation: {
+          title: "Navegação",
+          about: "Sobre",
+          services: "Serviços",
+          projects: "Projetos",
+          contact: "Contato",
+        },
+        services: {
+          title: "Serviços",
+          webSystems: "Sites & Sistemas",
+          performance: "Performance & SEO",
+          aiAutomation: "IA & Automações",
+          consulting: "Consultoria Tech",
+        },
+        contact: {
+          title: "Contato Direto",
+          location: "Uruaçu-Goiás, Brasil",
+        },
+        bottom: {
+          rights: "Todos os direitos reservados.",
+          madeWith: "Feito com",
+          love: "❤️",
+          and: "e muito",
+          coffee: "☕",
+          backToTop: "Voltar ao topo",
+        },
       },
     },
   },
@@ -1071,9 +1137,42 @@ const resources = {
         },
       },
       footer: {
-        rights: "Todos los derechos reservados.",
-        madeWith: "Hecho con",
-        and: "y",
+        brand: {
+          description:
+            "Desarrollador especializado en crear soluciones digitales que transforman negocios y generan resultados reales para pequeñas y medianas empresas.",
+        },
+        cta: {
+          title: "¿Listo para empezar tu proyecto?",
+          subtitle: "Conversemos sobre cómo puedo ayudar a tu negocio.",
+          fillForm: "Llenar Formulario",
+          whatsapp: "Hablar en WhatsApp",
+        },
+        navigation: {
+          title: "Navegación",
+          about: "Acerca de",
+          services: "Servicios",
+          projects: "Proyectos",
+          contact: "Contacto",
+        },
+        services: {
+          title: "Servicios",
+          webSystems: "Sitios & Sistemas",
+          performance: "Rendimiento & SEO",
+          aiAutomation: "IA & Automatizaciones",
+          consulting: "Consultoría Tech",
+        },
+        contact: {
+          title: "Contacto Directo",
+          location: "Uruaçu-Goiás, Brasil",
+        },
+        bottom: {
+          rights: "Todos los derechos reservados.",
+          madeWith: "Hecho con",
+          love: "❤️",
+          and: "y mucho",
+          coffee: "☕",
+          backToTop: "Volver arriba",
+        },
       },
     },
   },
