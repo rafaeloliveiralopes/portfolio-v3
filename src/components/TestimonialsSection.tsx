@@ -8,46 +8,56 @@ const testimonials = [
     name: "Maria Silva",
     role: "CEO, Boutique Elegance",
     company: "Moda Feminina",
-    content: "O Rafael transformou completamente nossa presença online. Nossas vendas aumentaram 300% no primeiro trimestre após o lançamento do site. A comunicação foi clara em todo o processo.",
+    content:
+      "O Rafael transformou completamente nossa presença online. Nossas vendas aumentaram 300% no primeiro trimestre após o lançamento do site. A comunicação foi clara em todo o processo.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b796?w=80&q=80"
+    image:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b796?w=80&q=80",
   },
   {
     id: 2,
     name: "Carlos Mendes",
     role: "Diretor",
     company: "TechSolutions Ltda",
-    content: "Precisávamos de um sistema complexo de gestão e o Rafael entregou além das expectativas. O sistema reduziu nosso tempo de processamento em 50% e a equipe se adaptou rapidamente.",
+    content:
+      "Precisávamos de um sistema complexo de gestão e o Rafael entregou além das expectativas. O sistema reduziu nosso tempo de processamento em 50% e a equipe se adaptou rapidamente.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80"
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80",
   },
   {
     id: 3,
     name: "Ana Costa",
     role: "Fundadora",
     company: "Nutrição Vital",
-    content: "O chatbot de IA que o Rafael desenvolveu para nossa clínica revolucionou o atendimento. Conseguimos qualificar leads 24/7 e nossa taxa de conversão dobrou. Excelente trabalho!",
+    content:
+      "O chatbot de IA que o Rafael desenvolveu para nossa clínica revolucionou o atendimento. Conseguimos qualificar leads 24/7 e nossa taxa de conversão dobrou. Excelente trabalho!",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80"
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80",
   },
   {
     id: 4,
     name: "João Santos",
     role: "Proprietário",
     company: "Santos Advocacia",
-    content: "A landing page desenvolvida pelo Rafael para nossa campanha de captação de clientes superou todas as métricas. Taxa de conversão de 40% e posicionamento no topo do Google.",
+    content:
+      "A landing page desenvolvida pelo Rafael para nossa campanha de captação de clientes superou todas as métricas. Taxa de conversão de 40% e posicionamento no topo do Google.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80"
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80",
   },
   {
     id: 5,
-    name: "Patrícia Oliveira", 
+    name: "Patrícia Oliveira",
     role: "Gerente de Marketing",
     company: "Digital Agency Pro",
-    content: "Contratamos o Rafael para otimizar a performance de nossos sites de clientes. Os resultados foram impressionantes: melhoria média de 60% no Lighthouse Score e aumento significativo no tráfego orgânico.",
+    content:
+      "Contratamos o Rafael para otimizar a performance de nossos sites de clientes. Os resultados foram impressionantes: melhoria média de 60% no Lighthouse Score e aumento significativo no tráfego orgânico.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80"
-  }
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80",
+  },
 ];
 
 export const TestimonialsSection = () => {
@@ -71,7 +81,9 @@ export const TestimonialsSection = () => {
   };
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
     setIsAutoPlaying(false);
   };
 
@@ -97,7 +109,7 @@ export const TestimonialsSection = () => {
             <span className="text-gradient-primary">meus clientes</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Resultados reais de negócios que confiaram em meu trabalho para 
+            Resultados reais de negócios que confiaram em meu trabalho para
             transformar sua presença digital.
           </p>
         </div>
@@ -117,10 +129,7 @@ export const TestimonialsSection = () => {
               {/* Rating */}
               <div className="flex justify-center mb-6">
                 {[...Array(5)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    className="w-5 h-5 fill-primary text-primary" 
-                  />
+                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
                 ))}
               </div>
 
@@ -131,11 +140,12 @@ export const TestimonialsSection = () => {
 
               {/* Author Info */}
               <div className="flex items-center justify-center space-x-4">
-                <img
+                {/* All images must be commented until we have real images */}
+                {/* <img
                   src={testimonials[currentIndex].image}
                   alt={testimonials[currentIndex].name}
                   className="w-16 h-16 rounded-full border-2 border-primary/20"
-                />
+                /> */}
                 <div className="text-left">
                   <div className="font-bold text-foreground text-lg">
                     {testimonials[currentIndex].name}
@@ -198,12 +208,14 @@ export const TestimonialsSection = () => {
         {/* CTA Section */}
         <div className="text-center mt-16">
           <h3 className="text-2xl font-bold mb-4">
-            Quer ser o próximo <span className="text-gradient-primary">caso de sucesso</span>?
+            Quer ser o próximo{" "}
+            <span className="text-gradient-primary">caso de sucesso</span>?
           </h3>
           <p className="text-muted-foreground mb-6">
-            Vamos conversar sobre como posso ajudar seu negócio a alcançar resultados similares.
+            Vamos conversar sobre como posso ajudar seu negócio a alcançar
+            resultados similares.
           </p>
-          <Button 
+          <Button
             size="lg"
             className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
           >
