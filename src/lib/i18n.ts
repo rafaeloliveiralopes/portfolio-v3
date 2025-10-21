@@ -57,6 +57,10 @@ const resources = {
               description:
                 "Expansion to backend with Node.js, APIs and cloud infrastructure",
             },
+            "2023": {
+              title: "Software Engineering",
+              description: "Started Bachelor's degree in Software Engineering",
+            },
             "2024": {
               title: "AI & Automation",
               description:
@@ -446,6 +450,10 @@ const resources = {
               description:
                 "Expansão para backend com Node.js, APIs e infraestrutura cloud",
             },
+            "2023": {
+              title: "Engenharia de Software",
+              description: "Início da graduação em Engenharia de Software",
+            },
             "2024": {
               title: "IA & Automação",
               description:
@@ -834,6 +842,10 @@ const resources = {
               title: "Fullstack & DevOps",
               description:
                 "Expansión al backend con Node.js, APIs e infraestructura cloud",
+            },
+            "2023": {
+              title: "Ingeniería de Software",
+              description: "Inicio de la carrera en Ingeniería de Software",
             },
             "2024": {
               title: "IA & Automatización",

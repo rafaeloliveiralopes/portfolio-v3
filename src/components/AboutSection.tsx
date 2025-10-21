@@ -123,7 +123,7 @@ export const AboutSection = () => {
             </h3>
 
             <div className="space-y-8">
-              {["2019", "2021", "2022", "2024"].map((year, index) => (
+              {["2019", "2021", "2022", "2023", "2024"].map((year, index) => (
                 <div key={index} className="timeline-item group">
                   <div className="flex items-start">
                     <div className="flex-shrink-0 w-20">
