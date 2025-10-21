@@ -47,7 +47,7 @@ export const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="container mx-auto px-6 text-center relative z-10">
         {/* Greeting */}
-        <p className="text-lg md:text-xl text-muted-foreground mb-4 animate-float-up">
+        <p className="text-lg md:text-xl mb-4 animate-float-up">
           {t("hero.greeting")} 👋
         </p>
 
