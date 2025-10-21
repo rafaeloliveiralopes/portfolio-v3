@@ -1,68 +1,45 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Star, Quote, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Maria Silva",
-    role: "CEO, Boutique Elegance",
-    company: "Moda Feminina",
-    content:
-      "O Rafael transformou completamente nossa presença online. Nossas vendas aumentaram 300% no primeiro trimestre após o lançamento do site. A comunicação foi clara em todo o processo.",
-    rating: 5,
-    image:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b796?w=80&q=80",
-  },
-  {
-    id: 2,
-    name: "Carlos Mendes",
-    role: "Diretor",
-    company: "TechSolutions Ltda",
-    content:
-      "Precisávamos de um sistema complexo de gestão e o Rafael entregou além das expectativas. O sistema reduziu nosso tempo de processamento em 50% e a equipe se adaptou rapidamente.",
-    rating: 5,
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80",
-  },
-  {
-    id: 3,
-    name: "Ana Costa",
-    role: "Fundadora",
-    company: "Nutrição Vital",
-    content:
-      "O chatbot de IA que o Rafael desenvolveu para nossa clínica revolucionou o atendimento. Conseguimos qualificar leads 24/7 e nossa taxa de conversão dobrou. Excelente trabalho!",
-    rating: 5,
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80",
-  },
-  {
-    id: 4,
-    name: "João Santos",
-    role: "Proprietário",
-    company: "Santos Advocacia",
-    content:
-      "A landing page desenvolvida pelo Rafael para nossa campanha de captação de clientes superou todas as métricas. Taxa de conversão de 40% e posicionamento no topo do Google.",
-    rating: 5,
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80",
-  },
-  {
-    id: 5,
-    name: "Patrícia Oliveira",
-    role: "Gerente de Marketing",
-    company: "Digital Agency Pro",
-    content:
-      "Contratamos o Rafael para otimizar a performance de nossos sites de clientes. Os resultados foram impressionantes: melhoria média de 60% no Lighthouse Score e aumento significativo no tráfego orgânico.",
-    rating: 5,
-    image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80",
-  },
+type Testimonial = {
+  id: number;
+  name: string;
+  role: string;
+  company: string;
+  content: string;
+  rating: number;
+  image: string;
+};
+
+const testimonialImages = [
+  "https://images.unsplash.com/photo-1494790108755-2616b612b796?w=80&q=80",
+  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80",
+  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80",
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80",
 ];
 
 export const TestimonialsSection = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Build translated testimonials
+  const testimonials = useMemo<Testimonial[]>(() => {
+    return [1, 2, 3, 4, 5].map((id) => {
+      const item = t(`testimonials.items.${id}`, {
+        returnObjects: true,
+      }) as unknown as Omit<Testimonial, "id" | "rating" | "image">;
+      return {
+        id,
+        ...item,
+        rating: 5,
+        image: testimonialImages[id - 1],
+      };
+    });
+  }, [t]);
 
   // Auto-play functionality
   useEffect(() => {
@@ -73,7 +50,7 @@ export const TestimonialsSection = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, testimonials.length]);
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -105,12 +82,12 @@ export const TestimonialsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-foreground">O que dizem </span>
-            <span className="text-gradient-primary">meus clientes</span>
+            <span className="text-gradient-primary">
+              {t("testimonials.title")}
+            </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Resultados reais de negócios que confiaram em meu trabalho para
-            transformar sua presença digital.
+            {t("testimonials.subtitle")}
           </p>
         </div>
 
@@ -164,7 +141,7 @@ export const TestimonialsSection = () => {
             <button
               onClick={prevTestimonial}
               className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 p-3 bg-card border border-border rounded-full hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
-              aria-label="Depoimento anterior"
+              aria-label={t("testimonials.previous")}
             >
               <ArrowLeft className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </button>
@@ -172,7 +149,7 @@ export const TestimonialsSection = () => {
             <button
               onClick={nextTestimonial}
               className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 p-3 bg-card border border-border rounded-full hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
-              aria-label="Próximo depoimento"
+              aria-label={t("testimonials.next")}
             >
               <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </button>
@@ -189,7 +166,7 @@ export const TestimonialsSection = () => {
                     ? "bg-primary scale-125"
                     : "bg-border hover:bg-primary/50"
                 }`}
-                aria-label={`Ir para depoimento ${index + 1}`}
+                aria-label={`${t("testimonials.goTo")} ${index + 1}`}
               />
             ))}
           </div>
@@ -200,7 +177,8 @@ export const TestimonialsSection = () => {
               onClick={() => setIsAutoPlaying(!isAutoPlaying)}
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
-              {isAutoPlaying ? "Pausar" : "Reproduzir"} reprodução automática
+              {isAutoPlaying ? t("testimonials.pause") : t("testimonials.play")}{" "}
+              {t("testimonials.autoplay")}
             </button>
           </div>
         </div>
@@ -208,18 +186,20 @@ export const TestimonialsSection = () => {
         {/* CTA Section */}
         <div className="text-center mt-16">
           <h3 className="text-2xl font-bold mb-4">
-            Quer ser o próximo{" "}
-            <span className="text-gradient-primary">caso de sucesso</span>?
+            {t("testimonials.cta.title")}{" "}
+            <span className="text-gradient-primary">
+              {t("testimonials.cta.titleHighlight")}
+            </span>
+            ?
           </h3>
           <p className="text-muted-foreground mb-6">
-            Vamos conversar sobre como posso ajudar seu negócio a alcançar
-            resultados similares.
+            {t("testimonials.cta.subtitle")}
           </p>
           <Button
             size="lg"
             className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
           >
-            Começar Meu Projeto
+            {t("testimonials.cta.button")}
           </Button>
         </div>
       </div>
