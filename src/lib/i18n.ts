@@ -194,7 +194,7 @@ const resources = {
               "Complete online store with integrated payments and admin dashboard.",
             category: "Web",
             metrics: {
-              performance: "+40% conversion",
+              performance: "+20% conversion",
               seo: "95% Lighthouse",
               users: "10k+ users",
             },
@@ -259,7 +259,57 @@ const resources = {
       testimonials: {
         title: "What Clients Say",
         subtitle:
-          "Success stories from entrepreneurs who trusted our expertise",
+          "Real results from businesses that trusted my work to transform their digital presence.",
+        autoplay: "Autoplay",
+        pause: "Pause",
+        play: "Play",
+        previous: "Previous testimonial",
+        next: "Next testimonial",
+        goTo: "Go to testimonial",
+        cta: {
+          title: "Want to be the next",
+          titleHighlight: "success story",
+          subtitle:
+            "Let's talk about how I can help your business achieve similar results.",
+          button: "Start My Project",
+        },
+        items: {
+          1: {
+            name: "Maria Silva",
+            role: "CEO",
+            company: "Boutique Elegance",
+            content:
+              "Rafael completely transformed our online presence. Our sales increased 300% in the first quarter after the website launch. The communication was clear throughout the process.",
+          },
+          2: {
+            name: "Carlos Mendes",
+            role: "Director",
+            company: "TechSolutions Ltd",
+            content:
+              "We needed a complex management system and Rafael delivered beyond expectations. The system reduced our processing time by 50% and the team adapted quickly.",
+          },
+          3: {
+            name: "Ana Costa",
+            role: "Founder",
+            company: "Vital Nutrition",
+            content:
+              "The AI chatbot Rafael developed for our clinic revolutionized customer service. We can qualify leads 24/7 and our conversion rate doubled. Excellent work!",
+          },
+          4: {
+            name: "João Santos",
+            role: "Owner",
+            company: "Santos Law Firm",
+            content:
+              "The landing page Rafael developed for our client acquisition campaign exceeded all metrics. 20% conversion rate and top positioning on Google.",
+          },
+          5: {
+            name: "Patrícia Oliveira",
+            role: "Marketing Manager",
+            company: "Digital Agency Pro",
+            content:
+              "We hired Rafael to optimize the performance of our clients' websites. The results were impressive: 60% average improvement in Lighthouse Score and significant increase in organic traffic.",
+          },
+        },
       },
       contact: {
         title: "Ready to Start?",
@@ -473,7 +523,7 @@ const resources = {
               "Loja online completa com sistema de pagamentos integrado e painel administrativo.",
             category: "Web",
             metrics: {
-              performance: "+40% conversão",
+              performance: "+20% conversão",
               seo: "95% Lighthouse",
               users: "10k+ usuários",
             },
@@ -538,7 +588,57 @@ const resources = {
       testimonials: {
         title: "O que Dizem os Clientes",
         subtitle:
-          "Histórias de sucesso de empreendedores que confiaram na nossa expertise",
+          "Resultados reais de negócios que confiaram em meu trabalho para transformar sua presença digital.",
+        autoplay: "Reprodução automática",
+        pause: "Pausar",
+        play: "Reproduzir",
+        previous: "Depoimento anterior",
+        next: "Próximo depoimento",
+        goTo: "Ir para depoimento",
+        cta: {
+          title: "Quer ser o próximo",
+          titleHighlight: "caso de sucesso",
+          subtitle:
+            "Vamos conversar sobre como posso ajudar seu negócio a alcançar resultados similares.",
+          button: "Começar Meu Projeto",
+        },
+        items: {
+          1: {
+            name: "Maria Silva",
+            role: "CEO",
+            company: "Boutique Elegance",
+            content:
+              "O Rafael transformou completamente nossa presença online. Nossas vendas aumentaram 300% no primeiro trimestre após o lançamento do site. A comunicação foi clara em todo o processo.",
+          },
+          2: {
+            name: "Carlos Mendes",
+            role: "Diretor",
+            company: "TechSolutions Ltda",
+            content:
+              "Precisávamos de um sistema complexo de gestão e o Rafael entregou além das expectativas. O sistema reduziu nosso tempo de processamento em 50% e a equipe se adaptou rapidamente.",
+          },
+          3: {
+            name: "Ana Costa",
+            role: "Fundadora",
+            company: "Nutrição Vital",
+            content:
+              "O chatbot de IA que o Rafael desenvolveu para nossa clínica revolucionou o atendimento. Conseguimos qualificar leads 24/7 e nossa taxa de conversão dobrou. Excelente trabalho!",
+          },
+          4: {
+            name: "João Santos",
+            role: "Proprietário",
+            company: "Santos Advocacia",
+            content:
+              "A landing page desenvolvida pelo Rafael para nossa campanha de captação de clientes superou todas as métricas. Taxa de conversão de 20% e posicionamento no topo do Google.",
+          },
+          5: {
+            name: "Patrícia Oliveira",
+            role: "Gerente de Marketing",
+            company: "Digital Agency Pro",
+            content:
+              "Contratamos o Rafael para otimizar a performance de nossos sites de clientes. Os resultados foram impressionantes: melhoria média de 60% no Lighthouse Score e aumento significativo no tráfego orgânico.",
+          },
+        },
       },
       contact: {
         title: "Pronto para Começar?",
@@ -757,7 +857,7 @@ const resources = {
               "Tienda online completa con sistema de pagos integrado y panel administrativo.",
             category: "Web",
             metrics: {
-              performance: "+40% conversión",
+              performance: "+20% conversión",
               seo: "95% Lighthouse",
               users: "10k+ usuarios",
             },
@@ -822,7 +922,57 @@ const resources = {
       testimonials: {
         title: "Lo que Dicen los Clientes",
         subtitle:
-          "Historias de éxito de emprendedores que confiaron en nuestra experiencia",
+          "Resultados reales de negocios que confiaron en mi trabajo para transformar su presencia digital.",
+        autoplay: "Reproducción automática",
+        pause: "Pausar",
+        play: "Reproducir",
+        previous: "Testimonio anterior",
+        next: "Siguiente testimonio",
+        goTo: "Ir al testimonio",
+        cta: {
+          title: "¿Quieres ser el próximo",
+          titleHighlight: "caso de éxito",
+          subtitle:
+            "Conversemos sobre cómo puedo ayudar a tu negocio a alcanzar resultados similares.",
+          button: "Empezar Mi Proyecto",
+        },
+        items: {
+          1: {
+            name: "María Silva",
+            role: "CEO",
+            company: "Boutique Elegance",
+            content:
+              "Rafael transformó completamente nuestra presencia online. Nuestras ventas aumentaron 300% en el primer trimestre después del lanzamiento del sitio. La comunicación fue clara durante todo el proceso.",
+          },
+          2: {
+            name: "Carlos Mendes",
+            role: "Director",
+            company: "TechSolutions Ltda",
+            content:
+              "Necesitábamos un sistema complejo de gestión y Rafael entregó más allá de las expectativas. El sistema redujo nuestro tiempo de procesamiento en 50% y el equipo se adaptó rápidamente.",
+          },
+          3: {
+            name: "Ana Costa",
+            role: "Fundadora",
+            company: "Nutrición Vital",
+            content:
+              "El chatbot de IA que Rafael desarrolló para nuestra clínica revolucionó la atención. Podemos calificar leads 24/7 y nuestra tasa de conversión se duplicó. ¡Excelente trabajo!",
+          },
+          4: {
+            name: "João Santos",
+            role: "Propietario",
+            company: "Santos Abogacía",
+            content:
+              "La landing page desarrollada por Rafael para nuestra campaña de captación de clientes superó todas las métricas. Tasa de conversión del 20% y posicionamiento en el top de Google.",
+          },
+          5: {
+            name: "Patricia Oliveira",
+            role: "Gerente de Marketing",
+            company: "Digital Agency Pro",
+            content:
+              "Contratamos a Rafael para optimizar el rendimiento de los sitios de nuestros clientes. Los resultados fueron impresionantes: mejora promedio del 60% en el Lighthouse Score y aumento significativo en el tráfico orgánico.",
+          },
+        },
       },
       contact: {
         title: "¿Listo para Empezar?",
