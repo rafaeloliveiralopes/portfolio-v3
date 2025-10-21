@@ -69,7 +69,7 @@ export const HeroSection = () => {
           className="mb-8 animate-float-up"
           style={{ animationDelay: "0.6s" }}
         >
-          <p className="text-xl md:text-2xl text-muted-foreground min-h-[3rem] flex items-center justify-center">
+          <p className="text-xl md:text-2xl text-zinc-300 min-h-[3rem] flex items-center justify-center">
             <span className="inline-block border-r-2 border-primary">
               {displayText}
             </span>
