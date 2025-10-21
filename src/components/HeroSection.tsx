@@ -104,9 +104,19 @@ export const HeroSection = () => {
           style={{ animationDelay: "0.8s" }}
         >
           {[
-            { Icon: Github, href: "#", label: "GitHub" },
-            { Icon: Linkedin, href: "#", label: "LinkedIn" },
-            { Icon: Mail, href: "#", label: "Email" },
+            {
+              Icon: Github,
+              href: "https://github.com/rafaeloliveiralopes",
+              label: "GitHub",
+              link: true,
+            },
+            {
+              Icon: Linkedin,
+              href: "https://www.linkedin.com/in/rafael-lopes-desenvolvedor-fullstack",
+              label: "LinkedIn",
+              link: true,
+            },
+            { Icon: Mail, href: "#", label: "Email", link: true },
           ].map(({ Icon, href, label }) => (
             <a
               key={label}
