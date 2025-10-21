@@ -577,7 +577,6 @@ const resources = {
           web: "Web",
           system: "Sistema",
           ai: "IA",
-          mobile: "Mobile",
           automation: "Automação",
         },
         aria: {
