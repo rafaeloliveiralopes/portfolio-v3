@@ -50,7 +50,7 @@ export const ServicesSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-gradient-primary">{t("services.title")}</span>
           </h2>
-          <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl lg:text-2xl max-w-3xl mx-auto">
             {t("services.subtitle")}
           </p>
         </div>
@@ -78,7 +78,7 @@ export const ServicesSection = () => {
                 <h3 className="text-2xl font-bold mb-4 group-hover:text-gradient-primary transition-all duration-300">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-gray-300 font-semibold mb-6">
                   {service.description}
                 </p>
 
@@ -93,9 +93,7 @@ export const ServicesSection = () => {
                             : "bg-secondary"
                         }`}
                       />
-                      <span className="text-lg text-muted-foreground">
-                        {feature}
-                      </span>
+                      <span className="text-lg text-gray-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -113,7 +111,7 @@ export const ServicesSection = () => {
                                 : "bg-secondary"
                             }`}
                           />
-                          <span className="text-lg text-muted-foreground">
+                          <span className="text-lg text-gray-300">
                             {feature}
                           </span>
                         </li>
