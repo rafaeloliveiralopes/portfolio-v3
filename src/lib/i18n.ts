@@ -456,7 +456,7 @@ const resources = {
         skills: {
           development: {
             title: "Desenvolvimento",
-            items: ["React", "Next.js", "TypeScript", "Node.js", "Python"],
+            items: ["React", "Java", "TypeScript", "Node.js", "Python"],
           },
           design: {
             title: "Design & UX",
@@ -845,7 +845,7 @@ const resources = {
         skills: {
           development: {
             title: "Desarrollo",
-            items: ["React", "Next.js", "TypeScript", "Node.js", "Python"],
+            items: ["React", "Java", "TypeScript", "Node.js", "Python"],
           },
           design: {
             title: "Diseño & UX",
