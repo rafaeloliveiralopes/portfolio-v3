@@ -101,7 +101,7 @@ export const AboutSection = () => {
                       {skill.items.map((item, idx) => (
                         <span
                           key={idx}
-                          className="px-2 py-1 text-xs bg-muted text-zinc-300 rounded-md"
+                          className="px-2 py-1 text-sm bg-muted text-zinc-300 rounded-md"
                         >
                           {item}
                         </span>
