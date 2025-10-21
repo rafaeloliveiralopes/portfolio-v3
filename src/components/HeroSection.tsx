@@ -83,7 +83,7 @@ export const HeroSection = () => {
         >
           <Button
             size="lg"
-            onClick={() => scrollToSection("projetos")}
+            onClick={() => scrollToSection("serviços")}
             className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow text-lg px-8 py-3"
           >
             {t("hero.cta1")}
