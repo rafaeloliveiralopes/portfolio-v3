@@ -5,9 +5,8 @@ import { ExternalLink, Github, Filter } from "lucide-react";
 
 export const PortfolioSection = () => {
   const { t } = useTranslation();
-  const [selectedCategory, setSelectedCategory] = useState(
-    t("portfolio.filters.all")
-  );
+  // Use category key instead of translated text
+  const [selectedCategoryKey, setSelectedCategoryKey] = useState("all");
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   // Dynamic project data from i18n
@@ -26,15 +25,12 @@ export const PortfolioSection = () => {
     };
   });
 
-  // Get categories from translations
-  const categories = [
-    t("portfolio.filters.all"),
-    t("portfolio.filters.web"),
-    t("portfolio.filters.system"),
-    t("portfolio.filters.ai"),
-    t("portfolio.filters.mobile"),
-    t("portfolio.filters.automation"),
-  ];
+  // Category mapping
+  const categoryKeys = ["all", "web", "system", "ai", "mobile", "automation"];
+  const categories = categoryKeys.map((key) => ({
+    key,
+    label: t(`portfolio.filters.${key}`),
+  }));
 
   // Helper function to get project images
   function getProjectImage(id: number): string {
@@ -63,12 +59,13 @@ export const PortfolioSection = () => {
   }
 
   const filteredProjects =
-    selectedCategory === t("portfolio.filters.all")
+    selectedCategoryKey === "all"
       ? projects
-      : projects.filter(
-          (project: Record<string, unknown>) =>
-            project.category === selectedCategory
-        );
+      : projects.filter((project: Record<string, unknown>) => {
+          const projectCategory = project.category as string;
+          const filterLabel = t(`portfolio.filters.${selectedCategoryKey}`);
+          return projectCategory === filterLabel;
+        });
 
   return (
     <section id="projetos" className="py-20 relative">
@@ -87,16 +84,16 @@ export const PortfolioSection = () => {
           <div className="flex flex-wrap justify-center gap-4">
             {categories.map((category) => (
               <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
+                key={category.key}
+                onClick={() => setSelectedCategoryKey(category.key)}
                 className={`px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-2 ${
-                  selectedCategory === category
+                  selectedCategoryKey === category.key
                     ? "bg-primary text-primary-foreground shadow-glow"
                     : "bg-card border border-border text-muted-foreground hover:text-primary hover:border-primary/30"
                 }`}
               >
-                {category === "Todos" && <Filter className="w-4 h-4" />}
-                {category}
+                {category.key === "all" && <Filter className="w-4 h-4" />}
+                {category.label}
               </button>
             ))}
           </div>
