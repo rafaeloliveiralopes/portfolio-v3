@@ -50,7 +50,7 @@ export const ServicesSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-gradient-primary">{t("services.title")}</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto">
             {t("services.subtitle")}
           </p>
         </div>
@@ -93,7 +93,7 @@ export const ServicesSection = () => {
                             : "bg-secondary"
                         }`}
                       />
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-lg text-muted-foreground">
                         {feature}
                       </span>
                     </li>
@@ -113,7 +113,7 @@ export const ServicesSection = () => {
                                 : "bg-secondary"
                             }`}
                           />
-                          <span className="text-sm text-muted-foreground">
+                          <span className="text-lg text-muted-foreground">
                             {feature}
                           </span>
                         </li>
@@ -136,7 +136,7 @@ export const ServicesSection = () => {
                 {/* Expand/Collapse Button */}
                 <button
                   onClick={() => toggleExpanded(index)}
-                  className="flex items-center justify-center w-full text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="flex items-center justify-center w-full text-lg text-muted-foreground hover:text-primary transition-colors"
                 >
                   <span className="mr-2">
                     {isExpanded
