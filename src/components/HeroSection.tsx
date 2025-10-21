@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Mail } from "lucide-react";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 import { useTranslation } from "react-i18next";
 
 export const HeroSection = () => {
@@ -12,7 +13,7 @@ export const HeroSection = () => {
 
   useEffect(() => {
     const currentPhrase = phrases[currentPhraseIndex];
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
 
     if (!isDeleting && displayText === currentPhrase) {
       // Pause after finishing typing
@@ -38,9 +39,7 @@ export const HeroSection = () => {
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -52,10 +51,7 @@ export const HeroSection = () => {
         </p>
 
         {/* Main Heading */}
-        <div
-          className="mb-6 animate-float-up"
-          style={{ animationDelay: "0.2s" }}
-        >
+        <div className="mb-6 animate-float-up" style={{ animationDelay: "0.2s" }}>
           <h1 className="text-5xl md:text-7xl font-bold mb-4">
             <span className="text-gradient-primary">{t("hero.name")}</span>
           </h1>
@@ -65,10 +61,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Typing Effect Subtitle */}
-        <div
-          className="mb-8 animate-float-up"
-          style={{ animationDelay: "0.6s" }}
-        >
+        <div className="mb-8 animate-float-up" style={{ animationDelay: "0.6s" }}>
           <p className="text-xl md:text-2xl text-zinc-300 min-h-[3rem] flex items-center justify-center">
             <span className="inline-block border-r-2 border-primary">
               {displayText}
@@ -105,22 +98,24 @@ export const HeroSection = () => {
         >
           {[
             {
-              Icon: Github,
+              Icon: SiGithub,
               href: "https://github.com/rafaeloliveiralopes",
               label: "GitHub",
-              link: true,
+              external: true,
             },
             {
-              Icon: Linkedin,
-              href: "https://www.linkedin.com/in/rafael-lopes-desenvolvedor-fullstack",
+              Icon: SiLinkedin,
+              href:
+                "https://www.linkedin.com/in/rafael-lopes-desenvolvedor-fullstack",
               label: "LinkedIn",
-              link: true,
+              external: true,
             },
-            { Icon: Mail, href: "#", label: "Email", link: true },
-          ].map(({ Icon, href, label }) => (
+            { Icon: Mail, href: "mailto:seuemail@exemplo.com", label: "Email" },
+          ].map(({ Icon, href, label, external }) => (
             <a
               key={label}
               href={href}
+              {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="p-3 rounded-full bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
               aria-label={label}
             >
