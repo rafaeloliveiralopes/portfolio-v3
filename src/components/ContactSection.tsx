@@ -9,21 +9,20 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "contato@rafaellopes.dev",
-    href: "mailto:contato@rafaellopes.dev"
+    value: "rafaellopes.dev@gmail.com",
+    href: "mailto:rafaellopes.dev@gmail.com",
   },
   {
     icon: Phone,
-    title: "WhatsApp", 
-    value: "+55 (11) 99999-9999",
-    href: "https://wa.me/5511999999999"
+    title: "WhatsApp",
+    value: "+55 (62) 99213-6842",
+    href: "https://wa.me/5562992136842",
   },
   {
     icon: MapPin,
     title: "Localização",
-    value: "São Paulo, Brasil",
-    href: "#"
-  }
+    value: "Uruaçu-Goiás, Brasil",
+  },
 ];
 
 export const ContactSection = () => {
@@ -31,16 +30,18 @@ export const ContactSection = () => {
     name: "",
     email: "",
     company: "",
-    message: ""
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -50,8 +51,8 @@ export const ContactSection = () => {
 
     // Simulated form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       toast({
         title: "Mensagem enviada com sucesso!",
         description: "Entrarei em contato em breve. Obrigado!",
@@ -61,13 +62,13 @@ export const ContactSection = () => {
         name: "",
         email: "",
         company: "",
-        message: ""
+        message: "",
       });
     } catch (error) {
       toast({
         title: "Erro ao enviar mensagem",
         description: "Tente novamente ou entre em contato diretamente.",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
@@ -90,7 +91,7 @@ export const ContactSection = () => {
             <span className="text-gradient-primary">conversar?</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Pronto para transformar sua ideia em realidade? Entre em contato e 
+            Pronto para transformar sua ideia em realidade? Entre em contato e
             vamos construir algo incrível juntos.
           </p>
         </div>
@@ -100,12 +101,13 @@ export const ContactSection = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold mb-6">
-                Entre em <span className="text-gradient-secondary">contato</span>
+                Entre em{" "}
+                <span className="text-gradient-secondary">contato</span>
               </h3>
               <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                Estou sempre disponível para discutir novos projetos, parcerias ou 
-                simplesmente trocar ideias sobre tecnologia. Escolha a forma mais 
-                conveniente para você.
+                Estou sempre disponível para discutir novos projetos, parcerias
+                ou simplesmente trocar ideias sobre tecnologia. Escolha a forma
+                mais conveniente para você.
               </p>
             </div>
 
@@ -126,9 +128,7 @@ export const ContactSection = () => {
                       <div className="font-semibold text-foreground group-hover:text-primary transition-colors">
                         {info.title}
                       </div>
-                      <div className="text-muted-foreground">
-                        {info.value}
-                      </div>
+                      <div className="text-muted-foreground">{info.value}</div>
                     </div>
                   </a>
                 );
@@ -139,11 +139,17 @@ export const ContactSection = () => {
             <div className="grid grid-cols-2 gap-6 pt-8">
               <div className="text-center p-4 bg-card/50 rounded-xl border border-border">
                 <div className="text-2xl font-bold text-primary mb-1">24h</div>
-                <div className="text-sm text-muted-foreground">Tempo de resposta</div>
+                <div className="text-sm text-muted-foreground">
+                  Tempo de resposta
+                </div>
               </div>
               <div className="text-center p-4 bg-card/50 rounded-xl border border-border">
-                <div className="text-2xl font-bold text-secondary mb-1">100%</div>
-                <div className="text-sm text-muted-foreground">Projetos entregues</div>
+                <div className="text-2xl font-bold text-secondary mb-1">
+                  100%
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  Projetos entregues
+                </div>
               </div>
             </div>
           </div>
@@ -153,7 +159,10 @@ export const ContactSection = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Nome *
                   </label>
                   <Input
@@ -167,7 +176,10 @@ export const ContactSection = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Email *
                   </label>
                   <Input
@@ -184,7 +196,10 @@ export const ContactSection = () => {
               </div>
 
               <div>
-                <label htmlFor="company" className="block text-sm font-medium mb-2">
+                <label
+                  htmlFor="company"
+                  className="block text-sm font-medium mb-2"
+                >
                   Empresa
                 </label>
                 <Input
@@ -198,7 +213,10 @@ export const ContactSection = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium mb-2"
+                >
                   Mensagem *
                 </label>
                 <Textarea
@@ -213,7 +231,7 @@ export const ContactSection = () => {
                 />
               </div>
 
-              <Button 
+              <Button
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow text-lg py-3"
@@ -237,7 +255,8 @@ export const ContactSection = () => {
               <div className="flex items-center text-sm text-muted-foreground">
                 <CheckCircle className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
                 <span>
-                  Resposta garantida em até 24 horas. Seus dados estão protegidos.
+                  Resposta garantida em até 24 horas. Seus dados estão
+                  protegidos.
                 </span>
               </div>
             </div>
