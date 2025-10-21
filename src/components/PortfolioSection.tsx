@@ -1,196 +1,74 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Filter } from "lucide-react";
-import { useTranslation } from "react-i18next";
-
-type Metrics = {
-  performance: string;
-  seo: string;
-  users: string;
-};
-
-type Project = {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  category: string;
-  tech: string[];
-  metrics: Metrics;
-  links: { demo: string; github: string };
-};
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "E-commerce Moderno",
-    description:
-      "Loja online completa com sistema de pagamentos integrado e painel administrativo.",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
-    category: "Web",
-    tech: ["React", "Node.js", "Stripe", "MongoDB"],
-    metrics: {
-      performance: "+40% conversão",
-      seo: "95% Lighthouse",
-      users: "10k+ usuários",
-    },
-    links: {
-      demo: "#",
-      github: "#",
-    },
-  },
-  {
-    id: 2,
-    title: "Sistema de Gestão",
-    description:
-      "Plataforma completa para gestão de clientes, vendas e relatórios em tempo real.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-    category: "Sistema",
-    tech: ["Next.js", "PostgreSQL", "Prisma", "Tailwind"],
-    metrics: {
-      performance: "50% menos tempo",
-      seo: "Integração completa",
-      users: "500+ empresas",
-    },
-    links: {
-      demo: "#",
-      github: "#",
-    },
-  },
-  {
-    id: 3,
-    title: "Chatbot IA para Vendas",
-    description:
-      "Assistente virtual inteligente que qualifica leads e agenda reuniões automaticamente.",
-    image:
-      "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80",
-    category: "IA",
-    tech: ["OpenAI", "Webhook", "Zapier", "WhatsApp API"],
-    metrics: {
-      performance: "24/7 atendimento",
-      seo: "300% mais leads",
-      users: "90% satisfação",
-    },
-    links: {
-      demo: "#",
-      github: "#",
-    },
-  },
-  {
-    id: 4,
-    title: "Landing Page Alto Impacto",
-    description:
-      "Página de conversão otimizada para campanha de lançamento de produto digital.",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
-    category: "Web",
-    tech: ["React", "Framer Motion", "Analytics", "A/B Testing"],
-    metrics: {
-      performance: "85% conversão",
-      seo: "Top 3 Google",
-      users: "50k+ visits",
-    },
-    links: {
-      demo: "#",
-      github: "#",
-    },
-  },
-  {
-    id: 5,
-    title: "App Mobile Delivery",
-    description:
-      "Aplicativo de delivery com geolocalização, pagamento integrado e sistema de avaliação.",
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
-    category: "Mobile",
-    tech: ["React Native", "Firebase", "Maps API", "Push Notifications"],
-    metrics: {
-      performance: "4.8★ rating",
-      seo: "100k+ downloads",
-      users: "500+ restaurantes",
-    },
-    links: {
-      demo: "#",
-      github: "#",
-    },
-  },
-  {
-    id: 6,
-    title: "Automação de Marketing",
-    description:
-      "Sistema que integra CRM, email marketing e análise de dados para maximizar vendas.",
-    image:
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&q=80",
-    category: "Automação",
-    tech: ["Python", "API Integration", "Machine Learning", "Dashboard"],
-    metrics: {
-      performance: "400% ROI",
-      seo: "75% menos trabalho manual",
-      users: "200+ campanhas",
-    },
-    links: {
-      demo: "#",
-      github: "#",
-    },
-  },
-];
-
-type CategoryKey = "all" | "web" | "system" | "ai" | "mobile" | "automation";
-
-const categoryKeys: CategoryKey[] = [
-  "all",
-  "web",
-  "system",
-  "ai",
-  "mobile",
-  "automation",
-];
 
 export const PortfolioSection = () => {
   const { t } = useTranslation();
-  const [selectedCategory, setSelectedCategory] = useState<CategoryKey>("all");
+  const [selectedCategory, setSelectedCategory] = useState(
+    t("portfolio.filters.all")
+  );
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
-  // Map translated label -> key and vice-versa
-  const categories = useMemo(
-    () =>
-      categoryKeys.map((key) => ({
-        key,
-        label: t(`portfolio.filters.${key}`),
-      })),
-    [t]
-  );
+  // Dynamic project data from i18n
+  const projectIds = [1, 2, 3, 4, 5, 6];
+  const projects = projectIds.map((id) => {
+    const projectData = t(`portfolio.projects.${id}`, { returnObjects: true });
+    return {
+      id,
+      ...(typeof projectData === "object" ? projectData : {}),
+      image: getProjectImage(id),
+      tech: getProjectTech(id),
+      links: {
+        demo: "#",
+        github: "#",
+      },
+    };
+  });
 
-  // Build translated view-model for cards (title, description, category, metrics)
-  type ProjectPatch = Partial<
-    Pick<Project, "title" | "description" | "category">
-  > & {
-    metrics?: Partial<Metrics>;
-  };
+  // Get categories from translations
+  const categories = [
+    t("portfolio.filters.all"),
+    t("portfolio.filters.web"),
+    t("portfolio.filters.system"),
+    t("portfolio.filters.ai"),
+    t("portfolio.filters.mobile"),
+    t("portfolio.filters.automation"),
+  ];
 
-  const translatedProjects = useMemo<Project[]>(() => {
-    return projects.map((p) => {
-      const patch = t(`portfolio.projects.${p.id}`, {
-        returnObjects: true,
-      }) as unknown as ProjectPatch;
-      return {
-        ...p,
-        title: patch.title ?? p.title,
-        description: patch.description ?? p.description,
-        category: patch.category ?? p.category,
-        metrics: { ...p.metrics, ...(patch.metrics || {}) },
-      };
-    });
-  }, [t]);
+  // Helper function to get project images
+  function getProjectImage(id: number): string {
+    const images: Record<number, string> = {
+      1: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
+      2: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+      3: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80",
+      4: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+      5: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
+      6: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&q=80",
+    };
+    return images[id] || "";
+  }
 
-  const filteredProjects = useMemo(() => {
-    if (selectedCategory === "all") return translatedProjects;
-    // Map selected key to translated category to match translatedProjects.category
-    const label = t(`portfolio.filters.${selectedCategory}`);
-    return translatedProjects.filter((project) => project.category === label);
-  }, [selectedCategory, translatedProjects, t]);
+  // Helper function to get project tech stack
+  function getProjectTech(id: number): string[] {
+    const techStacks: Record<number, string[]> = {
+      1: ["React", "Node.js", "Stripe", "MongoDB"],
+      2: ["Next.js", "PostgreSQL", "Prisma", "Tailwind"],
+      3: ["OpenAI", "Webhook", "Zapier", "WhatsApp API"],
+      4: ["React", "Framer Motion", "Analytics", "A/B Testing"],
+      5: ["React Native", "Firebase", "Maps API", "Push Notifications"],
+      6: ["Python", "API Integration", "Machine Learning", "Dashboard"],
+    };
+    return techStacks[id] || [];
+  }
+
+  const filteredProjects =
+    selectedCategory === t("portfolio.filters.all")
+      ? projects
+      : projects.filter(
+          (project: Record<string, unknown>) =>
+            project.category === selectedCategory
+        );
 
   return (
     <section id="projetos" className="py-20 relative">
@@ -198,9 +76,8 @@ export const PortfolioSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-gradient-primary">
-              {t("portfolio.title")}
-            </span>
+            <span className="text-foreground">{t("portfolio.title")} </span>
+            <span className="text-gradient-primary"></span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             {t("portfolio.subtitle")}
@@ -208,18 +85,18 @@ export const PortfolioSection = () => {
 
           {/* Category Filters */}
           <div className="flex flex-wrap justify-center gap-4">
-            {categories.map(({ key, label }) => (
+            {categories.map((category) => (
               <button
-                key={key}
-                onClick={() => setSelectedCategory(key)}
+                key={category}
+                onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-2 ${
-                  selectedCategory === key
+                  selectedCategory === category
                     ? "bg-primary text-primary-foreground shadow-glow"
                     : "bg-card border border-border text-muted-foreground hover:text-primary hover:border-primary/30"
                 }`}
               >
-                {key === "all" && <Filter className="w-4 h-4" />}
-                {label}
+                {category === "Todos" && <Filter className="w-4 h-4" />}
+                {category}
               </button>
             ))}
           </div>
@@ -240,7 +117,7 @@ export const PortfolioSection = () => {
                 <div className="relative overflow-hidden">
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={(project as Record<string, unknown>).title as string}
                     className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                   />
 
@@ -271,7 +148,7 @@ export const PortfolioSection = () => {
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-medium rounded-full">
-                      {project.category}
+                      {(project as Record<string, unknown>).category as string}
                     </span>
                   </div>
                 </div>
@@ -279,11 +156,11 @@ export const PortfolioSection = () => {
                 {/* Project Content */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {project.title}
+                    {(project as Record<string, unknown>).title as string}
                   </h3>
 
                   <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                    {project.description}
+                    {(project as Record<string, unknown>).description as string}
                   </p>
 
                   {/* Tech Stack */}
@@ -300,15 +177,18 @@ export const PortfolioSection = () => {
 
                   {/* Metrics */}
                   <div className="grid grid-cols-3 gap-2 text-center">
-                    {(
-                      ["performance", "seo", "users"] as Array<keyof Metrics>
-                    ).map((key) => (
+                    {Object.entries(
+                      (project as Record<string, unknown>).metrics as Record<
+                        string,
+                        string
+                      >
+                    ).map(([key, value]) => (
                       <div key={key} className="p-2 bg-muted/50 rounded-lg">
                         <div className="text-xs text-muted-foreground capitalize mb-1">
                           {key}
                         </div>
                         <div className="text-xs font-semibold text-primary">
-                          {project.metrics[key]}
+                          {value as string}
                         </div>
                       </div>
                     ))}
