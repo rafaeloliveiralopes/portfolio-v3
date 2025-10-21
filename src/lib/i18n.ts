@@ -175,6 +175,86 @@ const resources = {
           "Real solutions that generated concrete results for my clients",
         viewProject: "View Project",
         viewAll: "View All Projects",
+        filters: {
+          all: "All",
+          web: "Web",
+          system: "System",
+          ai: "AI",
+          mobile: "Mobile",
+          automation: "Automation",
+        },
+        aria: {
+          viewDemo: "View demo",
+          viewCode: "View source code",
+        },
+        projects: {
+          1: {
+            title: "Modern E-commerce",
+            description:
+              "Complete online store with integrated payments and admin dashboard.",
+            category: "Web",
+            metrics: {
+              performance: "+40% conversion",
+              seo: "95% Lighthouse",
+              users: "10k+ users",
+            },
+          },
+          2: {
+            title: "Management System",
+            description:
+              "Complete platform for managing customers, sales, and real-time reports.",
+            category: "System",
+            metrics: {
+              performance: "50% less time",
+              seo: "Full integration",
+              users: "500+ companies",
+            },
+          },
+          3: {
+            title: "AI Chatbot for Sales",
+            description:
+              "Smart virtual assistant that qualifies leads and schedules meetings automatically.",
+            category: "AI",
+            metrics: {
+              performance: "24/7 support",
+              seo: "300% more leads",
+              users: "90% satisfaction",
+            },
+          },
+          4: {
+            title: "High-Impact Landing Page",
+            description:
+              "Conversion-optimized page for a digital product launch campaign.",
+            category: "Web",
+            metrics: {
+              performance: "85% conversion",
+              seo: "Top 3 Google",
+              users: "50k+ visits",
+            },
+          },
+          5: {
+            title: "Mobile Delivery App",
+            description:
+              "Delivery app with geolocation, integrated payments, and rating system.",
+            category: "Mobile",
+            metrics: {
+              performance: "4.8★ rating",
+              seo: "100k+ downloads",
+              users: "500+ restaurants",
+            },
+          },
+          6: {
+            title: "Marketing Automation",
+            description:
+              "System integrating CRM, email marketing, and data analysis to maximize sales.",
+            category: "Automation",
+            metrics: {
+              performance: "400% ROI",
+              seo: "75% less manual work",
+              users: "200+ campaigns",
+            },
+          },
+        },
       },
       testimonials: {
         title: "What Clients Say",
@@ -374,6 +454,86 @@ const resources = {
           "Soluções reais que geraram resultados concretos para meus clientes",
         viewProject: "Ver Projeto",
         viewAll: "Ver Todos os Projetos",
+        filters: {
+          all: "Todos",
+          web: "Web",
+          system: "Sistema",
+          ai: "IA",
+          mobile: "Mobile",
+          automation: "Automação",
+        },
+        aria: {
+          viewDemo: "Ver demo",
+          viewCode: "Ver código",
+        },
+        projects: {
+          1: {
+            title: "E-commerce Moderno",
+            description:
+              "Loja online completa com sistema de pagamentos integrado e painel administrativo.",
+            category: "Web",
+            metrics: {
+              performance: "+40% conversão",
+              seo: "95% Lighthouse",
+              users: "10k+ usuários",
+            },
+          },
+          2: {
+            title: "Sistema de Gestão",
+            description:
+              "Plataforma completa para gestão de clientes, vendas e relatórios em tempo real.",
+            category: "Sistema",
+            metrics: {
+              performance: "50% menos tempo",
+              seo: "Integração completa",
+              users: "500+ empresas",
+            },
+          },
+          3: {
+            title: "Chatbot IA para Vendas",
+            description:
+              "Assistente virtual inteligente que qualifica leads e agenda reuniões automaticamente.",
+            category: "IA",
+            metrics: {
+              performance: "24/7 atendimento",
+              seo: "300% mais leads",
+              users: "90% satisfação",
+            },
+          },
+          4: {
+            title: "Landing Page Alto Impacto",
+            description:
+              "Página de conversão otimizada para campanha de lançamento de produto digital.",
+            category: "Web",
+            metrics: {
+              performance: "85% conversão",
+              seo: "Top 3 Google",
+              users: "50k+ visits",
+            },
+          },
+          5: {
+            title: "App Mobile Delivery",
+            description:
+              "Aplicativo de delivery com geolocalização, pagamento integrado e sistema de avaliação.",
+            category: "Mobile",
+            metrics: {
+              performance: "4.8★ rating",
+              seo: "100k+ downloads",
+              users: "500+ restaurantes",
+            },
+          },
+          6: {
+            title: "Automação de Marketing",
+            description:
+              "Sistema que integra CRM, email marketing e análise de dados para maximizar vendas.",
+            category: "Automação",
+            metrics: {
+              performance: "400% ROI",
+              seo: "75% menos trabalho manual",
+              users: "200+ campanhas",
+            },
+          },
+        },
       },
       testimonials: {
         title: "O que Dizem os Clientes",
@@ -578,6 +738,86 @@ const resources = {
           "Soluciones reales que generaron resultados concretos para mis clientes",
         viewProject: "Ver Proyecto",
         viewAll: "Ver Todos los Proyectos",
+        filters: {
+          all: "Todos",
+          web: "Web",
+          system: "Sistema",
+          ai: "IA",
+          mobile: "Móvil",
+          automation: "Automatización",
+        },
+        aria: {
+          viewDemo: "Ver demo",
+          viewCode: "Ver código fuente",
+        },
+        projects: {
+          1: {
+            title: "E-commerce Moderno",
+            description:
+              "Tienda online completa con sistema de pagos integrado y panel administrativo.",
+            category: "Web",
+            metrics: {
+              performance: "+40% conversión",
+              seo: "95% Lighthouse",
+              users: "10k+ usuarios",
+            },
+          },
+          2: {
+            title: "Sistema de Gestión",
+            description:
+              "Plataforma completa para gestión de clientes, ventas y reportes en tiempo real.",
+            category: "Sistema",
+            metrics: {
+              performance: "50% menos tiempo",
+              seo: "Integración completa",
+              users: "500+ empresas",
+            },
+          },
+          3: {
+            title: "Chatbot IA para Ventas",
+            description:
+              "Asistente virtual inteligente que califica leads y agenda reuniones automáticamente.",
+            category: "IA",
+            metrics: {
+              performance: "24/7 atención",
+              seo: "300% más leads",
+              users: "90% satisfacción",
+            },
+          },
+          4: {
+            title: "Landing Page de Alto Impacto",
+            description:
+              "Página de conversión optimizada para campaña de lanzamiento de producto digital.",
+            category: "Web",
+            metrics: {
+              performance: "85% conversión",
+              seo: "Top 3 Google",
+              users: "50k+ visitas",
+            },
+          },
+          5: {
+            title: "App Móvil de Delivery",
+            description:
+              "Aplicación de delivery con geolocalización, pago integrado y sistema de valoración.",
+            category: "Móvil",
+            metrics: {
+              performance: "4.8★ rating",
+              seo: "100k+ descargas",
+              users: "500+ restaurantes",
+            },
+          },
+          6: {
+            title: "Automatización de Marketing",
+            description:
+              "Sistema que integra CRM, email marketing y análisis de datos para maximizar ventas.",
+            category: "Automatización",
+            metrics: {
+              performance: "400% ROI",
+              seo: "75% menos trabajo manual",
+              users: "200+ campañas",
+            },
+          },
+        },
       },
       testimonials: {
         title: "Lo que Dicen los Clientes",
