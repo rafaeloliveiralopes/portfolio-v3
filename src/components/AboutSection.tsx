@@ -135,7 +135,7 @@ export const AboutSection = () => {
                       <h4 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
                         {t(`about.timeline.items.${year}.title`)}
                       </h4>
-                      <p className="text-muted-foreground">
+                      <p className="text-zinc-300 text-base">
                         {t(`about.timeline.items.${year}.description`)}
                       </p>
                     </div>
