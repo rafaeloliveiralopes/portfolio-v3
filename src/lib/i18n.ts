@@ -312,18 +312,45 @@ const resources = {
         },
       },
       contact: {
-        title: "Ready to Start?",
+        title: "Let's",
+        titleHighlight: "talk?",
         subtitle:
-          "Let's transform your idea into a digital solution that generates results",
-        form: {
-          name: "Your name",
-          email: "Your email",
-          message: "Tell me about your project",
-          send: "Send Message",
-        },
+          "Ready to transform your idea into reality? Get in touch and let's build something amazing together.",
         info: {
-          title: "Let's build something together",
-          subtitle: "I am available for new projects and partnerships",
+          title: "Get in",
+          titleHighlight: "touch",
+          description:
+            "I am always available to discuss new projects, partnerships, or simply exchange ideas about technology. Choose the most convenient way for you.",
+        },
+        contactInfo: {
+          email: "Email",
+          whatsapp: "WhatsApp",
+          location: "Location",
+          locationValue: "Uruaçu-Goiás, Brazil",
+        },
+        stats: {
+          responseTime: "Response time",
+          deliveredProjects: "Delivered projects",
+        },
+        form: {
+          name: "Name *",
+          namePlaceholder: "Your full name",
+          email: "Email *",
+          emailPlaceholder: "your@email.com",
+          company: "Company",
+          companyPlaceholder: "Your company name (optional)",
+          message: "Message *",
+          messagePlaceholder: "Tell me about your project or idea...",
+          send: "Send Message",
+          sending: "Sending...",
+          guarantee:
+            "Response guaranteed within 24 hours. Your data is protected.",
+        },
+        toast: {
+          successTitle: "Message sent successfully!",
+          successDescription: "I'll get in touch soon. Thank you!",
+          errorTitle: "Error sending message",
+          errorDescription: "Try again or contact directly.",
         },
       },
       footer: {
@@ -641,18 +668,45 @@ const resources = {
         },
       },
       contact: {
-        title: "Pronto para Começar?",
+        title: "Vamos",
+        titleHighlight: "conversar?",
         subtitle:
-          "Vamos transformar sua ideia em uma solução digital que gera resultados",
-        form: {
-          name: "Seu nome",
-          email: "Seu email",
-          message: "Conte-me sobre seu projeto",
-          send: "Enviar Mensagem",
-        },
+          "Pronto para transformar sua ideia em realidade? Entre em contato e vamos construir algo incrível juntos.",
         info: {
-          title: "Vamos construir algo juntos",
-          subtitle: "Estou disponível para novos projetos e parcerias",
+          title: "Entre em",
+          titleHighlight: "contato",
+          description:
+            "Estou sempre disponível para discutir novos projetos, parcerias ou simplesmente trocar ideias sobre tecnologia. Escolha a forma mais conveniente para você.",
+        },
+        contactInfo: {
+          email: "Email",
+          whatsapp: "WhatsApp",
+          location: "Localização",
+          locationValue: "Uruaçu-Goiás, Brasil",
+        },
+        stats: {
+          responseTime: "Tempo de resposta",
+          deliveredProjects: "Projetos entregues",
+        },
+        form: {
+          name: "Nome *",
+          namePlaceholder: "Seu nome completo",
+          email: "Email *",
+          emailPlaceholder: "seu@email.com",
+          company: "Empresa",
+          companyPlaceholder: "Nome da sua empresa (opcional)",
+          message: "Mensagem *",
+          messagePlaceholder: "Conte-me sobre seu projeto ou ideia...",
+          send: "Enviar Mensagem",
+          sending: "Enviando...",
+          guarantee:
+            "Resposta garantida em até 24 horas. Seus dados estão protegidos.",
+        },
+        toast: {
+          successTitle: "Mensagem enviada com sucesso!",
+          successDescription: "Entrarei em contato em breve. Obrigado!",
+          errorTitle: "Erro ao enviar mensagem",
+          errorDescription: "Tente novamente ou entre em contato diretamente.",
         },
       },
       footer: {
@@ -975,18 +1029,45 @@ const resources = {
         },
       },
       contact: {
-        title: "¿Listo para Empezar?",
+        title: "¿Hablamos?",
+        titleHighlight: "",
         subtitle:
-          "Transformemos tu idea en una solución digital que genera resultados",
-        form: {
-          name: "Tu nombre",
-          email: "Tu email",
-          message: "Cuéntame sobre tu proyecto",
-          send: "Enviar Mensaje",
-        },
+          "¿Listo para transformar tu idea en realidad? Ponte en contacto y construyamos algo increíble juntos.",
         info: {
-          title: "Construyamos algo juntos",
-          subtitle: "Estoy disponible para nuevos proyectos y asociaciones",
+          title: "Ponte en",
+          titleHighlight: "contacto",
+          description:
+            "Siempre estoy disponible para discutir nuevos proyectos, asociaciones o simplemente intercambiar ideas sobre tecnología. Elige la forma más conveniente para ti.",
+        },
+        contactInfo: {
+          email: "Email",
+          whatsapp: "WhatsApp",
+          location: "Ubicación",
+          locationValue: "Uruaçu-Goiás, Brasil",
+        },
+        stats: {
+          responseTime: "Tiempo de respuesta",
+          deliveredProjects: "Proyectos entregados",
+        },
+        form: {
+          name: "Nombre *",
+          namePlaceholder: "Tu nombre completo",
+          email: "Email *",
+          emailPlaceholder: "tu@email.com",
+          company: "Empresa",
+          companyPlaceholder: "Nombre de tu empresa (opcional)",
+          message: "Mensaje *",
+          messagePlaceholder: "Cuéntame sobre tu proyecto o idea...",
+          send: "Enviar Mensaje",
+          sending: "Enviando...",
+          guarantee:
+            "Respuesta garantizada en 24 horas. Tus datos están protegidos.",
+        },
+        toast: {
+          successTitle: "¡Mensaje enviado con éxito!",
+          successDescription: "Me pondré en contacto pronto. ¡Gracias!",
+          errorTitle: "Error al enviar mensaje",
+          errorDescription: "Intenta nuevamente o contacta directamente.",
         },
       },
       footer: {

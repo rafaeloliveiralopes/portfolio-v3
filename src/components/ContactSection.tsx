@@ -1,31 +1,51 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  CheckCircle,
+  LucideIcon,
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const contactInfo = [
-  {
-    icon: Mail,
-    title: "Email",
-    value: "rafaellopes.dev@gmail.com",
-    href: "mailto:rafaellopes.dev@gmail.com",
-  },
-  {
-    icon: Phone,
-    title: "WhatsApp",
-    value: "+55 (62) 99213-6842",
-    href: "https://wa.me/5562992136842",
-  },
-  {
-    icon: MapPin,
-    title: "Localização",
-    value: "Uruaçu-Goiás, Brasil",
-  },
-];
+interface ContactInfoItem {
+  icon: LucideIcon;
+  title: string;
+  value: string;
+  href?: string;
+}
 
 export const ContactSection = () => {
+  const { t } = useTranslation();
+
+  const contactInfo = useMemo<ContactInfoItem[]>(
+    () => [
+      {
+        icon: Mail,
+        title: t("contact.contactInfo.email"),
+        value: "rafaellopes.dev@gmail.com",
+        href: "mailto:rafaellopes.dev@gmail.com",
+      },
+      {
+        icon: Phone,
+        title: t("contact.contactInfo.whatsapp"),
+        value: "+55 (62) 99213-6842",
+        href: "https://wa.me/5562992136842",
+      },
+      {
+        icon: MapPin,
+        title: t("contact.contactInfo.location"),
+        value: t("contact.contactInfo.locationValue"),
+      },
+    ],
+    [t]
+  );
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -54,8 +74,8 @@ export const ContactSection = () => {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       toast({
-        title: "Mensagem enviada com sucesso!",
-        description: "Entrarei em contato em breve. Obrigado!",
+        title: t("contact.toast.successTitle"),
+        description: t("contact.toast.successDescription"),
       });
 
       setFormData({
@@ -66,8 +86,8 @@ export const ContactSection = () => {
       });
     } catch (error) {
       toast({
-        title: "Erro ao enviar mensagem",
-        description: "Tente novamente ou entre em contato diretamente.",
+        title: t("contact.toast.errorTitle"),
+        description: t("contact.toast.errorDescription"),
         variant: "destructive",
       });
     } finally {
@@ -87,12 +107,13 @@ export const ContactSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-foreground">Vamos </span>
-            <span className="text-gradient-primary">conversar?</span>
+            <span className="text-foreground">{t("contact.title")} </span>
+            <span className="text-gradient-primary">
+              {t("contact.titleHighlight")}
+            </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Pronto para transformar sua ideia em realidade? Entre em contato e
-            vamos construir algo incrível juntos.
+            {t("contact.subtitle")}
           </p>
         </div>
 
@@ -101,13 +122,13 @@ export const ContactSection = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold mb-6">
-                Entre em{" "}
-                <span className="text-gradient-secondary">contato</span>
+                {t("contact.info.title")}{" "}
+                <span className="text-gradient-secondary">
+                  {t("contact.info.titleHighlight")}
+                </span>
               </h3>
               <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                Estou sempre disponível para discutir novos projetos, parcerias
-                ou simplesmente trocar ideias sobre tecnologia. Escolha a forma
-                mais conveniente para você.
+                {t("contact.info.description")}
               </p>
             </div>
 
@@ -140,7 +161,7 @@ export const ContactSection = () => {
               <div className="text-center p-4 bg-card/50 rounded-xl border border-border">
                 <div className="text-2xl font-bold text-primary mb-1">24h</div>
                 <div className="text-sm text-muted-foreground">
-                  Tempo de resposta
+                  {t("contact.stats.responseTime")}
                 </div>
               </div>
               <div className="text-center p-4 bg-card/50 rounded-xl border border-border">
@@ -148,7 +169,7 @@ export const ContactSection = () => {
                   100%
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Projetos entregues
+                  {t("contact.stats.deliveredProjects")}
                 </div>
               </div>
             </div>
@@ -163,14 +184,14 @@ export const ContactSection = () => {
                     htmlFor="name"
                     className="block text-sm font-medium mb-2"
                   >
-                    Nome *
+                    {t("contact.form.name")}
                   </label>
                   <Input
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Seu nome completo"
+                    placeholder={t("contact.form.namePlaceholder")}
                     required
                     className="bg-background border-border focus:border-primary"
                   />
@@ -180,7 +201,7 @@ export const ContactSection = () => {
                     htmlFor="email"
                     className="block text-sm font-medium mb-2"
                   >
-                    Email *
+                    {t("contact.form.email")}
                   </label>
                   <Input
                     id="email"
@@ -188,7 +209,7 @@ export const ContactSection = () => {
                     type="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="seu@email.com"
+                    placeholder={t("contact.form.emailPlaceholder")}
                     required
                     className="bg-background border-border focus:border-primary"
                   />
@@ -200,14 +221,14 @@ export const ContactSection = () => {
                   htmlFor="company"
                   className="block text-sm font-medium mb-2"
                 >
-                  Empresa
+                  {t("contact.form.company")}
                 </label>
                 <Input
                   id="company"
                   name="company"
                   value={formData.company}
                   onChange={handleInputChange}
-                  placeholder="Nome da sua empresa (opcional)"
+                  placeholder={t("contact.form.companyPlaceholder")}
                   className="bg-background border-border focus:border-primary"
                 />
               </div>
@@ -217,14 +238,14 @@ export const ContactSection = () => {
                   htmlFor="message"
                   className="block text-sm font-medium mb-2"
                 >
-                  Mensagem *
+                  {t("contact.form.message")}
                 </label>
                 <Textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Conte-me sobre seu projeto ou ideia..."
+                  placeholder={t("contact.form.messagePlaceholder")}
                   rows={5}
                   required
                   className="bg-background border-border focus:border-primary resize-none"
@@ -239,12 +260,12 @@ export const ContactSection = () => {
                 {isSubmitting ? (
                   <div className="flex items-center justify-center">
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-foreground mr-2"></div>
-                    Enviando...
+                    {t("contact.form.sending")}
                   </div>
                 ) : (
                   <div className="flex items-center justify-center">
                     <Send className="w-5 h-5 mr-2" />
-                    Enviar Mensagem
+                    {t("contact.form.send")}
                   </div>
                 )}
               </Button>
@@ -254,10 +275,7 @@ export const ContactSection = () => {
             <div className="mt-6 pt-6 border-t border-border">
               <div className="flex items-center text-sm text-muted-foreground">
                 <CheckCircle className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                <span>
-                  Resposta garantida em até 24 horas. Seus dados estão
-                  protegidos.
-                </span>
+                <span>{t("contact.form.guarantee")}</span>
               </div>
             </div>
           </div>
