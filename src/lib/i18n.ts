@@ -90,6 +90,67 @@ const resources = {
       services: {
         title: "Services",
         subtitle: "Complete solutions to boost your digital presence",
+        moreDetails: "More details",
+        lessDetails: "Less details",
+        cards: {
+          web: {
+            title: "Websites & Systems",
+            description: "From corporate sites to tailor-made systems.",
+            features: [
+              "Corporate websites that sell",
+              "High-converting landing pages",
+              "Custom web systems",
+              "Efficient and secure APIs",
+              "Maintenance and performance optimization",
+            ],
+            expandedFeatures: [
+              "Personalized strategies (tailor-made + advanced SEO)",
+              "High performance (responsive, speed, security)",
+              "GDPR/LGPD compliance and data protection best practices",
+              "Integrations (payments, WhatsApp, CRM, other APIs)",
+            ],
+            color: "primary",
+            buttonText: "Discuss my project",
+          },
+          performance: {
+            title: "Performance & Audits",
+            description: "Speed up, fix issues and rank better on Google.",
+            features: [
+              "Performance audit (Google Lighthouse)",
+              "Technical SEO optimization",
+              "Accessibility and security",
+              "Error and downtime reduction",
+              "Practical, actionable reports",
+            ],
+            expandedFeatures: [
+              "Better UX: fast, responsive and accessible site",
+              "Metrics: organic traffic ↑, Google ranking ↑, conversion ↑",
+              "Security/compliance: GDPR/LGPD, vulnerability mitigation",
+            ],
+            color: "secondary",
+            buttonText: "Start my diagnosis",
+          },
+          ai: {
+            title: "AI & Automations",
+            description: "Save time and reduce costs with practical AI.",
+            features: [
+              "Custom AI chatbots",
+              "Smart workflow automations",
+              "No-code AI apps",
+              "Strategic AI consulting",
+              "Integrations: Manychat, n8n, OpenAI, Zapier",
+            ],
+            expandedFeatures: [
+              "Automate repetitive tasks and reduce costs",
+              "Generative AI and agents for support, sales and lead recovery",
+              "Systems that learn from your data (RAG embeddings when it makes sense)",
+              "Secure integrations with your digital ecosystem",
+              "Your business working 24/7, hours saved, data-driven decisions",
+            ],
+            color: "primary",
+            buttonText: "I want an automation plan",
+          },
+        },
         items: {
           frontend: {
             title: "Frontend Development",
@@ -228,6 +289,67 @@ const resources = {
       services: {
         title: "Serviços",
         subtitle: "Soluções completas para potencializar sua presença digital",
+        moreDetails: "Mais detalhes",
+        lessDetails: "Menos detalhes",
+        cards: {
+          web: {
+            title: "Sites & Sistemas",
+            description: "Do institucional ao sistema sob medida.",
+            features: [
+              "Sites institucionais que vendem",
+              "Landing pages de alta conversão",
+              "Sistemas web sob medida",
+              "APIs eficientes e seguras",
+              "Manutenção e otimização de performance",
+            ],
+            expandedFeatures: [
+              "Estratégias personalizadas (sob medida + SEO avançado)",
+              "Alta performance (responsivo, velocidade, segurança)",
+              "Conformidade LGPD/RGPD e boas práticas de proteção de dados",
+              "Integrações (pagamentos, WhatsApp, CRM, outras APIs)",
+            ],
+            color: "primary",
+            buttonText: "Falar sobre meu projeto",
+          },
+          performance: {
+            title: "Performance & Auditoria",
+            description: "Acelere, corrija e apareça melhor no Google.",
+            features: [
+              "Auditoria de performance (Google Lighthouse)",
+              "Otimização técnica de SEO",
+              "Acessibilidade e segurança",
+              "Redução de erros e quedas",
+              "Relatórios práticos e acionáveis",
+            ],
+            expandedFeatures: [
+              "UX melhor: site rápido, responsivo e acessível",
+              "Métricas: tráfego orgânico ↑, ranking no Google ↑, conversão ↑",
+              "Segurança/conformidade: LGPD/RGPD, mitigação de vulnerabilidades",
+            ],
+            color: "secondary",
+            buttonText: "Começar meu diagnóstico",
+          },
+          ai: {
+            title: "IA & Automações",
+            description: "Economize tempo e reduza custos com IA prática.",
+            features: [
+              "Chatbots de IA personalizados",
+              "Automações inteligentes de workflow",
+              "Aplicativos de IA sem código",
+              "Consultoria estratégica em IA",
+              "Integrações: Manychat, n8n, OpenAI, Zapier",
+            ],
+            expandedFeatures: [
+              "Automatize tarefas repetitivas e reduza custos",
+              "IA generativa e agentes para atendimento, vendas e recuperação de Leads",
+              "Sistemas que aprendem com seus dados (RAG embeddings quando fizer sentido)",
+              "Integrações seguras ao seu ecossistema digital",
+              "Seu negócio trabalhando 24/7, economia de horas, decisões baseadas em dados",
+            ],
+            color: "primary",
+            buttonText: "Quero um plano de automação",
+          },
+        },
         items: {
           frontend: {
             title: "Desenvolvimento Frontend",
@@ -371,6 +493,67 @@ const resources = {
       services: {
         title: "Servicios",
         subtitle: "Soluciones completas para potenciar tu presencia digital",
+        moreDetails: "Más detalles",
+        lessDetails: "Menos detalles",
+        cards: {
+          web: {
+            title: "Sitios & Sistemas",
+            description: "Desde sitios corporativos hasta sistemas a medida.",
+            features: [
+              "Sitios corporativos que venden",
+              "Landing pages de alta conversión",
+              "Sistemas web a medida",
+              "APIs eficientes y seguras",
+              "Mantenimiento y optimización de rendimiento",
+            ],
+            expandedFeatures: [
+              "Estrategias personalizadas (a medida + SEO avanzado)",
+              "Alto rendimiento (responsivo, velocidad, seguridad)",
+              "Cumplimiento RGPD/LGPD y buenas prácticas de protección de datos",
+              "Integraciones (pagos, WhatsApp, CRM, otras APIs)",
+            ],
+            color: "primary",
+            buttonText: "Hablar sobre mi proyecto",
+          },
+          performance: {
+            title: "Rendimiento & Auditoría",
+            description: "Acelera, corrige y aparece mejor en Google.",
+            features: [
+              "Auditoría de rendimiento (Google Lighthouse)",
+              "Optimización técnica de SEO",
+              "Accesibilidad y seguridad",
+              "Reducción de errores y caídas",
+              "Informes prácticos y accionables",
+            ],
+            expandedFeatures: [
+              "Mejor UX: sitio rápido, responsivo y accesible",
+              "Métricas: tráfico orgánico ↑, ranking en Google ↑, conversión ↑",
+              "Seguridad/cumplimiento: RGPD/LGPD, mitigación de vulnerabilidades",
+            ],
+            color: "secondary",
+            buttonText: "Empezar mi diagnóstico",
+          },
+          ai: {
+            title: "IA & Automatizaciones",
+            description: "Ahorra tiempo y reduce costos con IA práctica.",
+            features: [
+              "Chatbots de IA personalizados",
+              "Automatizaciones inteligentes de workflow",
+              "Aplicaciones de IA sin código",
+              "Consultoría estratégica en IA",
+              "Integraciones: Manychat, n8n, OpenAI, Zapier",
+            ],
+            expandedFeatures: [
+              "Automatiza tareas repetitivas y reduce costos",
+              "IA generativa y agentes para soporte, ventas y recuperación de leads",
+              "Sistemas que aprenden con tus datos (RAG embeddings cuando tenga sentido)",
+              "Integraciones seguras con tu ecosistema digital",
+              "Tu negocio funcionando 24/7, ahorro de horas, decisiones basadas en datos",
+            ],
+            color: "primary",
+            buttonText: "Quiero un plan de automatización",
+          },
+        },
         items: {
           frontend: {
             title: "Desarrollo Frontend",

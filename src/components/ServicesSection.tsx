@@ -1,75 +1,42 @@
 import { Monitor, Zap, Bot, ChevronDown } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
-const services = [
-  {
-    icon: Monitor,
-    title: "Sites & Sistemas",
-    description: "Do institucional ao sistema sob medida.",
-    features: [
-      "Sites institucionais que vendem",
-      "Landing pages de alta conversão", 
-      "Sistemas web sob medida",
-      "APIs eficientes e seguras",
-      "Manutenção e otimização de performance"
-    ],
-    expandedFeatures: [
-      "Estratégias personalizadas (sob medida + SEO avançado)",
-      "Alta performance (responsivo, velocidade, segurança)",
-      "Conformidade LGPD/RGPD e boas práticas de proteção de dados",
-      "Integrações (pagamentos, WhatsApp, CRM, outras APIs)"
-    ],
-    color: "primary",
-    buttonText: "Falar sobre meu projeto",
-    buttonAction: "Começar meu diagnóstico"
-  },
-  {
-    icon: Zap,
-    title: "Performance & Auditoria", 
-    description: "Acelere, corrija e apareça melhor no Google.",
-    features: [
-      "Auditoria de performance (Google Lighthouse)",
-      "Otimização técnica de SEO",
-      "Acessibilidade e segurança", 
-      "Redução de erros e quedas",
-      "Relatórios práticos e acionáveis"
-    ],
-    expandedFeatures: [
-      "UX melhor: site rápido, responsivo e acessível",
-      "Métricas: tráfego orgânico ↑, ranking no Google ↑, conversão ↑",
-      "Segurança/conformidade: LGPD/RGPD, mitigação de vulnerabilidades"
-    ],
-    color: "secondary",
-    buttonText: "Começar meu diagnóstico", 
-    buttonAction: "Menos detalhes"
-  },
-  {
-    icon: Bot,
-    title: "IA & Automações",
-    description: "Economize tempo e reduza custos com IA prática.",
-    features: [
-      "Chatbots de IA personalizados",
-      "Automações inteligentes de workflow",
-      "Aplicativos de IA sem código",
-      "Consultoria estratégica em IA",
-      "Integrações: Manychat, n8n, OpenAI, Zapier"
-    ],
-    expandedFeatures: [
-      "Automatize tarefas repetitivas e reduza custos",
-      "IA generativa e agentes para atendimento, vendas e recuperação de Leads",
-      "Sistemas que aprendem com seus dados (RAG embeddings quando fizer sentido)",
-      "Integrações seguras ao seu ecossistema digital",
-      "Seu negócio trabalhando 24/7, economia de horas, decisões baseadas em dados"
-    ],
-    color: "primary",
-    buttonText: "Quero um plano de automação",
-    buttonAction: "Menos detalhes"
-  }
-];
+type TranslatedService = {
+  title: string;
+  description: string;
+  features: string[];
+  expandedFeatures: string[];
+  color: "primary" | "secondary";
+  buttonText: string;
+};
+
+type ServiceItem = TranslatedService & { icon: LucideIcon };
 
 export const ServicesSection = () => {
+  const { t, i18n } = useTranslation();
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
+
+  // Build translated services model
+  const services = useMemo<ServiceItem[]>(() => {
+    const web = t("services.cards.web", {
+      returnObjects: true,
+    }) as unknown as TranslatedService;
+    const performance = t("services.cards.performance", {
+      returnObjects: true,
+    }) as unknown as TranslatedService;
+    const ai = t("services.cards.ai", {
+      returnObjects: true,
+    }) as unknown as TranslatedService;
+
+    return [
+      { icon: Monitor, ...web },
+      { icon: Zap, ...performance },
+      { icon: Bot, ...ai },
+    ];
+  }, [t]);
 
   const toggleExpanded = (index: number) => {
     setExpandedCard(expandedCard === index ? null : index);
@@ -81,12 +48,10 @@ export const ServicesSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-foreground">O que eu </span>
-            <span className="text-gradient-primary">faço</span>
+            <span className="text-gradient-primary">{t("services.title")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Soluções digitais para donos de negócios: linguagem simples, 
-            entrega rápida e foco em resultado.
+            {t("services.subtitle")}
           </p>
         </div>
 
@@ -95,13 +60,17 @@ export const ServicesSection = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             const isExpanded = expandedCard === index;
-            
+
             return (
               <div key={index} className="service-card group">
                 {/* Icon */}
-                <div className={`inline-flex p-3 rounded-lg mb-6 ${
-                  service.color === 'primary' ? 'bg-primary/10 text-primary' : 'bg-secondary/10 text-secondary'
-                }`}>
+                <div
+                  className={`inline-flex p-3 rounded-lg mb-6 ${
+                    service.color === "primary"
+                      ? "bg-primary/10 text-primary"
+                      : "bg-secondary/10 text-secondary"
+                  }`}
+                >
                   <Icon className="w-8 h-8" />
                 </div>
 
@@ -117,10 +86,16 @@ export const ServicesSection = () => {
                 <ul className="space-y-3 mb-6">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start">
-                      <div className={`w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0 ${
-                        service.color === 'primary' ? 'bg-primary' : 'bg-secondary'
-                      }`} />
-                      <span className="text-sm text-muted-foreground">{feature}</span>
+                      <div
+                        className={`w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0 ${
+                          service.color === "primary"
+                            ? "bg-primary"
+                            : "bg-secondary"
+                        }`}
+                      />
+                      <span className="text-sm text-muted-foreground">
+                        {feature}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -131,10 +106,16 @@ export const ServicesSection = () => {
                     <ul className="space-y-3">
                       {service.expandedFeatures.map((feature, idx) => (
                         <li key={idx} className="flex items-start">
-                          <div className={`w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0 ${
-                            service.color === 'primary' ? 'bg-primary' : 'bg-secondary'
-                          }`} />
-                          <span className="text-sm text-muted-foreground">{feature}</span>
+                          <div
+                            className={`w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0 ${
+                              service.color === "primary"
+                                ? "bg-primary"
+                                : "bg-secondary"
+                            }`}
+                          />
+                          <span className="text-sm text-muted-foreground">
+                            {feature}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -142,11 +123,11 @@ export const ServicesSection = () => {
                 )}
 
                 {/* CTA Button */}
-                <Button 
+                <Button
                   className={`w-full mb-4 ${
-                    service.color === 'primary' 
-                      ? 'bg-primary hover:bg-primary/90 text-primary-foreground' 
-                      : 'bg-secondary hover:bg-secondary/90 text-secondary-foreground'
+                    service.color === "primary"
+                      ? "bg-primary hover:bg-primary/90 text-primary-foreground"
+                      : "bg-secondary hover:bg-secondary/90 text-secondary-foreground"
                   }`}
                 >
                   {service.buttonText}
@@ -158,11 +139,15 @@ export const ServicesSection = () => {
                   className="flex items-center justify-center w-full text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   <span className="mr-2">
-                    {isExpanded ? "Menos detalhes" : "Mais detalhes"}
+                    {isExpanded
+                      ? t("services.lessDetails")
+                      : t("services.moreDetails")}
                   </span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
-                    isExpanded ? 'rotate-180' : ''
-                  }`} />
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      isExpanded ? "rotate-180" : ""
+                    }`}
+                  />
                 </button>
               </div>
             );
