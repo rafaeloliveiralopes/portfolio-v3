@@ -73,7 +73,7 @@ export const Navigation = () => {
               <button
                 key={item.key}
                 onClick={() => scrollToSection(item.id)}
-                className="text-foreground hover:text-primary transition-colors hover-underline"
+                className="lg:text-lg text-foreground hover:text-primary transition-colors hover-underline"
               >
                 {t(`nav.${item.key}`)}
               </button>
