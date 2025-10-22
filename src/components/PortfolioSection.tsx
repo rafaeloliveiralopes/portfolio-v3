@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Filter } from "lucide-react";
+import { ExternalLink, Filter } from "lucide-react";
 
 export const PortfolioSection = () => {
   const { t } = useTranslation();
@@ -139,13 +139,6 @@ export const PortfolioSection = () => {
                       aria-label={t("portfolio.aria.viewDemo")}
                     >
                       <ExternalLink className="w-5 h-5 text-white" />
-                    </a>
-                    <a
-                      href={project.links.github}
-                      className="p-3 bg-background/20 rounded-full hover:bg-background/40 transition-colors"
-                      aria-label={t("portfolio.aria.viewCode")}
-                    >
-                      <Github className="w-5 h-5 text-white" />
                     </a>
                   </div>
 
