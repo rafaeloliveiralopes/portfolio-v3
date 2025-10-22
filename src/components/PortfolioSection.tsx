@@ -126,7 +126,7 @@ export const PortfolioSection = () => {
                   />
 
                   {/* Overlay with Links */}
-                  <div
+                  {/* <div
                     className={`absolute inset-0 bg-primary/90 flex items-center justify-center space-x-4 transition-opacity duration-300 ${
                       hoveredProject === project.id
                         ? "opacity-100"
@@ -140,7 +140,7 @@ export const PortfolioSection = () => {
                     >
                       <ExternalLink className="w-5 h-5 text-white" />
                     </a>
-                  </div>
+                  </div> */}
 
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
