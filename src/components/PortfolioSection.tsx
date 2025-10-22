@@ -161,19 +161,25 @@ export const PortfolioSection = () => {
                   </p>
 
                   {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded-md"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="mb-4">
+                    <h4 className="text-sm font-semibold text-foreground mb-2">
+                      {t("portfolio.techStack")}
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded-md"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Metrics */}
-                  <div className="grid grid-cols-3 gap-2 text-center">
+                  {/* Keep disabled until have metrics */}
+                  {/* <div className="grid grid-cols-3 gap-2 text-center">
                     {Object.entries(
                       (project as Record<string, unknown>).metrics as Record<
                         string,
@@ -189,7 +195,7 @@ export const PortfolioSection = () => {
                         </div>
                       </div>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

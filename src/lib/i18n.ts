@@ -179,6 +179,7 @@ const resources = {
           "Real solutions that generated concrete results for my clients",
         viewProject: "View Project",
         viewAll: "View All Projects",
+        techStack: "Technologies:",
         filters: {
           all: "All",
           web: "Web",
@@ -194,7 +195,7 @@ const resources = {
           1: {
             title: "Landing Page",
             description:
-              "Modern Landing Page for a beauty studio, focused on attracting new clients and showcasing services.",
+              "Professional landing page for beauty studios, focused on visibility, client acquisition, and service valorization.",
             category: "Web",
             metrics: {
               performance: "+20% conversion",
@@ -570,6 +571,7 @@ const resources = {
           "Soluções reais que geraram resultados concretos para meus clientes",
         viewProject: "Ver Projeto",
         viewAll: "Ver Todos os Projetos",
+        techStack: "Tecnologias:",
         filters: {
           all: "Todos",
           web: "Web",
@@ -585,8 +587,7 @@ const resources = {
           1: {
             title: "Landing Page",
             description:
-              "Landing Page moderna para studio de beleza, focada em atrair novos clientes e mostrar os serviços.",
-            category: "Web",
+              "Landing page profissional para studios de beleza, com foco em visibilidade, captação de clientes e valorização dos serviços.",
             metrics: {
               performance: "+20% conversão",
               seo: "95% Lighthouse",
@@ -966,6 +967,7 @@ const resources = {
           "Soluciones reales que generaron resultados concretos para mis clientes",
         viewProject: "Ver Proyecto",
         viewAll: "Ver Todos los Proyectos",
+        techStack: "Tecnologías:",
         filters: {
           all: "Todos",
           web: "Web",
@@ -981,7 +983,7 @@ const resources = {
           1: {
             title: "Landing Page",
             description:
-              "Landing Page moderna para un estudio de belleza, enfocada en atraer nuevos clientes y mostrar los servicios.",
+              "Landing page profesional para estudios de belleza, enfocada en visibilidad, captación de clientes y valorización de servicios.",
             category: "Web",
             metrics: {
               performance: "+20% conversión",
