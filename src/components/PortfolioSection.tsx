@@ -207,14 +207,15 @@ export const PortfolioSection = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
+        {/* Disabled untill have more projects */}
+        {/* <div className="text-center mt-12">
           <Button
             size="lg"
             className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
           >
             {t("portfolio.viewAll")}
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
