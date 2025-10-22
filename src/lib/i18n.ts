@@ -203,14 +203,13 @@ const resources = {
             },
           },
           2: {
-            title: "Management System",
+            title: "Registration System",
             description:
-              "Complete platform for managing customers, sales, and real-time reports.",
+              "Complete platform for managing more than 700 members of a Quilombola NGO.",
             category: "System",
             metrics: {
-              performance: "50% less time",
-              seo: "Full integration",
-              users: "500+ companies",
+              performance: "50% faster queries",
+              compliance: "LGPD compliance",
             },
           },
           3: {
@@ -595,14 +594,13 @@ const resources = {
             },
           },
           2: {
-            title: "Sistema de Gestão",
+            title: "Sistema de Cadastro",
             description:
-              "Plataforma completa para gestão de clientes, vendas e relatórios em tempo real.",
+              "Plataforma segura e eficiente para gestão de mais de 700 associados da Associação Quilombola Urbana João Borges Vieira, com foco em privacidade e conformidade com a LGPD.",
             category: "Sistema",
             metrics: {
-              performance: "50% menos tempo",
-              seo: "Integração completa",
-              users: "500+ empresas",
+              performance: "Consultas 50% mais rápidas",
+              compliance: "Conformidade com a LGPD",
             },
           },
           3: {
@@ -997,9 +995,8 @@ const resources = {
               "Plataforma completa para gestión de clientes, ventas y reportes en tiempo real.",
             category: "Sistema",
             metrics: {
-              performance: "50% menos tiempo",
-              seo: "Integración completa",
-              users: "500+ empresas",
+              performance: "Consultas 50% más rápidas",
+              compliance: "Cumplimiento RGPD",
             },
           },
           3: {
