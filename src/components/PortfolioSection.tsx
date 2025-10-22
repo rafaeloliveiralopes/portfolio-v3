@@ -75,7 +75,7 @@ export const PortfolioSection = () => {
         });
 
   return (
-    <section id="projetos" className="py-20 relative">
+    <section id="projetos" className="py-20 relative bg-zinc-950">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -87,7 +87,7 @@ export const PortfolioSection = () => {
               {t("portfolio.title").split(" ").slice(-1)[0]}
             </span>
           </h2>
-          <p className="text-2xl max-w-3xl mx-auto mb-8">
+          <p className="text-xl max-w-3xl mx-auto mb-8">
             {t("portfolio.subtitle")}
           </p>
 
