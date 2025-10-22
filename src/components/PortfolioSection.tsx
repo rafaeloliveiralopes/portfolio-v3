@@ -10,7 +10,7 @@ export const PortfolioSection = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   // Dynamic project data from i18n
-  const projectIds = [1, 2, 3, 4, 5, 6];
+  const projectIds = [1, 2, 3, 4, 6];
   const projects = projectIds.map((id) => {
     const projectData = t(`portfolio.projects.${id}`, { returnObjects: true });
     return {
@@ -37,7 +37,7 @@ export const PortfolioSection = () => {
     const images: Record<number, string> = {
       1: "/mockup-studio-de-beleza.png",
       2: "/sistema-de-cadastro.png",
-      3: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80",
+      3: "/robot-humanoid.jpg",
       4: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
       5: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
       6: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&q=80",
@@ -48,8 +48,15 @@ export const PortfolioSection = () => {
   // Helper function to get project tech stack
   function getProjectTech(id: number): string[] {
     const techStacks: Record<number, string[]> = {
-      1: ["React", "Node.js", "Stripe", "MongoDB"],
-      2: ["Next.js", "PostgreSQL", "Prisma", "Tailwind"],
+      1: ["Javascript", "React", "NodeJS", "Bootstrap"],
+      2: [
+        "AngularJS",
+        "TailwindCSS",
+        "Docker",
+        "PostgreSQL",
+        "Java",
+        "Spring Boot",
+      ],
       3: ["OpenAI", "Webhook", "Zapier", "WhatsApp API"],
       4: ["React", "Framer Motion", "Analytics", "A/B Testing"],
       5: ["React Native", "Firebase", "Maps API", "Push Notifications"],
@@ -69,14 +76,14 @@ export const PortfolioSection = () => {
 
   return (
     <section id="projetos" className="py-20 relative">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-foreground">{t("portfolio.title")} </span>
             <span className="text-gradient-primary"></span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-2xl max-w-3xl mx-auto mb-8">
             {t("portfolio.subtitle")}
           </p>
 
