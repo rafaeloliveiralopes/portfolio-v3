@@ -48,8 +48,15 @@ export const PortfolioSection = () => {
   // Helper function to get project tech stack
   function getProjectTech(id: number): string[] {
     const techStacks: Record<number, string[]> = {
-      1: ["React", "Node.js", "Stripe", "MongoDB"],
-      2: ["Next.js", "PostgreSQL", "Prisma", "Tailwind"],
+      1: ["Javascript", "React", "Node.js", "Bootstrap"],
+      2: [
+        "AngularJS",
+        "TailwindCSS",
+        "Docker",
+        "PostgreSQL",
+        "Java",
+        "Spring Boot",
+      ],
       3: ["OpenAI", "Webhook", "Zapier", "WhatsApp API"],
       4: ["React", "Framer Motion", "Analytics", "A/B Testing"],
       5: ["React Native", "Firebase", "Maps API", "Push Notifications"],
