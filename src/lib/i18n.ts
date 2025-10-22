@@ -184,7 +184,6 @@ const resources = {
           web: "Web",
           system: "System",
           ai: "AI",
-          mobile: "Mobile",
           automation: "Automation",
         },
         aria: {
@@ -193,14 +192,14 @@ const resources = {
         },
         projects: {
           1: {
-            title: "Modern E-commerce",
+            title: "Landing Page",
             description:
-              "Complete online store with integrated payments and admin dashboard.",
+              "Modern Landing Page for a beauty studio, focused on attracting new clients and showcasing services.",
             category: "Web",
             metrics: {
               performance: "+20% conversion",
               seo: "95% Lighthouse",
-              users: "10k+ users",
+              users: "100+ visitors",
             },
           },
           2: {
@@ -585,14 +584,14 @@ const resources = {
         },
         projects: {
           1: {
-            title: "E-commerce Moderno",
+            title: "Landing Page",
             description:
-              "Loja online completa com sistema de pagamentos integrado e painel administrativo.",
+              "Landing Page moderna para studio de beleza, focada em atrair novos clientes e mostrar os serviços.",
             category: "Web",
             metrics: {
               performance: "+20% conversão",
               seo: "95% Lighthouse",
-              users: "10k+ usuários",
+              users: "100+ visitantes",
             },
           },
           2: {
@@ -974,8 +973,7 @@ const resources = {
           web: "Web",
           system: "Sistema",
           ai: "IA",
-          mobile: "Móvil",
-          automation: "Automatización",
+          utomation: "Automatización",
         },
         aria: {
           viewDemo: "Ver demo",
@@ -983,14 +981,14 @@ const resources = {
         },
         projects: {
           1: {
-            title: "E-commerce Moderno",
+            title: "Landing Page",
             description:
-              "Tienda online completa con sistema de pagos integrado y panel administrativo.",
+              "Landing Page moderna para un estudio de belleza, enfocada en atraer nuevos clientes y mostrar los servicios.",
             category: "Web",
             metrics: {
               performance: "+20% conversión",
               seo: "95% Lighthouse",
-              users: "10k+ usuarios",
+              users: "100+ visitantes",
             },
           },
           2: {

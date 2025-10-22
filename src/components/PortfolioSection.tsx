@@ -26,7 +26,7 @@ export const PortfolioSection = () => {
   });
 
   // Category mapping
-  const categoryKeys = ["all", "web", "system", "ai", "mobile", "automation"];
+  const categoryKeys = ["all", "web", "system", "ai", "automation"];
   const categories = categoryKeys.map((key) => ({
     key,
     label: t(`portfolio.filters.${key}`),
@@ -35,7 +35,7 @@ export const PortfolioSection = () => {
   // Helper function to get project images
   function getProjectImage(id: number): string {
     const images: Record<number, string> = {
-      1: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
+      1: "/public/mockup-studio-de-beleza.png",
       2: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
       3: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80",
       4: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
