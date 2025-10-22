@@ -26,7 +26,7 @@ export const PortfolioSection = () => {
   });
 
   // Category mapping
-  const categoryKeys = ["all", "web", "system", "ai", "mobile", "automation"];
+  const categoryKeys = ["all", "web", "system", "ai", "automation"];
   const categories = categoryKeys.map((key) => ({
     key,
     label: t(`portfolio.filters.${key}`),

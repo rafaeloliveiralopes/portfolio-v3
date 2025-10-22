@@ -184,7 +184,6 @@ const resources = {
           web: "Web",
           system: "System",
           ai: "AI",
-          mobile: "Mobile",
           automation: "Automation",
         },
         aria: {
@@ -974,8 +973,7 @@ const resources = {
           web: "Web",
           system: "Sistema",
           ai: "IA",
-          mobile: "Móvil",
-          automation: "Automatización",
+          utomation: "Automatización",
         },
         aria: {
           viewDemo: "Ver demo",
