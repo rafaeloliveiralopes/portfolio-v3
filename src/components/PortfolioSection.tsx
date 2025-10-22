@@ -76,14 +76,14 @@ export const PortfolioSection = () => {
 
   return (
     <section id="projetos" className="py-20 relative">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-foreground">{t("portfolio.title")} </span>
             <span className="text-gradient-primary"></span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-2xl max-w-3xl mx-auto mb-8">
             {t("portfolio.subtitle")}
           </p>
 
