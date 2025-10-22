@@ -590,8 +590,8 @@ const resources = {
               "Landing page profissional para studios de beleza, com foco em visibilidade, captação de clientes e valorização dos serviços.",
             metrics: {
               performance: "+20% conversão",
-              seo: "95% Lighthouse",
-              users: "100+ visitantes",
+              // seo: "95% Lighthouse",
+              // users: "100+ visitantes",
             },
           },
           2: {
@@ -599,54 +599,54 @@ const resources = {
             description:
               "Plataforma segura e eficiente para gestão de mais de 700 associados da Associação Quilombola Urbana João Borges Vieira, com foco em privacidade e conformidade com a LGPD.",
             category: "Sistema",
-            metrics: {
-              performance: "Consultas 50% mais rápidas",
-              compliance: "Conformidade com a LGPD",
-            },
+            // metrics: {
+            //   performance: "Consultas 50% mais rápidas",
+            //   compliance: "Conformidade com a LGPD",
+            // },
           },
           3: {
             title: "Chatbot IA para Vendas",
             description:
               "Assistente virtual inteligente que qualifica leads e agenda reuniões automaticamente.",
             category: "IA",
-            metrics: {
-              performance: "24/7 atendimento",
-              seo: "300% mais leads",
-              users: "90% satisfação",
-            },
+            // metrics: {
+            //   performance: "24/7 atendimento",
+            //   seo: "300% mais leads",
+            //   users: "90% satisfação",
+            // },
           },
           4: {
             title: "Landing Page Alto Impacto",
             description:
               "Página de conversão otimizada para campanha de lançamento de produto digital.",
             category: "Web",
-            metrics: {
-              performance: "85% conversão",
-              seo: "Top 3 Google",
-              users: "50k+ visits",
-            },
+            // metrics: {
+            //   performance: "85% conversão",
+            //   seo: "Top 3 Google",
+            //   users: "50k+ visits",
+            // },
           },
           5: {
             title: "App Mobile Delivery",
             description:
               "Aplicativo de delivery com geolocalização, pagamento integrado e sistema de avaliação.",
             category: "Mobile",
-            metrics: {
-              performance: "4.8★ rating",
-              seo: "100k+ downloads",
-              users: "500+ restaurantes",
-            },
+            // metrics: {
+            //   performance: "4.8★ rating",
+            //   seo: "100k+ downloads",
+            //   users: "500+ restaurantes",
+            // },
           },
           6: {
             title: "Automação de Marketing",
             description:
               "Sistema que integra CRM, email marketing e análise de dados para maximizar vendas.",
             category: "Automação",
-            metrics: {
-              performance: "400% ROI",
-              seo: "75% menos trabalho manual",
-              users: "200+ campanhas",
-            },
+            // metrics: {
+            //   performance: "400% ROI",
+            //   seo: "75% menos trabalho manual",
+            //   users: "200+ campanhas",
+            // },
           },
         },
       },
@@ -985,65 +985,65 @@ const resources = {
             description:
               "Landing page profesional para estudios de belleza, enfocada en visibilidad, captación de clientes y valorización de servicios.",
             category: "Web",
-            metrics: {
-              performance: "+20% conversión",
-              seo: "95% Lighthouse",
-              users: "100+ visitantes",
-            },
+            // metrics: {
+            //   performance: "+20% conversión",
+            //   seo: "95% Lighthouse",
+            //   users: "100+ visitantes",
+            // },
           },
           2: {
             title: "Sistema de Gestión",
             description:
               "Plataforma completa para gestión de clientes, ventas y reportes en tiempo real.",
             category: "Sistema",
-            metrics: {
-              performance: "Consultas 50% más rápidas",
-              compliance: "Cumplimiento RGPD",
-            },
+            // metrics: {
+            //   performance: "Consultas 50% más rápidas",
+            //   compliance: "Cumplimiento RGPD",
+            // },
           },
           3: {
             title: "Chatbot IA para Ventas",
             description:
               "Asistente virtual inteligente que califica leads y agenda reuniones automáticamente.",
             category: "IA",
-            metrics: {
-              performance: "24/7 atención",
-              seo: "300% más leads",
-              users: "90% satisfacción",
-            },
+            // metrics: {
+            //   performance: "24/7 atención",
+            //   seo: "300% más leads",
+            //   users: "90% satisfacción",
+            // },
           },
           4: {
             title: "Landing Page de Alto Impacto",
             description:
               "Página de conversión optimizada para campaña de lanzamiento de producto digital.",
             category: "Web",
-            metrics: {
-              performance: "85% conversión",
-              seo: "Top 3 Google",
-              users: "50k+ visitas",
-            },
+            // metrics: {
+            //   performance: "85% conversión",
+            //   seo: "Top 3 Google",
+            //   users: "50k+ visitas",
+            // },
           },
           5: {
             title: "App Móvil de Delivery",
             description:
               "Aplicación de delivery con geolocalización, pago integrado y sistema de valoración.",
             category: "Móvil",
-            metrics: {
-              performance: "4.8★ rating",
-              seo: "100k+ descargas",
-              users: "500+ restaurantes",
-            },
+            // metrics: {
+            //   performance: "4.8★ rating",
+            //   seo: "100k+ descargas",
+            //   users: "500+ restaurantes",
+            // },
           },
           6: {
             title: "Automatización de Marketing",
             description:
               "Sistema que integra CRM, email marketing y análisis de datos para maximizar ventas.",
             category: "Automatización",
-            metrics: {
-              performance: "400% ROI",
-              seo: "75% menos trabajo manual",
-              users: "200+ campañas",
-            },
+            // metrics: {
+            //   performance: "400% ROI",
+            //   seo: "75% menos trabajo manual",
+            //   users: "200+ campañas",
+            // },
           },
         },
       },
