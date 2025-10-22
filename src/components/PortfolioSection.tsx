@@ -80,8 +80,12 @@ export const PortfolioSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-foreground">{t("portfolio.title")} </span>
-            <span className="text-gradient-primary"></span>
+            <span className="text-foreground">
+              {t("portfolio.title").split(" ").slice(0, -1).join(" ")}{" "}
+            </span>
+            <span className="text-gradient-primary">
+              {t("portfolio.title").split(" ").slice(-1)[0]}
+            </span>
           </h2>
           <p className="text-2xl max-w-3xl mx-auto mb-8">
             {t("portfolio.subtitle")}
