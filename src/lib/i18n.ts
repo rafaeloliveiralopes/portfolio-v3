@@ -176,7 +176,7 @@ const resources = {
       portfolio: {
         title: "Featured Projects",
         subtitle:
-          "Real solutions that generated concrete results for my clients",
+          "Custom solutions that strengthen your business competitiveness",
         viewProject: "View Project",
         viewAll: "View All Projects",
         techStack: "Technologies:",
@@ -568,7 +568,7 @@ const resources = {
       portfolio: {
         title: "Projetos em Destaque",
         subtitle:
-          "Soluções reais que geraram resultados concretos para meus clientes",
+          "Soluções sob medida que fortalecem a competitividade do seu negócio",
         viewProject: "Ver Projeto",
         viewAll: "Ver Todos os Projetos",
         techStack: "Tecnologias:",
@@ -965,7 +965,7 @@ const resources = {
       portfolio: {
         title: "Proyectos Destacados",
         subtitle:
-          "Soluciones reales que generaron resultados concretos para mis clientes",
+          "Soluciones a medida que fortalecen la competitividad de tu negocio",
         viewProject: "Ver Proyecto",
         viewAll: "Ver Todos los Proyectos",
         techStack: "Tecnologías:",
