@@ -588,11 +588,12 @@ const resources = {
             title: "Landing Page",
             description:
               "Landing page profissional para studios de beleza, com foco em visibilidade, captação de clientes e valorização dos serviços.",
-            metrics: {
-              performance: "+20% conversão",
-              // seo: "95% Lighthouse",
-              // users: "100+ visitantes",
-            },
+            category: "Web",
+            // metrics: {
+            //   performance: "+20% conversão",
+            //   seo: "95% Lighthouse",
+            //   users: "100+ visitantes",
+            // },
           },
           2: {
             title: "Sistema de Cadastro",
