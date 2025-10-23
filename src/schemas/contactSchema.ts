@@ -16,9 +16,8 @@ export const contactFormSchema = z.object({
     .max(100, "Email must be less than 100 characters"),
   subject: z
     .string()
-    .max(200, "Subject must be less than 200 characters")
-    .optional()
-    .or(z.literal("")),
+    .min(1, "Subject is required")
+    .max(200, "Subject must be less than 200 characters"),
   message: z
     .string()
     .min(10, "Message must be at least 10 characters")
