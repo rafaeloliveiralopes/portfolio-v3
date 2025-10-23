@@ -1,8 +1,18 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import {
   Mail,
   Phone,
@@ -12,6 +22,10 @@ import {
   LucideIcon,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import {
+  contactFormSchema,
+  type ContactFormData,
+} from "@/schemas/contactSchema";
 
 interface ContactInfoItem {
   icon: LucideIcon;
@@ -22,6 +36,18 @@ interface ContactInfoItem {
 
 export const ContactSection = () => {
   const { t } = useTranslation();
+  const { toast } = useToast();
+
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      fullName: "",
+      phone: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
+  });
 
   const contactInfo = useMemo<ContactInfoItem[]>(
     () => [
@@ -46,52 +72,35 @@ export const ContactSection = () => {
     [t]
   );
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulated form submission
+  const onSubmit = async (data: ContactFormData) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to send email");
+      }
 
       toast({
         title: t("contact.toast.successTitle"),
         description: t("contact.toast.successDescription"),
       });
 
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        message: "",
-      });
+      form.reset();
     } catch (error) {
+      console.error("Error sending email:", error);
       toast({
         title: t("contact.toast.errorTitle"),
         description: t("contact.toast.errorDescription"),
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -177,99 +186,123 @@ export const ContactSection = () => {
 
           {/* Contact Form */}
           <div className="bg-card border border-border rounded-2xl p-8 shadow-elegant">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    {t("contact.form.name")}
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder={t("contact.form.namePlaceholder")}
-                    required
-                    className="bg-background border-border focus:border-primary"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    {t("contact.form.email")}
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder={t("contact.form.emailPlaceholder")}
-                    required
-                    className="bg-background border-border focus:border-primary"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="company"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {t("contact.form.company")}
-                </label>
-                <Input
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  placeholder={t("contact.form.companyPlaceholder")}
-                  className="bg-background border-border focus:border-primary"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {t("contact.form.message")}
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  placeholder={t("contact.form.messagePlaceholder")}
-                  rows={5}
-                  required
-                  className="bg-background border-border focus:border-primary resize-none"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow text-lg py-3"
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
               >
-                {isSubmitting ? (
-                  <div className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-foreground mr-2"></div>
-                    {t("contact.form.sending")}
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-center">
-                    <Send className="w-5 h-5 mr-2" />
-                    {t("contact.form.send")}
-                  </div>
-                )}
-              </Button>
-            </form>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="fullName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t("contact.form.name")}</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder={t("contact.form.namePlaceholder")}
+                            className="bg-background border-border focus:border-primary"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t("contact.form.email")}</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="email"
+                            placeholder={t("contact.form.emailPlaceholder")}
+                            className="bg-background border-border focus:border-primary"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t("contact.form.phone")}</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={t("contact.form.phonePlaceholder")}
+                          className="bg-background border-border focus:border-primary"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="subject"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t("contact.form.subject")}</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={t("contact.form.subjectPlaceholder")}
+                          className="bg-background border-border focus:border-primary"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t("contact.form.message")}</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder={t("contact.form.messagePlaceholder")}
+                          rows={5}
+                          className="bg-background border-border focus:border-primary resize-none"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <Button
+                  type="submit"
+                  disabled={form.formState.isSubmitting}
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow text-lg py-3"
+                >
+                  {form.formState.isSubmitting ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-foreground mr-2"></div>
+                      {t("contact.form.sending")}
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center">
+                      <Send className="w-5 h-5 mr-2" />
+                      {t("contact.form.send")}
+                    </div>
+                  )}
+                </Button>
+              </form>
+            </Form>
 
             {/* Form Footer */}
             <div className="mt-6 pt-6 border-t border-border">

@@ -21,28 +21,33 @@ A modern, fully responsive portfolio website showcasing Rafael Lopes' work as a 
 ## 🚀 Tech Stack
 
 ### Frontend
+
 - **React 18.3.1** - Modern UI library
 - **TypeScript 5.8.3** - Type-safe JavaScript
 - **Vite 5.4.19** - Next-generation frontend tooling
 - **React Router DOM 6.30.1** - Client-side routing
 
 ### Styling
+
 - **Tailwind CSS 3.4.17** - Utility-first CSS framework
 - **shadcn/ui** - High-quality, accessible UI components
 - **Radix UI** - Unstyled, accessible component primitives
 - **Lucide React** - Beautiful hand-crafted icons
 
 ### State Management & Forms
+
 - **TanStack Query 5.83.0** - Powerful data synchronization
 - **React Hook Form 7.61.1** - Performant form handling
 - **Zod 3.25.76** - TypeScript-first schema validation
 
 ### Internationalization
+
 - **i18next 25.4.2** - Internationalization framework
 - **react-i18next 15.7.3** - React integration for i18next
 - **i18next-browser-languagedetector** - Automatic language detection
 
 ### UI Enhancements
+
 - **next-themes** - Perfect dark mode in React
 - **Sonner** - Opinionated toast notifications
 - **Embla Carousel** - Lightweight carousel library
@@ -51,18 +56,21 @@ A modern, fully responsive portfolio website showcasing Rafael Lopes' work as a 
 ## 📦 Installation
 
 ### Prerequisites
+
 - Node.js >= 18.0.0
 - pnpm >= 8.0.0 (recommended) or npm
 
 ### Setup
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/rafaeloliveiralopes/portfolio-v3.git
 cd portfolio-v3
 ```
 
-2. Install dependencies:
+## 2. Install dependencies
+
 ```bash
 # Using pnpm (recommended)
 pnpm install
@@ -71,7 +79,16 @@ pnpm install
 npm install
 ```
 
-3. Start the development server:
+## 3. Start the development server
+
+**For full functionality (including contact form API):**
+
+```bash
+pnpm dev:api
+```
+
+**For frontend-only development:**
+
 ```bash
 # Using pnpm
 pnpm dev
@@ -80,15 +97,25 @@ pnpm dev
 npm run dev
 ```
 
-4. Open your browser and navigate to:
-```
+⚠️ **Note:** The contact form requires `npx vercel dev` to work locally as it uses serverless functions.
+
+## 4. Open your browser and navigate to
+
+```bash
+# With Vercel Dev
+http://localhost:3000
+
+# With Vite only
 http://localhost:8080
 ```
 
 ## 🛠️ Available Scripts
 
 ```bash
-# Start development server
+# Start development server with Vercel (recommended - includes API functions)
+pnpm dev:api
+
+# Start frontend-only development server
 pnpm dev
 
 # Build for production
@@ -106,8 +133,10 @@ pnpm lint
 
 ## 📁 Project Structure
 
-```
+```text
 portfolio-v3/
+├── api/                   # Vercel Serverless Functions
+│   └── sendEmail.ts      # Contact form email handler
 ├── public/                 # Static assets
 │   └── robots.txt         # SEO robots configuration
 ├── src/
@@ -128,10 +157,14 @@ portfolio-v3/
 │   ├── pages/            # Page components
 │   │   ├── Index.tsx     # Main landing page
 │   │   └── NotFound.tsx  # 404 page
+│   ├── schemas/          # Zod validation schemas
+│   │   └── contactSchema.ts
 │   ├── App.tsx           # Main App component
 │   ├── main.tsx          # Application entry point
 │   └── index.css         # Global styles
+├── .vercel/              # Vercel project configuration (auto-generated)
 ├── index.html            # HTML template
+├── vercel.json           # Vercel deployment configuration
 ├── vite.config.ts        # Vite configuration
 ├── tailwind.config.ts    # Tailwind CSS configuration
 ├── tsconfig.json         # TypeScript configuration
@@ -141,11 +174,33 @@ portfolio-v3/
 ## 🌍 Internationalization
 
 The project supports three languages out of the box:
+
 - 🇺🇸 English (en)
 - 🇧🇷 Portuguese (pt)
 - 🇪🇸 Spanish (es)
 
 Language detection is automatic based on browser settings, and the preference is stored in localStorage. All translations are managed in `src/lib/i18n.ts`.
+
+## 📧 Contact Form
+
+The contact form uses:
+
+- **React Hook Form** - Form state management
+- **Zod** - Schema validation
+- **Nodemailer** - Email sending via Vercel Serverless Function
+
+### Setup for Production
+
+1. Configure environment variables in Vercel Dashboard:
+
+   - `GMAIL_USER` - Your Gmail address
+   - `GMAIL_PASS` - Gmail App Password (not regular password)
+
+2. See `CONTACT_FORM_SETUP.md` for detailed instructions
+
+### Local Development
+
+Use `pnpm dev:api` to test the contact form locally with the API function.
 
 ## 🎨 Design Features
 
@@ -159,13 +214,17 @@ Language detection is automatic based on browser settings, and the preference is
 ## 🔧 Configuration
 
 ### Vite
+
 The project uses Vite with React SWC plugin for faster builds. Configuration can be modified in `vite.config.ts`.
 
 ### Tailwind CSS
+
 Custom theme extensions including colors, animations, and shadows are defined in `tailwind.config.ts`.
 
 ### TypeScript
+
 Strict type checking is enabled. Configuration files:
+
 - `tsconfig.json` - Base TypeScript configuration
 - `tsconfig.app.json` - Application-specific settings
 - `tsconfig.node.json` - Node.js-specific settings
@@ -183,7 +242,8 @@ This project is private and all rights are reserved by Rafael Lopes.
 
 ## 👤 Author
 
-**Rafael Lopes**
+### Rafael Lopes
+
 - Full-Stack Developer
 - Specializing in React, TypeScript, and modern web technologies
 - 3+ years of experience helping entrepreneurs digitize their businesses
