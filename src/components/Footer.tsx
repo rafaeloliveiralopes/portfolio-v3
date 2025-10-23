@@ -2,6 +2,7 @@ import { Mail, ExternalLink, ArrowUp } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { SiGithub, SiLinkedin } from "react-icons/si";
+import { buildWhatsAppUrl } from "@/lib/whatsappUtils";
 
 const socialLinks = [
   {
@@ -23,6 +24,15 @@ const socialLinks = [
 
 export const Footer = () => {
   const { t } = useTranslation();
+
+  // Build the localized WhatsApp URL
+  const whatsappUrl = buildWhatsAppUrl(
+    "+55 62 99213-6842",
+    "whatsapp.ctaMessage",
+    {
+      name: "Rafael",
+    }
+  );
 
   const quickLinks = [
     { name: t("footer.navigation.about"), href: "#sobre" },
@@ -118,7 +128,7 @@ export const Footer = () => {
                     className="bg-secondary hover:bg-green-500 text-secondary-foreground"
                   >
                     <a
-                      href="https://wa.me/5562992136842?text=Ol%C3%A1%20Rafael%2C%20vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                      href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={t("footer.cta.whatsapp")}
@@ -181,7 +191,9 @@ export const Footer = () => {
                     contato@rafaellopes.dev
                   </a>
                   <a
-                    href="https://wa.me/5562992136842"
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block text-muted-foreground hover:text-primary transition-colors"
                   >
                     +55 (62) 99213-6842
