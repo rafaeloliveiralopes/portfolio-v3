@@ -1,15 +1,16 @@
-import { Github, Linkedin, Mail, ExternalLink, ArrowUp } from "lucide-react";
+import { Mail, ExternalLink, ArrowUp } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 
 const socialLinks = [
   {
-    icon: Github,
+    icon: SiGithub,
     href: "https://github.com/rafaeloliveiralopes",
     label: "GitHub",
   },
   {
-    icon: Linkedin,
+    icon: SiLinkedin,
     href: "https://www.linkedin.com/in/rafael-lopes-desenvolvedor-fullstack/",
     label: "LinkedIn",
   },
