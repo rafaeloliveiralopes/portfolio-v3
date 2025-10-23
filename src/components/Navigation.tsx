@@ -62,8 +62,8 @@ export const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="text-1xl font-bold">
-            <span className="text-foreground">rafael</span>
-            <span className="text-gradient-primary">lopes</span>
+            <span className="text-foreground">Rafael</span>
+            <span className="text-gradient-primary">Lopes</span>
             <span className="text-secondary">.dev</span>
           </div>
 
