@@ -349,3 +349,73 @@
     width: 100%;
   }
 }
+
+/* React International Phone Custom Styles */
+.react-international-phone-input-container {
+  background-color: hsl(var(--background)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 0.375rem !important;
+  transition: border-color 0.3s ease;
+}
+
+.react-international-phone-input-container:focus-within {
+  border-color: hsl(var(--primary)) !important;
+  outline: none;
+  box-shadow: 0 0 0 1px hsl(var(--primary));
+}
+
+.react-international-phone-input {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: 0 !important;
+  outline: none !important;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+.react-international-phone-input::placeholder {
+  color: hsl(var(--muted-foreground));
+  opacity: 0.7;
+}
+
+.react-international-phone-country-selector-button {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: 0 !important;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.react-international-phone-country-selector-button:hover {
+  background-color: hsl(var(--muted)) !important;
+}
+
+.react-international-phone-country-selector-dropdown {
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+  border-radius: 0.375rem;
+  max-height: 15rem;
+  overflow-y: auto;
+  z-index: 50;
+}
+
+.react-international-phone-country-selector-dropdown__list-item {
+  color: hsl(var(--foreground)) !important;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.react-international-phone-country-selector-dropdown__list-item:hover {
+  background-color: hsl(var(--muted)) !important;
+}
+
+.react-international-phone-country-selector-dropdown__list-item--selected {
+  background-color: hsl(var(--primary) / 0.2) !important;
+  color: hsl(var(--primary)) !important;
+  font-weight: 500;
+}
