@@ -69,7 +69,7 @@ export const Footer = () => {
               <div className="mb-6">
                 <div className="text-3xl font-bold mb-4">
                   <span className="text-foreground">Rafael</span>
-                  <span className="text-gradient-primary">.Lopes</span>
+                  <span className="text-gradient-primary">Lopes</span>
                   <span className="text-secondary">.dev</span>
                 </div>
                 <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
