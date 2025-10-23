@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import {
-  contactFormSchema,
+  getContactFormSchema,
   type ContactFormData,
 } from "@/schemas/contactSchema";
 import { PhoneInput } from "react-international-phone";
@@ -37,11 +37,15 @@ interface ContactInfoItem {
 }
 
 export const ContactSection = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { toast } = useToast();
 
+  // Create schema with current language
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const schema = useMemo(() => getContactFormSchema(), [i18n.language]);
+
   const form = useForm<ContactFormData>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(schema),
     defaultValues: {
       fullName: "",
       phone: "",
@@ -50,6 +54,11 @@ export const ContactSection = () => {
       message: "",
     },
   });
+
+  // Update resolver when language changes
+  useEffect(() => {
+    form.clearErrors();
+  }, [i18n.language, form]);
 
   const contactInfo = useMemo<ContactInfoItem[]>(
     () => [

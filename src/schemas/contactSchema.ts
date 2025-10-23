@@ -1,27 +1,30 @@
 import { z } from "zod";
+import i18n from "@/lib/i18n";
 
-export const contactFormSchema = z.object({
-  fullName: z
-    .string()
-    .min(2, "Name must be at least 2 characters")
-    .max(100, "Name must be less than 100 characters"),
-  phone: z
-    .string()
-    .max(30, "Phone must be less than 30 characters")
-    .optional()
-    .or(z.literal("")),
-  email: z
-    .string()
-    .email("Invalid email address")
-    .max(100, "Email must be less than 100 characters"),
-  subject: z
-    .string()
-    .min(1, "Subject is required")
-    .max(200, "Subject must be less than 200 characters"),
-  message: z
-    .string()
-    .min(10, "Message must be at least 10 characters")
-    .max(5000, "Message must be less than 5000 characters"),
-});
+export const getContactFormSchema = () => {
+  return z.object({
+    fullName: z
+      .string()
+      .min(2, { message: i18n.t("contact.validation.nameMin") })
+      .max(100, { message: i18n.t("contact.validation.nameMax") }),
+    phone: z
+      .string()
+      .max(30, { message: i18n.t("contact.validation.phoneMax") })
+      .optional()
+      .or(z.literal("")),
+    email: z
+      .string()
+      .email({ message: i18n.t("contact.validation.emailInvalid") })
+      .max(100, { message: i18n.t("contact.validation.emailMax") }),
+    subject: z
+      .string()
+      .min(1, { message: i18n.t("contact.validation.subjectRequired") })
+      .max(200, { message: i18n.t("contact.validation.subjectMax") }),
+    message: z
+      .string()
+      .min(10, { message: i18n.t("contact.validation.messageMin") })
+      .max(5000, { message: i18n.t("contact.validation.messageMax") }),
+  });
+};
 
-export type ContactFormData = z.infer<typeof contactFormSchema>;
+export type ContactFormData = z.infer<ReturnType<typeof getContactFormSchema>>;

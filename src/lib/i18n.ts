@@ -353,6 +353,17 @@ const resources = {
           guarantee:
             "Response guaranteed within 24 hours. Your data is protected.",
         },
+        validation: {
+          nameMin: "Name must be at least 2 characters",
+          nameMax: "Name must be less than 100 characters",
+          emailInvalid: "Invalid email address",
+          emailMax: "Email must be less than 100 characters",
+          phoneMax: "Phone must be less than 30 characters",
+          subjectRequired: "Subject is required",
+          subjectMax: "Subject must be less than 200 characters",
+          messageMin: "Message must be at least 10 characters",
+          messageMax: "Message must be less than 5000 characters",
+        },
         toast: {
           successTitle: "Message sent successfully!",
           successDescription: "I'll get in touch soon. Thank you!",
@@ -748,6 +759,17 @@ const resources = {
           sending: "Enviando...",
           guarantee:
             "Resposta garantida em até 24 horas. Seus dados estão protegidos.",
+        },
+        validation: {
+          nameMin: "O nome deve ter pelo menos 2 caracteres",
+          nameMax: "O nome deve ter menos de 100 caracteres",
+          emailInvalid: "Endereço de email inválido",
+          emailMax: "O email deve ter menos de 100 caracteres",
+          phoneMax: "O telefone deve ter menos de 30 caracteres",
+          subjectRequired: "O assunto é obrigatório",
+          subjectMax: "O assunto deve ter menos de 200 caracteres",
+          messageMin: "A mensagem deve ter pelo menos 10 caracteres",
+          messageMax: "A mensagem deve ter menos de 5000 caracteres",
         },
         toast: {
           successTitle: "Mensagem enviada com sucesso!",
@@ -1149,6 +1171,17 @@ const resources = {
           sending: "Enviando...",
           guarantee:
             "Respuesta garantizada en 24 horas. Tus datos están protegidos.",
+        },
+        validation: {
+          nameMin: "El nombre debe tener al menos 2 caracteres",
+          nameMax: "El nombre debe tener menos de 100 caracteres",
+          emailInvalid: "Dirección de email inválida",
+          emailMax: "El email debe tener menos de 100 caracteres",
+          phoneMax: "El teléfono debe tener menos de 30 caracteres",
+          subjectRequired: "El asunto es obligatorio",
+          subjectMax: "El asunto debe tener menos de 200 caracteres",
+          messageMin: "El mensaje debe tener al menos 10 caracteres",
+          messageMax: "El mensaje debe tener menos de 5000 caracteres",
         },
         toast: {
           successTitle: "¡Mensaje enviado con éxito!",
