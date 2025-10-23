@@ -28,6 +28,7 @@ import {
 } from "@/schemas/contactSchema";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
+import { buildWhatsAppUrl } from "@/lib/whatsappUtils";
 
 interface ContactInfoItem {
   icon: LucideIcon;
@@ -72,7 +73,9 @@ export const ContactSection = () => {
         icon: Phone,
         title: t("contact.contactInfo.whatsapp"),
         value: "+55 (62) 99213-6842",
-        href: "https://wa.me/5562992136842",
+        href: buildWhatsAppUrl("+55 62 99213-6842", "whatsapp.ctaMessage", {
+          name: "Rafael",
+        }),
       },
       {
         icon: MapPin,

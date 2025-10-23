@@ -371,6 +371,9 @@ const resources = {
           errorDescription: "Try again or contact directly.",
         },
       },
+      whatsapp: {
+        ctaMessage: "Hi {{name}}, I came from your website and would like to talk about a project.",
+      },
       footer: {
         brand: {
           description:
@@ -777,6 +780,9 @@ const resources = {
           errorTitle: "Erro ao enviar mensagem",
           errorDescription: "Tente novamente ou entre em contato diretamente.",
         },
+      },
+      whatsapp: {
+        ctaMessage: "Olá {{name}}, vim pelo site e gostaria de conversar sobre um projeto.",
       },
       footer: {
         brand: {
@@ -1189,6 +1195,9 @@ const resources = {
           errorTitle: "Error al enviar mensaje",
           errorDescription: "Intenta nuevamente o contacta directamente.",
         },
+      },
+      whatsapp: {
+        ctaMessage: "Hola {{name}}, vine desde tu sitio web y me gustaría hablar sobre un proyecto.",
       },
       footer: {
         brand: {
