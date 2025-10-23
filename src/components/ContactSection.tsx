@@ -112,7 +112,7 @@ export const ContactSection = () => {
               {t("contact.titleHighlight")}
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-zinc-100 max-w-3xl mx-auto">
             {t("contact.subtitle")}
           </p>
         </div>
@@ -127,7 +127,7 @@ export const ContactSection = () => {
                   {t("contact.info.titleHighlight")}
                 </span>
               </h3>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              <p className="text-zinc-100 text-lg leading-relaxed mb-8">
                 {t("contact.info.description")}
               </p>
             </div>
