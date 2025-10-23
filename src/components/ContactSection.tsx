@@ -26,6 +26,8 @@ import {
   contactFormSchema,
   type ContactFormData,
 } from "@/schemas/contactSchema";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 
 interface ContactInfoItem {
   icon: LucideIcon;
@@ -236,13 +238,31 @@ export const ContactSection = () => {
                     <FormItem>
                       <FormLabel>{t("contact.form.phone")}</FormLabel>
                       <FormControl>
-                        <Input
+                        <PhoneInput
+                          defaultCountry="br"
+                          value={field.value}
+                          onChange={(phone) => field.onChange(phone)}
+                          className="w-full"
+                          style={
+                            {
+                              "--react-international-phone-background-color":
+                                "hsl(var(--background))",
+                              "--react-international-phone-text-color":
+                                "hsl(var(--foreground))",
+                              "--react-international-phone-border-color":
+                                "hsl(var(--border))",
+                            } as React.CSSProperties
+                          }
                           placeholder={t("contact.form.phonePlaceholder")}
-                          className="bg-background border-border focus:border-primary"
-                          {...field}
+                          aria-invalid={!!form.formState.errors.phone}
+                          aria-describedby={
+                            form.formState.errors.phone
+                              ? `phone-error`
+                              : undefined
+                          }
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage id="phone-error" />
                     </FormItem>
                   )}
                 />
