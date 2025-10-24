@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { Helmet } from "react-helmet-async";
 import React, { Suspense, lazy } from "react";
 import { useTranslation } from "react-i18next";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 // Lazy-load non-critical sections to improve initial bundle
 const AboutSection = lazy(() =>
@@ -30,6 +31,7 @@ const Footer = lazy(() =>
 
 const Index = () => {
   const { t } = useTranslation();
+  useAnalytics();
   const title = t("seo.title");
   const description = t("seo.description");
   return (
