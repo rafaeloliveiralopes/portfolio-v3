@@ -26,7 +26,7 @@ export const AboutSection = () => {
             <div className="prose prose-invert max-w-none space-y-6">
               <p className="text-lg leading-relaxed">
                 {t("about.story1").split("**")[0]}
-                <span className="text-primary font-semibold">
+                <span className="text-accent-text font-semibold">
                   {t("about.story1").split("**")[1]}
                 </span>
                 {t("about.story1").split("**")[2]}
@@ -34,7 +34,7 @@ export const AboutSection = () => {
                   {t("about.story1").split("**")[3]}
                 </span>
                 {t("about.story1").split("**")[4]}
-                <span className="text-primary">
+                <span className="text-accent-text">
                   {t("about.story1").split("**")[5]}
                 </span>
                 {t("about.story1").split("**")[6]}
@@ -127,7 +127,7 @@ export const AboutSection = () => {
                 <div key={index} className="timeline-item group">
                   <div className="flex items-start">
                     <div className="flex-shrink-0 w-20">
-                      <span className="text-2xl font-bold text-primary group-hover:text-secondary transition-colors">
+                      <span className="text-2xl font-bold text-accent-text group-hover:text-secondary transition-colors">
                         {year}
                       </span>
                     </div>

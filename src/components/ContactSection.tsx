@@ -319,7 +319,7 @@ export const ContactSection = () => {
                 <Button
                   type="submit"
                   disabled={form.formState.isSubmitting}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow text-lg py-3"
+                  className="w-full bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)] shadow-glow text-lg py-3"
                 >
                   {form.formState.isSubmitting ? (
                     <div className="flex items-center justify-center">
@@ -328,7 +328,12 @@ export const ContactSection = () => {
                     </div>
                   ) : (
                     <div className="flex items-center justify-center">
-                      <Send className="w-5 h-5 mr-2" />
+                      <Send
+                        className="w-5 h-5 mr-2"
+                        aria-hidden="true"
+                        role="presentation"
+                        focusable="false"
+                      />
                       {t("contact.form.send")}
                     </div>
                   )}
