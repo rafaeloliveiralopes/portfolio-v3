@@ -2,73 +2,73 @@
 
 **Status:** GA4 Base Installation ✅ Complete  
 **Measurement ID:** `G-17XTVR8E46`  
-**Prioridade:** Alta → Média
+**Priority:** High → Medium
 
 ---
 
-## 📋 Checklist de Próximos Passos
+## 📋 Next Steps Checklist
 
-### 1. ✅ **Marcar Conversões no GA4** (UI)
+### 1. Mark Conversions in GA4 (UI)
 
-**Status:** ⏳ Pendente (deve ser feito no GA4 Dashboard)
+**Status:** ⏳ Pending (must be done in GA4 Dashboard)
 
-Passos no GA4:
+Steps in GA4:
 
-- Navegue para **Admin → Conversions → New**
+- Navigate to **Admin → Conversions → New**
 
-- Crie 2 eventos como conversões:
-  - `contact_form_submit` (quando formulário é enviado)
-  - `whatsapp_click` (quando usuário clica em WhatsApp)
+- Create 2 events as conversions:
+  - `contact_form_submit` (when form is submitted)
+  - `whatsapp_click` (when user clicks WhatsApp)
 
-**Benefício:** Rastreia funis de conversão e ROI.
+**Benefit:** Track conversion funnels and ROI.
 
 ---
 
-### 2. ✅ **Filtrar Tráfego Interno** (Seu IP)
+### 2. Filter Internal Traffic (Your IP)
 
-**Status:** ⏳ Pendente (deve ser feito no GA4 Dashboard)
+**Status:** ⏳ Pending (must be done in GA4 Dashboard)
 
-Passos no GA4:
+Steps in GA4:
 
 1. **Admin → Data Streams → Configure tag settings**
 
-2. Clique em **Define Internal Traffic**
-3. Crie um filtro com seu IP (ex: `177.XXX.XXX.XXX`)
+2. Click **Define Internal Traffic**
+3. Create a filter with your IP (ex: `177.XXX.XXX.XXX`)
 4. **Admin → Data Settings → Data Filters → Internal**
-5. Marque como **Active**
+5. Mark as **Active**
 
-**Benefício:** Evita que seu próprio tráfego (testes) distorça os dados.
+**Benefit:** Prevents your own traffic (testing) from skewing data.
 
 ---
 
-### 3. ✅ **Excluir Referências Indesejadas** (Referrals)
+### 3. Exclude Unwanted Referrals (Referral Exclusion)
 
-**Status:** ⏳ Pendente (deve ser feito no GA4 Dashboard)
+**Status:** ⏳ Pending (must be done in GA4 Dashboard)
 
-Passos no GA4:
+Steps in GA4:
 
 1. **Admin → Data Streams → More tagging settings**
 
 2. **List unwanted referrals**
-3. Adicione domínios que "quebram" atribuição (ex: seu processador de pagamento, encurtadores, etc.)
+3. Add domains that "break" attribution (ex: your payment processor, URL shorteners, etc.)
 
-**Benefício:** Manter dados de origem de tráfego limpos.
+**Benefit:** Keep traffic source data clean.
 
-**Para WhatsApp:** Use UTMs nos seus links WhatsApp para rastrear melhor.
+**For WhatsApp:** Use UTMs in your WhatsApp links for better tracking.
 
 ---
 
-### 4. ✅ **Implementar CTA & WhatsApp Tracking no Código**
+### 4. Implement CTA & WhatsApp Tracking in Code
 
-**Status:** ⏳ Pendente no Código
+**Status:** ⏳ Pending in Code
 
-**Arquivos envolvidos:**
+**Files involved:**
 
-- `src/components/HeroSection.tsx` - Botão "Começar" (CTA)
-- `src/components/Footer.tsx` - Links WhatsApp
-- `src/components/ContactSection.tsx` - Botão WhatsApp no formulário
+- `src/components/HeroSection.tsx` - "Get Started" button (CTA)
+- `src/components/Footer.tsx` - WhatsApp links
+- `src/components/ContactSection.tsx` - WhatsApp button in form
 
-**Exemplo para Hero CTA:**
+**Example for Hero CTA:**
 
 ```tsx
 // src/components/HeroSection.tsx
@@ -83,11 +83,11 @@ const handleCTAClick = () => {
     i18n.language, // locale
     location.pathname // path
   );
-  scrollToSection("contato");
+  scrollToSection("contact");
 };
 ```
 
-**Exemplo para WhatsApp Link:**
+**Example for WhatsApp Link:**
 
 ```tsx
 // src/components/Footer.tsx
@@ -104,18 +104,18 @@ const handleWhatsAppClick = () => {
   );
 };
 
-// No link:
+// In the link:
 <a
   href={whatsappUrl}
   onClick={handleWhatsAppClick}
   target="_blank"
   rel="noopener noreferrer"
 >
-  Falar no WhatsApp
+  Talk on WhatsApp
 </a>;
 ```
 
-**Commit sugerido:**
+**Suggested commit:**
 
 ```bash
 git add src/components/HeroSection.tsx src/components/Footer.tsx src/components/ContactSection.tsx
@@ -124,23 +124,23 @@ git commit -m "feat(analytics): track cta and whatsapp clicks with locale and co
 
 ---
 
-### 5. ✅ **Consent Mode v2 (LGPD/GDPR)**
+### 5. Consent Mode v2 (LGPD/GDPR)
 
-**Status:** ⏳ Pendente (será implementado depois)
+**Status:** ⏳ Pending (will be implemented later)
 
-Quando você adicionar um banner de consentimento:
+When you add a consent banner:
 
-1. Instale biblioteca (ex: `@orejime/javascript` ou `klaro`)
-2. O banner controlará se eventos são enviados ao GA4
-3. Adaptaremos `src/lib/analytics.ts` para respeitar o consent
+1. Install library (ex: `@orejime/javascript` or `klaro`)
+2. The banner will control if events are sent to GA4
+3. We'll adapt `src/lib/analytics.ts` to respect consent
 
-**Exemplo de como ficará:**
+**Example of how it will look:**
 
 ```tsx
-// src/lib/analytics.ts (futuro)
+// src/lib/analytics.ts (future)
 export const trackPageView = (path, title, locale, theme) => {
   const hasConsent = window.consentManager?.hasConsent('analytics');
-  if (!hasConsent) return; // Respeita o consent do usuário
+  if (!hasConsent) return; // Respects user consent
 
   gtag('event', 'page_view', { ... });
 };
@@ -148,132 +148,132 @@ export const trackPageView = (path, title, locale, theme) => {
 
 ---
 
-### 6. ✅ **Export para BigQuery**
+### 6. Export to BigQuery
 
-**Status:** ⏳ Pendente (opcional, para dados avançados)
+**Status:** ⏳ Pending (optional, for advanced analytics)
 
-Passos no GA4:
+Steps in GA4:
 
 1. **Admin → BigQuery Links → Link**
 
-2. Autorize sua conta Google Cloud
-3. GA4 exportará dados em tempo real para BigQuery
+2. Authorize your Google Cloud account
+3. GA4 will export real-time data to BigQuery
 
-**Benefício:** Dashboards avançados, análises custom, Looker Studio integrado.
-
----
-
-### 7. ✅ **Bot & Spam Filtering**
-
-**Status:** ✅ Já coberto
-
-Com o filtro interno ativo (passo 2), GA4 já filtra bots automaticamente.
+**Benefit:** Advanced dashboards, custom analysis, integrated Looker Studio.
 
 ---
 
-### 8. ✅ **Retenção de Dados & Google Signals**
+### 7. Bot & Spam Filtering
 
-**Status:** ⏳ Pendente (configuração recomendada)
+**Status:** ✅ Already covered
 
-Passos no GA4:
+With the internal filter active (step 2), GA4 already filters bots automatically.
+
+---
+
+### 8. Data Retention & Google Signals
+
+**Status:** ⏳ Pending (recommended configuration)
+
+Steps in GA4:
 
 1. **Admin → Data Settings → Data Retention**
-2. Defina para **14 meses** (máximo antes de anonimizar)
-3. **Google Signals:** Habilitar se precisar relatórios cross-device (respeitando consent)
+2. Set to **14 months** (maximum before anonymizing)
+3. **Google Signals:** Enable if you need cross-device reports (respecting consent)
 
 ---
 
 ## 📚 Commit Roadmap
 
 ```bash
-# 1. Implementar tracking nos componentes
+# 1. Implement tracking in components
 git commit -m "feat(analytics): track cta and whatsapp clicks with locale and country."
 
-# 2. (Opcional) Guia de UTMs para Marketing
+# 2. (Optional) UTM Guide for Marketing
 git commit -m "docs(marketing): add UTM convention guide for cta and whatsapp links."
 
-# 3. (Futuro) Consent Mode v2
+# 3. (Future) Consent Mode v2
 git commit -m "feat(analytics): implement consent mode v2 for LGPD compliance."
 ```
 
 ---
 
-## 🎯 QA Rápido (5 min)
+## 🎯 Quick QA (5 min)
 
-### Testar Tracking Funcionando
+### Test Tracking is Working
 
-1. **Ativar DebugView no GA4:**
+1. **Enable DebugView in GA4:**
 
-   - Abra o site
-   - Console do navegador: `gtag('config', 'G-17XTVR8E46', { debug_mode: true })`
+   - Open your site
+   - Browser console: `gtag('config', 'G-17XTVR8E46', { debug_mode: true })`
 
-2. **Navegar e Verificar Eventos:**
+2. **Navigate and Check Events:**
 
-   - Abra 2-3 rotas diferentes
-   - Clique em botões "Começar" e "WhatsApp"
-   - Vá para GA4 Dashboard → **DebugView**
-   - Veja eventos: `page_view`, `cta_click`, `whatsapp_click` em tempo real
+   - Open 2-3 different routes
+   - Click "Get Started" and "WhatsApp" buttons
+   - Go to GA4 Dashboard → **DebugView**
+   - See events: `page_view`, `cta_click`, `whatsapp_click` in real-time
 
-3. **Enviar Formulário:**
+3. **Submit Form:**
 
-   - Preencha e envie o formulário (sem dados sensíveis)
-   - Verifique que **nome, email, mensagem NÃO aparecem** no GA4
-   - Apenas status, país e rota devem aparecer
+   - Fill and submit the form (without sensitive data)
+   - Verify that **name, email, message do NOT appear** in GA4
+   - Only status, country, and route should appear
 
-4. **Verificar UTMs (opcional):**
-   - Se compartilhar link com `?utm_source=email&utm_medium=newsletter`
-   - GA4 deve rastrear como "Email / Newsletter"
-
----
-
-## 🚀 Próximas Ações Imediatas
-
-### Hoje (Alta Prioridade)
-
-- [ ] Configurar conversões no GA4 (passos 1 acima)
-- [ ] Filtrar IP interno no GA4 (passo 2)
-- [ ] Executar QA rápido (DebugView)
-
-### Esta Semana (Média Prioridade)
-
-- [ ] Implementar `trackCTA` nos botões
-- [ ] Implementar `trackWhatsApp` nos links
-- [ ] Commit com tracking de eventos
-
-### Próximas Semanas
-
-- [ ] Criar guia de UTMs para marketing
-- [ ] Implementar Consent Mode v2 (LGPD)
-- [ ] Conectar BigQuery (se precisar de dados avançados)
+4. **Check UTMs (optional):**
+   - If you share link with `?utm_source=email&utm_medium=newsletter`
+   - GA4 should track as "Email / Newsletter"
 
 ---
 
-## 📖 Documentação Complementar
+## 🚀 Immediate Next Actions
 
-- **Guia Completo:** Ver `docs/GA4_INTEGRATION.md`
-- **Setup Resumido:** Ver `GA4_SETUP_COMPLETE.md`
-- **Exemplos de Código:** Veja os arquivos de componentes sugeridos acima
+### Today (High Priority)
+
+- [ ] Configure conversions in GA4 (steps 1 above)
+- [ ] Filter internal IP in GA4 (step 2)
+- [ ] Run quick QA (DebugView)
+
+### This Week (Medium Priority)
+
+- [ ] Implement `trackCTA` in buttons
+- [ ] Implement `trackWhatsApp` in links
+- [ ] Commit with event tracking
+
+### Next Weeks
+
+- [ ] Create UTM guide for marketing
+- [ ] Implement Consent Mode v2 (LGPD)
+- [ ] Connect BigQuery (if needed for advanced analytics)
 
 ---
 
-## 💡 Dicas Rápidas
+## 📖 Complementary Documentation
 
-1. **UTM Padrão para seus links:**
+- **Full Guide:** See `docs/GA4_INTEGRATION.md`
+- **Setup Summary:** See `GA4_SETUP_COMPLETE.md`
+- **Code Examples:** See the suggested component files above
+
+---
+
+## 💡 Quick Tips
+
+1. **Standard UTM for your links:**
 
    - WhatsApp: `?utm_source=whatsapp&utm_medium=chat&utm_campaign=contact`
    - CTA: `?utm_source=website&utm_medium=cta&utm_campaign=get-started`
 
-2. **Testar Consent Mode depois:**
+2. **Test Consent Mode later:**
 
-   - Usuário nega analytics → nenhum evento enviado ao GA4
-   - Usuário aceita → eventos normais
+   - User denies analytics → no events sent to GA4
+   - User accepts → normal events
 
-3. **Manter privacidade:**
-   - ✅ Rastreie: páginas, botões, locales, país
-   - ❌ Nunca rastreie: emails, nomes, conteúdo de mensagens
+3. **Keep privacy:**
+   - ✅ Track: pages, buttons, locales, country
+   - ❌ Never track: emails, names, message content
 
 ---
 
 **Branch:** `analytics`  
-**Status:** Pronto para deploy em produção ✅  
-**Próximo passo:** Executar QA e configurar conversões no GA4
+**Status:** Ready for production deployment ✅  
+**Next step:** Execute QA and configure conversions in GA4
