@@ -372,7 +372,8 @@ const resources = {
         },
       },
       whatsapp: {
-        ctaMessage: "Hi {{name}}, I came from your website and would like to talk about a project.",
+        ctaMessage:
+          "Hi {{name}}, I came from your website and would like to talk about a project.",
       },
       footer: {
         brand: {
@@ -782,12 +783,13 @@ const resources = {
         },
       },
       whatsapp: {
-        ctaMessage: "Olá {{name}}, vim pelo site e gostaria de conversar sobre um projeto.",
+        ctaMessage:
+          "Olá {{name}}, vim pelo site e gostaria de conversar sobre um projeto.",
       },
       footer: {
         brand: {
           description:
-            "Desenvolvedor especializado em criar soluções digitais que transformam negócios e geram resultados reais para pequenas e médias empresas.",
+            "Desenvolvedor especializado em criar soluções digitais que superam desafios e otimizam o desempenho operacional do seu negócio.",
         },
         cta: {
           title: "Pronto para começar seu projeto?",
@@ -1197,7 +1199,8 @@ const resources = {
         },
       },
       whatsapp: {
-        ctaMessage: "Hola {{name}}, vine desde tu sitio web y me gustaría hablar sobre un proyecto.",
+        ctaMessage:
+          "Hola {{name}}, vine desde tu sitio web y me gustaría hablar sobre un proyecto.",
       },
       footer: {
         brand: {
