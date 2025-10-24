@@ -378,7 +378,7 @@ const resources = {
       footer: {
         brand: {
           description:
-            "Developer specialized in creating digital solutions that transform businesses and generate real results for small and medium enterprises.",
+            "Developer specialized in creating digital solutions that overcome challenges and optimize your business’s operational performance.",
         },
         cta: {
           title: "Ready to start your project?",
@@ -1205,7 +1205,7 @@ const resources = {
       footer: {
         brand: {
           description:
-            "Desarrollador especializado en crear soluciones digitales que transforman negocios y generan resultados reales para pequeñas y medianas empresas.",
+            "Desarrollador especializado en soluciones digitales que superan desafíos y optimizan el rendimiento operativo de su negocio.",
         },
         cta: {
           title: "¿Listo para empezar tu proyecto?",
