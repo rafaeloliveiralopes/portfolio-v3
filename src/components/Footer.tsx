@@ -122,7 +122,7 @@ export const Footer = () => {
                 <div className="flex flex-wrap gap-3">
                   <Button
                     onClick={() => scrollToSection("contato")}
-                    className="bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:bg-[hsl(var(--primary-hover))] active:bg-[hsl(var(--primary-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)]"
+                    className="bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)]"
                   >
                     {t("footer.cta.fillForm")}
                     <ExternalLink

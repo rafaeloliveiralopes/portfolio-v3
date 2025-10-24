@@ -23,6 +23,12 @@
     --primary-hover: 262 83% 50%;
     --primary-active: 262 83% 46%;
 
+    /* CTA tokens: same hue, adjusted luminance for AA contrast */
+    --primary-cta: 262 83% 48%;
+    --primary-cta-hover: 262 83% 44%;
+    --primary-cta-active: 262 83% 40%;
+    --on-primary-cta: 0 0% 100%;
+
     /* Teal/Cyan Accent */
     --secondary: 180 78% 55%;
     --secondary-foreground: 222 19% 8%;
