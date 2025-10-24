@@ -8,9 +8,9 @@ const resources = {
   en: {
     translation: {
       seo: {
-        title: "AI Automation, Websites & Systems | Rafael Lopes",
+        title: "AI Engineer: Chatbots, Automation & Governance | Rafael Lopes",
         description:
-          "Fullstack developer delivering high-performance websites, custom systems, and AI automations for global businesses.",
+          "AI Engineer specialized in custom chatbots, generative AI automation, and AI governance for enterprises. LLM integration, compliance & ROI-focused solutions.",
       },
       nav: {
         about: "About",
@@ -424,9 +424,10 @@ const resources = {
   pt: {
     translation: {
       seo: {
-        title: "Automações de IA, Sites e Sistemas | Rafael Lopes",
+        title:
+          "Engenheiro de IA: Chatbots, Automação e Governança | Rafael Lopes",
         description:
-          "Desenvolvedor full‑stack entregando sites de alta performance, sistemas sob medida e automações com IA para negócios globais.",
+          "Engenheiro de IA especializado em chatbots personalizados, automação com IA generativa e governança de IA para empresas. Integração LLM, compliance e soluções com foco em ROI.",
       },
       nav: {
         about: "Sobre",
@@ -840,9 +841,10 @@ const resources = {
   es: {
     translation: {
       seo: {
-        title: "Automatizaciones IA, Sitios y Sistemas | Rafael Lopes",
+        title:
+          "Ingeniero de IA: Chatbots, Automatización y Gobernanza | Rafael Lopes",
         description:
-          "Desarrollador full‑stack que entrega sitios de alto rendimiento, sistemas a medida y automatizaciones con IA para negocios globales.",
+          "Ingeniero de IA especializado en chatbots personalizados, automatización con IA generativa y gobernanza de IA para empresas. Integración LLM, compliance y soluciones enfocadas en ROI.",
       },
       nav: {
         about: "Acerca de",
