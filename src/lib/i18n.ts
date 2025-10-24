@@ -214,7 +214,7 @@ const resources = {
             },
           },
           3: {
-            title: "AI Chatbot for Sales",
+            title: "Custom AI Chatbot",
             description:
               "Smart virtual assistant that qualifies leads and schedules meetings automatically.",
             category: "AI",
@@ -625,7 +625,7 @@ const resources = {
             // },
           },
           3: {
-            title: "Chatbot IA para Vendas",
+            title: "Chatbot IA Personalizado",
             description:
               "Assistente virtual inteligente que qualifica leads e agenda reuniões automaticamente.",
             category: "IA",
@@ -1041,7 +1041,7 @@ const resources = {
             // },
           },
           3: {
-            title: "Chatbot IA para Ventas",
+            title: "Chatbot IA Personalizado",
             description:
               "Asistente virtual inteligente que califica leads y agenda reuniones automáticamente.",
             category: "IA",
