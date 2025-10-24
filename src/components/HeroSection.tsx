@@ -128,9 +128,14 @@ export const HeroSection = () => {
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
               className="p-3 rounded-full bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
-              aria-label={label}
             >
-              <Icon className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
+              <span className="sr-only">{label}</span>
+              <Icon
+                className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors"
+                aria-hidden="true"
+                role="presentation"
+                focusable="false"
+              />
             </a>
           ))}
         </div>
@@ -140,8 +145,14 @@ export const HeroSection = () => {
           <button
             onClick={() => scrollToSection("sobre")}
             className="text-muted-foreground hover:text-primary transition-colors group"
+            aria-label={t("nav.about")}
           >
-            <ArrowDown className="w-6 h-6 mx-auto animate-bounce group-hover:text-primary" />
+            <ArrowDown
+              className="w-6 h-6 mx-auto animate-bounce group-hover:text-primary"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+            />
             <span className="block text-sm mt-2">{t("nav.about")}</span>
           </button>
         </div>

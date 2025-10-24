@@ -27,3 +27,8 @@ dist-ssr
 # Copilot specific
 .github
 .vercel
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/

@@ -98,9 +98,14 @@ export const Footer = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-3 bg-background border border-border rounded-lg hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
-                      aria-label={social.label}
                     >
-                      <Icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                      <span className="sr-only">{social.label}</span>
+                      <Icon
+                        className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors"
+                        aria-hidden="true"
+                        role="presentation"
+                        focusable="false"
+                      />
                     </a>
                   );
                 })}
@@ -120,7 +125,12 @@ export const Footer = () => {
                     className="bg-primary hover:bg-primary/90 text-primary-foreground"
                   >
                     {t("footer.cta.fillForm")}
-                    <ExternalLink className="w-4 h-4 ml-2" />
+                    <ExternalLink
+                      className="w-4 h-4 ml-2"
+                      aria-hidden="true"
+                      role="presentation"
+                      focusable="false"
+                    />
                   </Button>
 
                   <Button
@@ -131,10 +141,14 @@ export const Footer = () => {
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={t("footer.cta.whatsapp")}
                     >
                       {t("footer.cta.whatsapp")}
-                      <ExternalLink className="w-4 h-4 ml-2" />
+                      <ExternalLink
+                        className="w-4 h-4 ml-2"
+                        aria-hidden="true"
+                        role="presentation"
+                        focusable="false"
+                      />
                     </a>
                   </Button>
                 </div>
@@ -226,7 +240,13 @@ export const Footer = () => {
                 className="p-2 bg-background border border-border rounded-lg hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
                 aria-label={t("footer.bottom.backToTop")}
               >
-                <ArrowUp className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                <span className="sr-only">{t("footer.bottom.backToTop")}</span>
+                <ArrowUp
+                  className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                />
               </button>
             </div>
           </div>

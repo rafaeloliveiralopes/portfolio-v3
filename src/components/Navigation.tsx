@@ -86,8 +86,13 @@ export const Navigation = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
-                  <Globe className="h-5 w-5" />
                   <span className="sr-only">Toggle language</span>
+                  <Globe
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                  />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
@@ -129,8 +134,26 @@ export const Navigation = () => {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-foreground"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            <span className="sr-only">
+              {isMobileMenuOpen ? "Close menu" : "Open menu"}
+            </span>
+            {isMobileMenuOpen ? (
+              <X
+                size={26}
+                aria-hidden="true"
+                role="presentation"
+                focusable="false"
+              />
+            ) : (
+              <Menu
+                size={26}
+                aria-hidden="true"
+                role="presentation"
+                focusable="false"
+              />
+            )}
           </button>
         </div>
 
@@ -148,7 +171,13 @@ export const Navigation = () => {
                 className="text-foreground"
                 aria-label="Close menu"
               >
-                <X size={26} />
+                <span className="sr-only">Close menu</span>
+                <X
+                  size={26}
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                />
               </button>
             </div>
             <div className="flex flex-col space-y-4 mb-8">
@@ -167,7 +196,13 @@ export const Navigation = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm">
-                    <Globe className="h-4 w-4 mr-2" />
+                    <span className="sr-only">Toggle language</span>
+                    <Globe
+                      className="h-4 w-4 mr-2"
+                      aria-hidden="true"
+                      role="presentation"
+                      focusable="false"
+                    />
                     {languages.find((l) => l.code === i18n.language)?.flag}
                   </Button>
                 </DropdownMenuTrigger>
