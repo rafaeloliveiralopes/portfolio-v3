@@ -122,13 +122,16 @@ export const ServicesSection = () => {
 
                 {/* CTA Button */}
                 <Button
+                  asChild
                   className={`w-full mb-4 ${
                     service.color === "primary"
                       ? "bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)]"
                       : "bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] hover:bg-[hsl(var(--secondary)/0.8)] active:bg-[hsl(var(--secondary)/0.7)] focus-visible:ring-2 focus-visible:ring-[hsl(var(--secondary)/0.4)]"
                   }`}
                 >
-                  {service.buttonText}
+                  <a href="#contato" aria-label={service.buttonText}>
+                    {service.buttonText}
+                  </a>
                 </Button>
 
                 {/* Expand/Collapse Button */}
