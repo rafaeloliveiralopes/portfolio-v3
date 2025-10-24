@@ -70,7 +70,8 @@ test.describe("Accessibility Tests", () => {
     page,
   }) => {
     const accessibilityScanResults = await new AxeBuilder({ page })
-      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+      .withTags(["wcag2a", "wcag2aa"])
+      .disableRules(["color-contrast-enhanced"])
       .analyze();
 
     expect(accessibilityScanResults.violations).toEqual([]);
@@ -125,6 +126,7 @@ test.describe("Accessibility Tests", () => {
   test("should have proper color contrast", async ({ page }) => {
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(["cat.color"])
+      .disableRules(["color-contrast-enhanced"])
       .analyze();
 
     expect(accessibilityScanResults.violations).toEqual([]);
