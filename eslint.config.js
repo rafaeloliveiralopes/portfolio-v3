@@ -25,5 +25,14 @@ export default tseslint.config(
       ],
       "@typescript-eslint/no-unused-vars": "off",
     },
+  },
+  // Disable react-refresh warnings for shadcn/ui components
+  // These components intentionally export variants/hooks alongside components
+  // following shadcn/ui official patterns for composition and customization
+  {
+    files: ["src/components/ui/**/*.{ts,tsx}"],
+    rules: {
+      "react-refresh/only-export-components": "off",
+    },
   }
 );

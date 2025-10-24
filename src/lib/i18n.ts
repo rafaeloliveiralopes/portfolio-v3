@@ -7,6 +7,11 @@ const resources = {
   // English Translations
   en: {
     translation: {
+      seo: {
+        title: "AI Automation, Websites & Systems | Rafael Lopes",
+        description:
+          "Fullstack developer delivering high-performance websites, custom systems, and AI automations for global businesses.",
+      },
       nav: {
         about: "About",
         services: "Services",
@@ -418,6 +423,11 @@ const resources = {
   // Portuguese Translations
   pt: {
     translation: {
+      seo: {
+        title: "Automações de IA, Sites e Sistemas | Rafael Lopes",
+        description:
+          "Desenvolvedor full‑stack entregando sites de alta performance, sistemas sob medida e automações com IA para negócios globais.",
+      },
       nav: {
         about: "Sobre",
         services: "Serviços",
@@ -829,6 +839,11 @@ const resources = {
   // Spanish Translations
   es: {
     translation: {
+      seo: {
+        title: "Automatizaciones IA, Sitios y Sistemas | Rafael Lopes",
+        description:
+          "Desarrollador full‑stack que entrega sitios de alto rendimiento, sistemas a medida y automatizaciones con IA para negocios globales.",
+      },
       nav: {
         about: "Acerca de",
         services: "Servicios",

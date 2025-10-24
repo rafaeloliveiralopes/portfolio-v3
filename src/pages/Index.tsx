@@ -1,25 +1,56 @@
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
-import { AboutSection } from "@/components/AboutSection";
-import { ServicesSection } from "@/components/ServicesSection";
-import { PortfolioSection } from "@/components/PortfolioSection";
-// import { TestimonialsSection } from "@/components/TestimonialsSection"; // Disabled until we have real testimonials
-import { ContactSection } from "@/components/ContactSection";
-import { Footer } from "@/components/Footer";
+import { Helmet } from "react-helmet-async";
+import React, { Suspense, lazy } from "react";
+import { useTranslation } from "react-i18next";
+
+// Lazy-load non-critical sections to improve initial bundle
+const AboutSection = lazy(() =>
+  import("@/components/AboutSection").then((m) => ({ default: m.AboutSection }))
+);
+const ServicesSection = lazy(() =>
+  import("@/components/ServicesSection").then((m) => ({
+    default: m.ServicesSection,
+  }))
+);
+const PortfolioSection = lazy(() =>
+  import("@/components/PortfolioSection").then((m) => ({
+    default: m.PortfolioSection,
+  }))
+);
+// const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection").then((m) => ({ default: m.TestimonialsSection })));
+const ContactSection = lazy(() =>
+  import("@/components/ContactSection").then((m) => ({
+    default: m.ContactSection,
+  }))
+);
+const Footer = lazy(() =>
+  import("@/components/Footer").then((m) => ({ default: m.Footer }))
+);
 
 const Index = () => {
+  const { t } = useTranslation();
+  const title = t("seo.title");
+  const description = t("seo.description");
   return (
-    <main className="min-h-screen bg-mesh">
-      <Navigation />
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <PortfolioSection />
-      {/* <TestimonialsSection /> */}{" "}
-      {/* Disabled until we have real testimonials */}
-      <ContactSection />
-      <Footer />
-    </main>
+    <>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+      </Helmet>
+      <main className="min-h-screen bg-mesh">
+        <Navigation />
+        <HeroSection />
+        <Suspense fallback={null}>
+          <AboutSection />
+          <ServicesSection />
+          <PortfolioSection />
+          {/* <TestimonialsSection /> */}
+          <ContactSection />
+          <Footer />
+        </Suspense>
+      </main>
+    </>
   );
 };
 
