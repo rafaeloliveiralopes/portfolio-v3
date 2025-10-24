@@ -8,14 +8,62 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
+const BASE_URL = "http://localhost:8080";
+
+test.use({ colorScheme: "dark" }); // Ensures consistent color scheme
+
 test.describe("Accessibility Tests", () => {
-  test.beforeEach(async ({ page }) => {
-    // Start dev server manually before running tests
-    await page.goto("http://localhost:8080");
-    // Wait for app to hydrate
+  test.beforeEach(async ({ page, context }) => {
+    // 1) Set theme before page load (prevents theme flicker during analysis)
+    await context.addInitScript(() => {
+      try {
+        localStorage.setItem("theme", "dark");
+        document.documentElement.dataset.theme = "dark";
+        document.documentElement.classList.add("dark");
+      } catch (e) {
+        // Suppress errors if localStorage or DOM APIs are unavailable
+      }
+    });
+
+    // 2) Deterministic media queries
+    await page.emulateMedia({ colorScheme: "dark", reducedMotion: "reduce" });
+
+    // 3) Navigate and wait for stable state
+    await page.goto(BASE_URL, { waitUntil: "networkidle" });
+    await page.waitForLoadState("domcontentloaded");
     await page.waitForSelector("#root", { state: "attached" });
-    // Wait for fonts to load for accurate color contrast testing
-    await page.evaluate(async () => await document.fonts?.ready);
+
+    // 4) Wait for fonts and CSS variables to be applied
+    await page.evaluate(async () => {
+      await document.fonts?.ready;
+    });
+    await page.waitForFunction(() => {
+      const cs = getComputedStyle(document.documentElement);
+      return (
+        cs.getPropertyValue("--primary").trim().length > 0 &&
+        cs.getPropertyValue("--foreground").trim().length > 0
+      );
+    });
+
+    // 5) Ensure semantic anchors are rendered (prevents partial render analysis)
+    await page.waitForFunction(() => {
+      const h1 = document.querySelector("h1");
+      const cta = document.querySelector('button, a[href*="contact"]');
+      return !!h1 && !!cta;
+    });
+  });
+
+  test.afterEach(async ({ page }, testInfo) => {
+    // Capture screenshot only on test failure for debugging
+    if (testInfo.status !== testInfo.expectedStatus) {
+      await page.screenshot({
+        path: `test-results/accessibility-${testInfo.title.replace(
+          /\s+/g,
+          "-"
+        )}.png`,
+        fullPage: true,
+      });
+    }
   });
 
   test("should not have automatically detectable accessibility issues on homepage", async ({
