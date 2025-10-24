@@ -14,6 +14,8 @@ test.describe("Accessibility Tests", () => {
     await page.goto("http://localhost:8080");
     // Wait for app to hydrate
     await page.waitForSelector("#root", { state: "attached" });
+    // Wait for fonts to load for accurate color contrast testing
+    await page.evaluate(async () => await document.fonts?.ready);
   });
 
   test("should not have automatically detectable accessibility issues on homepage", async ({

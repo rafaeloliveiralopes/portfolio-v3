@@ -124,8 +124,8 @@ export const ServicesSection = () => {
                 <Button
                   className={`w-full mb-4 ${
                     service.color === "primary"
-                      ? "bg-primary hover:bg-primary/90 text-primary-foreground"
-                      : "bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+                      ? "bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:bg-[hsl(var(--primary-hover))] active:bg-[hsl(var(--primary-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)]"
+                      : "bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] hover:bg-[hsl(var(--secondary)/0.8)] active:bg-[hsl(var(--secondary)/0.7)] focus-visible:ring-2 focus-visible:ring-[hsl(var(--secondary)/0.4)]"
                   }`}
                 >
                   {service.buttonText}

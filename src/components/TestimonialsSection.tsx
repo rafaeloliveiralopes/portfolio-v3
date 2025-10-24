@@ -197,7 +197,7 @@ export const TestimonialsSection = () => {
           </p>
           <Button
             size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
+            className="bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:bg-[hsl(var(--primary-hover))] active:bg-[hsl(var(--primary-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)] shadow-glow"
           >
             {t("testimonials.cta.button")}
           </Button>

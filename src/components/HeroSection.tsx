@@ -83,7 +83,7 @@ export const HeroSection = () => {
           <Button
             size="lg"
             onClick={() => scrollToSection("serviços")}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow text-lg px-8 py-3"
+            className="bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:bg-[hsl(var(--primary-hover))] active:bg-[hsl(var(--primary-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)] shadow-glow text-lg px-8 py-3"
           >
             {t("hero.cta1")}
           </Button>
@@ -91,7 +91,7 @@ export const HeroSection = () => {
             size="lg"
             variant="outline"
             onClick={() => scrollToSection("contato")}
-            className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground text-lg px-8 py-3"
+            className="border-[hsl(var(--secondary))] bg-[hsl(var(--background))] text-[hsl(var(--secondary))] hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary-foreground))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--secondary)/0.4)] text-lg px-8 py-3"
           >
             {t("hero.cta2")}
           </Button>

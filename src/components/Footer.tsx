@@ -122,7 +122,7 @@ export const Footer = () => {
                 <div className="flex flex-wrap gap-3">
                   <Button
                     onClick={() => scrollToSection("contato")}
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                    className="bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:bg-[hsl(var(--primary-hover))] active:bg-[hsl(var(--primary-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)]"
                   >
                     {t("footer.cta.fillForm")}
                     <ExternalLink
@@ -135,7 +135,7 @@ export const Footer = () => {
 
                   <Button
                     asChild
-                    className="bg-secondary hover:bg-green-500 text-secondary-foreground"
+                    className="bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] hover:bg-[hsl(180_78%_45%)] active:bg-[hsl(180_78%_40%)] focus-visible:ring-2 focus-visible:ring-[hsl(var(--secondary)/0.4)]"
                   >
                     <a
                       href={whatsappUrl}

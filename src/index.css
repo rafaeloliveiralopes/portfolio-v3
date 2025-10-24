@@ -20,6 +20,8 @@
     --primary: 262 83% 58%;
     --primary-foreground: 210 40% 98%;
     --primary-glow: 262 83% 70%;
+    --primary-hover: 262 83% 50%;
+    --primary-active: 262 83% 46%;
 
     /* Teal/Cyan Accent */
     --secondary: 180 78% 55%;
