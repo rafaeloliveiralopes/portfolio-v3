@@ -123,6 +123,12 @@
     --primary: 262 83% 58%;
     --primary-foreground: 210 40% 98%;
 
+    /* CTA tokens for dark theme - AAA contrast */
+    --primary-cta: 262 83% 48%;
+    --primary-cta-hover: 262 83% 44%;
+    --primary-cta-active: 262 83% 40%;
+    --on-primary-cta: 0 0% 100%;
+
     --secondary: 180 78% 55%;
     --secondary-foreground: 222 19% 8%;
 
@@ -162,6 +168,12 @@
 
     --primary: 262 83% 58%;
     --primary-foreground: 0 0% 98%;
+
+    /* CTA tokens for light theme - AAA contrast */
+    --primary-cta: 262 83% 42%;
+    --primary-cta-hover: 262 83% 38%;
+    --primary-cta-active: 262 83% 34%;
+    --on-primary-cta: 0 0% 100%;
 
     --secondary: 180 78% 55%;
     --secondary-foreground: 0 0% 9%;
