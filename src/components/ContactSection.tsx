@@ -29,6 +29,8 @@ import {
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import { buildWhatsAppUrl } from "@/lib/whatsappUtils";
+import { sendEvent } from "@/lib/analytics";
+import i18n from "@/lib/i18n";
 
 interface ContactInfoItem {
   icon: LucideIcon;
@@ -104,6 +106,12 @@ export const ContactSection = () => {
       if (!response.ok) {
         throw new Error(result.message || "Failed to send email");
       }
+
+      // Track successful contact form submission
+      sendEvent("contact_submit", {
+        method: "email",
+        language: i18n.language,
+      });
 
       toast({
         title: t("contact.toast.successTitle"),

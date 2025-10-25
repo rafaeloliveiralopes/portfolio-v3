@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, Mail } from "lucide-react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import { useTranslation } from "react-i18next";
+import { sendEvent } from "@/lib/analytics";
+import i18n from "@/lib/i18n";
 
 export const HeroSection = () => {
   const { t } = useTranslation(["home", "common"]);
@@ -40,6 +42,11 @@ export const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) element.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleCTAClick = (label: string, section: string) => {
+    sendEvent("cta_click", { label, section, language: i18n.language });
+    scrollToSection(section);
   };
 
   return (
@@ -82,7 +89,7 @@ export const HeroSection = () => {
         >
           <Button
             size="lg"
-            onClick={() => scrollToSection("serviços")}
+            onClick={() => handleCTAClick("hero_services", "serviços")}
             className="bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)] shadow-glow text-lg px-8 py-3"
           >
             {t("hero.cta1")}
@@ -90,7 +97,7 @@ export const HeroSection = () => {
           <Button
             size="lg"
             variant="outline"
-            onClick={() => scrollToSection("contato")}
+            onClick={() => handleCTAClick("hero_contact", "contato")}
             className="border-[hsl(var(--secondary))] bg-[hsl(var(--background))] text-[hsl(var(--secondary))] hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary-foreground))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--secondary)/0.4)] text-lg px-8 py-3"
           >
             {t("hero.cta2")}
