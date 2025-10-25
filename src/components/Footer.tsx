@@ -35,17 +35,17 @@ export const Footer = () => {
   );
 
   const quickLinks = [
-    { name: t("footer.navigation.about"), href: "#sobre" },
-    { name: t("footer.navigation.services"), href: "#serviços" },
-    { name: t("footer.navigation.projects"), href: "#projetos" },
-    { name: t("footer.navigation.contact"), href: "#contato" },
+    { name: t("footer.navigation.about"), href: "#about" },
+    { name: t("footer.navigation.services"), href: "#services" },
+    { name: t("footer.navigation.projects"), href: "#projects" },
+    { name: t("footer.navigation.contact"), href: "#contact" },
   ];
 
   const services = [
-    { name: t("footer.services.webSystems"), href: "#serviços" },
-    { name: t("footer.services.performance"), href: "#serviços" },
-    { name: t("footer.services.aiAutomation"), href: "#serviços" },
-    { name: t("footer.services.consulting"), href: "#serviços" },
+    { name: t("footer.services.webSystems"), href: "#services" },
+    { name: t("footer.services.performance"), href: "#services" },
+    { name: t("footer.services.aiAutomation"), href: "#services" },
+    { name: t("footer.services.consulting"), href: "#services" },
   ];
 
   const scrollToTop = () => {
@@ -121,7 +121,7 @@ export const Footer = () => {
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <Button
-                    onClick={() => scrollToSection("contato")}
+                    onClick={() => scrollToSection("contact")}
                     className="bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)]"
                   >
                     {t("footer.cta.fillForm")}

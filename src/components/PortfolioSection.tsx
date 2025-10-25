@@ -75,7 +75,7 @@ export const PortfolioSection = () => {
         });
 
   return (
-    <section id="projetos" className="py-20 relative bg-zinc-950">
+    <section id="projects" className="py-20 relative bg-zinc-950">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">

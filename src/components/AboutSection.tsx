@@ -5,7 +5,7 @@ export const AboutSection = () => {
   const { t } = useTranslation(["home", "common"]);
 
   return (
-    <section id="sobre" className="py-20 relative bg-black">
+    <section id="about" className="py-20 relative bg-black">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">

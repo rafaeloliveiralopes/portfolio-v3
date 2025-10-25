@@ -46,10 +46,10 @@ export const Navigation = () => {
   ];
 
   const navItems = [
-    { key: "about", id: "sobre" },
-    { key: "services", id: "servicos" },
-    { key: "projects", id: "projetos" },
-    { key: "contact", id: "contato" },
+    { key: "about", id: "about" },
+    { key: "services", id: "services" },
+    { key: "projects", id: "projects" },
+    { key: "contact", id: "contact" },
     { key: "blog", id: "blog" },
   ];
 
@@ -126,7 +126,7 @@ export const Navigation = () => {
 
             {/* CTA Button */}
             <Button
-              onClick={() => scrollToSection("contato")}
+              onClick={() => scrollToSection("contact")}
               className="bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)] shadow-glow"
             >
               {t("nav.cta")}
@@ -236,7 +236,7 @@ export const Navigation = () => {
               </Button> */}
             </div>
             <Button
-              onClick={() => scrollToSection("contato")}
+              onClick={() => scrollToSection("contact")}
               className="bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)] text-lg py-4"
             >
               {t("nav.cta")}

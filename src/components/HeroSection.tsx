@@ -89,7 +89,7 @@ export const HeroSection = () => {
         >
           <Button
             size="lg"
-            onClick={() => handleCTAClick("hero_services", "serviços")}
+            onClick={() => handleCTAClick("hero_services", "services")}
             className="bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)] shadow-glow text-lg px-8 py-3"
           >
             {t("hero.cta1")}
@@ -97,7 +97,7 @@ export const HeroSection = () => {
           <Button
             size="lg"
             variant="outline"
-            onClick={() => handleCTAClick("hero_contact", "contato")}
+            onClick={() => handleCTAClick("hero_contact", "contact")}
             className="border-[hsl(var(--secondary))] bg-[hsl(var(--background))] text-[hsl(var(--secondary))] hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary-foreground))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--secondary)/0.4)] text-lg px-8 py-3"
           >
             {t("hero.cta2")}
@@ -150,7 +150,7 @@ export const HeroSection = () => {
         {/* Scroll Indicator */}
         <div className="animate-float-up" style={{ animationDelay: "1s" }}>
           <button
-            onClick={() => scrollToSection("sobre")}
+            onClick={() => scrollToSection("about")}
             className="text-muted-foreground hover:text-primary transition-colors group"
             aria-label={t("nav.about")}
           >

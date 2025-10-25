@@ -130,7 +130,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contato" className="py-20 relative">
+    <section id="contact" className="py-20 relative">
       {/* Background Decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
