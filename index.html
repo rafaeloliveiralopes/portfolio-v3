@@ -1,63 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ======================= SEO ======================= -->
-    <title>AI Engineer: Chatbots, Automation & Governance | Rafael Lopes</title>
-    <meta
-      name="description"
-      content="AI Engineer specialized in custom chatbots, generative AI automation, and AI governance for enterprises. LLM integration, compliance & ROI-focused solutions."
-    />
-    <meta
-      name="keywords"
-      content="AI chatbot development, AI engineer, AI governance, generative AI, LLM integration, AI automation, custom chatbots, AI compliance, AI strategy, machine learning consulting, OpenAI integration, enterprise AI solutions, chatbot services, AI consulting"
-    />
-    <meta name="author" content="Rafael Lopes" />
-    <link rel="canonical" href="https://rafaellopes.dev/" />
-
-    <!-- ======================= Open Graph / Social ======================= -->
-    <meta
-      property="og:title"
-      content="AI Engineer: Chatbots, Automation & Governance | Rafael Lopes"
-    />
-    <meta
-      property="og:description"
-      content="AI Engineer specialized in custom chatbots, generative AI automation, and AI governance for enterprises. LLM integration & ROI-focused solutions."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://rafaellopes.dev/" />
-    <meta
-      property="og:image"
-      content="https://rafaellopes.dev/assets/og-image.jpg"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:site_name" content="Rafael Lopes" />
-    <meta property="og:locale" content="en_US" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="AI Engineer: Chatbots, Automation & Governance | Rafael Lopes"
-    />
-    <meta
-      name="twitter:description"
-      content="AI Engineer specialized in custom chatbots, generative AI automation, and AI governance for enterprises. LLM integration & ROI-focused solutions."
-    />
-    <meta
-      name="twitter:image"
-      content="https://rafaellopes.dev/assets/og-image.jpg"
-    />
-    <meta name="twitter:site" content="@RafaelL77859907" />
-
-    <!-- ======================= Hreflang (multilíngue) ======================= -->
-    <!--
-      Preencha se o site tiver múltiplos idiomas/URLs.
-      Exemplo para PT-BR (padrão), EN e ES:
-    -->
-    <!-- Observação: Como o site usa detecção de idioma no mesmo URL (sem /en, /es), não definimos hreflang alternates. -->
+    <!-- ======================= SEO Managed by React (SeoHead component) ======================= -->
+    <!-- All title, description, canonical, hreflang, OG, and Twitter tags are dynamically injected by SeoHead.tsx -->
+    <!-- This avoids duplicate/conflicting tags and enables proper i18n SEO -->
 
     <!-- ======================= Crawling ======================= -->
     <meta
@@ -65,6 +14,11 @@
       content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
     />
     <meta name="googlebot" content="index,follow" />
+    <meta name="author" content="Rafael Lopes" />
+    <meta
+      name="keywords"
+      content="AI chatbot development, AI engineer, AI governance, generative AI, LLM integration, AI automation, custom chatbots, AI compliance, AI strategy, machine learning consulting, OpenAI integration, enterprise AI solutions, chatbot services, AI consulting"
+    />
 
     <!-- ======================= PWA / Aparência ======================= -->
     <!-- <link rel="manifest" href="/site.webmanifest"> -->
@@ -84,22 +38,11 @@
     -->
 
     <!-- Preload de imagem hero acima da dobra (opcional; use com parcimônia) -->
-    <!--
-      <link rel="preload" as="image" href="/images/hero.webp" imagesrcset="/images/hero@2x.webp 2x" fetchpriority="high">
-    -->
+    <!-- <link rel="preload" as="image" href="/images/hero.webp" imagesrcset="/images/hero@2x.webp 2x" fetchpriority="high"> -->
 
-    <!-- ======================= Google tag (gtag.js) ======================= -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-17XTVR8E46"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-    </script>
+    <!-- ======================= Google Analytics (GA4) ======================= -->
+    <!-- GA4 is initialized in React (src/lib/analytics.ts) to read VITE_GA4_ID from .env -->
+    <!-- This allows proper environment variable usage and avoids hardcoded IDs -->
 
     <!-- ======================= Structured Data (JSON-LD) ======================= -->
     <script type="application/ld+json">

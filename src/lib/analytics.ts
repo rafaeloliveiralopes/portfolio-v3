@@ -1,6 +1,6 @@
 // src/lib/analytics.ts
 // Google Analytics (GA4) via gtag.js
-// Measurement ID: G-17XTVR8E46
+// Measurement ID from environment variable (VITE_GA4_ID)
 
 type GtagCommand = "config" | "event" | "set";
 type GtagParams = Record<string, string | number | boolean | undefined>;
@@ -14,6 +14,40 @@ declare global {
       params?: GtagParams
     ) => void;
   }
+}
+
+/**
+ * Initialize Google Analytics by loading gtag.js script and configuring GA4.
+ * Should be called once during app bootstrap (e.g., main.tsx).
+ * Reads GA4 Measurement ID from VITE_GA4_ID environment variable.
+ *
+ * In dev, you can leave VITE_GA4_ID empty to skip GA initialization.
+ * In production, ensure VITE_GA4_ID is set in .env.production or hosting dashboard.
+ */
+export function initGA(): void {
+  const GA_ID = import.meta.env.VITE_GA4_ID;
+
+  // Skip initialization if no GA ID or not in browser environment
+  if (!GA_ID || typeof window === "undefined") {
+    return;
+  }
+
+  // Load gtag.js script
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  document.head.appendChild(script);
+
+  // Initialize dataLayer and gtag function
+  window.dataLayer = window.dataLayer || [];
+  function gtag(...args: unknown[]) {
+    window.dataLayer.push(args);
+  }
+  window.gtag = gtag as typeof window.gtag;
+
+  // Configure GA4
+  gtag("js", new Date());
+  gtag("config", GA_ID);
 }
 
 /**
