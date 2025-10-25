@@ -26,6 +26,7 @@
       "emailPlaceholder": "tu@email.com",
       "phone": "Teléfono",
       "phonePlaceholder": "+55 (00) 00000-0000",
+      "countrySelector": "Seleccionar país del teléfono",
       "subject": "Asunto *",
       "subjectPlaceholder": "¿Sobre qué te gustaría hablar?",
       "company": "Empresa",

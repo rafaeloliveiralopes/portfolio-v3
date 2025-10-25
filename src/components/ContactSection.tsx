@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from "react";
+import { useMemo, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -68,6 +68,49 @@ export const ContactSection = () => {
       keepTouched: true,
     });
   }, [i18n.language, form, schema]);
+
+  // Ref to scope DOM queries to the phone input container
+  const phoneContainerRef = useRef<HTMLDivElement | null>(null);
+
+  // A11y patch: ensure country selector button and listbox have accessible names
+  useEffect(() => {
+    const container = phoneContainerRef.current;
+    if (!container) return;
+
+    // 1) Name the trigger button
+    const btn =
+      container.querySelector<HTMLButtonElement>(
+        ".react-international-phone-country-selector button"
+      ) ||
+      container.querySelector<HTMLButtonElement>(
+        ".react-international-phone-country-selector > button"
+      );
+
+    if (btn) {
+      btn.id = "country-trigger";
+      btn.setAttribute("aria-label", t("contact.form.countrySelector"));
+      btn.setAttribute("aria-haspopup", "listbox");
+      btn.setAttribute("aria-controls", "country-listbox");
+    }
+
+    // 2) Name the listbox (it may render/toggle later)
+    const applyListboxAttrs = () => {
+      const list = container.querySelector<HTMLUListElement>(
+        '.react-international-phone-country-selector-dropdown[role="listbox"]'
+      );
+      if (list) {
+        list.id = "country-listbox";
+        list.setAttribute("aria-labelledby", "country-trigger");
+      }
+    };
+
+    // Run initially and whenever subtree changes (dropdown opens/closes)
+    const mo = new MutationObserver(applyListboxAttrs);
+    mo.observe(container, { childList: true, subtree: true });
+    applyListboxAttrs();
+
+    return () => mo.disconnect();
+  }, [i18n.language, t]);
 
   const contactInfo = useMemo<ContactInfoItem[]>(
     () => [
@@ -270,29 +313,33 @@ export const ContactSection = () => {
                     <FormItem>
                       <FormLabel>{t("contact.form.phone")}</FormLabel>
                       <FormControl>
-                        <PhoneInput
-                          defaultCountry="br"
-                          value={field.value}
-                          onChange={(phone) => field.onChange(phone)}
-                          className="w-full"
-                          style={
-                            {
-                              "--react-international-phone-background-color":
-                                "hsl(var(--background))",
-                              "--react-international-phone-text-color":
-                                "hsl(var(--foreground))",
-                              "--react-international-phone-border-color":
-                                "hsl(var(--border))",
-                            } as React.CSSProperties
-                          }
-                          placeholder={t("contact.form.phonePlaceholder")}
-                          aria-invalid={!!form.formState.errors.phone}
-                          aria-describedby={
-                            form.formState.errors.phone
-                              ? `phone-error`
-                              : undefined
-                          }
-                        />
+                        <div className="relative" ref={phoneContainerRef}>
+                          <PhoneInput
+                            defaultCountry="br"
+                            value={field.value}
+                            onChange={(phone) => field.onChange(phone)}
+                            className="w-full"
+                            style={
+                              {
+                                "--react-international-phone-background-color":
+                                  "hsl(var(--background))",
+                                "--react-international-phone-text-color":
+                                  "hsl(var(--foreground))",
+                                "--react-international-phone-border-color":
+                                  "hsl(var(--border))",
+                              } as React.CSSProperties
+                            }
+                            placeholder={t("contact.form.phonePlaceholder")}
+                            inputProps={{
+                              name: "phone",
+                              autoComplete: "tel",
+                              "aria-invalid": !!form.formState.errors.phone,
+                              "aria-describedby": form.formState.errors.phone
+                                ? "phone-error"
+                                : undefined,
+                            }}
+                          />
+                        </div>
                       </FormControl>
                       <FormMessage id="phone-error" />
                     </FormItem>
