@@ -152,7 +152,7 @@ export const HeroSection = () => {
           <button
             onClick={() => scrollToSection("about")}
             className="text-muted-foreground hover:text-primary transition-colors group"
-            aria-label={t("nav.about")}
+            aria-label={t("common:nav.about")}
           >
             <ArrowDown
               className="w-6 h-6 mx-auto animate-bounce group-hover:text-primary"
@@ -160,7 +160,7 @@ export const HeroSection = () => {
               role="presentation"
               focusable="false"
             />
-            <span className="block text-sm mt-2">{t("nav.about")}</span>
+            <span className="block text-sm mt-2">{t("common:nav.about")}</span>
           </button>
         </div>
       </div>
