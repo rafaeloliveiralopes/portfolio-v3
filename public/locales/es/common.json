@@ -1,4 +1,13 @@
 {
+  "brand": {
+    "name": "Rafael",
+    "surname": "Lopes",
+    "domain": ".dev"
+  },
+  "accessibility": {
+    "toggleLanguage": "Cambiar idioma",
+    "closeMenu": "Cerrar menú"
+  },
   "nav": {
     "about": "Acerca de",
     "services": "Servicios",
@@ -36,6 +45,7 @@
       "location": "Uruaçu-Goiás, Brasil"
     },
     "bottom": {
+      "copyright": "© {{year}} Rafael Lopes.",
       "rights": "Todos los derechos reservados.",
       "madeWith": "Hecho con",
       "love": "❤️",

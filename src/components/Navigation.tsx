@@ -65,9 +65,9 @@ export const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="text-1xl font-bold">
-            <span className="text-foreground">Rafael</span>
-            <span className="text-gradient-primary">Lopes</span>
-            <span className="text-secondary">.dev</span>
+            <span className="text-foreground">{t("brand.name")}</span>
+            <span className="text-gradient-primary">{t("brand.surname")}</span>
+            <span className="text-secondary">{t("brand.domain")}</span>
           </div>
 
           {/* Desktop Menu */}
@@ -89,7 +89,9 @@ export const Navigation = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
-                  <span className="sr-only">Toggle language</span>
+                  <span className="sr-only">
+                    {t("accessibility.toggleLanguage")}
+                  </span>
                   <Globe
                     className="h-5 w-5"
                     aria-hidden="true"
@@ -165,16 +167,18 @@ export const Navigation = () => {
           <div className="fixed inset-0 h-screen w-screen z-50 bg-background/95 md:hidden flex flex-col px-6 py-8">
             <div className="flex items-center justify-between mb-8">
               <div className="text-1xl font-bold">
-                <span className="text-foreground">rafael</span>
-                <span className="text-gradient-primary">lopes</span>
-                <span className="text-secondary">.dev</span>
+                <span className="text-foreground">{t("brand.name")}</span>
+                <span className="text-gradient-primary">
+                  {t("brand.surname")}
+                </span>
+                <span className="text-secondary">{t("brand.domain")}</span>
               </div>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-foreground"
-                aria-label="Close menu"
+                aria-label={t("accessibility.closeMenu")}
               >
-                <span className="sr-only">Close menu</span>
+                <span className="sr-only">{t("accessibility.closeMenu")}</span>
                 <X
                   size={26}
                   aria-hidden="true"
@@ -199,7 +203,9 @@ export const Navigation = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm">
-                    <span className="sr-only">Toggle language</span>
+                    <span className="sr-only">
+                      {t("accessibility.toggleLanguage")}
+                    </span>
                     <Globe
                       className="h-4 w-4 mr-2"
                       aria-hidden="true"
