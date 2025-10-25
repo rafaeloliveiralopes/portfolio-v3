@@ -29,7 +29,7 @@ test.describe("Accessibility Tests", () => {
     await page.emulateMedia({ colorScheme: "dark", reducedMotion: "reduce" });
 
     // 3) Navigate and wait for stable state
-    await page.goto(BASE_URL, { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "networkidle" });
     await page.waitForLoadState("domcontentloaded");
     await page.waitForSelector("#root", { state: "attached" });
 
