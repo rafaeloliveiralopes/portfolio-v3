@@ -46,5 +46,16 @@
   },
   "whatsapp": {
     "ctaMessage": "Hola {{name}}, vine desde tu sitio web y me gustaría hablar sobre un proyecto."
+  },
+  "contacts": {
+    "email": "rafaellopes.dev@gmail.com",
+    "phone": "+55 (62) 99213-6842",
+    "phoneFormatted": "+55 62 99213-6842",
+    "location": "Uruaçu-Goiás, Brasil"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "¡Oops! Página no encontrada",
+    "returnHome": "Volver a Inicio"
   }
 }

@@ -38,7 +38,7 @@ interface ContactInfoItem {
 }
 
 export const ContactSection = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(["contact", "common"]);
   const { toast } = useToast();
 
   // Create schema with current language
@@ -66,16 +66,20 @@ export const ContactSection = () => {
       {
         icon: Mail,
         title: t("contact.contactInfo.email"),
-        value: "rafaellopes.dev@gmail.com",
-        href: "mailto:rafaellopes.dev@gmail.com",
+        value: t("contacts.email"),
+        href: `mailto:${t("contacts.email")}`,
       },
       {
         icon: Phone,
         title: t("contact.contactInfo.whatsapp"),
-        value: "+55 (62) 99213-6842",
-        href: buildWhatsAppUrl("+55 62 99213-6842", "whatsapp.ctaMessage", {
-          name: "Rafael",
-        }),
+        value: t("contacts.phone"),
+        href: buildWhatsAppUrl(
+          t("contacts.phoneFormatted"),
+          "whatsapp.ctaMessage",
+          {
+            name: "Rafael",
+          }
+        ),
       },
       {
         icon: MapPin,

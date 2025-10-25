@@ -30,10 +30,17 @@ const Footer = lazy(() =>
 );
 
 const Index = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["seo", "common"]);
   useAnalytics();
   const title = t("seo.title");
   const description = t("seo.description");
+
+  const LoadingFallback = () => (
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+    </div>
+  );
+
   return (
     <>
       <Helmet>
@@ -43,7 +50,7 @@ const Index = () => {
       <main className="min-h-screen bg-mesh">
         <Navigation />
         <HeroSection />
-        <Suspense fallback={null}>
+        <Suspense fallback={<LoadingFallback />}>
           <AboutSection />
           <ServicesSection />
           <PortfolioSection />

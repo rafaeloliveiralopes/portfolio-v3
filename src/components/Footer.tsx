@@ -23,11 +23,11 @@ const socialLinks = [
 ];
 
 export const Footer = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["common"]);
 
   // Build the localized WhatsApp URL
   const whatsappUrl = buildWhatsAppUrl(
-    "+55 62 99213-6842",
+    t("contacts.phoneFormatted"),
     "whatsapp.ctaMessage",
     {
       name: "Rafael",
@@ -199,10 +199,10 @@ export const Footer = () => {
                 </h5>
                 <div className="space-y-2 text-sm">
                   <a
-                    href="mailto:contato@rafaellopes.dev"
+                    href={`mailto:${t("contacts.email")}`}
                     className="block text-muted-foreground hover:text-primary transition-colors"
                   >
-                    contato@rafaellopes.dev
+                    {t("contacts.email")}
                   </a>
                   <a
                     href={whatsappUrl}
@@ -210,10 +210,10 @@ export const Footer = () => {
                     rel="noopener noreferrer"
                     className="block text-muted-foreground hover:text-primary transition-colors"
                   >
-                    +55 (62) 99213-6842
+                    {t("contacts.phone")}
                   </a>
                   <span className="block text-muted-foreground">
-                    {t("footer.contact.location")}
+                    {t("contacts.location")}
                   </span>
                 </div>
               </div>

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Filter } from "lucide-react";
 
 export const PortfolioSection = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["projects", "common"]);
   // Use category key instead of translated text
   const [selectedCategoryKey, setSelectedCategoryKey] = useState("all");
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Moon, Sun, Globe } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,7 +15,8 @@ export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(["common"]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +35,8 @@ export const Navigation = () => {
   };
 
   const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+    // Navigate to the locale-prefixed route instead of just changing language
+    navigate(`/${lng}`);
   };
 
   const languages = [

@@ -5,7 +5,7 @@ import { SiGithub, SiLinkedin } from "react-icons/si";
 import { useTranslation } from "react-i18next";
 
 export const HeroSection = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["home", "common"]);
   const phrases = t("hero.typingPhrases", { returnObjects: true }) as string[];
   const [displayText, setDisplayText] = useState("");
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
