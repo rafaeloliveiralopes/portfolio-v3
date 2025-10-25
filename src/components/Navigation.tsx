@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Moon, Sun, Globe } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,7 +15,8 @@ export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(["common"]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +35,8 @@ export const Navigation = () => {
   };
 
   const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+    // Navigate to the locale-prefixed route instead of just changing language
+    navigate(`/${lng}`);
   };
 
   const languages = [
@@ -43,10 +46,10 @@ export const Navigation = () => {
   ];
 
   const navItems = [
-    { key: "about", id: "sobre" },
-    { key: "services", id: "servicos" },
-    { key: "projects", id: "projetos" },
-    { key: "contact", id: "contato" },
+    { key: "about", id: "about" },
+    { key: "services", id: "services" },
+    { key: "projects", id: "projects" },
+    { key: "contact", id: "contact" },
     { key: "blog", id: "blog" },
   ];
 
@@ -123,7 +126,7 @@ export const Navigation = () => {
 
             {/* CTA Button */}
             <Button
-              onClick={() => scrollToSection("contato")}
+              onClick={() => scrollToSection("contact")}
               className="bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)] shadow-glow"
             >
               {t("nav.cta")}
@@ -233,7 +236,7 @@ export const Navigation = () => {
               </Button> */}
             </div>
             <Button
-              onClick={() => scrollToSection("contato")}
+              onClick={() => scrollToSection("contact")}
               className="bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)] text-lg py-4"
             >
               {t("nav.cta")}

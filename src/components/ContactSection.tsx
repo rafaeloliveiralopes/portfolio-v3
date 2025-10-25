@@ -29,6 +29,8 @@ import {
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import { buildWhatsAppUrl } from "@/lib/whatsappUtils";
+import { sendEvent } from "@/lib/analytics";
+import i18n from "@/lib/i18n";
 
 interface ContactInfoItem {
   icon: LucideIcon;
@@ -38,12 +40,11 @@ interface ContactInfoItem {
 }
 
 export const ContactSection = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(["contact", "common"]);
   const { toast } = useToast();
 
   // Create schema with current language
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const schema = useMemo(() => getContactFormSchema(), [i18n.language]);
+  const schema = useMemo(() => getContactFormSchema(t), [t]);
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(schema),
@@ -56,26 +57,37 @@ export const ContactSection = () => {
     },
   });
 
-  // Update resolver when language changes
+  // Update resolver when language changes and keep user values
   useEffect(() => {
+    const currentValues = form.getValues();
     form.clearErrors();
-  }, [i18n.language, form]);
+    // Reset with current values to trigger resolver update with new schema
+    form.reset(currentValues, {
+      keepValues: true,
+      keepDirty: true,
+      keepTouched: true,
+    });
+  }, [i18n.language, form, schema]);
 
   const contactInfo = useMemo<ContactInfoItem[]>(
     () => [
       {
         icon: Mail,
         title: t("contact.contactInfo.email"),
-        value: "rafaellopes.dev@gmail.com",
-        href: "mailto:rafaellopes.dev@gmail.com",
+        value: t("contacts.email"),
+        href: `mailto:${t("contacts.email")}`,
       },
       {
         icon: Phone,
         title: t("contact.contactInfo.whatsapp"),
-        value: "+55 (62) 99213-6842",
-        href: buildWhatsAppUrl("+55 62 99213-6842", "whatsapp.ctaMessage", {
-          name: "Rafael",
-        }),
+        value: t("contacts.phone"),
+        href: buildWhatsAppUrl(
+          t("contacts.phoneFormatted"),
+          "whatsapp.ctaMessage",
+          {
+            name: "Rafael",
+          }
+        ),
       },
       {
         icon: MapPin,
@@ -102,6 +114,12 @@ export const ContactSection = () => {
         throw new Error(result.message || "Failed to send email");
       }
 
+      // Track successful contact form submission
+      sendEvent("contact_submit", {
+        method: "email",
+        language: i18n.language,
+      });
+
       toast({
         title: t("contact.toast.successTitle"),
         description: t("contact.toast.successDescription"),
@@ -119,7 +137,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contato" className="py-20 relative">
+    <section id="contact" className="py-20 relative">
       {/* Background Decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>

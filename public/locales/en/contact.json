@@ -1,0 +1,56 @@
+{
+  "contact": {
+    "title": "Let's",
+    "titleHighlight": "talk?",
+    "subtitle": "Ready to transform your idea into reality? Get in touch and let's build something amazing together.",
+    "info": {
+      "title": "Get in",
+      "titleHighlight": "touch",
+      "description": "I am always available to discuss new projects, partnerships, or simply exchange ideas about technology. Choose the most convenient way for you."
+    },
+    "contactInfo": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "location": "Location",
+      "locationValue": "Uruaçu-Goiás, Brazil"
+    },
+    "stats": {
+      "responseTime": "Response time",
+      "deliveredProjects": "Delivered projects"
+    },
+    "form": {
+      "name": "Name *",
+      "namePlaceholder": "Your full name",
+      "email": "Email *",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+55 (00) 00000-0000 (optional)",
+      "subject": "Subject *",
+      "subjectPlaceholder": "What would you like to discuss?",
+      "company": "Company",
+      "companyPlaceholder": "Your company name (optional)",
+      "message": "Message *",
+      "messagePlaceholder": "Tell me about your project or idea...",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "guarantee": "Response guaranteed within 24 hours. Your data is protected."
+    },
+    "validation": {
+      "nameMin": "Name must be at least 2 characters",
+      "nameMax": "Name must be less than 100 characters",
+      "emailInvalid": "Invalid email address",
+      "emailMax": "Email must be less than 100 characters",
+      "phoneMax": "Phone must be less than 30 characters",
+      "subjectRequired": "Subject is required",
+      "subjectMax": "Subject must be less than 200 characters",
+      "messageMin": "Message must be at least 10 characters",
+      "messageMax": "Message must be less than 5000 characters"
+    },
+    "toast": {
+      "successTitle": "Message sent successfully!",
+      "successDescription": "I'll get in touch soon. Thank you!",
+      "errorTitle": "Error sending message",
+      "errorDescription": "Try again or contact directly."
+    }
+  }
+}

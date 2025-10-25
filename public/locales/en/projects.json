@@ -1,0 +1,100 @@
+{
+  "portfolio": {
+    "title": "Featured Projects",
+    "subtitle": "Custom solutions that strengthen your business competitiveness",
+    "viewProject": "View Project",
+    "viewAll": "View All Projects",
+    "techStack": "Technologies:",
+    "filters": {
+      "all": "All",
+      "web": "Web",
+      "system": "System",
+      "ai": "AI",
+      "automation": "Automation"
+    },
+    "aria": {
+      "viewDemo": "View demo",
+      "viewCode": "View source code"
+    },
+    "projects": {
+      "1": {
+        "title": "Landing Page",
+        "description": "Professional landing page for beauty studios, focused on visibility, client acquisition, and service valorization.",
+        "category": "Web"
+      },
+      "2": {
+        "title": "Registration System",
+        "description": "Complete platform for managing more than 700 members of a Quilombola NGO.",
+        "category": "System"
+      },
+      "3": {
+        "title": "Custom AI Chatbot",
+        "description": "Smart virtual assistant that qualifies leads and schedules meetings automatically.",
+        "category": "AI"
+      },
+      "4": {
+        "title": "High-Impact Landing Page",
+        "description": "Conversion-optimized page for a digital product launch campaign.",
+        "category": "Web"
+      },
+      "5": {
+        "title": "Mobile Delivery App",
+        "description": "Delivery app with geolocation, integrated payments, and rating system.",
+        "category": "Mobile"
+      },
+      "6": {
+        "title": "Marketing Automation",
+        "description": "System integrating CRM, email marketing, and data analysis to maximize sales.",
+        "category": "Automation"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "What Clients Say",
+    "subtitle": "Real results from businesses that trusted my work to transform their digital presence.",
+    "autoplay": "Autoplay",
+    "pause": "Pause",
+    "play": "Play",
+    "previous": "Previous testimonial",
+    "next": "Next testimonial",
+    "goTo": "Go to testimonial",
+    "cta": {
+      "title": "Want to be the next",
+      "titleHighlight": "success story",
+      "subtitle": "Let's talk about how I can help your business achieve similar results.",
+      "button": "Start My Project"
+    },
+    "items": {
+      "1": {
+        "name": "Maria Silva",
+        "role": "CEO",
+        "company": "Boutique Elegance",
+        "content": "Rafael completely transformed our online presence. Our sales increased 300% in the first quarter after the website launch. The communication was clear throughout the process."
+      },
+      "2": {
+        "name": "Carlos Mendes",
+        "role": "Director",
+        "company": "TechSolutions Ltd",
+        "content": "We needed a complex management system and Rafael delivered beyond expectations. The system reduced our processing time by 50% and the team adapted quickly."
+      },
+      "3": {
+        "name": "Ana Costa",
+        "role": "Founder",
+        "company": "Vital Nutrition",
+        "content": "The AI chatbot Rafael developed for our clinic revolutionized customer service. We can qualify leads 24/7 and our conversion rate doubled. Excellent work!"
+      },
+      "4": {
+        "name": "João Santos",
+        "role": "Owner",
+        "company": "Santos Law Firm",
+        "content": "The landing page Rafael developed for our client acquisition campaign exceeded all metrics. 20% conversion rate and top positioning on Google."
+      },
+      "5": {
+        "name": "Patrícia Oliveira",
+        "role": "Marketing Manager",
+        "company": "Digital Agency Pro",
+        "content": "We hired Rafael to optimize the performance of our clients' websites. The results were impressive: 60% average improvement in Lighthouse Score and significant increase in organic traffic."
+      }
+    }
+  }
+}

@@ -2,95 +2,85 @@
 // Google Analytics (GA4) via gtag.js
 // Measurement ID: G-17XTVR8E46
 
+type GtagCommand = "config" | "event" | "set";
+type GtagParams = Record<string, string | number | boolean | undefined>;
+
 declare global {
   interface Window {
     dataLayer: unknown[];
     gtag?: (
-      command: string,
+      command: GtagCommand,
       eventName: string,
-      eventData?: Record<string, unknown>
+      params?: GtagParams
     ) => void;
   }
 }
 
 /**
- * Call gtag function. If gtag is not available, push to dataLayer.
+ * Small guard to avoid errors in dev without GA.
+ * Calls gtag if available, otherwise does nothing.
  */
-export const gtag = (
-  command: string,
-  eventName: string,
-  eventData?: Record<string, unknown>
-) => {
-  if (typeof window !== "undefined") {
-    if (window.gtag) return window.gtag(command, eventName, eventData);
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push([command, eventName, eventData || {}]);
+const gtag = (command: GtagCommand, eventName: string, params?: GtagParams) => {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag(command, eventName, params);
   }
 };
 
 /**
- * Track page view event in GA4.
- * For SPA, call this manually after route changes.
+ * Send page_view event with language parameter.
+ * Called automatically by useAnalytics hook on route changes.
  *
- * @param path - Current page path (e.g., location.pathname)
- * @param title - Page title (e.g., document.title)
- * @param locale - User's locale (e.g., 'pt-BR', 'en', 'es')
- * @param theme - Current theme ('light' or 'dark')
+ * @param page_path - Current page path (e.g., '/pt' or '/en/contact')
+ * @param language - User's current language (e.g., 'pt', 'en', 'es')
  */
-export function trackPageView(
-  path: string,
-  title: string,
-  locale: string,
-  theme?: string
-) {
-  gtag("event", "page_view", {
-    page_path: path,
-    page_title: title,
-    locale,
-    theme: theme || "light",
-  });
-}
+export const sendPageView = (page_path: string, language: string) => {
+  gtag("event", "page_view", { page_path, language });
+};
 
 /**
- * Track CTA (Call-To-Action) click event.
+ * Send custom event with optional language parameter.
+ * Use for tracking CTA clicks, form submissions, and other user interactions.
  *
- * @param label - CTA button label/identifier (e.g., 'get-started', 'contact-me')
- * @param section - Section where CTA appears (e.g., 'hero', 'services', 'footer')
- * @param locale - User's locale
- * @param path - Current page path
+ * @param name - Event name (e.g., 'cta_click', 'contact_submit')
+ * @param params - Event parameters (automatically includes language if not provided)
+ *
+ * @example
+ * sendEvent("cta_click", { label: "hero_primary", language: i18n.language });
+ * sendEvent("contact_submit", { method: "email", language: i18n.language });
+ */
+export const sendEvent = (
+  name: string,
+  params: GtagParams & { language?: string } = {}
+) => {
+  gtag("event", name, { ...params });
+};
+
+/**
+ * Legacy helper for CTA tracking.
+ * Prefer using sendEvent directly for better flexibility.
+ *
+ * @deprecated Use sendEvent("cta_click", { label, section, language }) instead
  */
 export function trackCTA(
   label: string,
   section: string,
-  locale: string,
+  language: string,
   path: string
 ) {
-  gtag("event", "cta_click", {
-    label,
-    section,
-    page_path: path,
-    locale,
-  });
+  sendEvent("cta_click", { label, section, page_path: path, language });
 }
 
 /**
- * Track WhatsApp click event.
+ * Legacy helper for WhatsApp tracking.
+ * Prefer using sendEvent directly for better flexibility.
  *
- * @param position - Where the link was clicked (e.g., 'hero', 'services', 'footer')
- * @param locale - User's locale
- * @param country - Country ISO2 code (e.g., 'BR', 'US', 'ES')
- * @param path - Current page path
+ * @deprecated Use sendEvent("whatsapp_click", { position, language, country }) instead
  */
 export function trackWhatsApp(
   position: string,
-  locale: string,
+  language: string,
   country: string,
   path: string
 ) {
-  gtag("event", "whatsapp_click", {
-    position,
-    locale,
-    country,
-    page_path: path,
-  });
+  sendEvent("whatsapp_click", { position, language, country, page_path: path });
 }

@@ -1,6 +1,6 @@
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
-import { Helmet } from "react-helmet-async";
+import { SeoHead } from "@/components/SeoHead";
 import React, { Suspense, lazy } from "react";
 import { useTranslation } from "react-i18next";
 import { useAnalytics } from "@/hooks/useAnalytics";
@@ -29,21 +29,27 @@ const Footer = lazy(() =>
   import("@/components/Footer").then((m) => ({ default: m.Footer }))
 );
 
-const Index = () => {
-  const { t } = useTranslation();
+interface IndexProps {
+  locale: string;
+}
+
+const Index = ({ locale }: IndexProps) => {
+  const { i18n } = useTranslation(["seo", "common"]);
   useAnalytics();
-  const title = t("seo.title");
-  const description = t("seo.description");
+
+  const LoadingFallback = () => (
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+    </div>
+  );
+
   return (
     <>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-      </Helmet>
+      <SeoHead locale={locale} />
       <main className="min-h-screen bg-mesh">
         <Navigation />
         <HeroSection />
-        <Suspense fallback={null}>
+        <Suspense fallback={<LoadingFallback />}>
           <AboutSection />
           <ServicesSection />
           <PortfolioSection />

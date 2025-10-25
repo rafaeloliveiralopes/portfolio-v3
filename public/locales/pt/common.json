@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "services": "Serviços",
+    "projects": "Projetos",
+    "contact": "Contato",
+    "blog": "Blog",
+    "cta": "Vamos conversar"
+  },
+  "footer": {
+    "brand": {
+      "description": "Desenvolvedor especializado em criar soluções digitais que superam desafios e otimizam o desempenho operacional do seu negócio."
+    },
+    "cta": {
+      "title": "Pronto para começar seu projeto?",
+      "subtitle": "Vamos conversar sobre como posso ajudar seu negócio.",
+      "fillForm": "Preencher Formulário",
+      "whatsapp": "Falar no WhatsApp"
+    },
+    "navigation": {
+      "title": "Navegação",
+      "about": "Sobre",
+      "services": "Serviços",
+      "projects": "Projetos",
+      "contact": "Contato"
+    },
+    "services": {
+      "title": "Serviços",
+      "webSystems": "Sites & Sistemas",
+      "performance": "Performance & SEO",
+      "aiAutomation": "IA & Automações",
+      "consulting": "Consultoria Tech"
+    },
+    "contact": {
+      "title": "Contato Direto",
+      "location": "Uruaçu-Goiás, Brasil"
+    },
+    "bottom": {
+      "rights": "Todos os direitos reservados.",
+      "madeWith": "Feito com",
+      "love": "❤️",
+      "and": "e muito",
+      "coffee": "☕",
+      "backToTop": "Voltar ao topo"
+    }
+  },
+  "whatsapp": {
+    "ctaMessage": "Olá {{name}}, vim pelo site e gostaria de conversar sobre um projeto."
+  },
+  "contacts": {
+    "email": "rafaellopes.dev@gmail.com",
+    "phone": "+55 (62) 99213-6842",
+    "phoneFormatted": "+55 62 99213-6842",
+    "location": "Uruaçu-Goiás, Brasil"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oops! Página não encontrada",
+    "returnHome": "Voltar para Home"
+  }
+}

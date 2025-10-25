@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Filter } from "lucide-react";
 
 export const PortfolioSection = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["projects", "common"]);
   // Use category key instead of translated text
   const [selectedCategoryKey, setSelectedCategoryKey] = useState("all");
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
@@ -75,7 +75,7 @@ export const PortfolioSection = () => {
         });
 
   return (
-    <section id="projetos" className="py-20 relative bg-zinc-950">
+    <section id="projects" className="py-20 relative bg-zinc-950">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">

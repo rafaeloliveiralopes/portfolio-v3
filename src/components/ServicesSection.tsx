@@ -16,7 +16,7 @@ type TranslatedService = {
 type ServiceItem = TranslatedService & { icon: LucideIcon };
 
 export const ServicesSection = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(["services", "common"]);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
   // Build translated services model
@@ -43,7 +43,7 @@ export const ServicesSection = () => {
   };
 
   return (
-    <section id="serviços" className="py-20 relative">
+    <section id="services" className="py-20 relative">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -84,22 +84,23 @@ export const ServicesSection = () => {
 
                 {/* Features List */}
                 <ul className="space-y-3 mb-6">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start">
-                      <div
-                        className={`w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0 ${
-                          service.color === "primary"
-                            ? "bg-primary"
-                            : "bg-secondary"
-                        }`}
-                      />
-                      <span className="text-lg text-gray-300">{feature}</span>
-                    </li>
-                  ))}
+                  {Array.isArray(service.features) &&
+                    service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <div
+                          className={`w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0 ${
+                            service.color === "primary"
+                              ? "bg-primary"
+                              : "bg-secondary"
+                          }`}
+                        />
+                        <span className="text-lg text-gray-300">{feature}</span>
+                      </li>
+                    ))}
                 </ul>
 
                 {/* Expanded Features */}
-                {isExpanded && (
+                {isExpanded && Array.isArray(service.expandedFeatures) && (
                   <div className="mb-6 animate-float-up">
                     <ul className="space-y-3">
                       {service.expandedFeatures.map((feature, idx) => (

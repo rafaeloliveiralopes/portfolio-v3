@@ -1,0 +1,81 @@
+{
+  "services": {
+    "title": "Serviços",
+    "subtitle": "Soluções completas para potencializar sua presença digital",
+    "moreDetails": "Mais detalhes",
+    "lessDetails": "Menos detalhes",
+    "cards": {
+      "web": {
+        "title": "Sites & Sistemas",
+        "description": "Do institucional ao sistema sob medida.",
+        "features": [
+          "Sites institucionais que vendem",
+          "Landing pages de alta conversão",
+          "Sistemas web sob medida",
+          "APIs eficientes e seguras",
+          "Manutenção e otimização de performance"
+        ],
+        "expandedFeatures": [
+          "Estratégias personalizadas (sob medida + SEO avançado)",
+          "Alta performance (responsivo, velocidade, segurança)",
+          "Conformidade LGPD/RGPD e boas práticas de proteção de dados",
+          "Integrações (pagamentos, WhatsApp, CRM, outras APIs)"
+        ],
+        "color": "primary",
+        "buttonText": "Falar sobre meu projeto"
+      },
+      "performance": {
+        "title": "Performance & Auditoria",
+        "description": "Acelere, corrija e apareça melhor no Google.",
+        "features": [
+          "Auditoria de performance (Google Lighthouse)",
+          "Otimização técnica de SEO",
+          "Acessibilidade e segurança",
+          "Redução de erros e quedas",
+          "Relatórios práticos e acionáveis"
+        ],
+        "expandedFeatures": [
+          "UX melhor: site rápido, responsivo e acessível",
+          "Métricas: tráfego orgânico ↑, ranking no Google ↑, conversão ↑",
+          "Segurança/conformidade: LGPD/RGPD, mitigação de vulnerabilidades"
+        ],
+        "color": "secondary",
+        "buttonText": "Começar meu diagnóstico"
+      },
+      "ai": {
+        "title": "IA & Automações",
+        "description": "Economize tempo e reduza custos com IA prática.",
+        "features": [
+          "Chatbots de IA personalizados",
+          "Automações inteligentes de workflow",
+          "Aplicativos de IA sem código",
+          "Consultoria estratégica em IA",
+          "Integrações: Manychat, n8n, OpenAI, Zapier"
+        ],
+        "expandedFeatures": [
+          "Automatize tarefas repetitivas e reduza custos",
+          "IA generativa e agentes para atendimento, vendas e recuperação de Leads",
+          "Sistemas que aprendem com seus dados (RAG embeddings quando fizer sentido)",
+          "Integrações seguras ao seu ecossistema digital",
+          "Seu negócio trabalhando 24/7, economia de horas, decisões baseadas em dados"
+        ],
+        "color": "primary",
+        "buttonText": "Quero um plano de automação"
+      }
+    },
+    "items": {
+      "frontend": {
+        "title": "Desenvolvimento Frontend",
+        "description": "Interfaces modernas e responsivas que encantam seus clientes e aumentam as conversões."
+      },
+      "backend": {
+        "title": "Integrações & Backend",
+        "description": "APIs robustas, automações e integrações para otimizar seus processos de negócio."
+      },
+      "consulting": {
+        "title": "Consultoria Tech",
+        "description": "Análise de performance, SEO e segurança para maximizar o retorno do seu investimento digital."
+      }
+    }
+  }
+}

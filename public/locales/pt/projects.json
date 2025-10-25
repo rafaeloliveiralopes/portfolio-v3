@@ -1,0 +1,100 @@
+{
+  "portfolio": {
+    "title": "Projetos em Destaque",
+    "subtitle": "Soluções sob medida que fortalecem a competitividade do seu negócio",
+    "viewProject": "Ver Projeto",
+    "viewAll": "Ver Todos os Projetos",
+    "techStack": "Tecnologias:",
+    "filters": {
+      "all": "Todos",
+      "web": "Web",
+      "system": "Sistema",
+      "ai": "IA",
+      "automation": "Automação"
+    },
+    "aria": {
+      "viewDemo": "Ver demo",
+      "viewCode": "Ver código"
+    },
+    "projects": {
+      "1": {
+        "title": "Landing Page",
+        "description": "Landing page profissional para studios de beleza, com foco em visibilidade, captação de clientes e valorização dos serviços.",
+        "category": "Web"
+      },
+      "2": {
+        "title": "Sistema de Cadastro",
+        "description": "Plataforma segura e eficiente para gestão de mais de 700 associados da Associação Quilombola Urbana João Borges Vieira, com foco em privacidade e conformidade com a LGPD.",
+        "category": "Sistema"
+      },
+      "3": {
+        "title": "Chatbot IA Personalizado",
+        "description": "Assistente virtual inteligente que qualifica leads e agenda reuniões automaticamente.",
+        "category": "IA"
+      },
+      "4": {
+        "title": "Landing Page Alto Impacto",
+        "description": "Página de conversão otimizada para campanha de lançamento de produto digital.",
+        "category": "Web"
+      },
+      "5": {
+        "title": "App Mobile Delivery",
+        "description": "Aplicativo de delivery com geolocalização, pagamento integrado e sistema de avaliação.",
+        "category": "Mobile"
+      },
+      "6": {
+        "title": "Automação de Marketing",
+        "description": "Sistema que integra CRM, email marketing e análise de dados para maximizar vendas.",
+        "category": "Automação"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "O que Dizem os Clientes",
+    "subtitle": "Resultados reais de negócios que confiaram em meu trabalho para transformar sua presença digital.",
+    "autoplay": "Reprodução automática",
+    "pause": "Pausar",
+    "play": "Reproduzir",
+    "previous": "Depoimento anterior",
+    "next": "Próximo depoimento",
+    "goTo": "Ir para depoimento",
+    "cta": {
+      "title": "Quer ser o próximo",
+      "titleHighlight": "caso de sucesso",
+      "subtitle": "Vamos conversar sobre como posso ajudar seu negócio a alcançar resultados similares.",
+      "button": "Começar Meu Projeto"
+    },
+    "items": {
+      "1": {
+        "name": "Maria Silva",
+        "role": "CEO",
+        "company": "Boutique Elegance",
+        "content": "O Rafael transformou completamente nossa presença online. Nossas vendas aumentaram 300% no primeiro trimestre após o lançamento do site. A comunicação foi clara em todo o processo."
+      },
+      "2": {
+        "name": "Carlos Mendes",
+        "role": "Diretor",
+        "company": "TechSolutions Ltda",
+        "content": "Precisávamos de um sistema complexo de gestão e o Rafael entregou além das expectativas. O sistema reduziu nosso tempo de processamento em 50% e a equipe se adaptou rapidamente."
+      },
+      "3": {
+        "name": "Ana Costa",
+        "role": "Fundadora",
+        "company": "Nutrição Vital",
+        "content": "O chatbot de IA que o Rafael desenvolveu para nossa clínica revolucionou o atendimento. Conseguimos qualificar leads 24/7 e nossa taxa de conversão dobrou. Excelente trabalho!"
+      },
+      "4": {
+        "name": "João Santos",
+        "role": "Proprietário",
+        "company": "Santos Advocacia",
+        "content": "A landing page desenvolvida pelo Rafael para nossa campanha de captação de clientes superou todas as métricas. Taxa de conversão de 20% e posicionamento no topo do Google."
+      },
+      "5": {
+        "name": "Patrícia Oliveira",
+        "role": "Gerente de Marketing",
+        "company": "Digital Agency Pro",
+        "content": "Contratamos o Rafael para otimizar a performance de nossos sites de clientes. Os resultados foram impressionantes: melhoria média de 60% no Lighthouse Score e aumento significativo no tráfego orgânico."
+      }
+    }
+  }
+}

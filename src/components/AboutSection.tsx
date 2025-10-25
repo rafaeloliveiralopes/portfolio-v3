@@ -2,10 +2,10 @@ import { Code, Palette, Lightbulb, Target } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 export const AboutSection = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["home", "common"]);
 
   return (
-    <section id="sobre" className="py-20 relative bg-black">
+    <section id="about" className="py-20 relative bg-black">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -98,14 +98,15 @@ export const AboutSection = () => {
                       </h4>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {skill.items.map((item, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2 py-1 text-sm bg-muted text-zinc-300 rounded-md"
-                        >
-                          {item}
-                        </span>
-                      ))}
+                      {Array.isArray(skill.items) &&
+                        skill.items.map((item, idx) => (
+                          <span
+                            key={idx}
+                            className="px-2 py-1 text-sm bg-muted text-zinc-300 rounded-md"
+                          >
+                            {item}
+                          </span>
+                        ))}
                     </div>
                   </div>
                 );

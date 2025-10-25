@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "greeting": "Hi, I am",
+    "name": "Rafael Lopes",
+    "title": "Full-Stack Developer",
+    "subtitle": "I create digital experiences that combine design and code to generate real results for small and medium businesses.",
+    "cta1": "View Services",
+    "cta2": "Get in Touch",
+    "typingPhrases": [
+      "Custom digital solutions for your business.",
+      "I create digital experiences that unite people and technology to generate value for your business.",
+      "I create digital products that give visibility to your business."
+    ]
+  },
+  "about": {
+    "title": "About Rafael Lopes",
+    "subtitle": "Developer passionate about transforming ideas into digital solutions.",
+    "story1": "For over **3 years** I have been helping entrepreneurs digitize their businesses with custom solutions. My approach combines **cutting-edge technology** with **simple language**, ensuring you understand every step of the process.",
+    "story2": "I specialize in creating digital experiences that not only make a visual impact but **turn visitors into clients**. Every project starts with a clear strategy: transforming investment into real results.",
+    "story3": "When I'm not coding, you can find me exploring new technologies, studying market trends, or helping other developers in the community.",
+    "timeline": {
+      "title": "Professional Evolution",
+      "items": {
+        "2019": {
+          "title": "Journey Begins",
+          "description": "First steps in web development with HTML, CSS and JavaScript"
+        },
+        "2021": {
+          "title": "Frontend Specialization",
+          "description": "Mastery of React, TypeScript and modern development tools"
+        },
+        "2022": {
+          "title": "Fullstack & DevOps",
+          "description": "Expansion to backend with Node.js, APIs and cloud infrastructure"
+        },
+        "2023": {
+          "title": "Software Engineering",
+          "description": "Started Bachelor's degree in Software Engineering"
+        },
+        "2024": {
+          "title": "AI & Automation",
+          "description": "Integration of AI solutions and automation to optimize businesses"
+        }
+      }
+    },
+    "skills": {
+      "development": {
+        "title": "Development",
+        "items": ["React", "Java", "TypeScript", "Node.js", "Python"]
+      },
+      "design": {
+        "title": "Design & UX",
+        "items": ["Figma", "UI/UX Design", "Design Systems", "Prototyping"]
+      },
+      "soft": {
+        "title": "Soft Skills",
+        "items": [
+          "Problem Solving",
+          "Clear Communication",
+          "Analytical Thinking"
+        ]
+      },
+      "focus": {
+        "title": "Result Focused",
+        "items": ["Performance", "SEO", "Conversion", "Security"]
+      }
+    }
+  }
+}
