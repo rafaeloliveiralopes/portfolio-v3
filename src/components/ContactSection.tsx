@@ -200,7 +200,9 @@ export const ContactSection = () => {
             {/* Quick Stats */}
             <div className="grid grid-cols-2 gap-6 pt-8">
               <div className="text-center p-4 bg-card/50 rounded-xl border border-border">
-                <div className="text-2xl font-bold text-primary mb-1">24h</div>
+                <div className="text-2xl font-bold text-primary mb-1">
+                  {t("contact.stats.responseTimeValue")}
+                </div>
                 <div className="text-sm text-muted-foreground">
                   {t("contact.stats.responseTime")}
                 </div>

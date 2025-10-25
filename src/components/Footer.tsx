@@ -78,9 +78,11 @@ export const Footer = () => {
             <div className="lg:col-span-2">
               <div className="mb-6">
                 <div className="text-3xl font-bold mb-4">
-                  <span className="text-foreground">Rafael</span>
-                  <span className="text-gradient-primary">Lopes</span>
-                  <span className="text-secondary">.dev</span>
+                  <span className="text-foreground">{t("brand.name")}</span>
+                  <span className="text-gradient-primary">
+                    {t("brand.surname")}
+                  </span>
+                  <span className="text-secondary">{t("brand.domain")}</span>
                 </div>
                 <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
                   {t("footer.brand.description")}
@@ -225,7 +227,7 @@ export const Footer = () => {
         <div className="py-6 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-muted-foreground mb-4 md:mb-0">
-              © {new Date().getFullYear()} Rafael Lopes.{" "}
+              {t("footer.bottom.copyright", { year: new Date().getFullYear() })}{" "}
               {t("footer.bottom.rights")}
             </div>
 

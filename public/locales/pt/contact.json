@@ -16,6 +16,7 @@
     },
     "stats": {
       "responseTime": "Tempo de resposta",
+      "responseTimeValue": "24h",
       "deliveredProjects": "Projetos entregues"
     },
     "form": {
