@@ -1,29 +1,29 @@
 import { z } from "zod";
-import i18n from "@/lib/i18n";
+import type { TFunction } from "i18next";
 
-export const getContactFormSchema = () => {
+export const getContactFormSchema = (t: TFunction) => {
   return z.object({
     fullName: z
       .string()
-      .min(2, { message: i18n.t("contact.validation.nameMin") })
-      .max(100, { message: i18n.t("contact.validation.nameMax") }),
+      .min(2, { message: t("contact.validation.nameMin") })
+      .max(100, { message: t("contact.validation.nameMax") }),
     phone: z
       .string()
-      .max(30, { message: i18n.t("contact.validation.phoneMax") })
+      .max(30, { message: t("contact.validation.phoneMax") })
       .optional()
       .or(z.literal("")),
     email: z
       .string()
-      .email({ message: i18n.t("contact.validation.emailInvalid") })
-      .max(100, { message: i18n.t("contact.validation.emailMax") }),
+      .email({ message: t("contact.validation.emailInvalid") })
+      .max(100, { message: t("contact.validation.emailMax") }),
     subject: z
       .string()
-      .min(1, { message: i18n.t("contact.validation.subjectRequired") })
-      .max(200, { message: i18n.t("contact.validation.subjectMax") }),
+      .min(1, { message: t("contact.validation.subjectRequired") })
+      .max(200, { message: t("contact.validation.subjectMax") }),
     message: z
       .string()
-      .min(10, { message: i18n.t("contact.validation.messageMin") })
-      .max(5000, { message: i18n.t("contact.validation.messageMax") }),
+      .min(10, { message: t("contact.validation.messageMin") })
+      .max(5000, { message: t("contact.validation.messageMax") }),
   });
 };
 

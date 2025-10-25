@@ -42,8 +42,7 @@ export const ContactSection = () => {
   const { toast } = useToast();
 
   // Create schema with current language
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const schema = useMemo(() => getContactFormSchema(), [i18n.language]);
+  const schema = useMemo(() => getContactFormSchema(t), [t]);
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(schema),
