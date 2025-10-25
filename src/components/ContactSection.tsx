@@ -116,15 +116,15 @@ export const ContactSection = () => {
       {
         icon: Mail,
         title: t("contact.contactInfo.email"),
-        value: t("contacts.email"),
-        href: `mailto:${t("contacts.email")}`,
+        value: t("common:contacts.email"),
+        href: `mailto:${t("common:contacts.email")}`,
       },
       {
         icon: Phone,
         title: t("contact.contactInfo.whatsapp"),
-        value: t("contacts.phone"),
+        value: t("common:contacts.phone"),
         href: buildWhatsAppUrl(
-          t("contacts.phoneFormatted"),
+          t("common:contacts.phoneFormatted"),
           "whatsapp.ctaMessage",
           {
             name: "Rafael",
