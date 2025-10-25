@@ -130,7 +130,7 @@ export const ServicesSection = () => {
                       : "bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] hover:bg-[hsl(var(--secondary)/0.8)] active:bg-[hsl(var(--secondary)/0.7)] focus-visible:ring-2 focus-visible:ring-[hsl(var(--secondary)/0.4)]"
                   }`}
                 >
-                  <a href="#contato" aria-label={service.buttonText}>
+                  <a href="#contact" aria-label={service.buttonText}>
                     {service.buttonText}
                   </a>
                 </Button>

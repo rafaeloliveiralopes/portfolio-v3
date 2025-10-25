@@ -114,15 +114,14 @@ test.describe("Accessibility Tests", () => {
     page,
   }) => {
     // Wait for lazy-loaded content
-    await page.waitForSelector("#contato", { timeout: 5000 });
+    await page.waitForSelector("#contact", { timeout: 5000 });
 
     const accessibilityScanResults = await new AxeBuilder({ page })
-      .include("#contato")
+      .include("#contact")
       .analyze();
 
     expect(accessibilityScanResults.violations).toEqual([]);
   });
-
   test("should have proper color contrast", async ({ page }) => {
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(["cat.color"])

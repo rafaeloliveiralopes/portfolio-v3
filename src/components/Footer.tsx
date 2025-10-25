@@ -77,13 +77,13 @@ export const Footer = () => {
             {/* Brand Section */}
             <div className="lg:col-span-2">
               <div className="mb-6">
-                <div className="text-3xl font-bold mb-4">
+                <h2 className="text-3xl font-bold mb-4">
                   <span className="text-foreground">{t("brand.name")}</span>
                   <span className="text-gradient-primary">
                     {t("brand.surname")}
                   </span>
                   <span className="text-secondary">{t("brand.domain")}</span>
-                </div>
+                </h2>
                 <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
                   {t("footer.brand.description")}
                 </p>
@@ -115,9 +115,9 @@ export const Footer = () => {
 
               {/* CTA */}
               <div className="mt-8 p-6 bg-primary/5 border border-primary/20 rounded-xl">
-                <h4 className="font-bold text-lg mb-2 text-foreground">
+                <h3 className="font-bold text-lg mb-2 text-foreground">
                   {t("footer.cta.title")}
-                </h4>
+                </h3>
                 <p className="text-muted-foreground mb-4">
                   {t("footer.cta.subtitle")}
                 </p>
@@ -159,9 +159,9 @@ export const Footer = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="font-bold text-lg mb-6 text-foreground">
+              <h3 className="font-bold text-lg mb-6 text-foreground">
                 {t("footer.navigation.title")}
-              </h4>
+              </h3>
               <ul className="space-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
@@ -178,9 +178,9 @@ export const Footer = () => {
 
             {/* Services */}
             <div>
-              <h4 className="font-bold text-lg mb-6 text-foreground">
+              <h3 className="font-bold text-lg mb-6 text-foreground">
                 {t("footer.services.title")}
-              </h4>
+              </h3>
               <ul className="space-y-3">
                 {services.map((service) => (
                   <li key={service.name}>
@@ -196,9 +196,9 @@ export const Footer = () => {
 
               {/* Contact Info */}
               <div className="mt-8">
-                <h5 className="font-semibold mb-3 text-foreground">
+                <h4 className="font-semibold mb-3 text-foreground">
                   {t("footer.contact.title")}
-                </h5>
+                </h4>
                 <div className="space-y-2 text-sm">
                   <a
                     href={`mailto:${t("contacts.email")}`}
