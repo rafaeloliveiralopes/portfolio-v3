@@ -30,7 +30,6 @@ import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import { buildWhatsAppUrl } from "@/lib/whatsappUtils";
 import { sendEvent } from "@/lib/analytics";
-import i18n from "@/lib/i18n";
 
 interface ContactInfoItem {
   icon: LucideIcon;
