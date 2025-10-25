@@ -278,11 +278,6 @@
     box-shadow: 0 0 20px hsl(var(--primary) / 0.5);
   }
 
-  /* Parallax Sections */
-  .parallax-section {
-    transform-style: preserve-3d;
-  }
-
   /* Hover Underline Animation */
   .hover-underline {
     @apply relative;
@@ -326,41 +321,6 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
-  /* Animated Gradients */
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient-shift 6s ease infinite;
-  }
-}
-
-/* Keyframe Animations */
-@keyframes mesh-float {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(-20px, -10px) rotate(1deg);
-  }
-  50% {
-    transform: translate(15px, -15px) rotate(-1deg);
-  }
-  75% {
-    transform: translate(-10px, 10px) rotate(0.5deg);
-  }
-}
-
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1.1);
-  }
 }
 
 @keyframes gradient-shift {
@@ -383,15 +343,6 @@
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
   }
 }
 
