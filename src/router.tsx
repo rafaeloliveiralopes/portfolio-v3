@@ -79,7 +79,12 @@ export const AppRouter = () => {
           <Route
             key={locale}
             path={`/${locale}`}
-            element={<LocaleRoute locale={locale} element={<Index />} />}
+            element={
+              <LocaleRoute
+                locale={locale}
+                element={<Index locale={locale} />}
+              />
+            }
           />
         ))}
 
