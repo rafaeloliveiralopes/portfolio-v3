@@ -1,9 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
 
-/**
- * Playwright configuration for accessibility testing
- * @see https://playwright.dev/docs/test-configuration
- */
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: true,
@@ -17,13 +13,12 @@ export default defineConfig({
     trace: "on-first-retry",
   },
 
-  projects: [
-    {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
-    },
-  ],
+  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
 
-  // Don't start server automatically - user must run `pnpm dev` first
-  // This prevents port conflicts and allows testing against running dev server
+  webServer: {
+    command: "pnpm preview --port 8080",
+    url: "http://localhost:8080",
+    timeout: 120_000,
+    reuseExistingServer: !process.env.CI,
+  },
 });
