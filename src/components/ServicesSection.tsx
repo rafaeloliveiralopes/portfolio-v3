@@ -43,7 +43,12 @@ export const ServicesSection = () => {
   };
 
   return (
-    <section id="services" className="py-20 relative">
+    <section
+      id="services"
+      data-testid="services-section"
+      aria-label={t("services.title")}
+      className="py-20 relative"
+    >
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">

@@ -101,10 +101,10 @@ test.describe("Accessibility Tests", () => {
     page,
   }) => {
     // Wait for lazy-loaded content
-    await page.waitForSelector("#serviços", { timeout: 5000 });
+    await page.waitForSelector("#services", { timeout: 5000 });
 
     const accessibilityScanResults = await new AxeBuilder({ page })
-      .include("#serviços")
+      .include("#services")
       .analyze();
 
     expect(accessibilityScanResults.violations).toEqual([]);
