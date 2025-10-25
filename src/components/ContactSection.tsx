@@ -57,10 +57,17 @@ export const ContactSection = () => {
     },
   });
 
-  // Update resolver when language changes
+  // Update resolver when language changes and keep user values
   useEffect(() => {
+    const currentValues = form.getValues();
     form.clearErrors();
-  }, [i18n.language, form]);
+    // Reset with current values to trigger resolver update with new schema
+    form.reset(currentValues, {
+      keepValues: true,
+      keepDirty: true,
+      keepTouched: true,
+    });
+  }, [i18n.language, form, schema]);
 
   const contactInfo = useMemo<ContactInfoItem[]>(
     () => [
