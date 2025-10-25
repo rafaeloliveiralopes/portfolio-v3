@@ -1,0 +1,100 @@
+{
+  "portfolio": {
+    "title": "Proyectos Destacados",
+    "subtitle": "Soluciones a medida que fortalecen la competitividad de tu negocio",
+    "viewProject": "Ver Proyecto",
+    "viewAll": "Ver Todos los Proyectos",
+    "techStack": "Tecnologías:",
+    "filters": {
+      "all": "Todos",
+      "web": "Web",
+      "system": "Sistema",
+      "ai": "IA",
+      "automation": "Automatización"
+    },
+    "aria": {
+      "viewDemo": "Ver demo",
+      "viewCode": "Ver código fuente"
+    },
+    "projects": {
+      "1": {
+        "title": "Landing Page",
+        "description": "Landing page profesional para estudios de belleza, enfocada en visibilidad, captación de clientes y valorización de servicios.",
+        "category": "Web"
+      },
+      "2": {
+        "title": "Sistema de Gestión",
+        "description": "Plataforma completa para gestión de clientes, ventas y reportes en tiempo real.",
+        "category": "Sistema"
+      },
+      "3": {
+        "title": "Chatbot IA Personalizado",
+        "description": "Asistente virtual inteligente que califica leads y agenda reuniones automáticamente.",
+        "category": "IA"
+      },
+      "4": {
+        "title": "Landing Page de Alto Impacto",
+        "description": "Página de conversión optimizada para campaña de lanzamiento de producto digital.",
+        "category": "Web"
+      },
+      "5": {
+        "title": "App Móvil de Delivery",
+        "description": "Aplicación de delivery con geolocalización, pago integrado y sistema de valoración.",
+        "category": "Móvil"
+      },
+      "6": {
+        "title": "Automatización de Marketing",
+        "description": "Sistema que integra CRM, email marketing y análisis de datos para maximizar ventas.",
+        "category": "Automatización"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Lo que Dicen los Clientes",
+    "subtitle": "Resultados reales de negocios que confiaron en mi trabajo para transformar su presencia digital.",
+    "autoplay": "Reproducción automática",
+    "pause": "Pausar",
+    "play": "Reproducir",
+    "previous": "Testimonio anterior",
+    "next": "Siguiente testimonio",
+    "goTo": "Ir al testimonio",
+    "cta": {
+      "title": "¿Quieres ser el próximo",
+      "titleHighlight": "caso de éxito",
+      "subtitle": "Conversemos sobre cómo puedo ayudar a tu negocio a alcanzar resultados similares.",
+      "button": "Empezar Mi Proyecto"
+    },
+    "items": {
+      "1": {
+        "name": "María Silva",
+        "role": "CEO",
+        "company": "Boutique Elegance",
+        "content": "Rafael transformó completamente nuestra presencia online. Nuestras ventas aumentaron 300% en el primer trimestre después del lanzamiento del sitio. La comunicación fue clara durante todo el proceso."
+      },
+      "2": {
+        "name": "Carlos Mendes",
+        "role": "Director",
+        "company": "TechSolutions Ltda",
+        "content": "Necesitábamos un sistema complejo de gestión y Rafael entregó más allá de las expectativas. El sistema redujo nuestro tiempo de procesamiento en 50% y el equipo se adaptó rápidamente."
+      },
+      "3": {
+        "name": "Ana Costa",
+        "role": "Fundadora",
+        "company": "Nutrición Vital",
+        "content": "El chatbot de IA que Rafael desarrolló para nuestra clínica revolucionó la atención. Podemos calificar leads 24/7 y nuestra tasa de conversión se duplicó. ¡Excelente trabajo!"
+      },
+      "4": {
+        "name": "João Santos",
+        "role": "Propietario",
+        "company": "Santos Abogacía",
+        "content": "La landing page desarrollada por Rafael para nuestra campaña de captación de clientes superó todas las métricas. Tasa de conversión del 20% y posicionamiento en el top de Google."
+      },
+      "5": {
+        "name": "Patricia Oliveira",
+        "role": "Gerente de Marketing",
+        "company": "Digital Agency Pro",
+        "content": "Contratamos a Rafael para optimizar el rendimiento de los sitios de nuestros clientes. Los resultados fueron impresionantes: mejora promedio del 60% en el Lighthouse Score y aumento significativo en el tráfico orgánico."
+      }
+    }
+  }
+}

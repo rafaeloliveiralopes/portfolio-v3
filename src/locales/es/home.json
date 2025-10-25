@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "Rafael Lopes",
+    "title": "Desarrollador Full-Stack",
+    "subtitle": "Creo experiencias digitales que combinan diseño y código para generar resultados reales para pequeñas y medianas empresas.",
+    "cta1": "Ver Servicios",
+    "cta2": "Contactar",
+    "typingPhrases": [
+      "Soluciones digitales personalizadas para tu negocio.",
+      "Creo experiencias digitales que unen personas y tecnología para generar valor a tu negocio.",
+      "Creo productos digitales que dan visibilidad a tu negocio."
+    ]
+  },
+  "about": {
+    "title": "Acerca de Rafael Lopes",
+    "subtitle": "Desarrollador apasionado por transformar ideas en soluciones digitales.",
+    "story1": "Durante más de **5 años** he ayudado a emprendedores a digitalizar sus negocios con soluciones a medida. Mi enfoque combina **tecnología de vanguardia** con **lenguaje simple**, asegurando que entiendas cada paso del proceso.",
+    "story2": "Me especializo en crear experiencias digitales que no solo impresionan visualmente, sino que **convierten visitantes en clientes**. Cada proyecto nace de una estrategia clara: transformar la inversión en resultados reales.",
+    "story3": "Cuando no estoy programando, me puedes encontrar explorando nuevas tecnologías, estudiando tendencias del mercado o ayudando a otros desarrolladores en la comunidad.",
+    "timeline": {
+      "title": "Evolución Profesional",
+      "items": {
+        "2019": {
+          "title": "Comienzo del Viaje",
+          "description": "Primeros pasos en desarrollo web con HTML, CSS y JavaScript"
+        },
+        "2021": {
+          "title": "Especialización Frontend",
+          "description": "Dominio de React, TypeScript y herramientas modernas de desarrollo"
+        },
+        "2022": {
+          "title": "Fullstack & DevOps",
+          "description": "Expansión al backend con Node.js, APIs e infraestructura cloud"
+        },
+        "2023": {
+          "title": "Ingeniería de Software",
+          "description": "Inicio de la carrera en Ingeniería de Software"
+        },
+        "2024": {
+          "title": "IA & Automatización",
+          "description": "Integración de soluciones de IA y automatización para optimizar negocios"
+        }
+      }
+    },
+    "skills": {
+      "development": {
+        "title": "Desarrollo",
+        "items": ["React", "Java", "TypeScript", "Node.js", "Python"]
+      },
+      "design": {
+        "title": "Diseño & UX",
+        "items": ["Figma", "Diseño UI/UX", "Sistemas de Diseño", "Prototipado"]
+      },
+      "soft": {
+        "title": "Habilidades Blandas",
+        "items": [
+          "Resolución de Problemas",
+          "Comunicación Clara",
+          "Pensamiento Analítico"
+        ]
+      },
+      "focus": {
+        "title": "Enfoque en Resultados",
+        "items": ["Rendimiento", "SEO", "Conversión", "Seguridad"]
+      }
+    }
+  }
+}

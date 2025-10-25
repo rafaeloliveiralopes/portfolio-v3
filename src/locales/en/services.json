@@ -1,0 +1,81 @@
+{
+  "services": {
+    "title": "Services",
+    "subtitle": "Complete solutions to boost your digital presence",
+    "moreDetails": "More details",
+    "lessDetails": "Less details",
+    "cards": {
+      "web": {
+        "title": "Websites & Systems",
+        "description": "From corporate sites to tailor-made systems.",
+        "features": [
+          "Corporate websites that sell",
+          "High-converting landing pages",
+          "Custom web systems",
+          "Efficient and secure APIs",
+          "Maintenance and performance optimization"
+        ],
+        "expandedFeatures": [
+          "Personalized strategies (tailor-made + advanced SEO)",
+          "High performance (responsive, speed, security)",
+          "GDPR/LGPD compliance and data protection best practices",
+          "Integrations (payments, WhatsApp, CRM, other APIs)"
+        ],
+        "color": "primary",
+        "buttonText": "Discuss my project"
+      },
+      "performance": {
+        "title": "Performance & Audits",
+        "description": "Speed up, fix issues and rank better on Google.",
+        "features": [
+          "Performance audit (Google Lighthouse)",
+          "Technical SEO optimization",
+          "Accessibility and security",
+          "Error and downtime reduction",
+          "Practical, actionable reports"
+        ],
+        "expandedFeatures": [
+          "Better UX: fast, responsive and accessible site",
+          "Metrics: organic traffic ↑, Google ranking ↑, conversion ↑",
+          "Security/compliance: GDPR/LGPD, vulnerability mitigation"
+        ],
+        "color": "secondary",
+        "buttonText": "Start my diagnosis"
+      },
+      "ai": {
+        "title": "AI & Automations",
+        "description": "Save time and reduce costs with practical AI.",
+        "features": [
+          "Custom AI chatbots",
+          "Smart workflow automations",
+          "No-code AI apps",
+          "Strategic AI consulting",
+          "Integrations: Manychat, n8n, OpenAI, Zapier"
+        ],
+        "expandedFeatures": [
+          "Automate repetitive tasks and reduce costs",
+          "Generative AI and agents for support, sales and lead recovery",
+          "Systems that learn from your data (RAG embeddings when it makes sense)",
+          "Secure integrations with your digital ecosystem",
+          "Your business working 24/7, hours saved, data-driven decisions"
+        ],
+        "color": "primary",
+        "buttonText": "I want an automation plan"
+      }
+    },
+    "items": {
+      "frontend": {
+        "title": "Frontend Development",
+        "description": "Modern and responsive interfaces that enchant your customers and increase conversions."
+      },
+      "backend": {
+        "title": "Integrations & Backend",
+        "description": "Robust APIs, automations and integrations to optimize your business processes."
+      },
+      "consulting": {
+        "title": "Tech Consulting",
+        "description": "Performance analysis, SEO and security to maximize the return on your digital investment."
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "contact": {
+    "title": "¿Hablamos?",
+    "titleHighlight": "",
+    "subtitle": "¿Listo para transformar tu idea en realidad? Ponte en contacto y construyamos algo increíble juntos.",
+    "info": {
+      "title": "Ponte en",
+      "titleHighlight": "contacto",
+      "description": "Siempre estoy disponible para discutir nuevos proyectos, asociaciones o simplemente intercambiar ideas sobre tecnología. Elige la forma más conveniente para ti."
+    },
+    "contactInfo": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "location": "Ubicación",
+      "locationValue": "Uruaçu-Goiás, Brasil"
+    },
+    "stats": {
+      "responseTime": "Tiempo de respuesta",
+      "deliveredProjects": "Proyectos entregados"
+    },
+    "form": {
+      "name": "Nombre *",
+      "namePlaceholder": "Tu nombre completo",
+      "email": "Email *",
+      "emailPlaceholder": "tu@email.com",
+      "phone": "Teléfono",
+      "phonePlaceholder": "+55 (00) 00000-0000",
+      "subject": "Asunto *",
+      "subjectPlaceholder": "¿Sobre qué te gustaría hablar?",
+      "company": "Empresa",
+      "companyPlaceholder": "Nombre de tu empresa (opcional)",
+      "message": "Mensaje *",
+      "messagePlaceholder": "Cuéntame sobre tu proyecto o idea...",
+      "send": "Enviar Mensaje",
+      "sending": "Enviando...",
+      "guarantee": "Respuesta garantizada en 24 horas. Tus datos están protegidos."
+    },
+    "validation": {
+      "nameMin": "El nombre debe tener al menos 2 caracteres",
+      "nameMax": "El nombre debe tener menos de 100 caracteres",
+      "emailInvalid": "Dirección de email inválida",
+      "emailMax": "El email debe tener menos de 100 caracteres",
+      "phoneMax": "El teléfono debe tener menos de 30 caracteres",
+      "subjectRequired": "El asunto es obligatorio",
+      "subjectMax": "El asunto debe tener menos de 200 caracteres",
+      "messageMin": "El mensaje debe tener al menos 10 caracteres",
+      "messageMax": "El mensaje debe tener menos de 5000 caracteres"
+    },
+    "toast": {
+      "successTitle": "¡Mensaje enviado con éxito!",
+      "successDescription": "Me pondré en contacto pronto. ¡Gracias!",
+      "errorTitle": "Error al enviar mensaje",
+      "errorDescription": "Intenta nuevamente o contacta directamente."
+    }
+  }
+}

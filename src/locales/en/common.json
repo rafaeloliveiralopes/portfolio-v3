@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "contact": "Contact",
+    "blog": "Blog",
+    "cta": "Let's talk"
+  },
+  "footer": {
+    "brand": {
+      "description": "Developer specialized in creating digital solutions that overcome challenges and optimize your business's operational performance."
+    },
+    "cta": {
+      "title": "Ready to start your project?",
+      "subtitle": "Let's talk about how I can help your business.",
+      "fillForm": "Fill Form",
+      "whatsapp": "Talk on WhatsApp"
+    },
+    "navigation": {
+      "title": "Navigation",
+      "about": "About",
+      "services": "Services",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "services": {
+      "title": "Services",
+      "webSystems": "Websites & Systems",
+      "performance": "Performance & SEO",
+      "aiAutomation": "AI & Automations",
+      "consulting": "Tech Consulting"
+    },
+    "contact": {
+      "title": "Direct Contact",
+      "location": "Uruaçu-Goiás, Brazil"
+    },
+    "bottom": {
+      "rights": "All rights reserved.",
+      "madeWith": "Made with",
+      "love": "❤️",
+      "and": "and lots of",
+      "coffee": "☕",
+      "backToTop": "Back to top"
+    }
+  },
+  "whatsapp": {
+    "ctaMessage": "Hi {{name}}, I came from your website and would like to talk about a project."
+  }
+}
