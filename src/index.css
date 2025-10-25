@@ -45,7 +45,7 @@
     --accent: 180 78% 55%;
     --accent-foreground: 222 19% 8%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 84% 63%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217 33% 17%;
@@ -146,7 +146,7 @@
     --accent: 180 78% 55%;
     --accent-foreground: 222 19% 8%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 84% 63%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
@@ -196,7 +196,7 @@
     --accent: 210 40% 96%;
     --accent-foreground: 222.2 84% 4.9%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 63%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
