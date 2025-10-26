@@ -160,7 +160,7 @@ export const PortfolioSection = () => {
                     {(project as Record<string, unknown>).title as string}
                   </h3>
 
-                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                  <p className="text-zinc-300 text-base mb-4 leading-relaxed">
                     {(project as Record<string, unknown>).description as string}
                   </p>
 
