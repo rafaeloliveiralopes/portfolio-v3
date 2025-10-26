@@ -120,7 +120,7 @@ export const PortfolioSection = () => {
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
             >
-              <div className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary/30 transition-all duration-300 hover:shadow-glow">
+              <div className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary/90 transition-all duration-300 hover:shadow-glow">
                 {/* Project Image */}
                 <div className="relative overflow-hidden">
                   <img
@@ -156,7 +156,7 @@ export const PortfolioSection = () => {
 
                 {/* Project Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-accent transition-colors">
                     {(project as Record<string, unknown>).title as string}
                   </h3>
 
@@ -173,7 +173,7 @@ export const PortfolioSection = () => {
                       {project.tech.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded-md"
+                          className="px-2 py-1 bg-secondary/20 text-xs rounded-md"
                         >
                           {tech}
                         </span>

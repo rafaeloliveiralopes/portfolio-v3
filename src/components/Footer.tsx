@@ -99,7 +99,7 @@ export const Footer = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-background border border-border rounded-lg hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
+                      className="p-3 bg-background border border-border rounded-lg hover:border-primary/90 transition-all duration-300 hover:shadow-glow group"
                     >
                       <span className="sr-only">{social.label}</span>
                       <Icon
@@ -196,9 +196,9 @@ export const Footer = () => {
 
               {/* Contact Info */}
               <div className="mt-8">
-                <h4 className="font-semibold mb-3 text-foreground">
+                <h3 className="font-semibold mb-3 text-foreground">
                   {t("footer.contact.title")}
-                </h4>
+                </h3>
                 <div className="space-y-2 text-sm">
                   <a
                     href={`mailto:${t("contacts.email")}`}
