@@ -223,13 +223,13 @@ export const ContactSection = () => {
                   <a
                     key={index}
                     href={info.href}
-                    className="flex items-center p-4 bg-card border border-border rounded-xl hover:border-primary/30 transition-all duration-300 hover:shadow-glow group"
+                    className="flex items-center p-4 bg-card border border-border rounded-xl hover:border-primary/90 transition-all duration-300 hover:shadow-glow group"
                   >
                     <div className="p-3 bg-primary/10 text-primary rounded-lg mr-4 group-hover:bg-primary/20 transition-colors">
                       <Icon className="w-6 h-6" />
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                      <div className="font-semibold text-foreground group-hover:text-gradient-secondary transition-colors">
                         {info.title}
                       </div>
                       <div className="text-muted-foreground">{info.value}</div>

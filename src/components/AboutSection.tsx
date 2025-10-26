@@ -87,22 +87,22 @@ export const AboutSection = () => {
                 return (
                   <div
                     key={index}
-                    className="p-4 rounded-lg bg-card border border-border hover:border-primary/30 transition-all duration-300 group"
+                    className="p-4 rounded-lg bg-card border border-border hover:border-primary/90 transition-all duration-300 group"
                   >
                     <div className="flex items-center mb-3">
                       <div className="p-2 rounded-lg bg-primary/10 text-primary mr-3">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <h4 className="font-semibold group-hover:text-primary transition-colors">
+                      <p className="font-semibold group-hover:text-accent transition-colors">
                         {skill.title}
-                      </h4>
+                      </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {Array.isArray(skill.items) &&
                         skill.items.map((item, idx) => (
                           <span
                             key={idx}
-                            className="px-2 py-1 text-sm bg-muted text-zinc-300 rounded-md"
+                            className="px-2 py-1 text-sm bg-muted text-zinc-300 hover:text-accent rounded-md"
                           >
                             {item}
                           </span>
@@ -116,12 +116,12 @@ export const AboutSection = () => {
 
           {/* Timeline */}
           <div className="relative">
-            <h3 className="text-2xl font-bold mb-8 text-center lg:text-left">
+            <section className="text-2xl font-bold mb-8 text-center lg:text-left">
               {t("about.timeline.title").split(" ")[0]}{" "}
               <span className="text-gradient-secondary">
                 {t("about.timeline.title").split(" ")[1]}
               </span>
-            </h3>
+            </section>
 
             <div className="space-y-8">
               {["2019", "2021", "2022", "2023", "2024"].map((year, index) => (
@@ -133,9 +133,9 @@ export const AboutSection = () => {
                       </span>
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                      <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
                         {t(`about.timeline.items.${year}.title`)}
-                      </h4>
+                      </h3>
                       <p className="text-zinc-300 text-base">
                         {t(`about.timeline.items.${year}.description`)}
                       </p>
@@ -145,7 +145,7 @@ export const AboutSection = () => {
               ))}
             </div>
 
-            {/* Decorative Timeline Line */}
+            {/* Decorative Timeline Vertical Line */}
             <div className="absolute left-0 top-12 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-primary/30"></div>
           </div>
         </div>

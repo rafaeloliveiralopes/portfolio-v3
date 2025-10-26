@@ -65,9 +65,9 @@ export const HeroSection = () => {
           <h1 className="text-5xl md:text-7xl font-bold mb-4">
             <span className="text-gradient-primary">{t("hero.name")}</span>
           </h1>
-          <h2 className="text-2xl md:text-3xl font-semibold text-secondary">
+          <p className="text-2xl md:text-3xl font-semibold text-secondary">
             {t("hero.title")}
-          </h2>
+          </p>
         </div>
 
         {/* Typing Effect Subtitle */}
