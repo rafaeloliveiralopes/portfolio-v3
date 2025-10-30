@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Index from "@/pages/Index";
 import NotFound from "@/pages/NotFound";
+import BlogIndex from "@/blog/pages/BlogIndex";
+import BlogPost from "@/blog/pages/BlogPost";
 
 // Supported locales
 const SUPPORTED_LOCALES = ["pt", "en", "es"];
@@ -76,16 +78,25 @@ export const AppRouter = () => {
 
         {/* Locale-prefixed routes */}
         {SUPPORTED_LOCALES.map((locale) => (
-          <Route
-            key={locale}
-            path={`/${locale}`}
-            element={
-              <LocaleRoute
-                locale={locale}
-                element={<Index locale={locale} />}
-              />
-            }
-          />
+          <Route key={locale} path={`/${locale}`}>
+            <Route
+              index
+              element={
+                <LocaleRoute
+                  locale={locale}
+                  element={<Index locale={locale} />}
+                />
+              }
+            />
+            <Route
+              path="blog"
+              element={<LocaleRoute locale={locale} element={<BlogIndex />} />}
+            />
+            <Route
+              path="blog/:slug"
+              element={<LocaleRoute locale={locale} element={<BlogPost />} />}
+            />
+          </Route>
         ))}
 
         {/* Catch-all 404 (includes invalid locales) */}
