@@ -154,7 +154,7 @@ export default function BlogPost() {
           </header>
 
           {/* Content */}
-          <div className="max-w-none [&_p]:mb-6 [&_p]:mt-6 [&_p]:leading-8 [&_p]:text-base">
+          <div className="max-w-none bg-zinc-800 lg:p-6 rounded-lg">
             <Suspense
               fallback={<div className="animate-pulse">Loading content...</div>}
             >

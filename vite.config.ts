@@ -22,6 +22,7 @@ export default defineConfig(() => ({
   },
   plugins: [
     mdx({
+      providerImportSource: "@mdx-js/react",
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
     }),
     react(),
