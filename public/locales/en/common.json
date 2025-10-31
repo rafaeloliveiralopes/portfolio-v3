@@ -67,5 +67,10 @@
     "title": "404",
     "message": "Oops! Page not found",
     "returnHome": "Return to Home"
+  },
+  "error": {
+    "title": "Oops!",
+    "message": "Something went wrong. Please reload the page.",
+    "reload": "Reload"
   }
 }

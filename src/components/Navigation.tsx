@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Moon, Sun, Globe } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,9 +14,11 @@ import {
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const { theme, setTheme } = useTheme();
   const { t, i18n } = useTranslation(["common"]);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,9 +36,41 @@ export const Navigation = () => {
     }
   };
 
+  const isOnBlogPage = () => {
+    return location.pathname.includes("/blog");
+  };
+
+  const handleNavClick = (item: (typeof navItems)[number]) => {
+    setIsMobileMenuOpen(false);
+
+    startTransition(() => {
+      if (item.type === "route") {
+        // Navigate to blog
+        navigate(`/${i18n.language}/blog`);
+      } else {
+        // Scroll to section on landing page
+        if (isOnBlogPage()) {
+          // If on blog, navigate to home first, then scroll
+          navigate(`/${i18n.language}`, { state: { scrollTo: item.id } });
+          // The scroll will be handled by the Index page after navigation
+        } else {
+          // Already on landing page, just scroll
+          scrollToSection(item.id);
+        }
+      }
+    });
+  };
+
   const changeLanguage = (lng: string) => {
-    // Navigate to the locale-prefixed route instead of just changing language
-    navigate(`/${lng}`);
+    // Get current path without the language prefix
+    const currentPath = location.pathname;
+    const pathWithoutLang = currentPath.replace(/^\/(en|es|pt)/, "");
+
+    // Navigate to the same path with new language
+    const newPath = `/${lng}${pathWithoutLang || ""}`;
+    startTransition(() => {
+      navigate(newPath);
+    });
   };
 
   const languages = [
@@ -46,11 +80,11 @@ export const Navigation = () => {
   ];
 
   const navItems = [
-    { key: "about", id: "about" },
-    { key: "services", id: "services" },
-    { key: "projects", id: "projects" },
-    { key: "contact", id: "contact" },
-    { key: "blog", id: "blog" },
+    { key: "about", id: "about", type: "scroll" as const },
+    { key: "services", id: "services", type: "scroll" as const },
+    { key: "projects", id: "projects", type: "scroll" as const },
+    { key: "contact", id: "contact", type: "scroll" as const },
+    { key: "blog", id: "blog", type: "route" as const },
   ];
 
   return (
@@ -75,7 +109,7 @@ export const Navigation = () => {
             {navItems.map((item) => (
               <button
                 key={item.key}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavClick(item)}
                 className="lg:text-lg text-foreground hover:text-primary transition-colors hover-underline"
               >
                 {t(`nav.${item.key}`)}
@@ -128,7 +162,13 @@ export const Navigation = () => {
 
             {/* CTA Button */}
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() =>
+                handleNavClick({
+                  key: "contact",
+                  id: "contact",
+                  type: "scroll" as const,
+                })
+              }
               className="bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)] shadow-glow"
             >
               {t("nav.cta")}
@@ -191,7 +231,7 @@ export const Navigation = () => {
               {navItems.map((item) => (
                 <button
                   key={item.key}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => handleNavClick(item)}
                   className="text-foreground text-2xl font-medium hover:text-primary transition-colors text-left"
                 >
                   {t(`nav.${item.key}`)}
@@ -242,7 +282,13 @@ export const Navigation = () => {
               </Button> */}
             </div>
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() =>
+                handleNavClick({
+                  key: "contact",
+                  id: "contact",
+                  type: "scroll" as const,
+                })
+              }
               className="bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)] text-lg py-4"
             >
               {t("nav.cta")}

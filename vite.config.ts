@@ -19,10 +19,10 @@ export default defineConfig(() => ({
     },
   },
   plugins: [
-    react(),
     mdx({
       remarkPlugins: [remarkGfm],
     }),
+    react(),
     imagetools(),
   ],
   resolve: {

@@ -3,10 +3,12 @@ import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { getPostBySlug } from "../utils/content";
 import { MdxProvider } from "../components/MdxProvider";
+import { Layout } from "../components/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Suspense } from "react";
 
 export default function BlogPost() {
   const { lng, slug } = useParams<{ lng: "en" | "es" | "pt"; slug: string }>();
@@ -103,91 +105,97 @@ export default function BlogPost() {
         </script>
       </Helmet>
 
-      <article className="container mx-auto px-6 py-16 max-w-4xl">
-        {/* Back button */}
-        <Link to={`/${lng}/blog`} className="inline-block mb-8">
-          <Button variant="ghost" size="sm" className="gap-2">
-            <ArrowLeft className="h-4 w-4" />
-            {t("post.backToBlog")}
-          </Button>
-        </Link>
+      <Layout>
+        <article className="container mx-auto px-6 py-32 max-w-4xl">
+          {/* Back button */}
+          <Link to={`/${lng}/blog`} className="inline-block mb-8">
+            <Button variant="ghost" size="sm" className="gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              {t("post.backToBlog")}
+            </Button>
+          </Link>
 
-        {/* Cover image */}
-        {post.cover && (
-          <div className="mb-8 rounded-lg overflow-hidden">
-            <img
-              src={post.cover}
-              alt={post.title}
-              className="w-full h-auto"
-              loading="eager"
-            />
-          </div>
-        )}
-
-        {/* Header */}
-        <header className="mb-12">
-          <h1 className="text-5xl font-bold mb-6">{post.title}</h1>
-
-          <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-6">
-            <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              <time dateTime={post.date}>{formattedDate}</time>
-            </div>
-            {post.readingTime && (
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>
-                  {post.readingTime} {t("post.minRead")}
-                </span>
-              </div>
-            )}
-            {updatedDate && (
-              <div className="text-sm">
-                {t("post.updated")}: {updatedDate}
-              </div>
-            )}
-          </div>
-
-          {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <Badge key={tag} variant="secondary">
-                  {tag}
-                </Badge>
-              ))}
+          {/* Cover image */}
+          {post.cover && (
+            <div className="mb-8 rounded-lg overflow-hidden">
+              <img
+                src={post.cover}
+                alt={post.title}
+                className="w-full h-auto"
+                loading="eager"
+              />
             </div>
           )}
-        </header>
 
-        {/* Content */}
-        <div className="prose prose-lg dark:prose-invert max-w-none">
-          <MdxProvider>
-            <PostComponent />
-          </MdxProvider>
-        </div>
+          {/* Header */}
+          <header className="mb-12">
+            <h1 className="text-5xl font-bold mb-6">{post.title}</h1>
 
-        {/* Language alternates */}
-        {alternates.length > 0 && (
-          <footer className="mt-16 pt-8 border-t">
-            <p className="text-sm text-muted-foreground mb-4">
-              {t("post.availableIn")}:
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {alternates.map(({ lang, url }) => (
-                <Link key={lang} to={url.replace(baseUrl, "")}>
-                  <Button variant="outline" size="sm">
-                    {lang === "en"
-                      ? "English"
-                      : lang === "es"
-                      ? "Español"
-                      : "Português"}
-                  </Button>
-                </Link>
-              ))}
+            <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-6">
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <time dateTime={post.date}>{formattedDate}</time>
+              </div>
+              {post.readingTime && (
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4" />
+                  <span>
+                    {post.readingTime} {t("post.minRead")}
+                  </span>
+                </div>
+              )}
+              {updatedDate && (
+                <div className="text-sm">
+                  {t("post.updated")}: {updatedDate}
+                </div>
+              )}
             </div>
-          </footer>
-        )}
-      </article>
+
+            {post.tags && post.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <Badge key={tag} variant="secondary">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            )}
+          </header>
+
+          {/* Content */}
+          <div className="prose prose-lg dark:prose-invert max-w-none">
+            <Suspense
+              fallback={<div className="animate-pulse">Loading content...</div>}
+            >
+              <MdxProvider>
+                <PostComponent />
+              </MdxProvider>
+            </Suspense>
+          </div>
+
+          {/* Language alternates */}
+          {alternates.length > 0 && (
+            <footer className="mt-16 pt-8 border-t">
+              <p className="text-sm text-muted-foreground mb-4">
+                {t("post.availableIn")}:
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {alternates.map(({ lang, url }) => (
+                  <Link key={lang} to={url.replace(baseUrl, "")}>
+                    <Button variant="outline" size="sm">
+                      {lang === "en"
+                        ? "English"
+                        : lang === "es"
+                        ? "Español"
+                        : "Português"}
+                    </Button>
+                  </Link>
+                ))}
+              </div>
+            </footer>
+          )}
+        </article>
+      </Layout>
     </>
   );
 }
