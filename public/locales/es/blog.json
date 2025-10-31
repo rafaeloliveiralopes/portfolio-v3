@@ -11,5 +11,9 @@
     "minRead": "min de lectura",
     "updated": "Actualizado",
     "availableIn": "Este artículo también está disponible en"
+  },
+  "author": {
+    "about": "Sobre el Autor",
+    "bio": "Rafael Lopes es desarrollador full stack y abogado. Combina tecnología y gobernanza para crear sistemas y sitios web con los más altos estándares de rendimiento, seguridad y cumplimiento."
   }
 }

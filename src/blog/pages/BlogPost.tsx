@@ -164,6 +164,24 @@ export default function BlogPost() {
             </Suspense>
           </div>
 
+          {/* Author Bio */}
+          <div className="mt-12 p-6 bg-primary border border-border rounded-lg">
+            <h3 className="text-xl font-semibold mb-4">{t("author.about")}</h3>
+            <div className="flex flex-col md:flex-row gap-6 items-start">
+              <img
+                src="/rafael-lopes-ai-engineer.jpg"
+                alt={t("author.name")}
+                className="w-24 h-24 rounded-full object-cover border-2 border-secondary shadow-lg"
+                loading="lazy"
+              />
+              <div className="flex-1">
+                <p className="text-zinc-300 leading-relaxed">
+                  {t("author.bio")}
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Language alternates */}
           {alternates.length > 0 && (
             <footer className="mt-16 pt-8 border-t">

@@ -5,7 +5,15 @@ import HttpBackend from "i18next-http-backend";
 
 // Supported languages and namespaces
 const supportedLanguages = ["pt", "en", "es"];
-const namespaces = ["common", "home", "services", "projects", "contact", "seo"];
+const namespaces = [
+  "common",
+  "home",
+  "services",
+  "projects",
+  "contact",
+  "seo",
+  "blog",
+];
 const defaultNamespace = "common";
 const defaultLanguage = "pt";
 
