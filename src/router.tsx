@@ -13,13 +13,14 @@ import BlogPost from "@/blog/pages/BlogPost";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 // Supported locales
-const SUPPORTED_LOCALES = ["pt", "en", "es"];
-const DEFAULT_LOCALE = "pt";
+const SUPPORTED_LOCALES = ["pt", "en", "es"] as const;
+const DEFAULT_LOCALE = "pt" as const;
+type Locale = (typeof SUPPORTED_LOCALES)[number];
 
 /**
  * Gets the preferred locale from localStorage, query params, or defaults to PT
  */
-const getPreferredLocale = (): string => {
+const getPreferredLocale = (): Locale => {
   // Check localStorage first
   const stored = localStorage.getItem("preferredLocale");
   if (stored && SUPPORTED_LOCALES.includes(stored)) {
@@ -44,7 +45,7 @@ const LocaleRoute = ({
   locale,
   element,
 }: {
-  locale: string;
+  locale: Locale;
   element: React.ReactNode;
 }) => {
   const { i18n } = useTranslation();
@@ -100,7 +101,10 @@ export const AppRouter = () => {
                       </div>
                     }
                   >
-                    <LocaleRoute locale={locale} element={<BlogIndex />} />
+                    <LocaleRoute
+                      locale={locale}
+                      element={<BlogIndex locale={locale} />}
+                    />
                   </Suspense>
                 </ErrorBoundary>
               }
@@ -116,7 +120,10 @@ export const AppRouter = () => {
                       </div>
                     }
                   >
-                    <LocaleRoute locale={locale} element={<BlogPost />} />
+                    <LocaleRoute
+                      locale={locale}
+                      element={<BlogPost locale={locale} />}
+                    />
                   </Suspense>
                 </ErrorBoundary>
               }
