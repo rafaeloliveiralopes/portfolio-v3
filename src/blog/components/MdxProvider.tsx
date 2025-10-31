@@ -3,23 +3,23 @@ import React from "react";
 
 const components = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className="text-4xl font-bold mt-12 mb-6 scroll-mt-20" {...props} />
+    <h1 className="text-4xl font-bold mt-12 mb-6 scroll-mt-20 text-gray-300" {...props} />
   ),
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className="text-3xl font-bold mt-10 mb-4 scroll-mt-20" {...props} />
+    <h2 className="text-3xl font-bold mt-10 mb-4 scroll-mt-20 text-gray-300" {...props} />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className="text-2xl font-semibold mt-8 mb-3 scroll-mt-20" {...props} />
+    <h3 className="text-2xl font-semibold mt-8 mb-3 scroll-mt-20 text-gray-300" {...props} />
   ),
   h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h4 className="text-xl font-semibold mt-6 mb-2 scroll-mt-20" {...props} />
+    <h4 className="text-xl font-semibold mt-6 mb-2 scroll-mt-20 text-gray-300" {...props} />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="mt-4 leading-7 text-muted-foreground" {...props} />
+    <p className="text-gray-300 p-2" {...props} />
   ),
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
     <a
-      className="text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
+      className="text-blue-400"
       {...props}
     />
   ),
