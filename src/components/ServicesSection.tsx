@@ -61,13 +61,18 @@ export const ServicesSection = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon;
             const isExpanded = expandedCard === index;
 
             return (
-              <div key={index} className="service-card group">
+              <div
+                key={index}
+                className={`service-card group ${
+                  index === 2 ? "md:col-span-2 lg:col-span-1" : ""
+                }`}
+              >
                 {/* Icon */}
                 <div
                   className={`inline-flex p-3 rounded-lg mb-6 ${
