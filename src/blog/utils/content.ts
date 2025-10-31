@@ -2,11 +2,14 @@ import { lazy, type ReactNode } from "react";
 import { type FrontmatterT } from "./schema";
 
 // Lazy-load MDX modules to avoid Suspense errors
-const IntroducingAiAgentsEn = lazy(
-  () => import("../posts/en/2025/introducing-ai-agents.mdx")
+const ThreeErrorsAutomationCostsEn = lazy(
+  () => import("../posts/en/2025/three-errors-that-double-automation-costs.mdx")
 );
-const IntroduccionAgentesEs = lazy(
-  () => import("../posts/es/2025/introduccion-agentes-ia.mdx")
+const TresErroresAutomacionEs = lazy(
+  () =>
+    import(
+      "../posts/es/2025/tres-errores-que-duplican-los-costes-de-la-automatizacion.mdx"
+    )
 );
 const TresErrosCustosAutomacaoPt = lazy(
   () => import("../posts/pt/2025/tres-erros-que-duplicam-custos-automacao.mdx")
@@ -22,43 +25,59 @@ export type Post = FrontmatterT & {
 const all: Post[] = [
   {
     lang: "en" as const,
-    slug: "introducing-ai-agents",
-    title: "AI Agents in Practice: When to Use Them and How to Get Started",
+    slug: "three-costly-automation-mistakes",
+    title:
+      "Three Errors that Double the Costs of Automation—and How to Avoid Them",
     description:
-      "A practical guide with use cases for customer service, automation, and content creation.",
+      "Discover the main pitfalls that make automation projects in service, documentation, and content more expensive—and how to avoid them with planning, process optimization, and human engagement.",
     date: "2025-10-30",
     updated: "2025-10-30",
-    tags: ["ai", "agents", "automation", "customer-service"],
-    cover: "/robot-humanoid1.jpg",
+    tags: [
+      "automation",
+      "management",
+      "processes",
+      "technology",
+      "common-errors",
+      "efficiency",
+    ],
+    cover: "/automacao-processos-empresariais.png",
     readingTime: 7,
     translations: {
-      es: "introduccion-agentes-ia",
+      es: "tres-errores-que-encarecen-la-automatizacion",
       pt: "erros-custos-automacao",
     },
-    canonical: "/en/blog/introducing-ai-agents",
-    id: "posts/en/2025/introducing-ai-agents.mdx",
-    url: "/en/blog/introducing-ai-agents",
-    component: IntroducingAiAgentsEn,
+    canonical: "/en/blog/three-costly-automation-mistakes",
+    id: "posts/en/2025/three-errors-that-double-automation-costs.mdx",
+    url: "/en/blog/three-costly-automation-mistakes",
+    component: ThreeErrorsAutomationCostsEn,
   },
   {
     lang: "es" as const,
-    slug: "introduccion-agentes-ia",
-    title: "Agentes de IA en la práctica: cuándo usarlos y cómo empezar",
+    slug: "tres-errores-que-encarecen-la-automatizacion",
+    title:
+      "Tres errores que duplican los costes de la automatización y cómo evitarlos",
     description:
-      "Guía práctica con casos de uso para atención al cliente, automatización y creación de contenido.",
+      "Descubre los principales errores que encarecen los proyectos de automatización en atención, documentación y contenido, y cómo evitarlos mediante planificación, optimización de procesos y compromiso humano.",
     date: "2025-10-30",
     updated: "2025-10-30",
-    tags: ["ia", "agentes", "automatizacion", "atencion-cliente"],
-    cover: "/robot-humanoid1.jpg",
+    tags: [
+      "automatizacion",
+      "gestion",
+      "procesos",
+      "tecnologia",
+      "errores-comunes",
+      "eficiencia",
+    ],
+    cover: "/automacao-processos-empresariais.png",
     readingTime: 7,
     translations: {
-      en: "introducing-ai-agents",
+      en: "three-costly-automation-mistakes",
       pt: "erros-custos-automacao",
     },
-    canonical: "/es/blog/introduccion-agentes-ia",
-    id: "posts/es/2025/introduccion-agentes-ia.mdx",
-    url: "/es/blog/introduccion-agentes-ia",
-    component: IntroduccionAgentesEs,
+    canonical: "/es/blog/tres-errores-que-encarecen-la-automatizacion",
+    id: "posts/es/2025/tres-errores-que-duplican-los-costes-de-la-automatizacion.mdx",
+    url: "/es/blog/tres-errores-que-encarecen-la-automatizacion",
+    component: TresErroresAutomacionEs,
   },
   {
     lang: "pt" as const,
