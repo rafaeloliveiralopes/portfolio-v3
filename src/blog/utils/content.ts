@@ -63,20 +63,22 @@ const all: Post[] = [
   {
     lang: "pt" as const,
     slug: "erros-custos-automacao",
-    title: "Três Erros que Duplicam os Custos da Automação (e Como Evitá-los)",
+    title: "Três Erros que Duplicam os Custos da Automação e Como Evitá-los",
     description:
-      "Descubra os principais equívocos que encarecem projetos de automação em atendimento, documentação e conteúdo — e como evitá-los com planejamento, otimização de processos e engajamento humano.",
+      "Descubra os principais equívocos que encarecem projetos de automação em atendimento, documentação, conteúdo e como evitá-los com planejamento, otimização de processos e engajamento humano.",
     date: "2025-10-30",
     updated: "2025-10-30",
     tags: [
-      "automacao",
-      "gestao",
+      "automação",
+      "gestão",
       "processos",
       "tecnologia",
       "IA",
-      "eficiencia",
+      "eficiência",
+      "produtividade",
+      "sistemas",
     ],
-    cover: "/robot-humanoid1.jpg",
+    cover: "/automacao-processos-empresariais.png",
     readingTime: 7,
     translations: {
       en: "three-costly-automation-mistakes",
