@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { getPostBySlug, getAllPosts } from "@/blog/utils/content";
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,18 +41,25 @@ export const Navigation = () => {
     return location.pathname.includes("/blog");
   };
 
+  const getCurrentLanguage = (): "en" | "es" | "pt" => {
+    const currentPath = location.pathname;
+    const langMatch = currentPath.match(/^\/(en|es|pt)/);
+    return langMatch ? (langMatch[1] as "en" | "es" | "pt") : "pt";
+  };
+
   const handleNavClick = (item: (typeof navItems)[number]) => {
     setIsMobileMenuOpen(false);
+    const currentLang = getCurrentLanguage();
 
     startTransition(() => {
       if (item.type === "route") {
         // Navigate to blog
-        navigate(`/${i18n.language}/blog`);
+        navigate(`/${currentLang}/blog`);
       } else {
         // Scroll to section on landing page
         if (isOnBlogPage()) {
           // If on blog, navigate to home first, then scroll
-          navigate(`/${i18n.language}`, { state: { scrollTo: item.id } });
+          navigate(`/${currentLang}`, { state: { scrollTo: item.id } });
           // The scroll will be handled by the Index page after navigation
         } else {
           // Already on landing page, just scroll
@@ -62,11 +70,51 @@ export const Navigation = () => {
   };
 
   const changeLanguage = (lng: string) => {
-    // Get current path without the language prefix
     const currentPath = location.pathname;
+
+    // Extract current language from URL path
+    const currentLangMatch = currentPath.match(/^\/(en|es|pt)/);
+    const currentLang = currentLangMatch
+      ? (currentLangMatch[1] as "en" | "es" | "pt")
+      : "pt";
+
+    // Get path without the language prefix
     const pathWithoutLang = currentPath.replace(/^\/(en|es|pt)/, "");
 
-    // Navigate to the same path with new language
+    // Check if we're on a blog post page
+    const blogPostMatch = pathWithoutLang.match(/^\/blog\/(.+)$/);
+
+    if (blogPostMatch) {
+      const currentSlug = blogPostMatch[1];
+
+      // Try to find the current post
+      const currentPost = getPostBySlug(currentLang, currentSlug);
+
+      if (currentPost && currentPost.translations) {
+        // Check if there's a translation for the target language
+        const targetSlug =
+          currentPost.translations[
+            lng as keyof typeof currentPost.translations
+          ];
+
+        if (targetSlug) {
+          // Navigate to the translated post
+          const newPath = `/${lng}/blog/${targetSlug}`;
+          startTransition(() => {
+            navigate(newPath);
+          });
+          return;
+        }
+      }
+
+      // If no translation found, fallback to blog index
+      startTransition(() => {
+        navigate(`/${lng}/blog`);
+      });
+      return;
+    }
+
+    // Navigate to the same path with new language (for non-blog pages)
     const newPath = `/${lng}${pathWithoutLang || ""}`;
     startTransition(() => {
       navigate(newPath);

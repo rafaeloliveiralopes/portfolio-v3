@@ -9,13 +9,17 @@ import { Calendar, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Suspense } from "react";
 
-export default function BlogPost() {
-  const { lng, slug } = useParams<{ lng: "en" | "es" | "pt"; slug: string }>();
+interface BlogPostProps {
+  locale: "en" | "es" | "pt";
+}
+
+export default function BlogPost({ locale }: BlogPostProps) {
+  const { slug } = useParams<{ slug: string }>();
   const { t } = useTranslation("blog");
-  const post = getPostBySlug(lng ?? "pt", slug ?? "");
+  const post = getPostBySlug(locale, slug ?? "");
 
   if (!post) {
-    return <Navigate to={`/${lng}/blog`} replace />;
+    return <Navigate to={`/${locale}/blog`} replace />;
   }
 
   const baseUrl = import.meta.env.VITE_BASE_URL || "https://rafaellopes.dev";

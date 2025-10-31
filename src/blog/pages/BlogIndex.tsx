@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getPosts } from "../utils/content";
 import { PostCard } from "../components/PostCard";
@@ -6,26 +5,29 @@ import { SeoHead } from "@/components/SeoHead";
 import { Layout } from "../components/Layout";
 import { useEffect, useState } from "react";
 
-export default function BlogIndex() {
-  const { lng } = useParams<{ lng: "en" | "es" | "pt" }>();
+interface BlogIndexProps {
+  locale: "en" | "es" | "pt";
+}
+
+export default function BlogIndex({ locale }: BlogIndexProps) {
   const { t } = useTranslation("blog");
   const [posts, setPosts] = useState<ReturnType<typeof getPosts>>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     try {
-      const loadedPosts = getPosts(lng ?? "pt");
+      const loadedPosts = getPosts(locale);
       setPosts(loadedPosts);
     } catch (err) {
       console.error("Error loading posts:", err);
       setError(err instanceof Error ? err.message : "Unknown error");
     }
-  }, [lng]);
+  }, [locale]);
 
   return (
     <>
       <SeoHead
-        locale={lng ?? "pt"}
+        locale={locale}
         title={t("index.title")}
         description={t("index.description")}
       />
