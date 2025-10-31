@@ -15,7 +15,15 @@ const components = {
     <h4 className="text-xl font-semibold mt-6 mb-2 scroll-mt-20" {...props} />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="mt-4 leading-7 text-muted-foreground" {...props} />
+    <p
+      className="text-muted-foreground"
+      style={{
+        marginTop: "1.5rem",
+        marginBottom: "1.5rem",
+        lineHeight: "2rem",
+      }}
+      {...props}
+    />
   ),
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
     <a
