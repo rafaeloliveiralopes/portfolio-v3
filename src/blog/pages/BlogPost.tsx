@@ -1,13 +1,12 @@
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { getPostBySlug } from "../utils/content";
 import { MdxProvider } from "../components/MdxProvider";
 import { Layout } from "../components/Layout";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import { Calendar, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { Suspense } from "react";
 
 export default function BlogPost() {
@@ -107,14 +106,6 @@ export default function BlogPost() {
 
       <Layout>
         <article className="container mx-auto px-6 py-32 max-w-4xl">
-          {/* Back button */}
-          <Link to={`/${lng}/blog`} className="inline-block mb-8">
-            <Button variant="ghost" size="sm" className="gap-2">
-              <ArrowLeft className="h-4 w-4" />
-              {t("post.backToBlog")}
-            </Button>
-          </Link>
-
           {/* Cover image */}
           {post.cover && (
             <div className="mb-8 rounded-lg overflow-hidden">
