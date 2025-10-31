@@ -3,6 +3,8 @@ import react from "@vitejs/plugin-react-swc";
 import { imagetools } from "vite-imagetools";
 import mdx from "@mdx-js/rollup";
 import remarkGfm from "remark-gfm";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import path from "path";
 
 // https://vitejs.dev/config/
@@ -20,7 +22,7 @@ export default defineConfig(() => ({
   },
   plugins: [
     mdx({
-      remarkPlugins: [remarkGfm],
+      remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
     }),
     react(),
     imagetools(),
