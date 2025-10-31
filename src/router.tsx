@@ -4,10 +4,13 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import Index from "@/pages/Index";
 import NotFound from "@/pages/NotFound";
+import BlogIndex from "@/blog/pages/BlogIndex";
+import BlogPost from "@/blog/pages/BlogPost";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 // Supported locales
 const SUPPORTED_LOCALES = ["pt", "en", "es"];
@@ -76,16 +79,49 @@ export const AppRouter = () => {
 
         {/* Locale-prefixed routes */}
         {SUPPORTED_LOCALES.map((locale) => (
-          <Route
-            key={locale}
-            path={`/${locale}`}
-            element={
-              <LocaleRoute
-                locale={locale}
-                element={<Index locale={locale} />}
-              />
-            }
-          />
+          <Route key={locale} path={`/${locale}`}>
+            <Route
+              index
+              element={
+                <LocaleRoute
+                  locale={locale}
+                  element={<Index locale={locale} />}
+                />
+              }
+            />
+            <Route
+              path="blog"
+              element={
+                <ErrorBoundary>
+                  <Suspense
+                    fallback={
+                      <div className="min-h-screen flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                      </div>
+                    }
+                  >
+                    <LocaleRoute locale={locale} element={<BlogIndex />} />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="blog/:slug"
+              element={
+                <ErrorBoundary>
+                  <Suspense
+                    fallback={
+                      <div className="min-h-screen flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                      </div>
+                    }
+                  >
+                    <LocaleRoute locale={locale} element={<BlogPost />} />
+                  </Suspense>
+                </ErrorBoundary>
+              }
+            />
+          </Route>
         ))}
 
         {/* Catch-all 404 (includes invalid locales) */}

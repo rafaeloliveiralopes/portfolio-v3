@@ -67,5 +67,10 @@
     "title": "404",
     "message": "¡Oops! Página no encontrada",
     "returnHome": "Volver a Inicio"
+  },
+  "error": {
+    "title": "¡Oops!",
+    "message": "Algo salió mal. Por favor recarga la página.",
+    "reload": "Recargar"
   }
 }

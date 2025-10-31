@@ -1,0 +1,15 @@
+{
+  "index": {
+    "title": "Blog - Rafael Lopes",
+    "description": "Articles about AI, automation, and web development",
+    "heading": "Blog",
+    "subtitle": "Insights, tutorials, and best practices in AI and web development",
+    "noPosts": "No articles available yet. Check back soon!"
+  },
+  "post": {
+    "backToBlog": "Back to blog",
+    "minRead": "min read",
+    "updated": "Updated",
+    "availableIn": "This article is also available in"
+  }
+}

@@ -1,9 +1,10 @@
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { SeoHead } from "@/components/SeoHead";
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { useLocation } from "react-router-dom";
 
 // Lazy-load non-critical sections to improve initial bundle
 const AboutSection = lazy(() =>
@@ -35,7 +36,25 @@ interface IndexProps {
 
 const Index = ({ locale }: IndexProps) => {
   const { i18n } = useTranslation(["seo", "common"]);
+  const location = useLocation();
   useAnalytics();
+
+  // Handle scroll to section when coming from blog
+  useEffect(() => {
+    const state = location.state as { scrollTo?: string } | null;
+    if (state?.scrollTo) {
+      // Wait for content to load, then scroll
+      const timer = setTimeout(() => {
+        const element = document.getElementById(state.scrollTo);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+        // Clear the state after scrolling to prevent re-scrolling on re-renders
+        window.history.replaceState({}, document.title);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
 
   const LoadingFallback = () => (
     <div className="min-h-screen flex items-center justify-center bg-background">
@@ -50,11 +69,19 @@ const Index = ({ locale }: IndexProps) => {
         <Navigation />
         <HeroSection />
         <Suspense fallback={<LoadingFallback />}>
-          <AboutSection />
-          <ServicesSection />
-          <PortfolioSection />
+          <div id="about">
+            <AboutSection />
+          </div>
+          <div id="services">
+            <ServicesSection />
+          </div>
+          <div id="projects">
+            <PortfolioSection />
+          </div>
           {/* <TestimonialsSection /> */}
-          <ContactSection />
+          <div id="contact">
+            <ContactSection />
+          </div>
           <Footer />
         </Suspense>
       </main>
