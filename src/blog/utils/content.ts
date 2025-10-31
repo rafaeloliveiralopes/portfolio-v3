@@ -8,8 +8,8 @@ const IntroducingAiAgentsEn = lazy(
 const IntroduccionAgentesEs = lazy(
   () => import("../posts/es/2025/introduccion-agentes-ia.mdx")
 );
-const IntroducaoAgentesPt = lazy(
-  () => import("../posts/pt/2025/introducao-agentes-ia.mdx")
+const TresErrosCustosAutomacaoPt = lazy(
+  () => import("../posts/pt/2025/tres-erros-que-duplicam-custos-automacao.mdx")
 );
 
 export type Post = FrontmatterT & {
@@ -33,7 +33,7 @@ const all: Post[] = [
     readingTime: 7,
     translations: {
       es: "introduccion-agentes-ia",
-      pt: "introducao-agentes-ia",
+      pt: "erros-custos-automacao",
     },
     canonical: "/en/blog/introducing-ai-agents",
     id: "posts/en/2025/introducing-ai-agents.mdx",
@@ -53,7 +53,7 @@ const all: Post[] = [
     readingTime: 7,
     translations: {
       en: "introducing-ai-agents",
-      pt: "introducao-agentes-ia",
+      pt: "erros-custos-automacao",
     },
     canonical: "/es/blog/introduccion-agentes-ia",
     id: "posts/es/2025/introduccion-agentes-ia.mdx",
@@ -62,23 +62,30 @@ const all: Post[] = [
   },
   {
     lang: "pt" as const,
-    slug: "introducao-agentes-ia",
-    title: "Agentes de IA na prática: quando usar e como começar",
+    slug: "erros-custos-automacao",
+    title: "Três Erros que Duplicam os Custos da Automação (e Como Evitá-los)",
     description:
-      "Guia prático com casos de uso para atendimento, automações e criação de conteúdo.",
+      "Descubra os principais equívocos que encarecem projetos de automação em atendimento, documentação e conteúdo — e como evitá-los com planejamento, otimização de processos e engajamento humano.",
     date: "2025-10-30",
     updated: "2025-10-30",
-    tags: ["ia", "agentes", "automacao", "atendimento"],
+    tags: [
+      "automacao",
+      "gestao",
+      "processos",
+      "tecnologia",
+      "IA",
+      "eficiencia",
+    ],
     cover: "/robot-humanoid1.jpg",
     readingTime: 7,
     translations: {
-      en: "introducing-ai-agents",
-      es: "introduccion-agentes-ia",
+      en: "three-costly-automation-mistakes",
+      es: "tres-errores-que-encarecen-la-automatizacion",
     },
-    canonical: "/pt/blog/introducao-agentes-ia",
-    id: "posts/pt/2025/introducao-agentes-ia.mdx",
-    url: "/pt/blog/introducao-agentes-ia",
-    component: IntroducaoAgentesPt,
+    canonical: "/pt/blog/erros-custos-automacao",
+    id: "posts/pt/2025/tres-erros-que-duplicam-custos-automacao.mdx",
+    url: "/pt/blog/erros-custos-automacao",
+    component: TresErrosCustosAutomacaoPt,
   },
 ].sort((a, b) => (a.date > b.date ? -1 : 1));
 export function getPosts(lang: "en" | "es" | "pt") {
