@@ -133,7 +133,8 @@ const all: Post[] = [
       "administracao",
       "eficiencia",
     ],
-    cover: "/automacao-processos-empresariais.png",
+    cover:
+      "/automacao-processos-empresariais-inteligencia-artificial-topview.png",
     readingTime: 10,
     translations: {
       en: "5-repetitive-tasks-automate-ai-chatbot",
