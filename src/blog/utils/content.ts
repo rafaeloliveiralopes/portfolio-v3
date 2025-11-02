@@ -14,6 +14,12 @@ const TresErroresAutomacionEs = lazy(
 const TresErrosCustosAutomacaoPt = lazy(
   () => import("../posts/pt/2025/tres-erros-que-duplicam-custos-automacao.mdx")
 );
+const CincoTarefasAutomatizarIAPt = lazy(
+  () =>
+    import(
+      "../posts/pt/2025/5-tarefas-repetitivas-que-qualquer-empresa-pode-automatizar-usando-IA-ou-chatbot.mdx"
+    )
+);
 
 export type Post = FrontmatterT & {
   id: string;
@@ -107,6 +113,36 @@ const all: Post[] = [
     id: "posts/pt/2025/tres-erros-que-duplicam-custos-automacao.mdx",
     url: "/pt/blog/erros-custos-automacao",
     component: TresErrosCustosAutomacaoPt,
+  },
+  {
+    lang: "pt" as const,
+    slug: "5-tarefas-automatizar-ia-chatbot",
+    title:
+      "5 Tarefas Repetitivas que Qualquer Empresa Pode Automatizar Usando IA ou Chatbot",
+    description:
+      "Descubra cinco tarefas operacionais comuns em marketing, vendas e administração que podem ser automatizadas com IA, liberando sua equipe para trabalhos estratégicos e aumentando a eficiência do negócio.",
+    date: "2025-11-02",
+    updated: "2025-11-02",
+    tags: [
+      "automacao",
+      "inteligencia-artificial",
+      "chatbot",
+      "produtividade",
+      "marketing",
+      "vendas",
+      "administracao",
+      "eficiencia",
+    ],
+    cover: "/automacao-processos-empresariais.png",
+    readingTime: 10,
+    translations: {
+      en: "5-repetitive-tasks-automate-ai-chatbot",
+      es: "5-tareas-automatizar-ia-chatbot",
+    },
+    canonical: "/pt/blog/5-tarefas-automatizar-ia-chatbot",
+    id: "posts/pt/2025/5-tarefas-repetitivas-que-qualquer-empresa-pode-automatizar-usando-IA-ou-chatbot.mdx",
+    url: "/pt/blog/5-tarefas-automatizar-ia-chatbot",
+    component: CincoTarefasAutomatizarIAPt,
   },
 ].sort((a, b) => (a.date > b.date ? -1 : 1));
 export function getPosts(lang: "en" | "es" | "pt") {
