@@ -146,11 +146,17 @@ export const Navigation = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-1xl font-bold">
+          <button
+            onClick={() =>
+              handleNavClick({ key: "hero", id: "hero", type: "scroll" })
+            }
+            className="text-1xl font-bold hover:opacity-80 transition-opacity"
+            aria-label={t("accessibility.goToHome")}
+          >
             <span className="text-foreground">{t("brand.name")}</span>
             <span className="text-gradient-primary">{t("brand.surname")}</span>
             <span className="text-secondary">{t("brand.domain")}</span>
-          </div>
+          </button>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
@@ -254,13 +260,19 @@ export const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="fixed inset-0 h-screen w-screen z-50 bg-background/95 md:hidden flex flex-col px-6 py-8">
             <div className="flex items-center justify-between mb-8">
-              <div className="text-1xl font-bold">
+              <button
+                onClick={() =>
+                  handleNavClick({ key: "hero", id: "hero", type: "scroll" })
+                }
+                className="text-1xl font-bold hover:opacity-80 transition-opacity"
+                aria-label={t("accessibility.goToHome")}
+              >
                 <span className="text-foreground">{t("brand.name")}</span>
                 <span className="text-gradient-primary">
                   {t("brand.surname")}
                 </span>
                 <span className="text-secondary">{t("brand.domain")}</span>
-              </div>
+              </button>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-foreground"

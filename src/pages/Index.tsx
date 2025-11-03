@@ -67,7 +67,9 @@ const Index = ({ locale }: IndexProps) => {
       <SeoHead locale={locale} />
       <main className="min-h-screen bg-mesh">
         <Navigation />
-        <HeroSection />
+        <div id="hero">
+          <HeroSection />
+        </div>
         <Suspense fallback={<LoadingFallback />}>
           <div id="about">
             <AboutSection />

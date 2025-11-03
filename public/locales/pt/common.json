@@ -6,7 +6,8 @@
   },
   "accessibility": {
     "toggleLanguage": "Alternar idioma",
-    "closeMenu": "Fechar menu"
+    "closeMenu": "Fechar menu",
+    "goToHome": "Ir para o início"
   },
   "nav": {
     "about": "Sobre",
