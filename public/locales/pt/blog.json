@@ -4,7 +4,8 @@
     "description": "Artigos sobre IA, automação e desenvolvimento web",
     "heading": "Blog",
     "subtitle": "Insights, tutoriais e melhores práticas em IA e desenvolvimento web",
-    "noPosts": "Ainda não há artigos disponíveis. Volte em breve!"
+    "noPosts": "Ainda não há artigos disponíveis. Volte em breve!",
+    "readMore": "Leia mais"
   },
   "post": {
     "backToBlog": "Voltar ao blog",

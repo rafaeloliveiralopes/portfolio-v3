@@ -6,13 +6,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Calendar, Clock } from "lucide-react";
 import type { Post } from "../utils/content";
 
 interface PostCardProps {
   post: Post;
 }
+
+const readMoreText = {
+  en: "Read more",
+  es: "Leer más",
+  pt: "Leia mais",
+};
 
 export const PostCard: React.FC<PostCardProps> = ({ post }) => {
   const formattedDate = new Date(post.date).toLocaleDateString(post.lang, {
@@ -23,7 +29,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
 
   return (
     <Link to={post.url} className="block h-full">
-      <Card className="h-full transition-all hover:shadow-lg hover:-translate-y-1">
+      <Card className="h-full transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col">
         {post.cover && (
           <div className="overflow-hidden rounded-t-lg">
             <img
@@ -34,7 +40,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
             />
           </div>
         )}
-        <CardHeader>
+        <CardHeader className="flex-1">
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
             <Calendar className="h-4 w-4" />
             <time dateTime={post.date}>{formattedDate}</time>
@@ -46,23 +52,15 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
               </>
             )}
           </div>
-          <CardTitle className="text-2xl font-bold hover:text-primary transition-colors">
-            {post.title}
-          </CardTitle>
+          <CardTitle className="text-2xl font-bold">{post.title}</CardTitle>
           <CardDescription className="mt-2 line-clamp-2">
             {post.description}
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <Badge key={tag} variant="secondary" className="text-xs">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          )}
+        <CardContent className="pt-0 pb-6">
+          <Button className="bg-[hsl(var(--primary-cta))] text-[hsl(var(--on-primary-cta))] hover:bg-[hsl(var(--primary-cta-hover))] active:bg-[hsl(var(--primary-cta-active))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary)/0.4)] shadow-glow">
+            {readMoreText[post.lang]}
+          </Button>
         </CardContent>
       </Card>
     </Link>
