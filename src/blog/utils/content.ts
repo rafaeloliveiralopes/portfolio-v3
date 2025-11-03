@@ -20,6 +20,18 @@ const CincoTarefasAutomatizarIAPt = lazy(
       "../posts/pt/2025/cinco-tarefas-repetitivas-que-qualquer-empresa-pode-automatizar-usando-IA-ou-chatbot.mdx"
     )
 );
+const FiveRepetitiveTasksAutomationEn = lazy(
+  () =>
+    import(
+      "../posts/en/2025/five-repetitive-tasks-any-business-can-automate-using-AI-or-chatbots.mdx"
+    )
+);
+const CincoTareasAutomatizarIAEs = lazy(
+  () =>
+    import(
+      "../posts/es/2025/cinco-tareas-repetitivas-que-cualquier-empresa-puede-automatizar-usando-IA-o-chatbot.mdx"
+    )
+);
 
 export type Post = FrontmatterT & {
   id: string;
@@ -144,6 +156,65 @@ const all: Post[] = [
     id: "posts/pt/2025/cinco-tarefas-repetitivas-que-qualquer-empresa-pode-automatizar-usando-IA-ou-chatbot.mdx",
     url: "/pt/blog/5-tarefas-automatizar-ia-chatbot",
     component: CincoTarefasAutomatizarIAPt,
+  },
+  {
+    lang: "en" as const,
+    slug: "5-repetitive-tasks-automate-ai-chatbot",
+    title: "5 Repetitive Tasks Any Company Can Automate Using AI or a Chatbot",
+    description:
+      "Discover five common operational tasks in marketing, sales, and administration that can be automated with AI, freeing your team for strategic work and boosting business efficiency.",
+    date: "2025-11-02",
+    tags: [
+      "automation",
+      "artificial-intelligence",
+      "chatbot",
+      "productivity",
+      "marketing",
+      "sales",
+      "administration",
+      "efficiency",
+    ],
+    cover:
+      "/automacao-processos-empresariais-inteligencia-artificial-topview.png",
+    readingTime: 10,
+    translations: {
+      es: "5-tareas-automatizar-ia-chatbot",
+      pt: "5-tarefas-automatizar-ia-chatbot",
+    },
+    canonical: "/en/blog/5-repetitive-tasks-automate-ai-chatbot",
+    id: "posts/en/2025/five-repetitive-tasks-any-business-can-automate-using-AI-or-chatbots.mdx",
+    url: "/en/blog/5-repetitive-tasks-automate-ai-chatbot",
+    component: FiveRepetitiveTasksAutomationEn,
+  },
+  {
+    lang: "es" as const,
+    slug: "5-tareas-automatizar-ia-chatbot",
+    title:
+      "5 tareas repetitivas que cualquier empresa puede automatizar con IA o un chatbot",
+    description:
+      "Descubre cinco tareas operativas habituales en marketing, ventas y administración que pueden automatizarse con IA, liberando a tu equipo para trabajos estratégicos y aumentando la eficiencia del negocio.",
+    date: "2025-11-02",
+    tags: [
+      "automatizacion",
+      "inteligencia-artificial",
+      "chatbot",
+      "productividad",
+      "marketing",
+      "ventas",
+      "administracion",
+      "eficiencia",
+    ],
+    cover:
+      "/automacao-processos-empresariais-inteligencia-artificial-topview.png",
+    readingTime: 10,
+    translations: {
+      en: "5-repetitive-tasks-automate-ai-chatbot",
+      pt: "5-tarefas-automatizar-ia-chatbot",
+    },
+    canonical: "/es/blog/5-tareas-automatizar-ia-chatbot",
+    id: "posts/es/2025/cinco-tareas-repetitivas-que-cualquier-empresa-puede-automatizar-usando-IA-o-chatbot.mdx",
+    url: "/es/blog/5-tareas-automatizar-ia-chatbot",
+    component: CincoTareasAutomatizarIAEs,
   },
 ].sort((a, b) => (a.date > b.date ? -1 : 1));
 export function getPosts(lang: "en" | "es" | "pt") {
