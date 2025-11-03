@@ -6,7 +6,8 @@
   },
   "accessibility": {
     "toggleLanguage": "Toggle language",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "goToHome": "Go to home"
   },
   "nav": {
     "about": "About",
