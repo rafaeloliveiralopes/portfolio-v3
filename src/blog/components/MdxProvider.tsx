@@ -39,7 +39,7 @@ const components = {
     <ol className="mt-4 ml-6 list-decimal space-y-2" {...props} />
   ),
   li: (props: React.LiHTMLAttributes<HTMLLIElement>) => (
-    <li className="leading-7 text-muted-foreground" {...props} />
+    <li className="leading-7" {...props} />
   ),
   blockquote: (props: React.BlockquoteHTMLAttributes<HTMLQuoteElement>) => (
     <blockquote

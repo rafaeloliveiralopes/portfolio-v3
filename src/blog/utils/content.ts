@@ -17,7 +17,7 @@ const TresErrosCustosAutomacaoPt = lazy(
 const CincoTarefasAutomatizarIAPt = lazy(
   () =>
     import(
-      "../posts/pt/2025/5-tarefas-repetitivas-que-qualquer-empresa-pode-automatizar-usando-IA-ou-chatbot.mdx"
+      "../posts/pt/2025/cinco-tarefas-repetitivas-que-qualquer-empresa-pode-automatizar-usando-IA-ou-chatbot.mdx"
     )
 );
 
@@ -37,7 +37,7 @@ const all: Post[] = [
     description:
       "Discover the main pitfalls that make automation projects in service, documentation, and content more expensive—and how to avoid them with planning, process optimization, and human engagement.",
     date: "2025-10-30",
-    updated: "2025-10-30",
+    // updated: "2025-10-30",
     tags: [
       "automation",
       "management",
@@ -65,7 +65,7 @@ const all: Post[] = [
     description:
       "Descubre los principales errores que encarecen los proyectos de automatización en atención, documentación y contenido, y cómo evitarlos mediante planificación, optimización de procesos y compromiso humano.",
     date: "2025-10-30",
-    updated: "2025-10-30",
+    // updated: "2025-10-30",
     tags: [
       "automatizacion",
       "gestion",
@@ -92,7 +92,7 @@ const all: Post[] = [
     description:
       "Descubra os principais equívocos que encarecem projetos de automação em atendimento, documentação, conteúdo e como evitá-los com planejamento, otimização de processos e engajamento humano.",
     date: "2025-10-30",
-    updated: "2025-10-30",
+    // updated: "2025-10-30",
     tags: [
       "automação",
       "gestão",
@@ -122,16 +122,16 @@ const all: Post[] = [
     description:
       "Descubra cinco tarefas operacionais comuns em marketing, vendas e administração que podem ser automatizadas com IA, liberando sua equipe para trabalhos estratégicos e aumentando a eficiência do negócio.",
     date: "2025-11-02",
-    updated: "2025-11-02",
+    // updated: "2025-11-02",
     tags: [
-      "automacao",
-      "inteligencia-artificial",
+      "automação",
+      "inteligência-artificial",
       "chatbot",
       "produtividade",
       "marketing",
       "vendas",
-      "administracao",
-      "eficiencia",
+      "administração",
+      "eficiência",
     ],
     cover:
       "/automacao-processos-empresariais-inteligencia-artificial-topview.png",
@@ -141,7 +141,7 @@ const all: Post[] = [
       es: "5-tareas-automatizar-ia-chatbot",
     },
     canonical: "/pt/blog/5-tarefas-automatizar-ia-chatbot",
-    id: "posts/pt/2025/5-tarefas-repetitivas-que-qualquer-empresa-pode-automatizar-usando-IA-ou-chatbot.mdx",
+    id: "posts/pt/2025/cinco-tarefas-repetitivas-que-qualquer-empresa-pode-automatizar-usando-IA-ou-chatbot.mdx",
     url: "/pt/blog/5-tarefas-automatizar-ia-chatbot",
     component: CincoTarefasAutomatizarIAPt,
   },
