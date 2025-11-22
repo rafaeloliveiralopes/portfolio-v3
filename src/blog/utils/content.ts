@@ -38,6 +38,12 @@ const ComoSaberSeSiteConvertePt = lazy(
       "../posts/pt/2025/como-saber-se-seu-site-ou-landing-page-realmente-converte.mdx"
     )
 );
+const HowToKnowIfSiteConvertsEn = lazy(
+  () =>
+    import(
+      "../posts/en/2025/how-to-know-if-your-website-or-landing-page-really-converts.mdx"
+    )
+);
 
 export type Post = FrontmatterT & {
   id: string;
@@ -227,7 +233,7 @@ const all: Post[] = [
     slug: "como-saber-se-site-converte",
     title: "Como Saber se Seu Site ou Landing Page Realmente Converte",
     description:
-      "Descubra os 12 indicadores-chave que revelam se seu site está gerando leads e vendas e como medi-los de forma objetiva.",
+      "Descubra os principais indicadores-chave que revelam se seu site está gerando leads e vendas e como medi-los de forma objetiva.",
     date: "2025-11-15",
     tags: [
       "conversao",
@@ -241,10 +247,40 @@ const all: Post[] = [
     ],
     cover: "/funil-de-vendas.webp",
     readingTime: 12,
+    translations: {
+      en: "how-to-know-if-site-converts",
+    },
     canonical: "/pt/blog/como-saber-se-site-converte",
     id: "posts/pt/2025/como-saber-se-seu-site-ou-landing-page-realmente-converte.mdx",
     url: "/pt/blog/como-saber-se-site-converte",
     component: ComoSaberSeSiteConvertePt,
+  },
+  {
+    lang: "en" as const,
+    slug: "how-to-know-if-site-converts",
+    title: "How to Know if Your Website or Landing Page Really Converts",
+    description:
+      "Discover the key indicators that reveal whether your website is generating leads and sales, and how to measure them objectively.",
+    date: "2025-11-15",
+    tags: [
+      "conversion",
+      "landing-page",
+      "optimization",
+      "digital-marketing",
+      "analytics",
+      "cro",
+      "performance",
+      "metrics",
+    ],
+    cover: "/funil-de-vendas.webp",
+    readingTime: 12,
+    translations: {
+      pt: "como-saber-se-site-converte",
+    },
+    canonical: "/en/blog/how-to-know-if-site-converts",
+    id: "posts/en/2025/how-to-know-if-your-website-or-landing-page-really-converts.mdx",
+    url: "/en/blog/how-to-know-if-site-converts",
+    component: HowToKnowIfSiteConvertsEn,
   },
 ].sort((a, b) => (a.date > b.date ? -1 : 1));
 export function getPosts(lang: "en" | "es" | "pt") {
