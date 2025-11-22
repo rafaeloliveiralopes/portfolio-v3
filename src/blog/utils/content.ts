@@ -44,6 +44,12 @@ const HowToKnowIfSiteConvertsEn = lazy(
       "../posts/en/2025/how-to-know-if-your-website-or-landing-page-really-converts.mdx"
     )
 );
+const ComoSaberSiSiteConvierteEs = lazy(
+  () =>
+    import(
+      "../posts/es/2025/como-saber-si-tu-sitio-o-landing-page-realmente-convierte.mdx"
+    )
+);
 
 export type Post = FrontmatterT & {
   id: string;
@@ -249,6 +255,7 @@ const all: Post[] = [
     readingTime: 12,
     translations: {
       en: "how-to-know-if-site-converts",
+      es: "como-saber-si-site-convierte",
     },
     canonical: "/pt/blog/como-saber-se-site-converte",
     id: "posts/pt/2025/como-saber-se-seu-site-ou-landing-page-realmente-converte.mdx",
@@ -276,11 +283,40 @@ const all: Post[] = [
     readingTime: 12,
     translations: {
       pt: "como-saber-se-site-converte",
+      es: "como-saber-si-site-convierte",
     },
     canonical: "/en/blog/how-to-know-if-site-converts",
     id: "posts/en/2025/how-to-know-if-your-website-or-landing-page-really-converts.mdx",
     url: "/en/blog/how-to-know-if-site-converts",
     component: HowToKnowIfSiteConvertsEn,
+  },
+  {
+    lang: "es" as const,
+    slug: "como-saber-si-site-convierte",
+    title: "Cómo saber si tu sitio web o landing page realmente convierte",
+    description:
+      "Descubre qué indicadores clave revelan si tu sitio está generando leads y ventas. Y cómo medirlos de forma objetiva.",
+    date: "2025-11-15",
+    tags: [
+      "conversion",
+      "landing-page",
+      "optimizacion",
+      "marketing-digital",
+      "analytics",
+      "cro",
+      "performance",
+      "metricas",
+    ],
+    cover: "/funil-de-vendas.webp",
+    readingTime: 12,
+    translations: {
+      pt: "como-saber-se-site-converte",
+      en: "how-to-know-if-site-converts",
+    },
+    canonical: "/es/blog/como-saber-si-site-convierte",
+    id: "posts/es/2025/como-saber-si-tu-sitio-o-landing-page-realmente-convierte.mdx",
+    url: "/es/blog/como-saber-si-site-convierte",
+    component: ComoSaberSiSiteConvierteEs,
   },
 ].sort((a, b) => (a.date > b.date ? -1 : 1));
 export function getPosts(lang: "en" | "es" | "pt") {
