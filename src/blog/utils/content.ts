@@ -32,6 +32,24 @@ const CincoTareasAutomatizarIAEs = lazy(
       "../posts/es/2025/cinco-tareas-repetitivas-que-cualquier-empresa-puede-automatizar-usando-IA-o-chatbot.mdx"
     )
 );
+const ComoSaberSeSiteConvertePt = lazy(
+  () =>
+    import(
+      "../posts/pt/2025/como-saber-se-seu-site-ou-landing-page-realmente-converte.mdx"
+    )
+);
+const HowToKnowIfSiteConvertsEn = lazy(
+  () =>
+    import(
+      "../posts/en/2025/how-to-know-if-your-website-or-landing-page-really-converts.mdx"
+    )
+);
+const ComoSaberSiSiteConvierteEs = lazy(
+  () =>
+    import(
+      "../posts/es/2025/como-saber-si-tu-sitio-o-landing-page-realmente-convierte.mdx"
+    )
+);
 
 export type Post = FrontmatterT & {
   id: string;
@@ -215,6 +233,90 @@ const all: Post[] = [
     id: "posts/es/2025/cinco-tareas-repetitivas-que-cualquier-empresa-puede-automatizar-usando-IA-o-chatbot.mdx",
     url: "/es/blog/5-tareas-automatizar-ia-chatbot",
     component: CincoTareasAutomatizarIAEs,
+  },
+  {
+    lang: "pt" as const,
+    slug: "como-saber-se-site-converte",
+    title: "Como Saber se Seu Site ou Landing Page Realmente Converte",
+    description:
+      "Descubra os principais indicadores-chave que revelam se seu site está gerando leads e vendas e como medi-los de forma objetiva.",
+    date: "2025-11-15",
+    tags: [
+      "conversao",
+      "landing-page",
+      "otimizacao",
+      "marketing-digital",
+      "analytics",
+      "cro",
+      "performance",
+      "metricas",
+    ],
+    cover: "/funil-de-vendas.webp",
+    readingTime: 12,
+    translations: {
+      en: "how-to-know-if-site-converts",
+      es: "como-saber-si-site-convierte",
+    },
+    canonical: "/pt/blog/como-saber-se-site-converte",
+    id: "posts/pt/2025/como-saber-se-seu-site-ou-landing-page-realmente-converte.mdx",
+    url: "/pt/blog/como-saber-se-site-converte",
+    component: ComoSaberSeSiteConvertePt,
+  },
+  {
+    lang: "en" as const,
+    slug: "how-to-know-if-site-converts",
+    title: "How to Know if Your Website or Landing Page Really Converts",
+    description:
+      "Discover the key indicators that reveal whether your website is generating leads and sales, and how to measure them objectively.",
+    date: "2025-11-15",
+    tags: [
+      "conversion",
+      "landing-page",
+      "optimization",
+      "digital-marketing",
+      "analytics",
+      "cro",
+      "performance",
+      "metrics",
+    ],
+    cover: "/funil-de-vendas.webp",
+    readingTime: 12,
+    translations: {
+      pt: "como-saber-se-site-converte",
+      es: "como-saber-si-site-convierte",
+    },
+    canonical: "/en/blog/how-to-know-if-site-converts",
+    id: "posts/en/2025/how-to-know-if-your-website-or-landing-page-really-converts.mdx",
+    url: "/en/blog/how-to-know-if-site-converts",
+    component: HowToKnowIfSiteConvertsEn,
+  },
+  {
+    lang: "es" as const,
+    slug: "como-saber-si-site-convierte",
+    title: "Cómo saber si tu sitio web o landing page realmente convierte",
+    description:
+      "Descubre qué indicadores clave revelan si tu sitio está generando leads y ventas. Y cómo medirlos de forma objetiva.",
+    date: "2025-11-15",
+    tags: [
+      "conversion",
+      "landing-page",
+      "optimizacion",
+      "marketing-digital",
+      "analytics",
+      "cro",
+      "performance",
+      "metricas",
+    ],
+    cover: "/funil-de-vendas.webp",
+    readingTime: 12,
+    translations: {
+      pt: "como-saber-se-site-converte",
+      en: "how-to-know-if-site-converts",
+    },
+    canonical: "/es/blog/como-saber-si-site-convierte",
+    id: "posts/es/2025/como-saber-si-tu-sitio-o-landing-page-realmente-convierte.mdx",
+    url: "/es/blog/como-saber-si-site-convierte",
+    component: ComoSaberSiSiteConvierteEs,
   },
 ].sort((a, b) => (a.date > b.date ? -1 : 1));
 export function getPosts(lang: "en" | "es" | "pt") {
