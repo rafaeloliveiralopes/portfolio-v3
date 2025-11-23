@@ -26,15 +26,15 @@ export const AboutSection = () => {
             <div className="prose prose-invert max-w-none space-y-6">
               <p className="text-lg leading-relaxed">
                 {t("about.story1").split("**")[0]}
-                <span className="text-accent-text font-semibold">
+                <span className="text-secondary font-semibold">
                   {t("about.story1").split("**")[1]}
                 </span>
                 {t("about.story1").split("**")[2]}
-                <span className="text-secondary">
+                <span className="text-secondary font-semibold">
                   {t("about.story1").split("**")[3]}
                 </span>
                 {t("about.story1").split("**")[4]}
-                <span className="text-accent-text">
+                <span className="text-accent-text font-semibold">
                   {t("about.story1").split("**")[5]}
                 </span>
                 {t("about.story1").split("**")[6]}
@@ -42,13 +42,35 @@ export const AboutSection = () => {
 
               <p className="text-lg leading-relaxed">
                 {t("about.story2").split("**")[0]}
-                <span className="text-gradient-primary font-semibold">
+                <span className="text-accent-text font-semibold">
                   {t("about.story2").split("**")[1]}
                 </span>
                 {t("about.story2").split("**")[2]}
+                <span className="text-accent-text font-semibold">
+                  {t("about.story2").split("**")[3]}
+                </span>
+                {t("about.story2").split("**")[4]}
+                <span className="text-secondary font-semibold">
+                  {t("about.story2").split("**")[5]}
+                </span>
+                {t("about.story2").split("**")[6]}
               </p>
 
-              <p className="text-lg leading-relaxed">{t("about.story3")}</p>
+              <p className="text-lg leading-relaxed">
+                {t("about.story3").split("**")[0]}
+                <span className="text-secondary font-semibold">
+                  {t("about.story3").split("**")[1]}
+                </span>
+                {t("about.story3").split("**")[2]}
+                <span className="text-secondary font-semibold">
+                  {t("about.story3").split("**")[3]}
+                </span>
+                {t("about.story3").split("**")[4]}
+                <span className="text-accent-text font-semibold">
+                  {t("about.story3").split("**")[5]}
+                </span>
+                {t("about.story3").split("**")[6]}
+              </p>
             </div>
 
             {/* Skills Grid */}
