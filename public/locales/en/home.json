@@ -46,7 +46,7 @@
     "skills": {
       "development": {
         "title": "Development",
-        "items": ["React", "Java", "TypeScript", "Node.js", "Python"]
+        "items": ["React", "Java", "TypeScript", "Node.js", "Python", "N8N"]
       },
       "design": {
         "title": "Design & UX",
