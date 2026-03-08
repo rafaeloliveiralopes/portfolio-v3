@@ -135,7 +135,7 @@ export const HeroSection = () => {
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
               className="social-link-reveal p-3 rounded-full bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
-              style={{ animationDelay: `${1.05 + index * 0.32}s` }}
+              style={{ animationDelay: `${1.05 + index * 0.38}s` }}
             >
               <span className="sr-only">{label}</span>
               <Icon
