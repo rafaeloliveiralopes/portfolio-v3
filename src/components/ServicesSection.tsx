@@ -44,7 +44,6 @@ export const ServicesSection = () => {
 
   return (
     <section
-      id="services"
       data-testid="services-section"
       aria-label={t("services.title")}
       className="py-20 relative"
