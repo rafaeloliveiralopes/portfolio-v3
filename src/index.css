@@ -336,6 +336,32 @@
     transform: none;
   }
 
+  .about-title-reveal,
+  .about-subtitle-reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .about-section.about-animate .about-title-reveal {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+
+  .about-section.about-animate .about-title-reveal.is-visible {
+    animation: portfolio-title-right-to-left 0.9s
+      cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .about-section.about-animate .about-subtitle-reveal {
+    opacity: 0;
+    transform: translateX(-44px);
+  }
+
+  .about-section.about-animate .about-subtitle-reveal.is-visible {
+    animation: portfolio-subtitle-left-to-right 1s
+      cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
   .about-section.about-animate .about-reveal {
     opacity: 0;
     transform: translateY(22px) scale(0.985);
@@ -370,6 +396,97 @@
     animation: about-timeline-text-reveal 1.05s
       cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: var(--about-delay, 0s);
+  }
+
+  .services-title-reveal,
+  .services-subtitle-reveal,
+  .service-card-reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .services-section.services-animate .services-title-reveal {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+
+  .services-section.services-animate .services-title-reveal.is-visible {
+    animation: portfolio-title-right-to-left 0.9s
+      cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .services-section.services-animate .services-subtitle-reveal {
+    opacity: 0;
+    transform: translateX(-44px);
+  }
+
+  .services-section.services-animate .services-subtitle-reveal.is-visible {
+    animation: portfolio-subtitle-left-to-right 1s
+      cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--services-delay, 0s);
+  }
+
+  .services-section.services-animate .service-card-reveal {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+
+  .services-section.services-animate .service-card-reveal.is-visible {
+    animation: services-card-right-to-left 1s cubic-bezier(0.22, 1, 0.36, 1)
+      forwards;
+    animation-delay: var(--services-delay, 0s);
+  }
+
+  .contact-title-reveal,
+  .contact-subtitle-reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .contact-section.contact-animate .contact-title-reveal {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+
+  .contact-section.contact-animate .contact-title-reveal.is-visible {
+    animation: portfolio-title-right-to-left 0.9s
+      cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .contact-section.contact-animate .contact-subtitle-reveal {
+    opacity: 0;
+    transform: translateX(-44px);
+  }
+
+  .contact-section.contact-animate .contact-subtitle-reveal.is-visible {
+    animation: portfolio-subtitle-left-to-right 1s
+      cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .portfolio-title-reveal,
+  .portfolio-subtitle-reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .portfolio-section.portfolio-animate .portfolio-title-reveal {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+
+  .portfolio-section.portfolio-animate .portfolio-title-reveal.is-visible {
+    animation: portfolio-title-right-to-left 0.9s
+      cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .portfolio-section.portfolio-animate .portfolio-subtitle-reveal {
+    opacity: 0;
+    transform: translateX(-44px);
+  }
+
+  .portfolio-section.portfolio-animate .portfolio-subtitle-reveal.is-visible {
+    animation: portfolio-subtitle-left-to-right 1s
+      cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
   /* Service Cards */
@@ -535,6 +652,39 @@
   }
 }
 
+@keyframes services-card-right-to-left {
+  from {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes portfolio-title-right-to-left {
+  from {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes portfolio-subtitle-left-to-right {
+  from {
+    opacity: 0;
+    transform: translateX(-44px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .social-link-reveal {
   opacity: 0;
   animation: social-link-reveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -565,6 +715,13 @@
     animation: none;
   }
 
+  .about-title-reveal,
+  .about-subtitle-reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
   .about-timeline-title,
   .about-timeline-description {
     opacity: 1;
@@ -574,6 +731,28 @@
 
   .about-timeline-title.is-visible,
   .about-timeline-description.is-visible {
+    animation: none;
+  }
+
+  .services-title-reveal,
+  .services-subtitle-reveal,
+  .service-card-reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .portfolio-title-reveal,
+  .portfolio-subtitle-reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .contact-title-reveal,
+  .contact-subtitle-reveal {
+    opacity: 1;
+    transform: none;
     animation: none;
   }
 }

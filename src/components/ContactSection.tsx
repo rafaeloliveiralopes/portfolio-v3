@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useRef } from "react";
+import { useMemo, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -41,6 +41,11 @@ interface ContactInfoItem {
 export const ContactSection = () => {
   const { t, i18n } = useTranslation(["contact", "common"]);
   const { toast } = useToast();
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const subtitleRef = useRef<HTMLParagraphElement | null>(null);
+  const [isTitleVisible, setIsTitleVisible] = useState(false);
+  const [isSubtitleVisible, setIsSubtitleVisible] = useState(false);
+  const [isAnimationArmed, setIsAnimationArmed] = useState(false);
 
   // Create schema with current language
   const schema = useMemo(() => getContactFormSchema(t), [t]);
@@ -70,6 +75,53 @@ export const ContactSection = () => {
 
   // Ref to scope DOM queries to the phone input container
   const phoneContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      setIsTitleVisible(true);
+      setIsSubtitleVisible(true);
+      return;
+    }
+
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+
+    if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
+      setIsTitleVisible(true);
+      setIsSubtitleVisible(true);
+      return;
+    }
+
+    setIsAnimationArmed(true);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          if (entry.target === titleRef.current) {
+            setIsTitleVisible(true);
+          }
+
+          if (entry.target === subtitleRef.current) {
+            setIsSubtitleVisible(true);
+          }
+
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.45,
+        rootMargin: "0px 0px -12% 0px",
+      },
+    );
+
+    if (titleRef.current) observer.observe(titleRef.current);
+    if (subtitleRef.current) observer.observe(subtitleRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   // A11y patch: ensure country selector button and listbox have accessible names
   useEffect(() => {
@@ -179,7 +231,9 @@ export const ContactSection = () => {
   };
 
   return (
-    <section className="py-20 relative">
+    <section
+      className={`contact-section py-20 relative ${isAnimationArmed ? "contact-animate" : ""}`}
+    >
       {/* Background Decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
@@ -189,13 +243,23 @@ export const ContactSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2
+            ref={titleRef}
+            className={`contact-title-reveal text-4xl md:text-5xl font-bold mb-6 ${
+              isTitleVisible ? "is-visible" : ""
+            }`}
+          >
             <span className="text-foreground">{t("contact.title")} </span>
             <span className="text-gradient-primary">
               {t("contact.titleHighlight")}
             </span>
           </h2>
-          <p className="text-xl text-zinc-100 max-w-3xl mx-auto">
+          <p
+            ref={subtitleRef}
+            className={`contact-subtitle-reveal text-xl text-zinc-100 max-w-3xl mx-auto ${
+              isSubtitleVisible ? "is-visible" : ""
+            }`}
+          >
             {t("contact.subtitle")}
           </p>
         </div>
