@@ -108,10 +108,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Social Links */}
-        <div
-          className="flex justify-center space-x-6 mb-12 animate-float-up"
-          style={{ animationDelay: "0.8s" }}
-        >
+        <div className="flex justify-center space-x-6 mb-12">
           {[
             {
               Icon: SiGithub,
@@ -130,14 +127,15 @@ export const HeroSection = () => {
               href: "mailto:rafaellopes.dev@gmail.com",
               label: "Email",
             },
-          ].map(({ Icon, href, label, external }) => (
+          ].map(({ Icon, href, label, external }, index) => (
             <a
               key={label}
               href={href}
               {...(external
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
-              className="p-3 rounded-full bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
+              className="social-link-reveal p-3 rounded-full bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
+              style={{ animationDelay: `${1.05 + index * 0.32}s` }}
             >
               <span className="sr-only">{label}</span>
               <Icon
