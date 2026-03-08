@@ -1,15 +1,12 @@
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
+import { AboutSection } from "@/components/AboutSection";
 import { SeoHead } from "@/components/SeoHead";
-import React, { Suspense, lazy, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { Suspense, lazy, useEffect } from "react";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { useLocation } from "react-router-dom";
 
 // Lazy-load non-critical sections to improve initial bundle
-const AboutSection = lazy(() =>
-  import("@/components/AboutSection").then((m) => ({ default: m.AboutSection }))
-);
 const ServicesSection = lazy(() =>
   import("@/components/ServicesSection").then((m) => ({
     default: m.ServicesSection,
@@ -35,7 +32,6 @@ interface IndexProps {
 }
 
 const Index = ({ locale }: IndexProps) => {
-  const { i18n } = useTranslation(["seo", "common"]);
   const location = useLocation();
   useAnalytics();
 
@@ -70,10 +66,10 @@ const Index = ({ locale }: IndexProps) => {
         <div id="hero">
           <HeroSection />
         </div>
+        <div id="about">
+          <AboutSection />
+        </div>
         <Suspense fallback={<LoadingFallback />}>
-          <div id="about">
-            <AboutSection />
-          </div>
           <div id="services">
             <ServicesSection />
           </div>

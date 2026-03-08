@@ -1,175 +1,302 @@
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import { Code, Palette, Lightbulb, Target } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+const TIMELINE_YEARS = ["2019", "2021", "2022", "2023", "2024"];
+
+const renderHighlightedText = (
+  text: string,
+  highlightClassName: string,
+): ReactNode[] => {
+  const chunks = text.split(/(\*\*[^*]+\*\*)/g).filter(Boolean);
+
+  return chunks.map((chunk, index) => {
+    const isHighlighted = chunk.startsWith("**") && chunk.endsWith("**");
+
+    if (isHighlighted) {
+      return (
+        <span key={`${chunk}-${index}`} className={highlightClassName}>
+          {chunk.slice(2, -2)}
+        </span>
+      );
+    }
+
+    return <span key={`${chunk}-${index}`}>{chunk}</span>;
+  });
+};
+
 export const AboutSection = () => {
   const { t } = useTranslation(["home", "common"]);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const timelineRef = useRef<HTMLDivElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isAnimationArmed, setIsAnimationArmed] = useState(false);
+  const [isTimelineVisible, setIsTimelineVisible] = useState(false);
+
+  useEffect(() => {
+    const sectionElement = sectionRef.current;
+    if (!sectionElement) return;
+
+    if (typeof window === "undefined") {
+      setIsVisible(true);
+      return;
+    }
+
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+
+    if (reducedMotionQuery.matches) {
+      setIsVisible(true);
+      return;
+    }
+
+    setIsAnimationArmed(true);
+
+    if (!("IntersectionObserver" in window)) {
+      setIsVisible(true);
+      return;
+    }
+
+    let settled = false;
+    let observer: IntersectionObserver | null = null;
+    let fallbackTimeoutId = 0;
+
+    const reveal = () => {
+      if (settled) return;
+      settled = true;
+      setIsVisible(true);
+      observer?.disconnect();
+      window.clearTimeout(fallbackTimeoutId);
+    };
+
+    observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          reveal();
+        }
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -2% 0px",
+      },
+    );
+
+    observer.observe(sectionElement);
+    fallbackTimeoutId = window.setTimeout(reveal, 1200);
+
+    return () => {
+      observer?.disconnect();
+      window.clearTimeout(fallbackTimeoutId);
+    };
+  }, []);
+
+  useEffect(() => {
+    const timelineElement = timelineRef.current;
+    if (!timelineElement) return;
+
+    if (typeof window === "undefined") {
+      setIsTimelineVisible(true);
+      return;
+    }
+
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+
+    if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
+      setIsTimelineVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setIsTimelineVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.18,
+        rootMargin: "0px 0px -12% 0px",
+      },
+    );
+
+    observer.observe(timelineElement);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const skillCards = useMemo(
+    () => [
+      {
+        icon: Code,
+        title: t("about.skills.development.title"),
+        items: t("about.skills.development.items", {
+          returnObjects: true,
+        }) as string[],
+      },
+      {
+        icon: Palette,
+        title: t("about.skills.design.title"),
+        items: t("about.skills.design.items", {
+          returnObjects: true,
+        }) as string[],
+      },
+      {
+        icon: Lightbulb,
+        title: t("about.skills.soft.title"),
+        items: t("about.skills.soft.items", {
+          returnObjects: true,
+        }) as string[],
+      },
+      {
+        icon: Target,
+        title: t("about.skills.focus.title"),
+        items: t("about.skills.focus.items", {
+          returnObjects: true,
+        }) as string[],
+      },
+    ],
+    [t],
+  );
+
+  const sectionTitle = t("about.title").trim();
+  const [titleFirstWord, ...titleRestWords] = sectionTitle.split(/\s+/);
+  const titleRemainder = titleRestWords.join(" ");
 
   return (
-    <section id="about" className="py-20 relative bg-black">
-      <div className="container mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-foreground">
-              {t("about.title").split(" ")[0]}{" "}
-            </span>
-            <span className="text-gradient-primary">
-              {t("about.title").split(" ")[1]} {t("about.title").split(" ")[2]}
-            </span>
+    <section
+      ref={sectionRef}
+      className={`about-section relative overflow-hidden py-24 ${
+        isAnimationArmed ? "about-animate" : ""
+      }`}
+    >
+      <div className="about-orb about-orb-primary" aria-hidden="true" />
+      <div className="about-orb about-orb-secondary" aria-hidden="true" />
+
+      <div className="container relative z-10 mx-auto px-6">
+        <div
+          className={`about-reveal text-center ${isVisible ? "is-visible" : ""}`}
+          style={{ "--about-delay": "0s" } as CSSProperties}
+        >
+          <h2 className="text-4xl font-bold md:text-5xl">
+            <span className="text-foreground">{titleFirstWord}</span>
+            {titleRemainder ? (
+              <span className="text-gradient-primary"> {titleRemainder}</span>
+            ) : null}
           </h2>
-          <p className="text-xl max-w-3xl mx-auto">{t("about.subtitle")}</p>
+          <p className="mx-auto mt-5 max-w-3xl text-lg text-zinc-300 md:text-xl">
+            {t("about.subtitle")}
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Story */}
-          <div className="space-y-6 text-zinc-300">
-            <div className="prose prose-invert max-w-none space-y-6">
-              <p className="text-lg leading-relaxed">
-                {t("about.story1").split("**")[0]}
-                <span className="text-secondary font-semibold">
-                  {t("about.story1").split("**")[1]}
-                </span>
-                {t("about.story1").split("**")[2]}
-                <span className="text-secondary font-semibold">
-                  {t("about.story1").split("**")[3]}
-                </span>
-                {t("about.story1").split("**")[4]}
-                <span className="text-accent-text font-semibold">
-                  {t("about.story1").split("**")[5]}
-                </span>
-                {t("about.story1").split("**")[6]}
-              </p>
-
-              <p className="text-lg leading-relaxed">
-                {t("about.story2").split("**")[0]}
-                <span className="text-accent-text font-semibold">
-                  {t("about.story2").split("**")[1]}
-                </span>
-                {t("about.story2").split("**")[2]}
-                <span className="text-accent-text font-semibold">
-                  {t("about.story2").split("**")[3]}
-                </span>
-                {t("about.story2").split("**")[4]}
-                <span className="text-secondary font-semibold">
-                  {t("about.story2").split("**")[5]}
-                </span>
-                {t("about.story2").split("**")[6]}
-              </p>
-
-              <p className="text-lg leading-relaxed">
-                {t("about.story3").split("**")[0]}
-                <span className="text-secondary font-semibold">
-                  {t("about.story3").split("**")[1]}
-                </span>
-                {t("about.story3").split("**")[2]}
-                <span className="text-secondary font-semibold">
-                  {t("about.story3").split("**")[3]}
-                </span>
-                {t("about.story3").split("**")[4]}
-                <span className="text-accent-text font-semibold">
-                  {t("about.story3").split("**")[5]}
-                </span>
-                {t("about.story3").split("**")[6]}
+        <div className="mt-16 grid items-start gap-10 lg:grid-cols-2">
+          <div
+            className={`about-reveal ${isVisible ? "is-visible" : ""}`}
+            style={{ "--about-delay": "0.14s" } as CSSProperties}
+          >
+            <div className="about-glass-panel space-y-6">
+              <p className="text-lg leading-relaxed text-zinc-300">
+                {renderHighlightedText(
+                  t("about.story2"),
+                  "text-accent-text font-semibold",
+                )}
               </p>
             </div>
 
-            {/* Skills Grid */}
-            <div className="grid md:grid-cols-2 gap-4 mt-12">
-              {[
-                {
-                  icon: Code,
-                  title: t("about.skills.development.title"),
-                  items: t("about.skills.development.items", {
-                    returnObjects: true,
-                  }) as string[],
-                },
-                {
-                  icon: Palette,
-                  title: t("about.skills.design.title"),
-                  items: t("about.skills.design.items", {
-                    returnObjects: true,
-                  }) as string[],
-                },
-                {
-                  icon: Lightbulb,
-                  title: t("about.skills.soft.title"),
-                  items: t("about.skills.soft.items", {
-                    returnObjects: true,
-                  }) as string[],
-                },
-                {
-                  icon: Target,
-                  title: t("about.skills.focus.title"),
-                  items: t("about.skills.focus.items", {
-                    returnObjects: true,
-                  }) as string[],
-                },
-              ].map((skill, index) => {
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {skillCards.map((skill, index) => {
                 const Icon = skill.icon;
+
                 return (
-                  <div
-                    key={index}
-                    className="p-4 rounded-lg bg-card border border-border hover:border-primary/90 transition-all duration-300 group"
+                  <article
+                    key={skill.title}
+                    className={`about-skill-card about-reveal ${isVisible ? "is-visible" : ""}`}
+                    style={
+                      {
+                        "--about-delay": `${0.22 + index * 0.08}s`,
+                      } as CSSProperties
+                    }
                   >
-                    <div className="flex items-center mb-3">
-                      <div className="p-2 rounded-lg bg-primary/10 text-primary mr-3">
-                        <Icon className="w-5 h-5" />
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="rounded-lg bg-primary/15 p-2 text-primary">
+                        <Icon className="h-5 w-5" />
                       </div>
-                      <p className="font-semibold group-hover:text-accent transition-colors">
-                        {skill.title}
-                      </p>
+                      <h3 className="font-semibold text-foreground">{skill.title}</h3>
                     </div>
+
                     <div className="flex flex-wrap gap-2">
-                      {Array.isArray(skill.items) &&
-                        skill.items.map((item, idx) => (
-                          <span
-                            key={idx}
-                            className="px-2 py-1 text-sm bg-muted text-zinc-300 hover:text-accent rounded-md"
-                          >
-                            {item}
-                          </span>
-                        ))}
+                      {skill.items.map((item) => (
+                        <span key={`${skill.title}-${item}`} className="about-chip">
+                          {item}
+                        </span>
+                      ))}
                     </div>
-                  </div>
+                  </article>
                 );
               })}
             </div>
           </div>
 
-          {/* Timeline */}
-          <div className="relative">
-            <section className="text-2xl font-bold mb-8 text-center lg:text-left">
-              {t("about.timeline.title").split(" ")[0]}{" "}
-              <span className="text-gradient-secondary">
-                {t("about.timeline.title").split(" ")[1]}
-              </span>
-            </section>
+          <aside
+            className={`about-reveal ${isVisible ? "is-visible" : ""}`}
+            style={{ "--about-delay": "0.24s" } as CSSProperties}
+          >
+            <div className="about-glass-panel about-timeline-panel">
+              <h3 className="text-2xl font-bold">
+                <span className="text-foreground">{t("about.timeline.title")}</span>
+              </h3>
 
-            <div className="space-y-8">
-              {["2019", "2021", "2022", "2023", "2024"].map((year, index) => (
-                <div key={index} className="timeline-item group">
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 w-20">
-                      <span className="text-2xl font-bold text-accent-text group-hover:text-secondary transition-colors">
+              <div ref={timelineRef} className="about-timeline relative mt-8 space-y-7">
+                {TIMELINE_YEARS.map((year, index) => (
+                  <article key={year} className="timeline-item">
+                    <div className="flex items-start gap-4">
+                      <span className="w-16 flex-shrink-0 text-xl font-bold text-accent-text md:text-2xl">
                         {year}
                       </span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
-                        {t(`about.timeline.items.${year}.title`)}
-                      </h3>
-                      <p className="text-zinc-300 text-base">
-                        {t(`about.timeline.items.${year}.description`)}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
 
-            {/* Decorative Timeline Vertical Line */}
-            <div className="absolute left-0 top-12 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-primary/30"></div>
-          </div>
+                      <div
+                        className="flex-1"
+                      >
+                        <h4
+                          className={`about-timeline-title text-lg font-semibold text-foreground ${
+                            isTimelineVisible ? "is-visible" : ""
+                          }`}
+                          style={
+                            {
+                              "--about-delay": `${0.28 + index * 0.34}s`,
+                            } as CSSProperties
+                          }
+                        >
+                          {t(`about.timeline.items.${year}.title`)}
+                        </h4>
+                        <p
+                          className={`about-timeline-description mt-2 text-zinc-300 ${
+                            isTimelineVisible ? "is-visible" : ""
+                          }`}
+                          style={
+                            {
+                              "--about-delay": `${0.42 + index * 0.34}s`,
+                            } as CSSProperties
+                          }
+                        >
+                          {t(`about.timeline.items.${year}.description`)}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
