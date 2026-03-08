@@ -31,7 +31,7 @@ export const HeroSection = () => {
         setDisplayText((prev) =>
           isDeleting
             ? currentPhrase.slice(0, prev.length - 1)
-            : currentPhrase.slice(0, prev.length + 1)
+            : currentPhrase.slice(0, prev.length + 1),
         );
       }, speed);
     }
@@ -54,10 +54,10 @@ export const HeroSection = () => {
       <div className="container mx-auto px-6 text-center relative z-10">
         {/* Greeting */}
         <p className="text-lg md:text-xl mb-4 animate-float-up">
-          {t("hero.greeting")}
           <span className="wave-hand ml-2 inline-block" aria-hidden="true">
             👋
           </span>
+          {t("hero.greeting")}
         </p>
 
         {/* Main Heading */}
@@ -78,7 +78,7 @@ export const HeroSection = () => {
           className="mb-8 animate-float-up"
           style={{ animationDelay: "0.6s" }}
         >
-          <p className="text-xl md:text-2xl text-zinc-300 min-h-[3rem] flex items-center justify-center">
+          <p className="text-base md:text-2xl text-zinc-300 min-h-[3rem] flex items-center justify-center">
             <span className="inline-block border-r-2 border-primary">
               {displayText}
             </span>
