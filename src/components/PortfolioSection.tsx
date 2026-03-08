@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Filter } from "lucide-react";
@@ -8,6 +8,11 @@ export const PortfolioSection = () => {
   // Use category key instead of translated text
   const [selectedCategoryKey, setSelectedCategoryKey] = useState("all");
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const subtitleRef = useRef<HTMLParagraphElement | null>(null);
+  const [isTitleVisible, setIsTitleVisible] = useState(false);
+  const [isSubtitleVisible, setIsSubtitleVisible] = useState(false);
+  const [isAnimationArmed, setIsAnimationArmed] = useState(false);
 
   // Dynamic project data from i18n
   const projectIds = [1, 2, 3, 4, 6];
@@ -74,12 +79,68 @@ export const PortfolioSection = () => {
           return projectCategory === filterLabel;
         });
 
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      setIsTitleVisible(true);
+      setIsSubtitleVisible(true);
+      return;
+    }
+
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+
+    if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
+      setIsTitleVisible(true);
+      setIsSubtitleVisible(true);
+      return;
+    }
+
+    setIsAnimationArmed(true);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          if (entry.target === titleRef.current) {
+            setIsTitleVisible(true);
+          }
+
+          if (entry.target === subtitleRef.current) {
+            setIsSubtitleVisible(true);
+          }
+
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.45,
+        rootMargin: "0px 0px -12% 0px",
+      },
+    );
+
+    if (titleRef.current) observer.observe(titleRef.current);
+    if (subtitleRef.current) observer.observe(subtitleRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="py-20 relative bg-zinc-950">
+    <section
+      className={`portfolio-section py-20 relative bg-zinc-950 ${
+        isAnimationArmed ? "portfolio-animate" : ""
+      }`}
+    >
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2
+            ref={titleRef}
+            className={`portfolio-title-reveal text-4xl md:text-5xl font-bold mb-6 ${
+              isTitleVisible ? "is-visible" : ""
+            }`}
+          >
             <span className="text-foreground">
               {t("portfolio.title").split(" ").slice(0, -1).join(" ")}{" "}
             </span>
@@ -87,7 +148,12 @@ export const PortfolioSection = () => {
               {t("portfolio.title").split(" ").slice(-1)[0]}
             </span>
           </h2>
-          <p className="text-xl max-w-3xl mx-auto mb-8">
+          <p
+            ref={subtitleRef}
+            className={`portfolio-subtitle-reveal text-xl max-w-3xl mx-auto mb-8 ${
+              isSubtitleVisible ? "is-visible" : ""
+            }`}
+          >
             {t("portfolio.subtitle")}
           </p>
 

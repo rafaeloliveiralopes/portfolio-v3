@@ -1,7 +1,7 @@
 import { Monitor, Zap, Bot, ChevronDown } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 type TranslatedService = {
@@ -16,8 +16,15 @@ type TranslatedService = {
 type ServiceItem = TranslatedService & { icon: LucideIcon };
 
 export const ServicesSection = () => {
-  const { t, i18n } = useTranslation(["services", "common"]);
+  const { t } = useTranslation(["services", "common"]);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const subtitleRef = useRef<HTMLParagraphElement | null>(null);
+  const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const [isTitleVisible, setIsTitleVisible] = useState(false);
+  const [isSubtitleVisible, setIsSubtitleVisible] = useState(false);
+  const [visibleCards, setVisibleCards] = useState<Record<number, boolean>>({});
+  const [isAnimationArmed, setIsAnimationArmed] = useState(false);
 
   // Build translated services model
   const services = useMemo<ServiceItem[]>(() => {
@@ -42,19 +49,112 @@ export const ServicesSection = () => {
     setExpandedCard(expandedCard === index ? null : index);
   };
 
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      setIsTitleVisible(true);
+      setIsSubtitleVisible(true);
+      setVisibleCards(
+        Array.from({ length: services.length }).reduce<Record<number, boolean>>(
+          (acc, _, index) => ({ ...acc, [index]: true }),
+          {},
+        ),
+      );
+      return;
+    }
+
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+
+    if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
+      setIsTitleVisible(true);
+      setIsSubtitleVisible(true);
+      setVisibleCards(
+        Array.from({ length: services.length }).reduce<Record<number, boolean>>(
+          (acc, _, index) => ({ ...acc, [index]: true }),
+          {},
+        ),
+      );
+      return;
+    }
+
+    setIsAnimationArmed(true);
+
+    const headerObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          if (entry.target === titleRef.current) {
+            setIsTitleVisible(true);
+          }
+          if (entry.target === subtitleRef.current) {
+            setIsSubtitleVisible(true);
+          }
+          headerObserver.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.35,
+        rootMargin: "0px 0px -12% 0px",
+      },
+    );
+
+    const cardObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const element = entry.target as HTMLDivElement;
+          const index = Number(element.dataset.cardIndex);
+          if (Number.isNaN(index)) return;
+          setVisibleCards((prev) =>
+            prev[index] ? prev : { ...prev, [index]: true },
+          );
+          cardObserver.unobserve(element);
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "0px 0px -8% 0px",
+      },
+    );
+
+    if (titleRef.current) headerObserver.observe(titleRef.current);
+    if (subtitleRef.current) headerObserver.observe(subtitleRef.current);
+
+    cardRefs.current.forEach((cardElement) => {
+      if (cardElement) {
+        cardObserver.observe(cardElement);
+      }
+    });
+
+    return () => {
+      headerObserver.disconnect();
+      cardObserver.disconnect();
+    };
+  }, [services.length]);
+
   return (
     <section
       data-testid="services-section"
       aria-label={t("services.title")}
-      className="py-20 relative"
+      className={`services-section py-20 relative ${isAnimationArmed ? "services-animate" : ""}`}
     >
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2
+            ref={titleRef}
+            className={`services-title-reveal text-4xl md:text-5xl font-bold mb-6 ${
+              isTitleVisible ? "is-visible" : ""
+            }`}
+          >
             <span className="text-gradient-primary">{t("services.title")}</span>
           </h2>
-          <p className="text-xl lg:text-2xl max-w-3xl mx-auto">
+          <p
+            ref={subtitleRef}
+            className={`services-subtitle-reveal text-xl lg:text-2xl max-w-3xl mx-auto ${
+              isSubtitleVisible ? "is-visible" : ""
+            }`}
+          >
             {t("services.subtitle")}
           </p>
         </div>
@@ -68,9 +168,15 @@ export const ServicesSection = () => {
             return (
               <div
                 key={index}
-                className={`service-card group ${
+                className={`service-card service-card-reveal group ${
+                  visibleCards[index] ? "is-visible" : ""
+                } ${
                   index === 2 ? "md:col-span-2 lg:col-span-1" : ""
                 }`}
+                data-card-index={index}
+                ref={(element) => {
+                  cardRefs.current[index] = element;
+                }}
               >
                 {/* Icon */}
                 <div

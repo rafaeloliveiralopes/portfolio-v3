@@ -35,10 +35,16 @@ const renderHighlightedText = (
 export const AboutSection = () => {
   const { t } = useTranslation(["home", "common"]);
   const sectionRef = useRef<HTMLElement | null>(null);
-  const timelineRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const subtitleRef = useRef<HTMLParagraphElement | null>(null);
+  const timelineItemRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimationArmed, setIsAnimationArmed] = useState(false);
-  const [isTimelineVisible, setIsTimelineVisible] = useState(false);
+  const [isTitleVisible, setIsTitleVisible] = useState(false);
+  const [isSubtitleVisible, setIsSubtitleVisible] = useState(false);
+  const [visibleTimelineItems, setVisibleTimelineItems] = useState<
+    Record<number, boolean>
+  >({});
 
   useEffect(() => {
     const sectionElement = sectionRef.current;
@@ -65,22 +71,11 @@ export const AboutSection = () => {
       return;
     }
 
-    let settled = false;
-    let observer: IntersectionObserver | null = null;
-    let fallbackTimeoutId = 0;
-
-    const reveal = () => {
-      if (settled) return;
-      settled = true;
-      setIsVisible(true);
-      observer?.disconnect();
-      window.clearTimeout(fallbackTimeoutId);
-    };
-
-    observer = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
-          reveal();
+          setIsVisible(true);
+          observer.disconnect();
         }
       },
       {
@@ -90,20 +85,14 @@ export const AboutSection = () => {
     );
 
     observer.observe(sectionElement);
-    fallbackTimeoutId = window.setTimeout(reveal, 1200);
 
-    return () => {
-      observer?.disconnect();
-      window.clearTimeout(fallbackTimeoutId);
-    };
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    const timelineElement = timelineRef.current;
-    if (!timelineElement) return;
-
     if (typeof window === "undefined") {
-      setIsTimelineVisible(true);
+      setIsTitleVisible(true);
+      setIsSubtitleVisible(true);
       return;
     }
 
@@ -112,24 +101,83 @@ export const AboutSection = () => {
     );
 
     if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
-      setIsTimelineVisible(true);
+      setIsTitleVisible(true);
+      setIsSubtitleVisible(true);
       return;
     }
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-          setIsTimelineVisible(true);
-          observer.disconnect();
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          if (entry.target === titleRef.current) {
+            setIsTitleVisible(true);
+          }
+          if (entry.target === subtitleRef.current) {
+            setIsSubtitleVisible(true);
+          }
+          observer.unobserve(entry.target);
+        });
       },
       {
-        threshold: 0.18,
+        threshold: 0.45,
         rootMargin: "0px 0px -12% 0px",
       },
     );
 
-    observer.observe(timelineElement);
+    if (titleRef.current) observer.observe(titleRef.current);
+    if (subtitleRef.current) observer.observe(subtitleRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      setVisibleTimelineItems(
+        Array.from({ length: TIMELINE_YEARS.length }).reduce<
+          Record<number, boolean>
+        >((acc, _, index) => ({ ...acc, [index]: true }), {}),
+      );
+      return;
+    }
+
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+
+    if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
+      setVisibleTimelineItems(
+        Array.from({ length: TIMELINE_YEARS.length }).reduce<
+          Record<number, boolean>
+        >((acc, _, index) => ({ ...acc, [index]: true }), {}),
+      );
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const element = entry.target as HTMLDivElement;
+          const index = Number(element.dataset.timelineIndex);
+          if (Number.isNaN(index)) return;
+          setVisibleTimelineItems((prev) =>
+            prev[index] ? prev : { ...prev, [index]: true },
+          );
+          observer.unobserve(element);
+        });
+      },
+      {
+        threshold: 0.35,
+        rootMargin: "0px 0px -10% 0px",
+      },
+    );
+
+    timelineItemRefs.current.forEach((timelineItemElement) => {
+      if (timelineItemElement) {
+        observer.observe(timelineItemElement);
+      }
+    });
 
     return () => observer.disconnect();
   }, []);
@@ -183,17 +231,24 @@ export const AboutSection = () => {
       <div className="about-orb about-orb-secondary" aria-hidden="true" />
 
       <div className="container relative z-10 mx-auto px-6">
-        <div
-          className={`about-reveal text-center ${isVisible ? "is-visible" : ""}`}
-          style={{ "--about-delay": "0s" } as CSSProperties}
-        >
-          <h2 className="text-4xl font-bold md:text-5xl">
+        <div className="text-center">
+          <h2
+            ref={titleRef}
+            className={`about-title-reveal text-4xl font-bold md:text-5xl ${
+              isTitleVisible ? "is-visible" : ""
+            }`}
+          >
             <span className="text-foreground">{titleFirstWord}</span>
             {titleRemainder ? (
               <span className="text-gradient-primary"> {titleRemainder}</span>
             ) : null}
           </h2>
-          <p className="mx-auto mt-5 max-w-3xl text-lg text-zinc-300 md:text-xl">
+          <p
+            ref={subtitleRef}
+            className={`about-subtitle-reveal mx-auto mt-5 max-w-3xl text-lg text-zinc-300 md:text-xl ${
+              isSubtitleVisible ? "is-visible" : ""
+            }`}
+          >
             {t("about.subtitle")}
           </p>
         </div>
@@ -255,7 +310,7 @@ export const AboutSection = () => {
                 <span className="text-foreground">{t("about.timeline.title")}</span>
               </h3>
 
-              <div ref={timelineRef} className="about-timeline relative mt-8 space-y-7">
+              <div className="about-timeline relative mt-8 space-y-7">
                 {TIMELINE_YEARS.map((year, index) => (
                   <article key={year} className="timeline-item">
                     <div className="flex items-start gap-4">
@@ -265,14 +320,18 @@ export const AboutSection = () => {
 
                       <div
                         className="flex-1"
+                        data-timeline-index={index}
+                        ref={(element) => {
+                          timelineItemRefs.current[index] = element;
+                        }}
                       >
                         <h4
                           className={`about-timeline-title text-lg font-semibold text-foreground ${
-                            isTimelineVisible ? "is-visible" : ""
+                            visibleTimelineItems[index] ? "is-visible" : ""
                           }`}
                           style={
                             {
-                              "--about-delay": `${0.28 + index * 0.34}s`,
+                              "--about-delay": "0s",
                             } as CSSProperties
                           }
                         >
@@ -280,11 +339,11 @@ export const AboutSection = () => {
                         </h4>
                         <p
                           className={`about-timeline-description mt-2 text-zinc-300 ${
-                            isTimelineVisible ? "is-visible" : ""
+                            visibleTimelineItems[index] ? "is-visible" : ""
                           }`}
                           style={
                             {
-                              "--about-delay": `${0.42 + index * 0.34}s`,
+                              "--about-delay": "0.14s",
                             } as CSSProperties
                           }
                         >
