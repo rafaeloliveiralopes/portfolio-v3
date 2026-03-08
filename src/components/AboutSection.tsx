@@ -35,8 +35,10 @@ const renderHighlightedText = (
 export const AboutSection = () => {
   const { t } = useTranslation(["home", "common"]);
   const sectionRef = useRef<HTMLElement | null>(null);
+  const timelineRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimationArmed, setIsAnimationArmed] = useState(false);
+  const [isTimelineVisible, setIsTimelineVisible] = useState(false);
 
   useEffect(() => {
     const sectionElement = sectionRef.current;
@@ -94,6 +96,42 @@ export const AboutSection = () => {
       observer?.disconnect();
       window.clearTimeout(fallbackTimeoutId);
     };
+  }, []);
+
+  useEffect(() => {
+    const timelineElement = timelineRef.current;
+    if (!timelineElement) return;
+
+    if (typeof window === "undefined") {
+      setIsTimelineVisible(true);
+      return;
+    }
+
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+
+    if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
+      setIsTimelineVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setIsTimelineVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.18,
+        rootMargin: "0px 0px -12% 0px",
+      },
+    );
+
+    observer.observe(timelineElement);
+
+    return () => observer.disconnect();
   }, []);
 
   const skillCards = useMemo(
@@ -167,16 +205,10 @@ export const AboutSection = () => {
           >
             <div className="about-glass-panel space-y-6">
               <p className="text-lg leading-relaxed text-zinc-300">
-                {renderHighlightedText(t("about.story1"), "text-secondary font-semibold")}
-              </p>
-              <p className="text-lg leading-relaxed text-zinc-300">
                 {renderHighlightedText(
                   t("about.story2"),
                   "text-accent-text font-semibold",
                 )}
-              </p>
-              <p className="text-lg leading-relaxed text-zinc-300">
-                {renderHighlightedText(t("about.story3"), "text-secondary font-semibold")}
               </p>
             </div>
 
@@ -223,27 +255,39 @@ export const AboutSection = () => {
                 <span className="text-foreground">{t("about.timeline.title")}</span>
               </h3>
 
-              <div className="about-timeline mt-8 space-y-7">
+              <div ref={timelineRef} className="about-timeline relative mt-8 space-y-7">
                 {TIMELINE_YEARS.map((year, index) => (
-                  <article
-                    key={year}
-                    className={`timeline-item about-reveal ${isVisible ? "is-visible" : ""}`}
-                    style={
-                      {
-                        "--about-delay": `${0.3 + index * 0.08}s`,
-                      } as CSSProperties
-                    }
-                  >
+                  <article key={year} className="timeline-item">
                     <div className="flex items-start gap-4">
                       <span className="w-16 flex-shrink-0 text-xl font-bold text-accent-text md:text-2xl">
                         {year}
                       </span>
 
-                      <div className="flex-1">
-                        <h4 className="text-lg font-semibold text-foreground">
+                      <div
+                        className="flex-1"
+                      >
+                        <h4
+                          className={`about-timeline-title text-lg font-semibold text-foreground ${
+                            isTimelineVisible ? "is-visible" : ""
+                          }`}
+                          style={
+                            {
+                              "--about-delay": `${0.28 + index * 0.34}s`,
+                            } as CSSProperties
+                          }
+                        >
                           {t(`about.timeline.items.${year}.title`)}
                         </h4>
-                        <p className="mt-2 text-zinc-300">
+                        <p
+                          className={`about-timeline-description mt-2 text-zinc-300 ${
+                            isTimelineVisible ? "is-visible" : ""
+                          }`}
+                          style={
+                            {
+                              "--about-delay": `${0.42 + index * 0.34}s`,
+                            } as CSSProperties
+                          }
+                        >
                           {t(`about.timeline.items.${year}.description`)}
                         </p>
                       </div>

@@ -317,13 +317,14 @@
 
   .about-timeline::before {
     content: "";
-    @apply absolute left-[0.45rem] top-0 bottom-0 w-px;
+    @apply absolute left-0 top-0 bottom-0 w-px;
     background: linear-gradient(
       to bottom,
-      hsl(var(--secondary) / 0.2),
-      hsl(var(--primary) / 0.6),
-      hsl(var(--secondary) / 0.2)
+      hsl(var(--secondary) / 0.38),
+      hsl(var(--primary) / 0.9),
+      hsl(var(--secondary) / 0.38)
     );
+    box-shadow: 0 0 14px hsl(var(--primary) / 0.3);
   }
 
   .about-timeline .timeline-item {
@@ -342,6 +343,32 @@
 
   .about-section.about-animate .about-reveal.is-visible {
     animation: about-reveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--about-delay, 0s);
+  }
+
+  .about-timeline-title,
+  .about-timeline-description {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+
+  .about-section.about-animate .about-timeline-title,
+  .about-section.about-animate .about-timeline-description {
+    opacity: 0;
+    transform: translateX(36px);
+    filter: blur(1.5px);
+  }
+
+  .about-section.about-animate .about-timeline-title.is-visible {
+    animation: about-timeline-text-reveal 0.82s
+      cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--about-delay, 0s);
+  }
+
+  .about-section.about-animate .about-timeline-description.is-visible {
+    animation: about-timeline-text-reveal 1.05s
+      cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: var(--about-delay, 0s);
   }
 
@@ -485,6 +512,19 @@
   }
 }
 
+@keyframes about-timeline-text-reveal {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+    filter: blur(1.5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
 @keyframes about-orb-drift {
   0%,
   100% {
@@ -522,6 +562,18 @@
   }
 
   .about-reveal.is-visible {
+    animation: none;
+  }
+
+  .about-timeline-title,
+  .about-timeline-description {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+
+  .about-timeline-title.is-visible,
+  .about-timeline-description.is-visible {
     animation: none;
   }
 }
