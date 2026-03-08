@@ -43,8 +43,16 @@ export const ContactSection = () => {
   const { toast } = useToast();
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
+  const contactMethodRefs = useRef<Array<HTMLAnchorElement | null>>([]);
+  const statsRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const formCardRef = useRef<HTMLDivElement | null>(null);
   const [isTitleVisible, setIsTitleVisible] = useState(false);
   const [isSubtitleVisible, setIsSubtitleVisible] = useState(false);
+  const [visibleContactMethods, setVisibleContactMethods] = useState<
+    Record<number, boolean>
+  >({});
+  const [visibleStats, setVisibleStats] = useState<Record<number, boolean>>({});
+  const [isFormCardVisible, setIsFormCardVisible] = useState(false);
   const [isAnimationArmed, setIsAnimationArmed] = useState(false);
 
   // Create schema with current language
@@ -192,6 +200,80 @@ export const ContactSection = () => {
     [t]
   );
 
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      setVisibleContactMethods(
+        Array.from({ length: contactInfo.length }).reduce<
+          Record<number, boolean>
+        >((acc, _, index) => ({ ...acc, [index]: true }), {}),
+      );
+      setVisibleStats({ 0: true, 1: true });
+      setIsFormCardVisible(true);
+      return;
+    }
+
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+
+    if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
+      setVisibleContactMethods(
+        Array.from({ length: contactInfo.length }).reduce<
+          Record<number, boolean>
+        >((acc, _, index) => ({ ...acc, [index]: true }), {}),
+      );
+      setVisibleStats({ 0: true, 1: true });
+      setIsFormCardVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const element = entry.target as HTMLElement;
+          const revealType = element.dataset.revealType;
+          const revealIndex = Number(element.dataset.revealIndex);
+
+          if (revealType === "contact-method" && !Number.isNaN(revealIndex)) {
+            setVisibleContactMethods((prev) =>
+              prev[revealIndex] ? prev : { ...prev, [revealIndex]: true },
+            );
+          }
+
+          if (revealType === "stat" && !Number.isNaN(revealIndex)) {
+            setVisibleStats((prev) =>
+              prev[revealIndex] ? prev : { ...prev, [revealIndex]: true },
+            );
+          }
+
+          if (revealType === "form-card") {
+            setIsFormCardVisible(true);
+          }
+
+          observer.unobserve(element);
+        });
+      },
+      {
+        threshold: 0.35,
+        rootMargin: "0px 0px -10% 0px",
+      },
+    );
+
+    contactMethodRefs.current.forEach((element) => {
+      if (element) observer.observe(element);
+    });
+
+    statsRefs.current.forEach((element) => {
+      if (element) observer.observe(element);
+    });
+
+    if (formCardRef.current) observer.observe(formCardRef.current);
+
+    return () => observer.disconnect();
+  }, [contactInfo.length]);
+
   const onSubmit = async (data: ContactFormData) => {
     try {
       const response = await fetch("/api/sendEmail", {
@@ -287,7 +369,14 @@ export const ContactSection = () => {
                   <a
                     key={index}
                     href={info.href}
-                    className="flex items-center p-4 bg-card border border-border rounded-xl hover:border-primary/90 transition-all duration-300 hover:shadow-glow group"
+                    className={`contact-block-up-reveal flex items-center p-4 bg-card border border-border rounded-xl hover:border-primary/90 transition-all duration-300 hover:shadow-glow group ${
+                      visibleContactMethods[index] ? "is-visible" : ""
+                    }`}
+                    data-reveal-type="contact-method"
+                    data-reveal-index={index}
+                    ref={(element) => {
+                      contactMethodRefs.current[index] = element;
+                    }}
                   >
                     <div className="p-3 bg-primary/10 text-primary rounded-lg mr-4 group-hover:bg-primary/20 transition-colors">
                       <Icon className="w-6 h-6" />
@@ -305,7 +394,16 @@ export const ContactSection = () => {
 
             {/* Quick Stats */}
             <div className="grid grid-cols-2 gap-6 pt-8">
-              <div className="text-center p-4 bg-card/50 rounded-xl border border-border">
+              <div
+                className={`contact-block-up-reveal text-center p-4 bg-card/50 rounded-xl border border-border ${
+                  visibleStats[0] ? "is-visible" : ""
+                }`}
+                data-reveal-type="stat"
+                data-reveal-index={0}
+                ref={(element) => {
+                  statsRefs.current[0] = element;
+                }}
+              >
                 <div className="text-2xl font-bold text-primary mb-1">
                   {t("contact.stats.responseTimeValue")}
                 </div>
@@ -313,7 +411,16 @@ export const ContactSection = () => {
                   {t("contact.stats.responseTime")}
                 </div>
               </div>
-              <div className="text-center p-4 bg-card/50 rounded-xl border border-border">
+              <div
+                className={`contact-block-up-reveal text-center p-4 bg-card/50 rounded-xl border border-border ${
+                  visibleStats[1] ? "is-visible" : ""
+                }`}
+                data-reveal-type="stat"
+                data-reveal-index={1}
+                ref={(element) => {
+                  statsRefs.current[1] = element;
+                }}
+              >
                 <div className="text-2xl font-bold text-secondary mb-1">
                   100%
                 </div>
@@ -325,7 +432,13 @@ export const ContactSection = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-card border border-border rounded-2xl p-8 shadow-elegant">
+          <div
+            className={`contact-block-up-reveal bg-card border border-border rounded-2xl p-8 shadow-elegant ${
+              isFormCardVisible ? "is-visible" : ""
+            }`}
+            data-reveal-type="form-card"
+            ref={formCardRef}
+          >
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}

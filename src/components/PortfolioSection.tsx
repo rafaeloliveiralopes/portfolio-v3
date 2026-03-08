@@ -10,8 +10,16 @@ export const PortfolioSection = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
+  const filterRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const projectCardRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const [isTitleVisible, setIsTitleVisible] = useState(false);
   const [isSubtitleVisible, setIsSubtitleVisible] = useState(false);
+  const [visibleFilters, setVisibleFilters] = useState<Record<number, boolean>>(
+    {},
+  );
+  const [visibleProjectCards, setVisibleProjectCards] = useState<
+    Record<number, boolean>
+  >({});
   const [isAnimationArmed, setIsAnimationArmed] = useState(false);
 
   // Dynamic project data from i18n
@@ -83,6 +91,12 @@ export const PortfolioSection = () => {
     if (typeof window === "undefined") {
       setIsTitleVisible(true);
       setIsSubtitleVisible(true);
+      setVisibleFilters(
+        Array.from({ length: categories.length }).reduce<Record<number, boolean>>(
+          (acc, _, index) => ({ ...acc, [index]: true }),
+          {},
+        ),
+      );
       return;
     }
 
@@ -93,12 +107,18 @@ export const PortfolioSection = () => {
     if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
       setIsTitleVisible(true);
       setIsSubtitleVisible(true);
+      setVisibleFilters(
+        Array.from({ length: categories.length }).reduce<Record<number, boolean>>(
+          (acc, _, index) => ({ ...acc, [index]: true }),
+          {},
+        ),
+      );
       return;
     }
 
     setIsAnimationArmed(true);
 
-    const observer = new IntersectionObserver(
+    const headerObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
@@ -111,7 +131,7 @@ export const PortfolioSection = () => {
             setIsSubtitleVisible(true);
           }
 
-          observer.unobserve(entry.target);
+          headerObserver.unobserve(entry.target);
         });
       },
       {
@@ -120,11 +140,99 @@ export const PortfolioSection = () => {
       },
     );
 
-    if (titleRef.current) observer.observe(titleRef.current);
-    if (subtitleRef.current) observer.observe(subtitleRef.current);
+    const filterObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const element = entry.target as HTMLButtonElement;
+          const index = Number(element.dataset.filterIndex);
+          if (Number.isNaN(index)) return;
+          setVisibleFilters((prev) =>
+            prev[index] ? prev : { ...prev, [index]: true },
+          );
+          filterObserver.unobserve(element);
+        });
+      },
+      {
+        threshold: 0.5,
+        rootMargin: "0px 0px -10% 0px",
+      },
+    );
 
-    return () => observer.disconnect();
-  }, []);
+    if (titleRef.current) headerObserver.observe(titleRef.current);
+    if (subtitleRef.current) headerObserver.observe(subtitleRef.current);
+    filterRefs.current.forEach((filterElement) => {
+      if (filterElement) {
+        filterObserver.observe(filterElement);
+      }
+    });
+
+    return () => {
+      headerObserver.disconnect();
+      filterObserver.disconnect();
+    };
+  }, [categories.length]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      setVisibleProjectCards((prev) =>
+        filteredProjects.reduce<Record<number, boolean>>(
+          (acc, project) => ({
+            ...acc,
+            [project.id as number]: true,
+          }),
+          { ...prev },
+        ),
+      );
+      return;
+    }
+
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+
+    if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
+      setVisibleProjectCards((prev) =>
+        filteredProjects.reduce<Record<number, boolean>>(
+          (acc, project) => ({
+            ...acc,
+            [project.id as number]: true,
+          }),
+          { ...prev },
+        ),
+      );
+      return;
+    }
+
+    if (!isAnimationArmed) return;
+
+    const cardObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const element = entry.target as HTMLDivElement;
+          const id = Number(element.dataset.projectId);
+          if (Number.isNaN(id)) return;
+          setVisibleProjectCards((prev) => (prev[id] ? prev : { ...prev, [id]: true }));
+          cardObserver.unobserve(element);
+        });
+      },
+      {
+        threshold: 0.32,
+        rootMargin: "0px 0px -8% 0px",
+      },
+    );
+
+    filteredProjects.forEach((project) => {
+      const id = project.id as number;
+      const cardElement = projectCardRefs.current[id];
+      if (cardElement && !visibleProjectCards[id]) {
+        cardObserver.observe(cardElement);
+      }
+    });
+
+    return () => cardObserver.disconnect();
+  }, [filteredProjects, isAnimationArmed, visibleProjectCards]);
 
   return (
     <section
@@ -159,15 +267,21 @@ export const PortfolioSection = () => {
 
           {/* Category Filters */}
           <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((category) => (
+            {categories.map((category, categoryIndex) => (
               <button
                 key={category.key}
                 onClick={() => setSelectedCategoryKey(category.key)}
-                className={`px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-2 ${
+                className={`portfolio-filter-reveal px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-2 ${
+                  visibleFilters[categoryIndex] ? "is-visible" : ""
+                } ${
                   selectedCategoryKey === category.key
                     ? "bg-primary text-primary-foreground shadow-glow"
                     : "bg-card border border-border text-muted-foreground hover:text-primary hover:border-primary/30"
                 }`}
+                data-filter-index={categoryIndex}
+                ref={(element) => {
+                  filterRefs.current[categoryIndex] = element;
+                }}
               >
                 {category.key === "all" && <Filter className="w-4 h-4" />}
                 {category.label}
@@ -178,11 +292,16 @@ export const PortfolioSection = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group cursor-pointer animate-float-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`portfolio-card-reveal group cursor-pointer ${
+                visibleProjectCards[project.id as number] ? "is-visible" : ""
+              }`}
+              data-project-id={project.id as number}
+              ref={(element) => {
+                projectCardRefs.current[project.id as number] = element;
+              }}
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
             >
