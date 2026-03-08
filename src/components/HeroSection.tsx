@@ -54,7 +54,10 @@ export const HeroSection = () => {
       <div className="container mx-auto px-6 text-center relative z-10">
         {/* Greeting */}
         <p className="text-lg md:text-xl mb-4 animate-float-up">
-          {t("hero.greeting")} 👋
+          {t("hero.greeting")}
+          <span className="wave-hand ml-2 inline-block" aria-hidden="true">
+            👋
+          </span>
         </p>
 
         {/* Main Heading */}

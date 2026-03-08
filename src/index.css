@@ -346,6 +346,41 @@
   }
 }
 
+@keyframes wave-hand {
+  0%,
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(16deg);
+  }
+  16% {
+    transform: rotate(-10deg);
+  }
+  22% {
+    transform: rotate(16deg);
+  }
+  28% {
+    transform: rotate(-6deg);
+  }
+  34% {
+    transform: rotate(10deg);
+  }
+}
+
+.wave-hand {
+  transform-origin: 70% 70%;
+  animation: wave-hand 2.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-hand {
+    animation: none;
+  }
+}
+
 /* React International Phone Custom Styles */
 .react-international-phone-input-container {
   background-color: hsl(var(--background)) !important;
