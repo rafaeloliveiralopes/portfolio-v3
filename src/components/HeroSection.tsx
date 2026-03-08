@@ -68,9 +68,6 @@ export const HeroSection = () => {
           <p className="text-2xl md:text-3xl font-semibold text-secondary">
             {t("hero.title")}
           </p>
-          <p className="md:text-lg text-left font-semibold text-zinc-300 mt-2">
-            {t("hero.subtitle")}
-          </p>
         </div>
 
         {/* Typing Effect Subtitle */}
