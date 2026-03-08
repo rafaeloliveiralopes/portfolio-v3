@@ -463,8 +463,25 @@
       cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
+  .contact-block-up-reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .contact-section.contact-animate .contact-block-up-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .contact-section.contact-animate .contact-block-up-reveal.is-visible {
+    animation: contact-block-bottom-up 0.9s cubic-bezier(0.22, 1, 0.36, 1)
+      forwards;
+  }
+
   .portfolio-title-reveal,
-  .portfolio-subtitle-reveal {
+  .portfolio-subtitle-reveal,
+  .portfolio-filter-reveal,
+  .portfolio-card-reveal {
     opacity: 1;
     transform: none;
   }
@@ -486,6 +503,26 @@
 
   .portfolio-section.portfolio-animate .portfolio-subtitle-reveal.is-visible {
     animation: portfolio-subtitle-left-to-right 1s
+      cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .portfolio-section.portfolio-animate .portfolio-filter-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  .portfolio-section.portfolio-animate .portfolio-filter-reveal.is-visible {
+    animation: portfolio-filter-bottom-up 0.85s
+      cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .portfolio-section.portfolio-animate .portfolio-card-reveal {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+
+  .portfolio-section.portfolio-animate .portfolio-card-reveal.is-visible {
+    animation: portfolio-card-right-to-left 0.95s
       cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
@@ -685,6 +722,39 @@
   }
 }
 
+@keyframes portfolio-filter-bottom-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes portfolio-card-right-to-left {
+  from {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes contact-block-bottom-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .social-link-reveal {
   opacity: 0;
   animation: social-link-reveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -743,7 +813,9 @@
   }
 
   .portfolio-title-reveal,
-  .portfolio-subtitle-reveal {
+  .portfolio-subtitle-reveal,
+  .portfolio-filter-reveal,
+  .portfolio-card-reveal {
     opacity: 1;
     transform: none;
     animation: none;
@@ -751,6 +823,12 @@
 
   .contact-title-reveal,
   .contact-subtitle-reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .contact-block-up-reveal {
     opacity: 1;
     transform: none;
     animation: none;
